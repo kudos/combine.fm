@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Unify Audio</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <style>
+  .container {
+    padding-top: 100px;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <img src="<%= spotifyAlbum.artwork %>" height=200 class="img-rounded" /> <%= spotifyAlbum.id %> <a href="<%= spotifyAlbum.url %>">Play on Spotify</a>
+    </div>
+    <div class="row">
+      <img src="<%= googleAlbum.artwork %>" height=200 class="img-rounded" /> <%= googleAlbum.id %> <a href="<%= googleAlbum.url %>">Play on Google Music</a>
+    </div>
+  </div>
+</body>
+</html>
