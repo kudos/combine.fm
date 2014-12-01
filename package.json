@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "./node_modules/mocha/bin/mocha"
   },
   "engines": {
     "node": "0.10.x"
@@ -23,6 +24,7 @@
     "spotify": "^0.3.0"
   },
   "devDependencies": {
-    "should": "^4.3.0"
+    "should": "^4.3.0",
+    "mocha": "^2.0.1"
   }
 }
