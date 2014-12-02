@@ -1,4 +1,4 @@
-#Unify.audio [![Circle CI](https://circleci.com/gh/kudos/unify.audio.svg?style=svg)](https://circleci.com/gh/kudos/unify.audio)
+#match.audio [![Circle CI](https://circleci.com/gh/kudos/match.audio.svg?style=svg)](https://circleci.com/gh/kudos/match.audio)
 
 Make sharing music from subscription services better. Give us one link (Rdio, Spotify or Google Music) and we'll match it with other services and give you back a link with all of them.
 
