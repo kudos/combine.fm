@@ -1,3 +1,4 @@
+"use strict";
 var parse = require('url').parse;
 var express = require('express');
 var router = express.Router();

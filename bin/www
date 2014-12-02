@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+"use strict";
 var debug = require('debug')('unify.audio');
 var app = require('../app');
 
