@@ -7,3 +7,9 @@ You'll need to have Rdio API keys (`RDIO_API_KEY` and `RDIO_API_SHARED`) and Goo
 To get started, first `npm install` and then run the app with `npm start` or tests with `npm test`.
 
 This is in super early development, has no design and only supports albums right now.
+
+On the immediate todo list:
+
+* Add support for tracks, and maybe artists
+* Use album release year for additional sanity check on matches
+* Do some kind of a design, particularly for the share page

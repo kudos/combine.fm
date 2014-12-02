@@ -1,3 +1,4 @@
+var parse = require('url').parse;
 var express = require('express');
 var router = express.Router();
 
@@ -13,8 +14,8 @@ router.get('/:service/:type/:id', function(req, res) {
   switch(service) {
     case "spotify":
       spotify.lookupId(id, type, function(spotifyAlbum) {
-        googleplaymusic.search(spotifyAlbum.artist.name + " " + spotifyAlbum.name, "album", function(googleAlbum) {
-          rdio.search(googleAlbum.artist.name + " " + googleAlbum.name, "album", function(rdioAlbum) {
+        googleplaymusic.search(spotifyAlbum.artist.name + " " + spotifyAlbum.name, type, function(googleAlbum) {
+          rdio.search(googleAlbum.artist.name + " " + googleAlbum.name, type, function(rdioAlbum) {
             res.render('album', {rdioAlbum: rdioAlbum, googleAlbum: googleAlbum, spotifyAlbum: spotifyAlbum});
           });
         });
@@ -22,8 +23,8 @@ router.get('/:service/:type/:id', function(req, res) {
       break;
     case "google":
       googleplaymusic.lookupId(id, type, function(googleAlbum) {
-        spotify.search(googleAlbum.artist.name + " " + googleAlbum.name, "album", function(spotifyAlbum) {
-          rdio.search(googleAlbum.artist.name + " " + googleAlbum.name, "album", function(rdioAlbum) {
+        spotify.search(googleAlbum.artist.name + " " + googleAlbum.name, type, function(spotifyAlbum) {
+          rdio.search(googleAlbum.artist.name + " " + googleAlbum.name, type, function(rdioAlbum) {
             res.render('album', {rdioAlbum: rdioAlbum, googleAlbum: googleAlbum, spotifyAlbum: spotifyAlbum});
           });
         });
@@ -31,8 +32,8 @@ router.get('/:service/:type/:id', function(req, res) {
       break;
     case "rdio":
       rdio.lookupId(id, function(rdioAlbum) {
-        googleplaymusic.search(rdioAlbum.artist.name + " " + rdioAlbum.name, "album", function(googleAlbum) {
-          spotify.search(rdioAlbum.artist.name + " " + rdioAlbum.name, "album", function(spotifyAlbum) {
+        googleplaymusic.search(rdioAlbum.artist.name + " " + rdioAlbum.name, type, function(googleAlbum) {
+          spotify.search(rdioAlbum.artist.name + " " + rdioAlbum.name, type, function(spotifyAlbum) {
             res.render('album', {rdioAlbum: rdioAlbum, googleAlbum: googleAlbum, spotifyAlbum: spotifyAlbum});
           });
         });
@@ -43,26 +44,26 @@ router.get('/:service/:type/:id', function(req, res) {
 
 router.post('/search', function(req, res) {
   // determine spotify or google music
-  var url = req.body.url;
+  var url = parse(req.body.url);
 
-  if (url.match(/rd\.io/) || url.match(/rdio\.com/)) {
-    rdio.lookupUrl(url, function(result) {
+  if (url.host.match(/rd\.io$/) || url.host.match(/rdio\.com$/)) {
+    rdio.lookupUrl(url.href, function(result) {
       if (!result.id) {
         req.flash('search-error', 'No match found for this link');
         res.redirect('/');
       }
       res.redirect("/rdio/" + result.type + "/" + result.id);
     });
-  } else if (url.match(/spotify\.com/)) {
-    spotify.parseUrl(url, function(result) {
+  } else if (url.host.match(/spotify\.com$/)) {
+    spotify.parseUrl(url.href, function(result) {
       if (!result.id) {
         req.flash('search-error', 'No match found for this link');
         res.redirect('/');
       }
       res.redirect("/spotify/" + result.type + "/" + result.id);
     });
-  } else if (url.match(/play\.google\.com/)) {
-    googleplaymusic.parseUrl(url, function(result) {
+  } else if (url.host.match(/play\.google\.com$/)) {
+    googleplaymusic.parseUrl(url.href, function(result) {
       if (!result.id) {
         req.flash('search-error', 'No match found for this link');
         res.redirect('/');
