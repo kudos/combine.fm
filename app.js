@@ -1,5 +1,6 @@
 "use strict";
 var express = require('express');
+var helmet = require('helmet');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -18,6 +19,7 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(helmet());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,6 +31,15 @@ app.use(session({
 }));
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// force SSL
+app.get('*', function(req,res,next) {
+  if (req.headers['x-forwarded-proto'] && req.headers['x-forwarded-proto'] != 'https') {
+    res.redirect(req.headers['host'] + req.url);
+  } else {
+    next();
+  }
+});
 
 app.use('/', routes);
 
