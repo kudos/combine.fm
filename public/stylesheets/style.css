@@ -53,6 +53,7 @@ h2 {
   left: 25px;
 }
 .source-service {
+  border-radius: 5px;
   background: #eee;
 }
 .album-artwork {
