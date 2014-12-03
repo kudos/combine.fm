@@ -17,7 +17,7 @@ describe('Spotify', function(){
 
   describe('search', function(){
     it('should find album by search', function(done){
-      spotify.search("David Guetta Listen (Deluxe)", "album", function(result) {
+      spotify.search({type: "album", artist: {name: "David Guetta"}, name: "Listen (Deluxe)"}, function(result) {
         result.name.should.equal("Listen (Deluxe)");
         done();
       });
@@ -46,7 +46,7 @@ describe('Rdio', function(){
 
   describe('search', function(){
     it('should find album by search', function(done){
-      rdio.search("David Guetta Listen (Deluxe)", "album", function(result) {
+      rdio.search({type: "album", artist: {name: "David Guetta"}, name: "Listen (Deluxe)"}, function(result) {
         result.name.should.equal("Listen (Deluxe)");
         done();
       });
@@ -82,7 +82,7 @@ describe('Google Play Music', function(){
 
   describe('search', function(){
     it('should find album by search', function(done){
-      googleplaymusic.search("David Guetta Listen (Deluxe)", "album", function(result) {
+      googleplaymusic.search({type: "album", artist: {name: "David Guetta"}, name: "Listen (Deluxe)"}, function(result) {
         result.name.should.equal("Listen (Deluxe)");
         done();
       });

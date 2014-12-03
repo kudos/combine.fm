@@ -1,8 +1,73 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans";
 }
 
-a {
-  color: #00B7FF;
+header {
+  background: #e6832e;
+}
+
+header h1 {
+  margin: 0;
+  text-align: center;
+  font-weight: 300;
+  font-size: 2em;
+  padding: 20px 0;
+}
+
+header h1 a {
+  color: #fff;
+}
+
+header h1 a:hover {
+  color: #f2c4ad;
+  text-decoration: none;
+}
+
+.share header h1 {
+  text-align: left;
+  font-size: 1.5em;
+  padding: 10px 0;
+}
+
+.audio-lighten {
+  color:#f2c4ad;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin: 40px 0;
+}
+
+.share-form {
+  margin: 50px 0;
+  text-align: center;
+}
+
+.service {
+  padding: 40px 10px 10px 10px;
+}
+.matching-from {
+  position: absolute;
+  top: 10px;
+  left: 25px;
+}
+.source-service {
+  background: #eee;
+}
+.album-artwork {
+  margin-bottom: 10px;
+}
+.service-link {
+  text-align: center;
+}
+.service-link a {
+  font-size: 1.8em;
+  color: #444;
+}
+.service-link a:hover {
+  text-decoration: none;
+}
+.service-link img {
+  margin-bottom: 7px;
 }
