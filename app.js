@@ -34,8 +34,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // force SSL
 app.get('*', function(req,res,next) {
-  if (req.headers['x-forwarded-proto'] && req.headers['x-forwarded-proto'] != 'https') {
-    res.redirect(req.headers['host'] + req.url);
+  if (req.headers['cf-visitor'] && req.headers['cf-visitor'] != '{"scheme":"https"}') {
+    res.redirect("https://" + req.headers['host'] + req.url);
   } else {
     next();
   }
