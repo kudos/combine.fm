@@ -12,29 +12,37 @@
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body class="track share">
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1><a href="/">match<span class="audio-lighten">.audio</span></a></h1>
+        </div>
+      </div>
+    </div>
+  </header>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h2><a href="/">match.audio</a></h2>
-      <h1><%= items[0].artist.name %> - <%= items[0].name %></h1>
+        <h2><%= items[0].artist.name %> - <%= items[0].name %></h2>
       </div>
     </div>
     <div class="row">
-    <% for (var i=0;i < items.length;i++) { var track = items[i]; %>
-      <div class="col-md-3 col-xs-6">
-        <div class="service <%= i==0 ? "source-service" : "" %>">
-          <div class="matching-from"><%= i==0 ? "Matching track from this album" : "" %></div>
-          <img src="<%= track.artwork %>" class="img-rounded album-artwork" width="100%">
-          <div class="service-link">
-            <a href="<%= track.url %>">Listen on <img src="/images/<%= track.service %>.png" class="img-rounded"></a>
+      <% for (var i=0;i < items.length;i++) { var track = items[i]; %>
+        <div class="col-md-3 col-xs-6">
+          <div class="service <%= i==0 ? "source-service" : "" %>">
+            <div class="matching-from"><%= i==0 ? "Found matches for this link" : "" %></div>
+            <a href="<%= track.url %>"><img src="<%= track.artwork %>" class="img-rounded album-artwork" width="100%"></a>
+            <div class="service-link">
+              <a href="<%= track.url %>">Listen on <img src="/images/<%= track.service %>.png" class="img-rounded"></a>
+            </div>
           </div>
         </div>
+        <% } %>
       </div>
-    <% } %>
-    </div>
-    <div class="row share">
+      <div class="row share">
 
+      </div>
     </div>
-  </div>
-</body>
-</html>
+  </body>
+  </html>

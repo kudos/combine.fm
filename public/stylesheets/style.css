@@ -45,6 +45,11 @@ h2 {
   text-align: center;
 }
 
+.btn-custom {
+  background-color: #e6832e;
+  color: #fff;
+}
+
 .service {
   padding: 40px 10px 10px 10px;
 }
