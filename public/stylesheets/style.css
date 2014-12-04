@@ -65,6 +65,9 @@ h2 {
 .album-artwork {
   margin-bottom: 10px;
 }
+.not-found {
+  opacity: 0.3;
+}
 .service-link {
   text-align: center;
 }

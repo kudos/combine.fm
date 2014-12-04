@@ -6,6 +6,7 @@ var router = express.Router();
 var googleplaymusic = require('../lib/googleplaymusic');
 var spotify = require('../lib/spotify');
 var rdio = require('../lib/rdio');
+var beats = require('../lib/beats');
 
 var cache = {googleplaymusic:{}, spotify:{},rdio:{}};
 
@@ -23,7 +24,10 @@ router.get('/:service/:type/:id', function(req, res) {
           items.push(item);
           rdio.search(result, function(item) {
             items.push(item);
-            res.render(result.type, {items: items});
+            beats.search(result, function(item) {
+              items.push(item);
+              res.render(result.type, {items: items});
+            });
           });
         });
       });
@@ -35,7 +39,10 @@ router.get('/:service/:type/:id', function(req, res) {
           items.push(item);
           rdio.search(result, function(item) {
             items.push(item);
-            res.render(result.type, {items: items});
+            beats.search(result, function(item) {
+              items.push(item);
+              res.render(result.type, {items: items});
+            });
           });
         });
       });
@@ -47,7 +54,25 @@ router.get('/:service/:type/:id', function(req, res) {
           items.push(item);
           spotify.search(result, function(item) {
             items.push(item);
-            res.render(result.type, {items: items});
+            beats.search(result, function(item) {
+              items.push(item);
+              res.render(result.type, {items: items});
+            });
+          });
+        });
+      });
+      break;
+    case "beats":
+      beats.lookupId(id, function(result) {
+        items.push(result);
+        googleplaymusic.search(result, function(item) {
+          items.push(item);
+          spotify.search(result, function(item) {
+            items.push(item);
+            rdio.search(result, function(item) {
+              items.push(item);
+              res.render(result.type, {items: items});
+            });
           });
         });
       });
@@ -56,7 +81,6 @@ router.get('/:service/:type/:id', function(req, res) {
 });
 
 router.post('/search', function(req, res) {
-  // determine spotify or google music
   var url = parse(req.body.url);
 
   if (!url.host) {
@@ -89,6 +113,14 @@ router.post('/search', function(req, res) {
       } else {
         res.redirect("/google/" + result.type + "/" + result.id);
       }
+    });
+  } else if (url.host.match(/beatsmusic\.com$/)) {
+    beats.parseUrl(url.href, function(result) {
+      if (!result.id) {
+        req.flash('search-error', 'No match found for this link');
+        res.redirect('/');
+      }
+      res.redirect("/beats/" + result.type + "/" + result.id);
     });
   } else {
     req.flash('search-error', 'No match found for this link');

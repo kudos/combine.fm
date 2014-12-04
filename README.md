@@ -10,7 +10,6 @@ This is in super early development, has no design and only supports albums right
 
 On the immediate todo list:
 
-* Add support for tracks, and maybe artists
 * Use album release year for additional sanity check on matches
-* Do some kind of a design, particularly for the share page
 * Handle expected and unexpected errors better than the current crash-fest
+* Use promises for service searches and do them simultaneously
