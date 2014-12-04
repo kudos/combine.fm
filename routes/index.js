@@ -59,6 +59,12 @@ router.post('/search', function(req, res) {
   // determine spotify or google music
   var url = parse(req.body.url);
 
+  if (!url.host) {
+    req.flash('search-error', 'Please paste a link below to find matches');
+    res.redirect('/');
+    return;
+  }
+
   if (url.host.match(/rd\.io$/) || url.host.match(/rdio\.com$/)) {
     rdio.lookupUrl(url.href, function(result) {
       if (!result.id) {
