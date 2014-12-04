@@ -18,7 +18,7 @@ header h1 a {
   color: #fff;
 }
 
-header h1 a:hover {
+header h1 a:hover, header h1 a:focus{
   color: #f2c4ad;
   text-decoration: none;
 }
