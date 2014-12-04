@@ -35,6 +35,11 @@ router.get('/:service/:type/:id', function(req, res) {
           return result.value;
         }
       });
+
+      items.sort(function(a, b) {
+        return !a.id || !b.id;
+      })
+
       items.unshift(item);
 
       res.render(type, {items: items});
