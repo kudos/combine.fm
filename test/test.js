@@ -4,6 +4,7 @@ var should = require('should');
 var spotify = require("../lib/spotify");
 var rdio = require("../lib/rdio");
 var googleplaymusic = require("../lib/googleplaymusic");
+var beats = require("../lib/beats");
 
 describe('Spotify', function(){
   describe('lookupId', function(){
@@ -108,6 +109,58 @@ describe('Google Play Music', function(){
       googleplaymusic.parseUrl("https://play.google.com/music/m/Byp6lvzimyf74wxi5634ul4tgam", function(result) {
         result.id.should.equal("Byp6lvzimyf74wxi5634ul4tgam");
         done();
+      });
+    });
+  });
+});
+
+describe('Beats Music', function(){
+  describe('lookupId', function(){
+    it('should find album by ID', function(done){
+      beats.lookupId("al920431", function(result) {
+        result.name.should.equal("Deftones");
+        done();
+      });
+    });
+
+    it('should find track by ID', function(done){
+      beats.lookupId("tr6910289", function(result) {
+        result.name.should.equal("Californication");
+        done();
+      });
+    });
+  });
+
+  describe('search', function(){
+    it('should find album by search', function(done){
+      beats.search({type: "album", artist: {name: "Deftones"}, name: "Deftones"}, function(result) {
+        result.name.should.equal("Deftones");
+        done();
+      });
+    });
+
+    it('should find track by search', function(done){
+      beats.search({type: "track", artist: {name: "Deftones"}, album: {name: "Deftones"}, name: "Hexagram"}, function(result) {
+        result.name.should.equal("Hexagram");
+        done();
+      });
+    });
+  });
+
+  describe('lookupUrl', function(){
+    describe('parseUrl', function(){
+      it('should parse album url into ID', function(done){
+        beats.parseUrl("https://listen.beatsmusic.com/albums/al920431", function(result) {
+          result.id.should.equal("al920431");
+          done();
+        });
+      });
+
+      it('should parse track url into ID', function(done){
+        beats.parseUrl("https://listen.beatsmusic.com/albums/al6910269/tracks/tr6910289", function(result) {
+          result.id.should.equal("tr6910289");
+          done();
+        });
       });
     });
   });
