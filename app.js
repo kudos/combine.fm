@@ -9,7 +9,9 @@ var cookieParser = require('cookie-parser');
 var flash = require('connect-flash');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+var search = require('./routes/search');
+var share = require('./routes/share');
+var itunesProxy = require('./routes/itunes-proxy');
 
 var app = express();
 
@@ -41,7 +43,13 @@ app.get('*', function(req,res,next) {
   }
 });
 
-app.use('/', routes);
+app.get('/', function(req, res) {
+  res.render('index', { error: req.flash('search-error') });
+});
+
+app.post('/search', search);
+app.get('/:service/:type/:id', share);
+app.get('/itunes/*', itunesProxy);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
