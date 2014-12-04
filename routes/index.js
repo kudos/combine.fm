@@ -1,83 +1,45 @@
 "use strict";
 var parse = require('url').parse;
+var path = require('path');
 var express = require('express');
 var router = express.Router();
+var Q = require('q');
 
-var googleplaymusic = require('../lib/googleplaymusic');
-var spotify = require('../lib/spotify');
-var rdio = require('../lib/rdio');
-var beats = require('../lib/beats');
+var services = {};
+
+require("fs").readdirSync(path.join(__dirname, "..", "lib", "services")).forEach(function(file) {
+  var service = require("../lib/services/" + file);
+  if (service.search) {
+    services[service.id] = service;
+  }
+});
 
 var cache = {googleplaymusic:{}, spotify:{},rdio:{}};
 
 router.get('/:service/:type/:id', function(req, res) {
-  var service = req.params.service;
+  var serviceId = req.params.service;
   var type = req.params.type;
-  var id = req.params.id;
-  var items = [];
+  var itemId = req.params.id;
+  var promises = [];
 
-  switch(service) {
-    case "spotify":
-      spotify.lookupId(id, type, function(result) {
-        items.push(result);
-        googleplaymusic.search(result, function(item) {
-          items.push(item);
-          rdio.search(result, function(item) {
-            items.push(item);
-            beats.search(result, function(item) {
-              items.push(item);
-              res.render(result.type, {items: items});
-            });
-          });
-        });
+  services[serviceId].lookupId(itemId, type).then(function(item) {
+    for (var id in services) {
+      if (id != serviceId) {
+        promises.push(services[id].search(item));
+      }
+    }
+
+    Q.allSettled(promises).then(function(results) {
+      var items = results.map(function(result) {
+        if (result.state == "fulfilled") {
+          return result.value;
+        }
       });
-      break;
-    case "google":
-      googleplaymusic.lookupId(id, type, function(result) {
-        items.push(result);
-        spotify.search(result, function(item) {
-          items.push(item);
-          rdio.search(result, function(item) {
-            items.push(item);
-            beats.search(result, function(item) {
-              items.push(item);
-              res.render(result.type, {items: items});
-            });
-          });
-        });
-      });
-      break;
-    case "rdio":
-      rdio.lookupId(id, function(result) {
-        items.push(result);
-        googleplaymusic.search(result, function(item) {
-          items.push(item);
-          spotify.search(result, function(item) {
-            items.push(item);
-            beats.search(result, function(item) {
-              items.push(item);
-              res.render(result.type, {items: items});
-            });
-          });
-        });
-      });
-      break;
-    case "beats":
-      beats.lookupId(id, function(result) {
-        items.push(result);
-        googleplaymusic.search(result, function(item) {
-          items.push(item);
-          spotify.search(result, function(item) {
-            items.push(item);
-            rdio.search(result, function(item) {
-              items.push(item);
-              res.render(result.type, {items: items});
-            });
-          });
-        });
-      });
-      break;
-  }
+      items.unshift(item);
+
+      res.render(type, {items: items});
+    });
+  });
 });
 
 router.post('/search', function(req, res) {
@@ -89,43 +51,22 @@ router.post('/search', function(req, res) {
     return;
   }
 
-  if (url.host.match(/rd\.io$/) || url.host.match(/rdio\.com$/)) {
-    rdio.lookupUrl(url.href, function(result) {
-      if (!result.id) {
-        req.flash('search-error', 'No match found for this link');
-        res.redirect('/');
-      }
-      res.redirect("/rdio/" + result.type + "/" + result.id);
-    });
-  } else if (url.host.match(/spotify\.com$/)) {
-    spotify.parseUrl(url.href, function(result) {
-      if (!result.id) {
-        req.flash('search-error', 'No match found for this link');
-        res.redirect('/');
-      }
-      res.redirect("/spotify/" + result.type + "/" + result.id);
-    });
-  } else if (url.host.match(/play\.google\.com$/)) {
-    googleplaymusic.parseUrl(url.href, function(result) {
-      if (!result) {
-        req.flash('search-error', 'No match found for this link');
-        res.redirect('/');
-      } else {
-        res.redirect("/google/" + result.type + "/" + result.id);
-      }
-    });
-  } else if (url.host.match(/beatsmusic\.com$/)) {
-    beats.parseUrl(url.href, function(result) {
-      if (!result.id) {
-        req.flash('search-error', 'No match found for this link');
-        res.redirect('/');
-      }
-      res.redirect("/beats/" + result.type + "/" + result.id);
-    });
-  } else {
-    req.flash('search-error', 'No match found for this link');
-    res.redirect('/');
+  for (var id in services) {
+    var matched = services[id].match(req.body.url);
+    if (matched) {
+      services[id].parseUrl(req.body.url).then(function(result) {
+        if (!result.id) {
+          req.flash('search-error', 'No match found for this link');
+          res.redirect('/');
+        }
+        res.redirect("/" + id + "/" + result.type + "/" + result.id);
+      })
+      return;
+    }
   }
+
+  req.flash('search-error', 'No match found for this link');
+  res.redirect('/');
 });
 
 /* GET home page. */
