@@ -24,7 +24,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-      <h2><%= items[0].artist.name %> - <%= items[0].name %></h2>
+        <h2><%= items[0].artist.name %> - <%= items[0].name %></h2>
       </div>
     </div>
     <div class="row">
@@ -33,20 +33,20 @@
         <div class="service <%= i==0 ? "source-service" : "" %>">
           <div class="matching-from"><%= i==0 ? "Found matches for this link" : "" %></div>
           <% if (album.streamUrl) { %>
-            <a href="<%= album.streamUrl %>"><img src="<%= album.artwork %>" class="img-rounded album-artwork" width="100%"></a>
-            <div class="service-link">
-              <a href="<%= album.streamUrl %>"><img src="/images/<%= album.service %>.png" class="img-rounded"></a>
-            </div>
+          <a href="<%= album.streamUrl %>"><img src="<%= album.artwork %>" class="img-rounded album-artwork" width="100%"></a>
+          <div class="service-link">
+            <a href="<%= album.streamUrl %>"><img src="/images/<%= album.service %>.png" class="img-rounded"></a>
+          </div>
           <% } else if (album.purchaseUrl) { %>
-            <a href="<%= album.purchaseUrl %>"><img src="<%= album.artwork %>" class="img-rounded album-artwork" width="100%"></a>
-            <div class="service-link">
-              <a href="<%= album.purchaseUrl %>"><img src="/images/<%= album.service %>.png" class="img-rounded"></a>
-            </div>
-            <% }else { %>
-            <img src="<%= items[0].artwork %>" class="img-rounded album-artwork not-found" width="100%"></a>
-            <div class="service-link">
-              <img src="/images/<%= album.service %>.png" class="img-rounded not-found">
-            </div>
+          <a href="<%= album.purchaseUrl %>"><img src="<%= album.artwork %>" class="img-rounded album-artwork" width="100%"></a>
+          <div class="service-link">
+            <a href="<%= album.purchaseUrl %>"><img src="/images/<%= album.service %>.png" class="img-rounded"></a>
+          </div>
+          <% }else { %>
+          <img src="<%= items[0].artwork %>" class="img-rounded album-artwork not-found" width="100%"></a>
+          <div class="service-link">
+            <img src="/images/<%= album.service %>.png" class="img-rounded not-found">
+          </div>
           <% } %>
         </div>
       </div><% if((i+1)%4 == 0) { %></div><div class="row"><% } %>
