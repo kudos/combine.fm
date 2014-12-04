@@ -41,7 +41,7 @@ router.get('/:service/:type/:id', function(req, res) {
       });
       break;
     case "rdio":
-      rdio.lookupId(id, type, function(result) {
+      rdio.lookupId(id, function(result) {
         items.push(result);
         googleplaymusic.search(result, function(item) {
           items.push(item);
