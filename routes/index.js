@@ -38,7 +38,11 @@ router.get('/:service/:type/:id', function(req, res) {
 
       items.sort(function(a, b) {
         return !a.id || !b.id;
+      }).sort(function(a, b) {
+        return !a.streamUrl || b.streamUrl;
       })
+
+
 
       items.unshift(item);
 
