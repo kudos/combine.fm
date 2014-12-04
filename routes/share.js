@@ -4,10 +4,13 @@ var Q = require('q');
 
 var services = {};
 
+var cache = {};
+
 require("fs").readdirSync(path.join(__dirname, "..", "lib", "services")).forEach(function(file) {
   var service = require("../lib/services/" + file);
   if (service.search) {
     services[service.id] = service;
+    cache[service.id] = {};
   }
 });
 
@@ -16,6 +19,11 @@ module.exports = function(req, res) {
   var type = req.params.type;
   var itemId = req.params.id;
   var promises = [];
+
+  if (cache[serviceId][type + "-" + itemId]) {
+    res.render(type, {items: cache[serviceId][type + "-" + itemId]});
+    return;
+  }
 
   services[serviceId].lookupId(itemId, type).then(function(item) {
     for (var id in services) {
@@ -38,7 +46,7 @@ module.exports = function(req, res) {
       });
 
       items.unshift(item);
-
+      cache[serviceId][item.type + "-" + item.id] = items;
       res.render(type, {items: items});
     });
   });

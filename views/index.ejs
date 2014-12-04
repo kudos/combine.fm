@@ -25,7 +25,7 @@
 
         <form role="form" method="post" action="/search">
         <div class="input-group input-group-lg">
-          <input type="text" name="url" placeholder="Paste link here" class="form-control">
+          <input type="text" name="url" placeholder="Paste link here" class="form-control" autofocus>
           <span class="input-group-btn">
             <input type="submit" class="btn btn-lg btn-custom" value="Share Music">
           </span>
@@ -38,7 +38,8 @@
       <div class="col-md-6 col-md-offset-3">
         <p>Make sharing from music services better.
           We match album and track links from Rdio, Spotify, Deezer, Beats Music, Google Music and iTunes and give you back a link with all of them.</p>
-        <p><a href="/google/album/B3qrtsvk5s3piwyla76sk6qyxny">Here's a sample</a>.</p>
+        <% var sample = samples[Math.floor(Math.random() * samples.length)] %>
+        <p><a href="<%= sample.url %>">Here's an example with <%= sample.artist %>'s <%= sample.album %></a>.</p>
       </div>
     </div>
   </div>
