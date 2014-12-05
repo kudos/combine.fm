@@ -60,11 +60,14 @@ module.exports = function(req, res, next) {
           cache[serviceId][type + "-" + itemId] = items;
           res.render(type, {page: type, items: items});
         });
-      }, function(err) {
-        var error = new Error("An unexpected error happenend")
-        if (err.code == "ETIMEDOUT") {
+      }, function(error) {
+        console.log(error)
+        if (error.code == "ETIMEDOUT") {
           error = new Error("Error talking to music service");
           error.status = "502";
+        } else if (!error.status) {
+          error = new Error("An unexpected error happenend");
+          error.status = 500;
         }
         next(error);
       });
