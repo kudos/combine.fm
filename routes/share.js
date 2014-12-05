@@ -14,6 +14,7 @@ require("fs").readdirSync(path.join(__dirname, "..", "lib", "services")).forEach
   }
 });
 
+
 module.exports = function(req, res) {
   var serviceId = req.params.service;
   var type = req.params.type;
@@ -26,9 +27,10 @@ module.exports = function(req, res) {
   }
 
   services[serviceId].lookupId(itemId, type).then(function(item) {
+
     for (var id in services) {
       if (id != serviceId) {
-        promises.push(services[id].search(item));
+        promises.push(Q.timeout(services[id].search(item), 5000));
       }
     }
 
@@ -37,6 +39,8 @@ module.exports = function(req, res) {
         if (result.state == "fulfilled") {
           return result.value;
         }
+      }).filter(function(result) {
+        return result || false;
       });
 
       items.sort(function(a, b) {
