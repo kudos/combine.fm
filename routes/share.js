@@ -21,7 +21,7 @@ module.exports = function(req, res) {
   var promises = [];
 
   if (cache[serviceId][type + "-" + itemId]) {
-    res.render(type, {items: cache[serviceId][type + "-" + itemId]});
+    res.render(type, {page: type, items: cache[serviceId][type + "-" + itemId]});
     return;
   }
 
@@ -46,8 +46,8 @@ module.exports = function(req, res) {
       });
 
       items.unshift(item);
-      cache[serviceId][item.type + "-" + item.id] = items;
-      res.render(type, {items: items});
+      cache[serviceId][type + "-" + itemId] = items;
+      res.render(type, {page: type, items: items});
     });
   });
 };

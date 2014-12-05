@@ -45,11 +45,11 @@ app.get('*', function(req,res,next) {
 
 app.get('/', function(req, res) {
   var samples = [
-    {artist: "Aesop Rock", album: "None Shall Pass", url: '/google/album/Bpnz47tzvmp3p46ht3syerwyvva'},
+    {artist: "Aesop Rock", album: "Skelethon", url: '/google/album/B3ppmqcekrmxln4bre33om3qife'},
     {artist: "Hozier", album: "self-titled album", url: '/google/album/Bd3mxcy3otokg4yc45qktq7l35q'},
     {artist: "Daft Punk", album: "Discovery", url: '/google/album/B4t6yqqvhnb2hy4st4uisjrcsrm'}
   ];
-  res.render('index', { samples: samples, error: req.flash('search-error') });
+  res.render('index', { page: "home", samples: samples, error: req.flash('search-error') });
 });
 
 app.post('/search', search);

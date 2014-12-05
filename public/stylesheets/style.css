@@ -1,9 +1,10 @@
 body {
   font-family: "Open Sans";
+  color: #445470;
 }
 
 header {
-  background: #e6832e;
+  background: #FE4365;
 }
 
 header h1 {
@@ -18,25 +19,50 @@ header h1 a {
   color: #fff;
 }
 
+a {
+  color: #C04969;
+}
+
+a:hover {
+  color: #824F6D;
+}
+
 header h1 a:hover, header h1 a:focus{
-  color: #f2c4ad;
+  color: #ffacc5;
   text-decoration: none;
 }
 
-.share header h1 {
+.home input[type="text"]:focus {
+  border-color: rgba(255, 68, 109, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 5px rgba(255, 68, 109, 0.8);
+  outline: 0 none;
+}
+
+.album header h1, .track header h1 {
   text-align: left;
   font-size: 1.5em;
   padding: 10px 0;
 }
 
 .audio-lighten {
-  color:#f2c4ad;
+  color: #ffacc5;
+}
+
+.artist-lighten {
+  color: #8396b0;
+  font-weight: 300;
 }
 
 h2 {
-  font-size: 1.5em;
+  font-size: 1.8em;
   font-weight: 700;
-  margin: 40px 0;
+  margin-bottom: 40px;
+}
+
+h3 {
+  font-size: 1.5em;
+  color: #8396b0;
+  font-weight: 300;
 }
 
 .share-form {
@@ -46,7 +72,7 @@ h2 {
 }
 
 .btn-custom {
-  background-color: #e6832e;
+  background-color: #FE4365;
   color: #fff;
 }
 

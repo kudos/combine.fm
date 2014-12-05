@@ -19,6 +19,6 @@ This is in super early development and is incapable of handling getting dugg, ne
 On the immediate todo list:
 
 * Use album release year for additional sanity check on matches
-* Maybe drop everything from the first special character in album names to improve matches **after** failing to get a good match
+* Maybe drop everything from the first left-hand bracket in album names to improve matches **after** failing to get a good match
 * Handle expected and unexpected errors better than the current crash-fest
 * Add some kind of persistence or caching so it could take a pummeling and not get me banned from the various services

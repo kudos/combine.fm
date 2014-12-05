@@ -1,17 +1,4 @@
-<!doctype html>
-<html lang="">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Match Audio</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
-<body class="album share">
+<% include header.ejs %>
   <header>
     <div class="container">
       <div class="row">
@@ -24,14 +11,15 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h2><%= items[0].artist.name %> - <%= items[0].name %></h2>
+        <h3>Matched albums for</h3>
+        <h2><%= items[0].name %> <span class="artist-lighten">- <%= items[0].artist.name %></span></h2>
       </div>
     </div>
     <div class="row">
     <% for (var i=0;i < items.length;i++) { var album = items[i]; %>
       <div class="col-md-3 col-xs-6">
         <div class="service <%= i==0 ? "source-service" : "" %>">
-          <div class="matching-from"><%= i==0 ? "Found matches for this link" : "" %></div>
+          <div class="matching-from"><%= i==0 ? "Found matches using this link" : "" %></div>
           <% if (album.streamUrl) { %>
           <a href="<%= album.streamUrl %>"><img src="<%= album.artwork %>" class="img-rounded album-artwork" width="100%"></a>
           <div class="service-link">
@@ -42,7 +30,7 @@
           <div class="service-link">
             <a href="<%= album.purchaseUrl %>"><img src="/images/<%= album.service %>.png" class="img-rounded"></a>
           </div>
-          <% }else { %>
+          <% } else { %>
           <img src="<%= items[0].artwork %>" class="img-rounded album-artwork not-found" width="100%"></a>
           <div class="service-link">
             <img src="/images/<%= album.service %>.png" class="img-rounded not-found">
@@ -56,14 +44,4 @@
 
     </div>
   </div>
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-66209-8', 'match.audio');
-  ga('require', 'displayfeatures');
-  ga('send', 'pageview');
-  </script>
-</body>
-</html>
+<% include footer.ejs %>
