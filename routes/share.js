@@ -15,18 +15,23 @@ require("fs").readdirSync(path.join(__dirname, "..", "lib", "services")).forEach
 });
 
 
-module.exports = function(req, res) {
+module.exports = function(req, res, next) {
   var serviceId = req.params.service;
   var type = req.params.type;
   var itemId = req.params.id;
   var promises = [];
 
-  req.db.matches.findOne({item_id:serviceId + itemId}).then(function(doc) {
+  if (!services[serviceId] || (type != "album" && type != "track")) {
+    next();
+    return;
+  }
+
+
+  req.db.matches.findOne({_id:serviceId + itemId}).then(function(doc) {
     if (doc) {
       res.render(type, {page: type, items: doc.items});
     } else {
-      services[serviceId].lookupId(itemId, type).then(function(item) {
-
+      Q.timeout(services[serviceId].lookupId(itemId, type), 5000).then(function(item) {
         for (var id in services) {
           if (id != serviceId) {
             promises.push(Q.timeout(services[id].search(item), 5000));
@@ -51,10 +56,17 @@ module.exports = function(req, res) {
           });
 
           items.unshift(item);
-          req.db.matches.save({item_id:serviceId + itemId, items:items});
+          req.db.matches.save({_id:serviceId + itemId, items:items});
           cache[serviceId][type + "-" + itemId] = items;
           res.render(type, {page: type, items: items});
         });
+      }, function(err) {
+        var error = new Error("An unexpected error happenend")
+        if (err.code == "ETIMEDOUT") {
+          error = new Error("Error talking to music service");
+          error.status = "502";
+        }
+        next(error);
       });
     }
   });

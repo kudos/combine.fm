@@ -128,3 +128,18 @@ h3 {
   height: 100%;
   position: absolute;
 }
+
+.error h1, .error h2 {
+  font-weight: 300;
+  text-align: center;
+}
+
+.error .main h1 {
+  font-size: 2em;
+  margin-bottom: 50px;
+}
+
+.error h2 {
+  font-size: 4em;
+  margin-top: 50px;
+}
