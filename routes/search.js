@@ -16,7 +16,7 @@ module.exports = function(req, res) {
   var url = parse(req.body.url);
 
   if (!url.host) {
-    req.flash('search-error', 'Please paste a link below to find matches');
+    req.flash('search-error', 'Paste a music link above to find and share the matches');
     res.redirect('/');
     return;
   }

@@ -66,14 +66,24 @@ h3 {
 }
 
 .share-form {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 30vh;
+  margin-bottom: 20px;
   text-align: center;
+}
+
+.share-form form {
+  margin-bottom: 30px;
 }
 
 .btn-custom {
   background-color: #FE4365;
+}
+.btn-custom, .btn-custom:active, .btn-custom:hover {
   color: #fff;
+}
+
+.blurb {
+  margin-bottom: 100px;
 }
 
 .service {
