@@ -3,8 +3,30 @@ body {
   color: #445470;
 }
 
+html, body {
+  height: 100%;
+}
+
 header {
   background: #FE4365;
+}
+
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: -180px;
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+footer, .page-wrap:after {
+  margin-top: 80px;
+  height: 100px;
+}
+footer {
+  background: #eee;
+  line-height: 100px;
+  text-align: right;
 }
 
 header h1 {
