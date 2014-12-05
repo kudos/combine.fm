@@ -14,6 +14,7 @@ require("fs").readdirSync(path.join(__dirname, "..", "lib", "services")).forEach
 
 module.exports = function(req, res) {
   var url = parse(req.body.url);
+  var searching = false;
 
   if (!url.host) {
     req.flash('search-error', 'Paste a music link above to find and share the matches');
@@ -24,17 +25,29 @@ module.exports = function(req, res) {
   for (var id in services) {
     var matched = services[id].match(req.body.url);
     if (matched) {
-      services[id].parseUrl(req.body.url).then(function(result) {
+      searching = true;
+      Q.timeout(services[id].parseUrl(req.body.url), 5000).then(function(result) {
         if (!result.id) {
           req.flash('search-error', 'No match found for this link');
           res.redirect('/');
         }
         res.redirect("/" + id + "/" + result.type + "/" + result.id);
-      })
-      return;
+      }, function(error) {
+        if (error.code == "ETIMEDOUT") {
+          error = new Error("Error talking to music service");
+          error.status = "502";
+        } else if (!error.status) {
+          error = new Error("An unexpected error happenend");
+          error.status = 500;
+        }
+        next(error);
+      });
+
+      break;
     }
   }
-
-  req.flash('search-error', 'No match found for this link');
-  res.redirect('/');
+  if (!searching) {
+    req.flash('search-error', 'No match found for this link');
+    res.redirect('/');
+  }
 };

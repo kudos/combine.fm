@@ -61,7 +61,6 @@ module.exports = function(req, res, next) {
           res.render(type, {page: type, items: items});
         });
       }, function(error) {
-        console.log(error)
         if (error.code == "ETIMEDOUT") {
           error = new Error("Error talking to music service");
           error.status = "502";
