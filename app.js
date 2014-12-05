@@ -8,6 +8,7 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var flash = require('connect-flash');
 var bodyParser = require('body-parser');
+var pmongo = require('promised-mongo');
 
 var search = require('./routes/search');
 var share = require('./routes/share');
@@ -33,6 +34,19 @@ app.use(session({
 }));
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
+
+var db;
+if (process.env.MONGOHQ_URL) {
+  console.log("Connecting to MongoHQ")
+  db = pmongo(process.env.MONGOHQ_URL, ['matches']);
+} else {
+  db = pmongo('match-audio', ['matches']);
+}
+
+app.use(function(req, res, next) {
+  req.db = res.db = db;
+  next();
+})
 
 // force SSL
 app.get('*', function(req,res,next) {

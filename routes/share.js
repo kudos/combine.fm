@@ -21,37 +21,41 @@ module.exports = function(req, res) {
   var itemId = req.params.id;
   var promises = [];
 
-  if (cache[serviceId][type + "-" + itemId]) {
-    res.render(type, {page: type, items: cache[serviceId][type + "-" + itemId]});
-    return;
-  }
+  req.db.matches.findOne({item_id:serviceId + itemId}).then(function(doc) {
+    if (doc) {
+      res.render(type, {page: type, items: doc.items});
+    } else {
+      services[serviceId].lookupId(itemId, type).then(function(item) {
 
-  services[serviceId].lookupId(itemId, type).then(function(item) {
-
-    for (var id in services) {
-      if (id != serviceId) {
-        promises.push(Q.timeout(services[id].search(item), 5000));
-      }
-    }
-
-    Q.allSettled(promises).then(function(results) {
-      var items = results.map(function(result) {
-        if (result.state == "fulfilled") {
-          return result.value;
+        for (var id in services) {
+          if (id != serviceId) {
+            promises.push(Q.timeout(services[id].search(item), 5000));
+          }
         }
-      }).filter(function(result) {
-        return result || false;
-      });
 
-      items.sort(function(a, b) {
-        return !a.id || !b.id;
-      }).sort(function(a, b) {
-        return !a.streamUrl || b.streamUrl;
-      });
+        Q.allSettled(promises).then(function(results) {
+          var items = results.map(function(result) {
+            if (result.state == "fulfilled") {
+              return result.value;
+            }
+          }).filter(function(result) {
+            return result || false;
+          });
 
-      items.unshift(item);
-      cache[serviceId][type + "-" + itemId] = items;
-      res.render(type, {page: type, items: items});
-    });
+          items.sort(function(a, b) {
+            return !a.id || !b.id;
+          }).sort(function(a, b) {
+            return !a.streamUrl || b.streamUrl;
+          }).sort(function(a, b) {
+            return a.type == "video" && b.type != "video";
+          });
+
+          items.unshift(item);
+          req.db.matches.save({item_id:serviceId + itemId, items:items});
+          cache[serviceId][type + "-" + itemId] = items;
+          res.render(type, {page: type, items: items});
+        });
+      });
+    }
   });
 };
