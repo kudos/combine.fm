@@ -19,31 +19,31 @@ module.exports = function(req, res) {
   if (!url.host) {
     req.flash('search-error', 'Paste a music link above to find and share the matches');
     res.redirect('/');
-    return;
-  }
+  } else {
+    for (var id in services) {
+      var matched = services[id].match(req.body.url);
+      if (matched) {
+        searching = true;
+        Q.timeout(services[id].parseUrl(req.body.url), 5000).then(function(result) {
+          if (!result.id) {
+            req.flash('search-error', 'No match found for this link');
+            res.redirect('/');
+          } else {
+            res.redirect("/" + id + "/" + result.type + "/" + result.id);
+          }
+        }, function(error) {
+          if (error.code == "ETIMEDOUT") {
+            error = new Error("Error talking to music service");
+            error.status = "502";
+          } else if (!error.status) {
+            error = new Error("An unexpected error happenend");
+            error.status = 500;
+          }
+          next(error);
+        });
 
-  for (var id in services) {
-    var matched = services[id].match(req.body.url);
-    if (matched) {
-      searching = true;
-      Q.timeout(services[id].parseUrl(req.body.url), 5000).then(function(result) {
-        if (!result.id) {
-          req.flash('search-error', 'No match found for this link');
-          res.redirect('/');
-        }
-        res.redirect("/" + id + "/" + result.type + "/" + result.id);
-      }, function(error) {
-        if (error.code == "ETIMEDOUT") {
-          error = new Error("Error talking to music service");
-          error.status = "502";
-        } else if (!error.status) {
-          error = new Error("An unexpected error happenend");
-          error.status = 500;
-        }
-        next(error);
-      });
-
-      break;
+        break;
+      }
     }
   }
   if (!searching) {
