@@ -52,9 +52,12 @@ app.use(function(req, res, next) {
 app.get('*', function(req,res,next) {
   if (req.headers['cf-visitor'] && req.headers['cf-visitor'] != '{"scheme":"https"}') {
     res.redirect("https://" + req.headers['host'] + req.url);
+  } else if (req.headers['cf-visitor']) {
+    req.userProtocol = "https";
   } else {
-    next();
+    req.userProtocol = "http"
   }
+  next();
 });
 
 app.get('/', function(req, res) {

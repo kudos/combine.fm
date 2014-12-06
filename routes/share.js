@@ -30,7 +30,7 @@ module.exports = function(req, res, next) {
         page: type,
         title: doc.items[0].name + " by " + doc.items[0].artist.name,
         items: doc.items,
-        thisUrl: req.protocol + '://' + req.get('host') + req.originalUrl
+        thisUrl: req.userProtocol + '://' + req.get('host') + req.originalUrl
       });
     } else {
       Q.timeout(services[serviceId].lookupId(itemId, type), 5000).then(function(item) {
@@ -63,7 +63,7 @@ module.exports = function(req, res, next) {
             page: type,
             title: item.name + " by " + item.artist.name,
             items: items,
-            thisUrl: req.protocol + '://' + req.get('host') + req.originalUrl
+            thisUrl: req.userProtocol + '://' + req.get('host') + req.originalUrl
           });
         });
       }, function(error) {
