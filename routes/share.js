@@ -26,7 +26,7 @@ module.exports = function(req, res, next) {
 
   req.db.matches.findOne({_id:serviceId + itemId}).then(function(doc) {
     if (doc) {
-      res.render(type, {page: type, title: doc.items[0].name + " by " + doc.items[0].artist.name, items: doc.items});
+      res.render(type, {page: type, title: doc.items[0].name + " by " + doc.items[0].artist.name, item: doc.items[0], items: doc.items});
     } else {
       Q.timeout(services[serviceId].lookupId(itemId, type), 5000).then(function(item) {
         for (var id in services) {
@@ -54,7 +54,7 @@ module.exports = function(req, res, next) {
 
           items.unshift(item);
           req.db.matches.save({_id:serviceId + itemId, items:items});
-          res.render(type, {page: type, title: item.name + " by " + item.artist.name, items: items});
+          res.render(type, {page: type, title: item.name + " by " + item.artist.name, item: item, items: items});
         });
       }, function(error) {
         if (error.code == "ETIMEDOUT") {
