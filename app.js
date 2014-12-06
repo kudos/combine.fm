@@ -63,7 +63,11 @@ app.get('/', function(req, res) {
     {artist: "Hozier", album: "self-titled album", url: '/google/album/Bd3mxcy3otokg4yc45qktq7l35q'},
     {artist: "Daft Punk", album: "Discovery", url: '/google/album/B4t6yqqvhnb2hy4st4uisjrcsrm'}
   ];
-  res.render('index', { page: "home", samples: samples, error: req.flash('search-error') });
+
+  // shitty sort until I add more metadata on cached items
+  req.db.matches.find().sort({$natural:-1}).limit(4).toArray().then(function(docs){
+    res.render('index', { page: "home", samples: samples, recent: docs, error: req.flash('search-error') });
+  });
 });
 
 app.post('/search', search);

@@ -24,8 +24,19 @@
       <div class="col-md-6 col-md-offset-3">
         <p>Make sharing from music services better.
           We match album and track links from Rdio, Spotify, Deezer, Beats Music, Google Music and iTunes and give you back a link with all of them.</p>
-        <% var sample = samples[Math.floor(Math.random() * samples.length)] %>
-        <p><a href="<%= sample.url %>">Here's an example with <%= sample.artist %>'s <%= sample.album %></a>.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+      <% if (recent.length) { %><h2>Recently Shared</h2><% } %>
+      <div class="row recent">
+      <% for (var i=0;i < recent.length;i++) { var item = recent[i].items[0]; %>
+        <div class="col-md-6">
+          <a href="/<%= item.service.replace("playmusic", "") %>/<%= item.type %>/<%= item.id %>"><img src="<%= item.artwork %>" width="100%"></a>
+        </div><% if((i+1)%2 == 0) { %></div><div class="row"><% } %>
+      <% } %>
+      </div>
       </div>
     </div>
   </div>
