@@ -10,16 +10,24 @@
   </header>
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-9 col-sm-8 col-xs-12">
         <h3>Matched albums for</h3>
         <h2><%= items[0].name %> <span class="artist-lighten">- <%= items[0].artist.name %></span></h2>
+      </div>
+      <div class="col-md-3 col-sm-4 hidden-xs">
+        <ul class="list-inline share-tools">
+          <li>Share this</li>
+          <li><a href="http://twitter.com/intent/tweet/?text=Check out <%= items[0].name + " by " + items[0].artist.name %>&url=<%= thisUrl %>&via=MatchAudio" class="share-dialog"><img src="/images/twitter.png" alt="Twitter" /></a></li>
+          <li><a href="http://www.facebook.com/sharer/sharer.php?p[url]=<%= thisUrl %>" class="share-dialog"><img src="/images/facebook.png" alt="Facebook" /></a></li>
+          <li><a href="https://plus.google.com/share?url=<%= thisUrl %>" class="share-dialog"><img src="/images/googleplus.png" alt="Google+" /></a></li>
+        </ul>
       </div>
     </div>
     <div class="row">
     <% for (var i=0;i < items.length;i++) { var album = items[i]; %>
       <% if (album.type != "video") { %><div class="col-md-3 col-xs-6"><% } else { %><div class="col-md-6 col-xs-12"><% } %>
         <div class="service <%= i==0 ? "source-service" : "" %>">
-          <div class="matching-from"><%= i==0 ? "Found matches using this link" : "" %></div>
+          <div class="matching-from hidden-xs"><%= i==0 ? "Found matches using this link" : "" %></div>
           <% if (album.type == "video") { %>
           <div class="js-video widescreen">
             <iframe width="100%" src="//www.youtube.com/embed/<%= album.id %>" frameborder="0" allowfullscreen></iframe>
@@ -45,8 +53,36 @@
       </div><% if((i+1)%4 == 0) { %></div><div class="row"><% } %>
     <% } %>
     </div>
-    <div class="row share-tools">
-
+    <div class="row visible-xs-block">
+      <div class="col-md-12">
+        <ul class="list-inline share-tools">
+          <li>Share this</li>
+          <li><a href="http://twitter.com/intent/tweet/?text=Check out <%= items[0].name + " by " + items[0].artist.name %>&url=<%= thisUrl %>&via=MatchAudio" class="share-dialog"><img src="/images/twitter.png" alt="Twitter" /></a></li>
+          <li><a href="http://www.facebook.com/sharer/sharer.php?p[url]=<%= thisUrl %>" class="share-dialog"><img src="/images/facebook.png" alt="Facebook" /></a></li>
+          <li><a href="https://plus.google.com/share?url=<%= thisUrl %>" class="share-dialog"><img src="/images/googleplus.png" alt="Google+" /></a></li>
+        </ul>
+      </div>
     </div>
   </div>
+  <script>
+  Array.prototype.forEach.call(document.querySelectorAll(".share-dialog"), function(dialog){
+    dialog.addEventListener("click", function(event) {
+      event.preventDefault();
+      var w = 845;
+      var h = 670;
+      var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
+      var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
+
+      width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+      height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+      var left = ((width / 2) - (w / 2)) + dualScreenLeft;
+      var top = ((height / 2) - (h / 2)) + dualScreenTop;
+      var newWindow = window.open(dialog.href, "Share Music", 'scrollbars=yes, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+      if (window.focus) {
+        newwindow.focus();
+      }
+    });
+  });
+  </script>
 <% include footer.ejs %>

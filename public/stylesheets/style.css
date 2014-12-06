@@ -31,10 +31,11 @@ footer {
 
 header h1 {
   margin: 0;
+  padding: 0;
   text-align: center;
   font-weight: 300;
   font-size: 2em;
-  padding: 20px 0;
+  line-height: 80px;
 }
 
 header h1 a {
@@ -63,7 +64,7 @@ header h1 a:hover, header h1 a:focus{
 .album header h1, .track header h1 {
   text-align: left;
   font-size: 1.5em;
-  padding: 10px 0;
+  line-height: 36px;
 }
 
 .audio-lighten {
@@ -110,6 +111,16 @@ h3 {
 
 .recent img {
   margin-bottom: 30px;
+}
+
+.share-tools {
+  text-align: center;
+  margin-top: 40px;
+  font-weight: 300;
+}
+
+.share-tools img {
+  width: 20px;
 }
 
 .service {
