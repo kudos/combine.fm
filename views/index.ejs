@@ -32,9 +32,9 @@
       <% if (recent.length) { %><h2>Recently Shared</h2><% } %>
       <div class="row recent">
       <% for (var i=0;i < recent.length;i++) { var item = recent[i].items[0]; %>
-        <div class="col-md-6">
+        <div class="col-sm-4 col-xs-6">
           <a href="/<%= item.service.replace("playmusic", "") %>/<%= item.type %>/<%= item.id %>"><img src="<%= item.artwork %>" width="100%"></a>
-        </div><% if((i+1)%2 == 0) { %></div><div class="row"><% } %>
+        </div>
       <% } %>
       </div>
       </div>

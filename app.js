@@ -65,7 +65,7 @@ app.get('/', function(req, res) {
   ];
 
   // shitty sort until I add more metadata on cached items
-  req.db.matches.find().sort({$natural:-1}).limit(4).toArray().then(function(docs){
+  req.db.matches.find().sort({$natural:-1}).limit(6).toArray().then(function(docs){
     res.render('index', { page: "home", samples: samples, recent: docs, error: req.flash('search-error') });
   });
 });
