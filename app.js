@@ -52,7 +52,7 @@ app.use(function(req, res, next) {
 app.get('*', function(req,res,next) {
   // force SSL
   if (req.headers['cf-visitor'] && req.headers['cf-visitor'] != '{"scheme":"https"}') {
-    res.redirect("https://" + req.headers['host'] + req.url);
+    return res.redirect("https://" + req.headers['host'] + req.url);
   } else if (req.headers['cf-visitor']) {
     req.userProtocol = "https";
   } else {
@@ -60,7 +60,7 @@ app.get('*', function(req,res,next) {
   }
   // redirect www
   if (req.headers.host.match(/^www/) !== null ) {
-    res.redirect(req.userProtocol + '://' + req.headers.host.replace(/^www\./, '') + req.url);
+    return res.redirect(req.userProtocol + '://' + req.headers.host.replace(/^www\./, '') + req.url);
   } else {
     next();
   }
