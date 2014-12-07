@@ -44,13 +44,12 @@ module.exports = function(req, res, next) {
             req.flash('search-error', 'No match found for this link');
             res.redirect('/');
           }
-
         });
         break;
       }
     }
   }
-  if (!searching) {
+  if (url.host && !searching) {
     req.flash('search-error', 'No match found for this link');
     res.redirect('/');
   }
