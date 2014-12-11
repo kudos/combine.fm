@@ -36,7 +36,7 @@ module.exports = function(req, res, next) {
             error = new Error("Error talking to music service");
             error.status = "502";
             next(error);
-          } else if (!error.status) {
+          } else if (!error || !error.status) {
             error = new Error("An unexpected error happenend");
             error.status = 500;
             next(error);

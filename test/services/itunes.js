@@ -2,20 +2,20 @@
 var assert = require("assert");
 var should = require('should');
 
-var beats = require("../../lib/services/beats");
+var itunes = require("../../lib/services/itunes");
 
-describe('Beats Music', function(){
+describe('iTunes Music', function(){
   describe('lookupId', function(){
     it('should find album by ID', function(done){
-      beats.lookupId("al920431", "album").then(function(result) {
-        result.name.should.equal("Deftones");
+      itunes.lookupId("id215206912").then(function(result) {
+        result.name.should.equal("Peace Orchestra");
         done();
       });
     });
 
     it('should find track by ID', function(done){
-      beats.lookupId("tr6910289", "track").then(function(result) {
-        result.name.should.equal("Californication");
+      itunes.lookupId("id215206958").then(function(result) {
+        result.name.should.equal("Double Drums");
         done();
       });
     });
@@ -23,14 +23,14 @@ describe('Beats Music', function(){
 
   describe('search', function(){
     it('should find album by search', function(done){
-      beats.search({type: "album", artist: {name: "Deftones"}, name: "Deftones"}).then(function(result) {
+      itunes.search({type: "album", artist: {name: "Deftones"}, name: "Deftones"}).then(function(result) {
         result.name.should.equal("Deftones");
         done();
       });
     });
 
     it('should find track by search', function(done){
-      beats.search({type: "track", artist: {name: "Deftones"}, album: {name: "Deftones"}, name: "Hexagram"}).then(function(result) {
+      itunes.search({type: "track", artist: {name: "Deftones"}, album: {name: "Deftones"}, name: "Hexagram"}).then(function(result) {
         result.name.should.equal("Hexagram");
         done();
       });
@@ -40,15 +40,15 @@ describe('Beats Music', function(){
   describe('lookupUrl', function(){
     describe('parseUrl', function(){
       it('should parse album url into ID', function(done){
-        beats.parseUrl("https://listen.beatsmusic.com/albums/al920431").then(function(result) {
-          result.id.should.equal("al920431");
+        itunes.parseUrl("https://itunes.apple.com/us/album/double-drums/id215206912").then(function(result) {
+          result.id.should.equal("us215206912");
           done();
         });
       });
 
       it('should parse track url into ID', function(done){
-        beats.parseUrl("https://listen.beatsmusic.com/albums/al6910269/tracks/tr6910289").then(function(result) {
-          result.id.should.equal("tr6910289");
+        itunes.parseUrl("https://itunes.apple.com/us/album/double-drums/id215206912?i=215206958&uo=4").then(function(result) {
+          result.id.should.equal("us215206958");
           done();
         });
       });
