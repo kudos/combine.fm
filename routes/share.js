@@ -36,7 +36,7 @@ module.exports = function(req, res, next) {
       Q.timeout(services[serviceId].lookupId(itemId, type), 5000).then(function(item) {
         for (var id in services) {
           if (id != serviceId) {
-            promises.push(Q.timeout(services[id].search(item), 5000));
+            promises.push(Q.timeout(services[id].search(item), 10000));
           }
         }
 
