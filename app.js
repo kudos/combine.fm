@@ -66,7 +66,8 @@ app.get('/', function(req, res) {
 });
 
 app.post('/search', search);
-app.get('/:service/:type/:id', share);
+app.get('/:service/:type/:id.json', share.json);
+app.get('/:service/:type/:id', share.html);
 app.get('/itunes/*', itunesProxy);
 
 // catch 404 and forward to error handler

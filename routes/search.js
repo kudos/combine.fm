@@ -19,6 +19,10 @@ module.exports = function(req, res, next) {
     req.flash('search-error', 'Paste a music link above to find and share the matches');
     res.redirect('/');
   } else {
+    var items = {};
+    for (var id in services) {
+      items[id] = {service: id};
+    }
     for (var id in services) {
       var matched = services[id].match(req.body.url);
       if (matched) {
@@ -28,7 +32,12 @@ module.exports = function(req, res, next) {
             req.flash('search-error', 'No match found for this link');
             res.redirect('/');
           } else {
-            res.redirect("/" + id + "/" + result.type + "/" + result.id);
+            services[id].lookupId(result.id, result.type).then(function(item) {
+              items[id] = item;
+              req.db.matches.save({_id:id + "$$" + result.id, created_at: new Date(), services:items}).then(function() {
+                res.redirect("/" + id + "/" + result.type + "/" + result.id);
+              });
+            });
           }
         }, function(error) {
           if (error.code == "ETIMEDOUT") {

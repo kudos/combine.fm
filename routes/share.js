@@ -1,7 +1,7 @@
 "use strict";
 var path = require('path');
 var Promise = require('bluebird');
-
+var util = require('util');
 var services = {};
 
 require("fs").readdirSync(path.join(__dirname, "..", "lib", "services")).forEach(function(file) {
@@ -12,7 +12,7 @@ require("fs").readdirSync(path.join(__dirname, "..", "lib", "services")).forEach
 });
 
 
-module.exports = function(req, res, next) {
+module.exports.html = function(req, res, next) {
   var serviceId = req.params.service;
   var type = req.params.type;
   var itemId = req.params.id;
@@ -23,58 +23,65 @@ module.exports = function(req, res, next) {
     return;
   }
 
-  req.db.matches.findOne({_id:serviceId + "-" + itemId}).then(function(doc) {
-    if (doc) {
-      res.render(type, {
-        page: type,
-        title: doc.items[0].name + " by " + doc.items[0].artist.name,
-        items: doc.items,
-        thisUrl: req.userProtocol + '://' + req.get('host') + req.originalUrl
-      });
-    } else {
-      services[serviceId].lookupId(itemId, type).timeout(10000).then(function(item) {
-        for (var id in services) {
-          if (id != serviceId) {
-            promises.push(services[id].search(item).timeout(10000));
-          }
-        }
-
-        Promise.settle(promises).then(function(results) {
-          var items = results.map(function(result) {
-            if (result.isFulfilled()) {
-              return result.value();
-            }
-          }).filter(function(result) {
-            return result || false;
-          });
-
-          items.sort(function(a, b) {
-            return !a.id || !b.id;
-          }).sort(function(a, b) {
-            return !a.streamUrl || b.streamUrl;
-          }).sort(function(a, b) {
-            return a.type == "video" && b.type != "video";
-          });
-
-          items.unshift(item);
-          req.db.matches.save({_id:serviceId + "-" + itemId, items:items});
-          res.render(type, {
-            page: type,
-            title: item.name + " by " + item.artist.name,
-            items: items,
-            thisUrl: req.userProtocol + '://' + req.get('host') + req.originalUrl
-          });
-        });
-      }, function(error) {
-        if (error.code == "ETIMEDOUT") {
-          error = new Error("Error talking to music service");
-          error.status = "502";
-        } else if (!error.status) {
-          error = new Error("An unexpected error happenend");
-          error.status = 500;
-        }
-        next(error);
-      });
+  req.db.matches.findOne({_id:serviceId + "$$" + itemId}, function(err, doc) {
+    if (err) {
+      return next(new Error());
     }
+    var items = [];
+    for (var docService in Object.keys(services)) {
+      var loopServiceId = Object.keys(services)[docService];
+      items.push(doc.services[loopServiceId]);
+      if (doc.services[loopServiceId].id === undefined) {
+        services[loopServiceId].search(doc.services[serviceId]).timeout(15000).then(function(item) {
+          if (!item.id) {
+            item.id = null;
+          }
+
+          var set = {};
+          set["services." + item.service] = item;
+          req.db.matches.update({_id: serviceId + "$$" + itemId}, {$set: set});
+        }).catch(function(err) {
+          console.log(err)
+        });
+      }
+    }
+    
+    var items = items.filter(function(item) {
+      return item.service != serviceId;
+    });
+    
+    items.sort(function(a, b) {
+      return !a.id || !b.id;
+    }).sort(function(a, b) {
+      return !a.streamUrl || b.streamUrl;
+    }).sort(function(a, b) {
+      return a.type == "video" && b.type != "video";
+    });
+    
+    items.unshift(doc.services[serviceId]);
+
+    res.render(type, {
+      page: type,
+      title: doc.services[serviceId].name + " by " + doc.services[serviceId].artist.name,
+      matching: doc.services[serviceId],
+      matches: items,
+      thisUrl: req.userProtocol + '://' + req.get('host') + req.originalUrl
+    });
+  });
+};
+
+module.exports.json = function(req, res, next) {
+  var serviceId = req.params.service;
+  var type = req.params.type;
+  var itemId = req.params.id;
+  var promises = [];
+  
+  if (!services[serviceId] || (type != "album" && type != "track")) {
+    next();
+    return;
+  }
+  
+  req.db.matches.findOne({_id:serviceId + "$$" + itemId}, function(err, doc) {
+    res.json(doc);
   });
 };
