@@ -1,7 +1,6 @@
 "use strict";
 var parse = require('url').parse;
 var path = require('path');
-var Q = require('q');
 
 var services = {};
 
@@ -24,7 +23,7 @@ module.exports = function(req, res, next) {
       var matched = services[id].match(req.body.url);
       if (matched) {
         searching = true;
-        Q.timeout(services[id].parseUrl(req.body.url), 5000).then(function(result) {
+        services[id].parseUrl(req.body.url).timeout(10000).then(function(result) {
           if (!result.id) {
             req.flash('search-error', 'No match found for this link');
             res.redirect('/');

@@ -1,6 +1,6 @@
 "use strict";
 var path = require('path');
-var Q = require('q');
+var Promise = require('bluebird');
 
 var services = {};
 
@@ -33,17 +33,17 @@ module.exports = function(req, res, next) {
         thisUrl: req.userProtocol + '://' + req.get('host') + req.originalUrl
       });
     } else {
-      Q.timeout(services[serviceId].lookupId(itemId, type), 5000).then(function(item) {
+      services[serviceId].lookupId(itemId, type).timeout(10000).then(function(item) {
         for (var id in services) {
           if (id != serviceId) {
-            promises.push(Q.timeout(services[id].search(item), 10000));
+            promises.push(services[id].search(item).timeout(10000));
           }
         }
 
-        Q.allSettled(promises).then(function(results) {
+        Promise.settle(promises).then(function(results) {
           var items = results.map(function(result) {
-            if (result.state == "fulfilled") {
-              return result.value;
+            if (result.isFulfilled()) {
+              return result.value();
             }
           }).filter(function(result) {
             return result || false;
