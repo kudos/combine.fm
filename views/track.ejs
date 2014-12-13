@@ -27,7 +27,7 @@
     <% for (var i=0;i < items.length;i++) { var track = items[i]; %>
       <% if (track.type != "video") { %><div class="col-md-3 col-xs-6"><% } else { %><div class="col-md-6 col-xs-12"><% } %>
         <div class="service <%= i==0 ? "source-service" : "" %>">
-          <div class="matching-from"><%= i==0 ? "Found matches using this link" : "" %></div>
+          <div class="matching-from hidden-xs"><%= i==0 ? "Found matches using this link" : "" %></div>
           <% if (track.type == "video") { %>
           <div class="js-video widescreen">
             <iframe width="100%" src="//www.youtube.com/embed/<%= track.id %>" frameborder="0" allowfullscreen></iframe>
