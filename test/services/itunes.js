@@ -7,14 +7,14 @@ var itunes = require("../../lib/services/itunes");
 describe('iTunes Music', function(){
   describe('lookupId', function(){
     it('should find album by ID', function(done){
-      itunes.lookupId("id215206912").then(function(result) {
+      itunes.lookupId("id215206912", "album").then(function(result) {
         result.name.should.equal("Peace Orchestra");
         done();
       });
     });
 
     it('should find track by ID', function(done){
-      itunes.lookupId("id215206958").then(function(result) {
+      itunes.lookupId("id215206958", "track").then(function(result) {
         result.name.should.equal("Double Drums");
         done();
       });

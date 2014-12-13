@@ -34,17 +34,17 @@
           </div>
           <a href="https://www.youtube.com/results?search_query=<%= items[0].name %> <%= items[0].artist.name %>">More Youtube matches</a>
           <% } else if (track.streamUrl) { %>
-          <a href="<%= track.streamUrl %>"><img src="<%= track.artwork %>" class="img-rounded album-artwork" width="100%"></a>
+          <a href="<%= track.streamUrl %>"><img src="<%= track.artwork.small %>" class="img-rounded album-artwork" width="100%"></a>
           <div class="service-link">
             <a href="<%= track.streamUrl %>"><img src="/images/<%= track.service %>.png" class="img-rounded"></a>
           </div>
           <% } else if (track.purchaseUrl) { %>
-          <a href="<%= track.purchaseUrl %>"><img src="<%= track.artwork %>" class="img-rounded album-artwork" width="100%"></a>
+          <a href="<%= track.purchaseUrl %>"><img src="<%= track.artwork.small %>" class="img-rounded album-artwork" width="100%"></a>
           <div class="service-link">
             <a href="<%= track.purchaseUrl %>"><img src="/images/<%= track.service %>.png" class="img-rounded"></a>
           </div>
           <% } else { %>
-          <img src="<%= items[0].artwork %>" class="img-rounded album-artwork not-found" width="100%"></a>
+          <img src="<%= items[0].artwork.small %>" class="img-rounded album-artwork not-found" width="100%"></a>
           <div class="service-link">
             <img src="/images/<%= track.service %>.png" class="img-rounded not-found">
           </div>

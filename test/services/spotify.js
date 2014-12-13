@@ -12,6 +12,13 @@ describe('Spotify', function(){
         done();
       });
     });
+
+    it('should find track by ID', function(done){
+      spotify.lookupId("7dS5EaCoMnN7DzlpT6aRn2", "track").then(function(result) {
+        result.name.should.equal("Take Me To Church");
+        done();
+      });
+    });
   });
 
   describe('search', function(){

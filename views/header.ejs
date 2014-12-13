@@ -7,12 +7,12 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <% if (locals.items) { var item = items[0] %>
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@MatchAudio">
   <meta name="twitter:title" property="og:title" content="<%= item.name + " by " + item.artist.name %>">
   <meta name="twitter:description" property="og:description" content="We've matched this music on Rdio, Spotify, Deezer, Beats Music, Google Music and iTunes so you can open it in the service you use." />
-  <meta name="twitter:image" property="og:image" content="<%= item.artwork %>" />
-  <meta property="og:url" content="<%= thisUrl %>" /> 
+  <meta name="twitter:image:src" property="og:image" content="<%= item.artwork.large %>" />
+  <meta property="og:url" content="<%= thisUrl %>" />
   <% } %>
   <link rel="shortcut icon" href="/images/favicon.png">
   <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>

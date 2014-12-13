@@ -35,18 +35,11 @@ app.use(session({
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var db;
-if (process.env.MONGOHQ_URL) {
-  console.log("Connecting to MongoHQ")
-  db = pmongo(process.env.MONGOHQ_URL, ['matches']);
-} else {
-  db = pmongo('match-audio', ['matches']);
-}
-
+var dbUrl = process.env.MONGOHQ_URL || "mongodb://localhost/match-audio";
 app.use(function(req, res, next) {
-  req.db = res.db = db;
+  req.db = res.db = pmongo(dbUrl, ['matches']);
   next();
-})
+});
 
 
 app.get('*', function(req,res,next) {
@@ -56,7 +49,7 @@ app.get('*', function(req,res,next) {
   } else if (req.headers['cf-visitor']) {
     req.userProtocol = "https";
   } else {
-    req.userProtocol = "http"
+    req.userProtocol = "http";
   }
   // redirect www
   if (req.headers.host.match(/^www/) !== null ) {
@@ -67,15 +60,8 @@ app.get('*', function(req,res,next) {
 });
 
 app.get('/', function(req, res) {
-  var samples = [
-    {artist: "Aesop Rock", album: "Skelethon", url: '/google/album/B3ppmqcekrmxln4bre33om3qife'},
-    {artist: "Hozier", album: "self-titled album", url: '/google/album/Bd3mxcy3otokg4yc45qktq7l35q'},
-    {artist: "Daft Punk", album: "Discovery", url: '/google/album/B4t6yqqvhnb2hy4st4uisjrcsrm'}
-  ];
-
-  // shitty sort until I add more metadata on cached items
   req.db.matches.find().sort({$natural:-1}).limit(6).toArray().then(function(docs){
-    res.render('index', { page: "home", samples: samples, recent: docs, error: req.flash('search-error') });
+    res.render('index', { page: "home", recent: docs, error: req.flash('search-error') });
   });
 });
 

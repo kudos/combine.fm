@@ -12,6 +12,13 @@ describe('Google Play Music', function(){
         done();
       });
     });
+
+    it('should find track by ID', function(done){
+      google.lookupId("Tjosptub24g2dft37lforqnudpe", "track").then(function(result) {
+        result.name.should.equal("Cherub Rock");
+        done();
+      });
+    });
   });
 
   describe('search', function(){

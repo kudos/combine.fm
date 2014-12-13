@@ -23,8 +23,7 @@ module.exports = function(req, res, next) {
     return;
   }
 
-
-  req.db.matches.findOne({_id:serviceId + itemId}).then(function(doc) {
+  req.db.matches.findOne({_id:serviceId + "-" + itemId}).then(function(doc) {
     if (doc) {
       res.render(type, {
         page: type,
@@ -58,7 +57,7 @@ module.exports = function(req, res, next) {
           });
 
           items.unshift(item);
-          req.db.matches.save({_id:serviceId + itemId, items:items});
+          req.db.matches.save({_id:serviceId + "-" + itemId, items:items});
           res.render(type, {
             page: type,
             title: item.name + " by " + item.artist.name,
