@@ -35,7 +35,8 @@ module.exports = function(req, res, next) {
             services[id].lookupId(result.id, result.type).then(function(item) {
               items[id] = item;
               req.db.matches.save({_id:id + "$$" + result.id, created_at: new Date(), services:items}).then(function() {
-                res.redirect("/" + id + "/" + result.type + "/" + result.id);
+                res.json(item);
+                //res.redirect("/" + id + "/" + result.type + "/" + result.id);
               });
             });
           }

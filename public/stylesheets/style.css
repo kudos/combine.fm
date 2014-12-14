@@ -100,7 +100,7 @@ h3 {
 .btn-custom {
   background-color: #FE4365;
 }
-.btn-custom, .btn-custom:active, .btn-custom:hover {
+.btn-custom, .btn-custom:active, .btn-custom:hover, .btn-custom:focus {
   color: #fff;
 }
 

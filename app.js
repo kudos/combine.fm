@@ -2,11 +2,13 @@
 var express = require('express');
 var helmet = require('helmet');
 var path = require('path');
+var url = require('url');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var flash = require('connect-flash');
+var compress = require('compression');
 var bodyParser = require('body-parser');
 var pmongo = require('promised-mongo');
 
@@ -14,13 +16,20 @@ var search = require('./routes/search');
 var share = require('./routes/share');
 var itunesProxy = require('./routes/itunes-proxy');
 
+var browserify = require('connect-browserify');
+var React = require('react');
+var nodejsx = require('node-jsx').install();
+var Home = React.createFactory(require('./client').Home);
+
 var app = express();
+
+var development = process.env.NODE_ENV !== 'production';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-
+app.use(compress());
 app.use(favicon(__dirname + '/public/images/favicon.png'));
 app.use(helmet());
 app.use(logger('dev'));
@@ -41,6 +50,13 @@ app.use(function(req, res, next) {
   next();
 });
 
+if (development) {
+  app.get('/javascript/bundle.js',
+    browserify('./client', {
+      debug: true,
+      watch: true
+    }));
+}
 
 app.get('*', function(req,res,next) {
   // force SSL
@@ -59,9 +75,18 @@ app.get('*', function(req,res,next) {
   }
 });
 
-app.get('/', function(req, res) {
-  req.db.matches.find().sort({'$natural':-1}).limit(6).toArray().then(function(docs){
-    res.render('index', { page: "home", recent: docs, error: req.flash('search-error') });
+app.get('/', function(req, res, next) {
+  
+  var path = url.parse(req.url).pathname;
+  
+  req.db.matches.find().sort({created_at:-1}).limit(6).toArray().then(function(docs){
+    var recent = [];
+    docs.forEach(function(doc) {
+      recent.push(doc.services[doc._id.split("$$")[0]]);
+    })
+
+    var home = Home({recent: recent});
+    res.send('<!doctype html>\n' + React.renderToString(home).replace("</body></html>", "<script>var recent = " + JSON.stringify(recent) + "</script></body></html>"));
   });
 });
 
