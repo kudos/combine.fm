@@ -2,6 +2,12 @@
 var path = require('path');
 var Promise = require('bluebird');
 var util = require('util');
+
+var browserify = require('connect-browserify');
+var React = require('react');
+var nodejsx = require('node-jsx').install();
+var Share = React.createFactory(require('../client/share').Share);
+
 var services = {};
 
 require("fs").readdirSync(path.join(__dirname, "..", "lib", "services")).forEach(function(file) {
@@ -60,13 +66,16 @@ module.exports.html = function(req, res, next) {
     
     items.unshift(doc.services[serviceId]);
 
-    res.render(type, {
-      page: type,
-      title: doc.services[serviceId].name + " by " + doc.services[serviceId].artist.name,
-      matching: doc.services[serviceId],
-      matches: items,
-      thisUrl: req.userProtocol + '://' + req.get('host') + req.originalUrl
-    });
+    var share = Share({items: items});
+    res.send('<!doctype html>\n' + React.renderToString(share).replace("</body></html>", "<script>var items = " + JSON.stringify(items) + "</script></body></html>"));
+
+    // res.render(type, {
+    //   page: type,
+    //   title: doc.services[serviceId].name + " by " + doc.services[serviceId].artist.name,
+    //   matching: doc.services[serviceId],
+    //   matches: items,
+    //   thisUrl: req.userProtocol + '://' + req.get('host') + req.originalUrl
+    // });
   });
 };
 

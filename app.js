@@ -12,14 +12,12 @@ var compress = require('compression');
 var bodyParser = require('body-parser');
 var pmongo = require('promised-mongo');
 
+var index = require('./routes/index');
 var search = require('./routes/search');
 var share = require('./routes/share');
 var itunesProxy = require('./routes/itunes-proxy');
 
 var browserify = require('connect-browserify');
-var React = require('react');
-var nodejsx = require('node-jsx').install();
-var Home = React.createFactory(require('./client').Home);
 
 var app = express();
 
@@ -52,7 +50,7 @@ app.use(function(req, res, next) {
 
 if (development) {
   app.get('/javascript/bundle.js',
-    browserify('./client', {
+    browserify('./client/index.jsx', {
       debug: true,
       watch: true
     }));
@@ -75,21 +73,7 @@ app.get('*', function(req,res,next) {
   }
 });
 
-app.get('/', function(req, res, next) {
-  
-  var path = url.parse(req.url).pathname;
-  
-  req.db.matches.find().sort({created_at:-1}).limit(6).toArray().then(function(docs){
-    var recent = [];
-    docs.forEach(function(doc) {
-      recent.push(doc.services[doc._id.split("$$")[0]]);
-    })
-
-    var home = Home({recent: recent});
-    res.send('<!doctype html>\n' + React.renderToString(home).replace("</body></html>", "<script>var recent = " + JSON.stringify(recent) + "</script></body></html>"));
-  });
-});
-
+app.get('/', index);
 app.post('/search', search);
 app.get('/:service/:type/:id.json', share.json);
 app.get('/:service/:type/:id', share.html);
