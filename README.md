@@ -2,22 +2,35 @@
 
 Make sharing from music services better. We match links from Rdio, Spotify, Deezer, Beats Music, Google Music and iTunes and give you back a link with all of them.
 
-Some of the services require keys/credentials be passed via environment variables:
+## Supported Services
 
-Rdio: `RDIO_API_KEY` and `RDIO_API_SHARED`
-Beats Music: `BEATS_KEY` and `BEATS_SECRET`
-Google Play Music: `GOOGLE_EMAIL` and `GOOGLE_PASSWORD`
+* Spotify
+* iTunes
+* Deezer
+* Beats (requires `BEATS_KEY` and `BEATS_SECRET`)
+* Google Play Music (requires `GOOGLE_EMAIL` and `GOOGLE_PASSWORD`)
+* Rdio (requires `RDIO_API_KEY` and `RDIO_API_SHARED`)
+* Youtube (requires `YOUTUBE_KEY`)
 
-Google doesn't provide an API for Play Music, hence this `GOOGLE_PASSWORD` awfulness.
+Google doesn't provide a public API for Play Music, hence this `GOOGLE_PASSWORD` awfulness. The account also needs to be a Google Play Music All Access subscriber and to have played at least one track on a mobile device. Yeah.
 
-If you don't provide credentials, it will simply disable support for that service. Spotify, Deezer and iTunes don't need any auth.
+It doesn't parse Youtube urls yet, only finds matches on Youtube. The metadata we get from Youtube around music videos is poor and will require more work than the others.
 
-To get started, first `npm install` and then run the app with `npm start` or tests with `npm test`.
+Support for Amazon Music is [in a branch](https://github.com/kudos/match.audio/tree/amazon) but the library I used is poor and needs either rewriting or replacing to support Amazon urls and not just finding matches on Amazon.
 
-This is in super early development and is incapable of handling getting dugg, never mind hacker news.
+If you don't provide credentials, it will simply disable support for that service. Spotify, Deezer and iTunes don't need any auth. The test suite will fail if you don't provide credentials for all services, but individual tests will pass otherwise.
 
-On the immediate todo list:
+## Getting Started
 
-* Use album release year for additional sanity check on matches
-* Handle expected and unexpected errors better than the current crash-fest
-* Add some kind of persistence or caching so it could take a pummeling and not get me banned from the various services
+Install `node` and `mongodb` if you don't already have them. Then `npm install` and run the app with `npm start` or tests with `npm test`.
+
+
+## Contributing
+
+Bug reports and feature requests welcome. If you want to contribute code, that is awesome but please issue pull requests early for discussion.
+
+So there's no surprises for contributors later, I plan on using referral tags wherever it makes sense. Right now that would apply to outgoing links for Amazon, iTunes, Rdio and Spotify. The referral tags themselves will not be baked into the code, just support for using them.
+
+## Licence
+
+The code is MIT licenced, the brand is not. This applies to the logo, name and magenta colour scheme. I'll probably pull the branding out of the app itself at some point to make that distinction more clear.
