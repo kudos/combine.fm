@@ -60,7 +60,7 @@ app.get('*', function(req,res,next) {
 });
 
 app.get('/', function(req, res) {
-  req.db.matches.find().sort({created_at:-1}).limit(6).toArray().then(function(docs){
+  req.db.matches.find().sort({'$natural':-1}).limit(6).toArray().then(function(docs){
     res.render('index', { page: "home", recent: docs, error: req.flash('search-error') });
   });
 });
