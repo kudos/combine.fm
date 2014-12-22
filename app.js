@@ -17,6 +17,10 @@ var search = require('./routes/search');
 var share = require('./routes/share');
 var itunesProxy = require('./routes/itunes-proxy');
 
+var React = require('react');
+var nodejsx = require('node-jsx').install({extension: '.jsx'});
+var ErrorView = React.createFactory(require('./views/error.jsx'));
+
 var browserify = require('connect-browserify');
 
 var app = express();
@@ -50,7 +54,7 @@ app.use(function(req, res, next) {
 
 if (development) {
   app.get('/javascript/bundle.js',
-    browserify('./client/index.jsx', {
+    browserify('./views/app.jsx', {
       debug: true,
       watch: true
     }));
@@ -75,9 +79,17 @@ app.get('*', function(req,res,next) {
 
 app.get('/', index);
 app.post('/search', search);
-app.get('/:service/:type/:id.json', share.json);
-app.get('/:service/:type/:id', share.html);
+app.get('/:service/:type/:id', share);
 app.get('/itunes/*', itunesProxy);
+app.get('/recent', function(req, res, next) {
+  req.db.matches.find().sort({created_at:-1}).limit(6).toArray().then(function(docs){
+    var recents = [];
+    docs.forEach(function(doc) {
+      recents.push(doc.services[doc._id.split("$$")[0]]);
+    });
+    res.json({recents:recents});
+  });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -93,11 +105,9 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
-      page: "error",
-      message: err.message,
-      error: err
-    });
+    
+    var content = React.renderToString(ErrorView({status: err.status || 500, message: err.message, error: err}));
+    res.send('<!doctype html>\n' + content);
   });
 }
 
@@ -105,11 +115,9 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
-    page: "error",
-    message: err.message,
-    error: {status: err.status || 500}
-  });
+  
+  var content = React.renderToString(ErrorView({status: err.status || 500, message: err.message, error: {status: err.status || 500}}));
+  res.send('<!doctype html>\n' + content);
 });
 
 

@@ -29,14 +29,14 @@ module.exports = function(req, res, next) {
         searching = true;
         services[id].parseUrl(req.body.url).timeout(10000).then(function(result) {
           if (!result.id) {
-            req.flash('search-error', 'No match found for this link');
-            res.redirect('/');
+            res.json({error:{message:"No match found for url"}});
           } else {
             services[id].lookupId(result.id, result.type).then(function(item) {
               items[id] = item;
               req.db.matches.save({_id:id + "$$" + result.id, created_at: new Date(), services:items}).then(function() {
-                res.json(item);
-                //res.redirect("/" + id + "/" + result.type + "/" + result.id);
+                setTimeout(function() {
+                  res.json(item);
+                }, 1000)
               });
             });
           }
@@ -50,8 +50,7 @@ module.exports = function(req, res, next) {
             error.status = 500;
             next(error);
           } else if (error.status == 404){
-            req.flash('search-error', 'No match found for this link');
-            res.redirect('/');
+            res.json({error:{message:"No match found for url"}});
           }
         });
         break;
@@ -59,7 +58,6 @@ module.exports = function(req, res, next) {
     }
   }
   if (url.host && !searching) {
-    req.flash('search-error', 'No match found for this link');
-    res.redirect('/');
+    res.json({error:{message:"No match found for url"}});
   }
 };

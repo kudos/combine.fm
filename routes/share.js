@@ -5,8 +5,9 @@ var util = require('util');
 
 var browserify = require('connect-browserify');
 var React = require('react');
+var Router = require('react-router');
 var nodejsx = require('node-jsx').install();
-var Share = React.createFactory(require('../client/share').Share);
+var routes = require('../views/app.jsx').routes;
 
 var services = {};
 
@@ -18,7 +19,7 @@ require("fs").readdirSync(path.join(__dirname, "..", "lib", "services")).forEach
 });
 
 
-module.exports.html = function(req, res, next) {
+module.exports = function(req, res, next) {
   var serviceId = req.params.service;
   var type = req.params.type;
   var itemId = req.params.id;
@@ -32,11 +33,13 @@ module.exports.html = function(req, res, next) {
   req.db.matches.findOne({_id:serviceId + "$$" + itemId}, function(err, doc) {
     if (err) {
       return next(new Error());
+    } else if (!doc) {
+      return next();
     }
-    var items = [];
+    var shares = [];
     for (var docService in Object.keys(services)) {
       var loopServiceId = Object.keys(services)[docService];
-      items.push(doc.services[loopServiceId]);
+      shares.push(doc.services[loopServiceId]);
       if (doc.services[loopServiceId].id === undefined) {
         services[loopServiceId].search(doc.services[serviceId]).timeout(15000).then(function(item) {
           if (!item.id) {
@@ -52,11 +55,11 @@ module.exports.html = function(req, res, next) {
       }
     }
     
-    var items = items.filter(function(item) {
+    var shares = shares.filter(function(item) {
       return item.service != serviceId;
     });
     
-    items.sort(function(a, b) {
+    shares.sort(function(a, b) {
       return !a.id || !b.id;
     }).sort(function(a, b) {
       return !a.streamUrl || b.streamUrl;
@@ -64,33 +67,18 @@ module.exports.html = function(req, res, next) {
       return a.type == "video" && b.type != "video";
     });
     
-    items.unshift(doc.services[serviceId]);
-
-    var share = Share({items: items});
-    res.send('<!doctype html>\n' + React.renderToString(share).replace("</body></html>", "<script>var items = " + JSON.stringify(items) + "</script></body></html>"));
-
-    // res.render(type, {
-    //   page: type,
-    //   title: doc.services[serviceId].name + " by " + doc.services[serviceId].artist.name,
-    //   matching: doc.services[serviceId],
-    //   matches: items,
-    //   thisUrl: req.userProtocol + '://' + req.get('host') + req.originalUrl
-    // });
-  });
-};
-
-module.exports.json = function(req, res, next) {
-  var serviceId = req.params.service;
-  var type = req.params.type;
-  var itemId = req.params.id;
-  var promises = [];
-  
-  if (!services[serviceId] || (type != "album" && type != "track")) {
-    next();
-    return;
-  }
-  
-  req.db.matches.findOne({_id:serviceId + "$$" + itemId}, function(err, doc) {
-    res.json(doc);
+    shares.unshift(doc.services[serviceId]);
+    if (req.accepts(['html', 'json']) === 'json') {
+      req.db.matches.findOne({_id:serviceId + "$$" + itemId}, function(err, doc) {
+        res.json({shares:shares});
+      });
+    } else {
+      Router.run(routes, req.url, function (Handler) {
+        var App = React.createFactory(Handler);
+        var content = React.renderToString(App({shares: shares}));
+        res.send('<!doctype html>\n' + content.replace("</body></html>", "<script>var shares = " + JSON.stringify(shares) + "</script></body></html>"));
+      });
+    }
+    
   });
 };

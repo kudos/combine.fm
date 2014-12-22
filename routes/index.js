@@ -2,18 +2,23 @@
 
 var React = require('react');
 var nodejsx = require('node-jsx').install({extension: '.jsx'});
-var Home = React.createFactory(require('../client/index.jsx').Home);
+var Router = require('react-router');
+var routes = require('../views/app.jsx').routes;
 
 module.exports = function(req, res, next) {
 
   req.db.matches.find().sort({created_at:-1}).limit(6).toArray().then(function(docs){
-    var recent = [];
+    var recents = [];
     docs.forEach(function(doc) {
-      recent.push(doc.services[doc._id.split("$$")[0]]);
-    })
+      recents.push(doc.services[doc._id.split("$$")[0]]);
+    });
 
-    var home = Home({recent: recent});
-    res.send('<!doctype html>\n' + React.renderToString(home).replace("</body></html>", "<script>var recent = " + JSON.stringify(recent) + "</script></body></html>"));
-    //res.render('index', { page: "home", recent: docs, error: req.flash('search-error') });
+    Router.run(routes, req.url, function (Handler) {
+      var App = React.createFactory(Handler);
+      var content = React.renderToString(App({recents: recents}));
+      res.send('<!doctype html>\n' + content.replace("</body></html>", "<script>var recents = " + JSON.stringify(recents) + "</script></body></html>"));
+    });
+  }).catch(function(err) {
+    console.log(err)
   });
 }
