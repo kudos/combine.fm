@@ -10,7 +10,9 @@ module.exports = function(req, res, next) {
   req.db.matches.find().sort({created_at:-1}).limit(6).toArray().then(function(docs){
     var recents = [];
     docs.forEach(function(doc) {
-      recents.push(doc.services[doc._id.split("$$")[0]]);
+      if (doc._id.indexOf("$$") > -1) {
+        recents.push(doc.services[doc._id.split("$$")[0]]);
+      }
     });
 
     Router.run(routes, req.url, function (Handler) {
