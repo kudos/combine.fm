@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "test": "./node_modules/mocha/bin/mocha test/**/*.js --timeout=10000",
-    "build": "NODE_ENV=production browserify ./client | uglifyjs -cm 2>/dev/null > ./public/javascript/bundle.js",
+    "build": "NODE_ENV=production browserify ./views/app.jsx | uglifyjs -cm 2>/dev/null > ./public/javascript/bundle.js",
     "clean": "rm -f ./public/javascript/bundle.js"
   },
   "engines": {
