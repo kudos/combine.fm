@@ -16,8 +16,7 @@ module.exports = function(req, res, next) {
   var searching = false;
 
   if (!url.host) {
-    req.flash('search-error', 'Paste a music link above to find and share the matches');
-    res.redirect('/');
+    res.json({error:{message:"You need to submit a url."}});
   } else {
     var items = {};
     for (var id in services) {
@@ -34,16 +33,14 @@ module.exports = function(req, res, next) {
             services[id].lookupId(result.id, result.type).then(function(item) {
               items[id] = item;
               req.db.matches.save({_id:id + "$$" + result.id, created_at: new Date(), services:items}).then(function() {
-                setTimeout(function() {
-                  res.json(item);
-                }, 1000)
+                res.json(item);
               });
             });
           }
         }, function(error) {
           if (error.code == "ETIMEDOUT") {
             error = new Error("Error talking to music service");
-            error.status = "502";
+            error.status = 502;
             next(error);
           } else if (!error || !error.status) {
             error = new Error("An unexpected error happenend");

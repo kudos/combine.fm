@@ -47,8 +47,7 @@ var SearchForm = React.createClass({
       return;
     }
     request.post('/search').send({url:url}).end(function(res) {
-      console.log(res)
-      that.transitionTo("/" + res.body.service + "/" + res.body.type + "/" + res.body.id);
+      that.transitionTo("share", res.body);
     });
   },
 
@@ -69,8 +68,16 @@ var SearchForm = React.createClass({
 module.exports = React.createClass({
 
   getInitialState: function () {
+    // Use this only on first page load, refresh whenever we navigate back.
+    if (this.props.recents) {
+      var recents = this.props.recents;
+      delete this.props.recents;
+      return {
+        recents: recents
+      };
+    }
     return {
-      recents: this.props.recents
+      recents: []
     };
   },
   
@@ -104,7 +111,7 @@ module.exports = React.createClass({
                 </p>
               </div>
             </div>
-            <Recent recents={this.props.recents} />
+            <Recent recents={this.state.recents} />
           </div>
         </div>
         <Foot page="home" />

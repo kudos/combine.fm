@@ -9,11 +9,22 @@ var Foot = require('./foot.jsx');
 var MusicItem = React.createClass({
 
   render: function() {
-    if (!this.props.item.name) {
+    if (typeof this.props.item.id === "undefined") {
       return (
         <div className="col-md-3 col-xs-6">
           <div className="service">
-            <div className="matching-from hidden-xs"></div>
+            <img src="/images/grid.svg" className="loading" />
+            <img src={this.props.items[0].artwork.small} className="img-rounded album-artwork incomplete" width="100%" />
+            <div className="service-link">
+              <img src={"/images/" + this.props.item.service + ".png"} className="img-rounded" />
+            </div>
+          </div>
+        </div>
+      );
+    } else if (this.props.item.id === null) {
+      return (
+        <div className="col-md-3 col-xs-6">
+          <div className="service">
             <img src={this.props.items[0].artwork.small} className="img-rounded album-artwork not-found" width="100%" />
             <div className="service-link">
               <img src={"/images/" + this.props.item.service + ".png"} className="img-rounded" />
@@ -24,8 +35,8 @@ var MusicItem = React.createClass({
     } else {
       return (
         <div className="col-md-3 col-xs-6">
-          <div className="service">
-            <div className="matching-from hidden-xs"></div>
+          <div className={"service" + (this.props.inc == 0 ? " source-service" : "")}>
+            <div className="matching-from hidden-xs">{this.props.inc == 0 ? "Found matches using this link": ""}</div>
             <a href={this.props.item.streamUrl || this.props.item.purchaseUrl}>
             <img src={this.props.item.artwork.small} className="img-rounded album-artwork" width="100%" /></a>
             <div className="service-link">
@@ -67,24 +78,66 @@ module.exports = React.createClass({
   mixins: [ Router.State ],
 
   getInitialState: function () {
+    if (this.props.shares && this.props.shares[0].id == this.getParams().id) {
+      return {
+        name: this.props.shares ? this.props.shares[0].name : "",
+        artist: this.props.shares ? this.props.shares[0].artist.name : "",
+        shares: this.props.shares || []
+      };
+    }
     return {
-      name: this.props.shares[0].name || "",
-      artist: this.props.shares[0].artist.name || "",
-      shares: this.props.shares || []
+      name: "",
+      artist: "",
+      shares: []
     };
   },
 
+  componentWillUnmount: function() {
+    if (this.state.interval) {
+      clearInterval(this.state.interval);
+    }
+  },
+
   componentDidMount: function () {
-    if (!this.props.shares) {
+    var complete = this.state.shares.length > 0;
+    
+    this.state.shares.forEach(function(share) {
+      if (typeof share.id === "undefined") {
+        complete = false;
+      }
+    });
+    
+    var getShares = function() {
       request.get(this.getPathname()).set('Accept', 'application/json').end(function(res) {
         var shares = res.body.shares;
+        complete = true;
+        shares.forEach(function(share) {
+          if (typeof share.id === "undefined") {
+            complete = false;
+          }
+        });
+        
+        if (complete) {
+          clearInterval(this.state.interval);
+        }
+        
         this.setState({
           name: shares[0].name,
           artist: shares[0].artist.name,
           shares: shares
         });
-      }.bind(this))
+      }.bind(this));
+    }.bind(this)
+    
+    if (!this.state.shares.length) {
+      getShares();
     }
+
+    this.state.interval = setInterval(function() {
+      if (!complete) {
+        getShares();
+      }
+    }.bind(this), 2000);
     
     // Some hacks to pop open the Twitter/Facebook/Google Plus sharing dialogs without using their code.
     Array.prototype.forEach.call(document.querySelectorAll(".share-dialog"), function(dialog){

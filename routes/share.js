@@ -60,10 +60,6 @@ module.exports = function(req, res, next) {
     });
     
     shares.sort(function(a, b) {
-      return !a.id || !b.id;
-    }).sort(function(a, b) {
-      return !a.streamUrl || b.streamUrl;
-    }).sort(function(a, b) {
       return a.type == "video" && b.type != "video";
     });
     
