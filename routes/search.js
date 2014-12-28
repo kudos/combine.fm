@@ -46,9 +46,9 @@ module.exports = function(req, res, next) {
             error = new Error("An unexpected error happenend");
             error.status = 500;
             next(error);
-          } else if (error.status == 404){
-            res.json({error:{message:"No match found for url"}});
           }
+          
+          res.json({error:{message:"No match found for url"}});
         });
         break;
       }

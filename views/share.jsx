@@ -133,6 +133,7 @@ module.exports = React.createClass({
       getShares();
     }
 
+    // Temporary until websockets implementation
     this.state.interval = setInterval(function() {
       if (!complete) {
         getShares();
