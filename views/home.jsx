@@ -39,15 +39,39 @@ var SearchForm = React.createClass({
 
   mixins: [ Router.Navigation, Router.State ],
 
+  getInitialState: function () {
+    return {
+      submitting: true
+    };
+  },
+
   handleSubmit: function(e) {
+    this.setState({
+      submitting: true
+    });
     var that = this;
     e.preventDefault();
     var url = this.refs.url.getDOMNode().value.trim();
     if (!url) {
+      that.setState({
+        submitting: false
+      });
       return;
     }
     request.post('/search').send({url:url}).end(function(res) {
+      that.setState({
+        submitting: false
+      });
+      if (res.body.error) {
+        return alert(res.body.error.message)
+      }
       that.transitionTo("share", res.body);
+    });
+  },
+
+  componentDidMount: function () {
+    this.setState({
+      submitting: false
     });
   },
 
@@ -57,7 +81,7 @@ var SearchForm = React.createClass({
         <div className="input-group input-group-lg">
           <input type="text" name="url" placeholder="Paste link here" className="form-control" autofocus ref="url" />
           <span className="input-group-btn">
-            <input type="submit" className="btn btn-lg btn-custom" value="Share Music" />
+            <input type="submit" className="btn btn-lg btn-custom" value="Share Music" disabled={this.state.submitting} />
           </span>
         </div>
       </form>

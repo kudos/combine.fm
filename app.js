@@ -2,7 +2,6 @@
 var express = require('express');
 var helmet = require('helmet');
 var path = require('path');
-var url = require('url');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var session = require('express-session');
@@ -79,15 +78,22 @@ app.get('*', function(req,res,next) {
 
 app.get('/', index);
 app.post('/search', search);
-app.get('/:service/:type/:id', share);
+app.get('/:service/:type/:id.:format?', share);
 app.get('/itunes/*', itunesProxy);
 app.get('/recent', function(req, res, next) {
   req.db.matches.find().sort({created_at:-1}).limit(6).toArray().then(function(docs){
     var recents = [];
     docs.forEach(function(doc) {
-      recents.push(doc.services[doc._id.split("$$")[0]]);
+      doc.services.some(function(item) {
+        if (item.service == doc._id.split("$$")[0]) {
+          recents.push(item);
+          return false;
+        }
+      });
     });
     res.json({recents:recents});
+  }).catch(function (error) {
+    return next(error);
   });
 });
 
@@ -104,6 +110,7 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
+    console.log(err)
     res.status(err.status || 500);
     
     var content = React.renderToString(ErrorView({status: err.status || 500, message: err.message, error: err}));

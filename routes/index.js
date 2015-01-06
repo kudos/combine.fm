@@ -10,17 +10,21 @@ module.exports = function(req, res, next) {
   req.db.matches.find().sort({created_at:-1}).limit(6).toArray().then(function(docs){
     var recents = [];
     docs.forEach(function(doc) {
-      if (doc._id.indexOf("$$") > -1) {
-        recents.push(doc.services[doc._id.split("$$")[0]]);
-      }
+      var shares = Object.keys(doc.services).map(function (key) {return doc.services[key]});
+      shares.some(function(item) {
+        if (item.service == doc._id.split("$$")[0]) {
+          recents.push(item);
+          return false;
+        }
+      });
     });
 
     Router.run(routes, req.url, function (Handler) {
       var App = React.createFactory(Handler);
-      var content = React.renderToString(App({recents: recents}));
+      var content = React.renderToString(new App({recents: recents}));
       res.send('<!doctype html>\n' + content.replace("</body></html>", "<script>var recents = " + JSON.stringify(recents) + "</script></body></html>"));
     });
-  }).catch(function(err) {
-    console.log(err)
+  }).catch(function(error) {
+    next(error);
   });
 }

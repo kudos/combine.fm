@@ -9,7 +9,7 @@ var Foot = require('./foot.jsx');
 var MusicItem = React.createClass({
 
   render: function() {
-    if (typeof this.props.item.id === "undefined") {
+    if (!this.props.item.matched_at) {
       return (
         <div className="col-md-3 col-xs-6">
           <div className="service">
@@ -21,7 +21,7 @@ var MusicItem = React.createClass({
           </div>
         </div>
       );
-    } else if (this.props.item.id === null) {
+    } else if (!this.props.item.id) {
       return (
         <div className="col-md-3 col-xs-6">
           <div className="service">
@@ -102,17 +102,18 @@ module.exports = React.createClass({
     var complete = this.state.shares.length > 0;
     
     this.state.shares.forEach(function(share) {
-      if (typeof share.id === "undefined") {
+      if (typeof share.matched_at === "undefined") {
+        console.log(share)
         complete = false;
       }
     });
     
     var getShares = function() {
-      request.get(this.getPathname()).set('Accept', 'application/json').end(function(res) {
+      request.get(this.getPathname() + ".json").end(function(res) {
         var shares = res.body.shares;
         complete = true;
         shares.forEach(function(share) {
-          if (typeof share.id === "undefined") {
+          if (typeof share.matched_at === "undefined") {
             complete = false;
           }
         });
