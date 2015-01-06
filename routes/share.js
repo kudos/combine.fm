@@ -28,6 +28,33 @@ module.exports = function(req, res, next) {
   }
 
   return req.db.matches.findOne({_id:serviceId + "$$" + itemId}).then(function(doc) {
+    if (!doc) {
+      return matchedService.lookupId(itemId, type).then(function(item) {
+        var matches = {};
+        item.matched_at = new Date();
+        matches[item.service] = item;
+        services.forEach(function(service) {
+          if (service.id == item.service) {
+            return;
+          }
+          matches[service.id] = {service: service.id};
+          service.search(item).then(function(match) {
+            match.matched_at = new Date();
+            var update = {};
+            update["services." + match.service] = match;
+            req.db.matches.update({_id: item.service + "$$" + item.id}, {"$set": update});
+          });
+        });
+        return req.db.matches.save({_id: item.service + "$$" + item.id, created_at: new Date(), services:matches}).then(function() {
+          var shares = Object.keys(matches).map(function (key) {return matches[key]});
+          Router.run(routes, req.url, function (Handler) {
+            var App = React.createFactory(Handler);
+            var content = React.renderToString(App({shares: shares}));
+            res.send('<!doctype html>\n' + content.replace("</body></html>", "<script>var shares = " + JSON.stringify(shares) + "</script></body></html>"));
+          });
+        });
+      })
+    }
     var shares = Object.keys(doc.services).map(function (key) {return doc.services[key]});
     if (req.params.format == "json") {
       return res.json({shares:shares});
