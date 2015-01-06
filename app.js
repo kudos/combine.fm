@@ -84,12 +84,7 @@ app.get('/recent', function(req, res, next) {
   req.db.matches.find().sort({created_at:-1}).limit(6).toArray().then(function(docs){
     var recents = [];
     docs.forEach(function(doc) {
-      doc.services.some(function(item) {
-        if (item.service == doc._id.split("$$")[0]) {
-          recents.push(item);
-          return false;
-        }
-      });
+      recents.push(doc.services[doc._id.split("$$")[0]])
     });
     res.json({recents:recents});
   }).catch(function (error) {
