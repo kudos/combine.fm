@@ -26,6 +26,9 @@ var Recent = React.createClass({
 var RecentItem = React.createClass({
 
   render: function() {
+    if (!this.props.item.artwork) {
+      return false;
+    }
     return (
       <div className="col-sm-4 col-xs-6">
         <Link to="share" params={this.props.item}><img src={this.props.item.artwork.small} width="100%" /></Link>
