@@ -11,6 +11,17 @@ var routes = require('../views/app.jsx').routes;
 
 var services = require('../lib/services');
 
+var formatAndSort = function(matches, serviceId) {
+  matches = Object.keys(matches).map(function (key) {return matches[key]});
+  matches.sort(function(a, b) {
+    return a.id && !b.id;
+  }).sort(function(a, b) {
+    return b.type == "video";
+  }).sort(function(a, b) {
+    return a.service != serviceId;
+  });
+  return matches;
+}
 
 module.exports = function(req, res, next) {
   var serviceId = req.params.service;
@@ -46,22 +57,22 @@ module.exports = function(req, res, next) {
           });
         });
         return req.db.matches.save({_id: item.service + "$$" + item.id, created_at: new Date(), services:matches}).then(function() {
-          var shares = Object.keys(matches).map(function (key) {return matches[key]});
+          var shares = formatAndSort(matches, serviceId);
           Router.run(routes, req.url, function (Handler) {
             var App = React.createFactory(Handler);
-            var content = React.renderToString(App({shares: shares}));
+            var content = React.renderToString(new App({shares: shares}));
             res.send('<!doctype html>\n' + content.replace("</body></html>", "<script>var shares = " + JSON.stringify(shares) + "</script></body></html>"));
           });
         });
       })
     }
-    var shares = Object.keys(doc.services).map(function (key) {return doc.services[key]});
+    var shares = formatAndSort(doc.services, serviceId);
     if (req.params.format == "json") {
       return res.json({shares:shares});
     }
     Router.run(routes, req.url, function (Handler) {
       var App = React.createFactory(Handler);
-      var content = React.renderToString(App({shares: shares}));
+      var content = React.renderToString(new App({shares: shares}));
       res.send('<!doctype html>\n' + content.replace("</body></html>", "<script>var shares = " + JSON.stringify(shares) + "</script></body></html>"));
     });
   }).catch(function (error) {
