@@ -13,8 +13,11 @@ var MusicItem = React.createClass({
       return (
         <div className="col-md-3 col-xs-6">
           <div className="service">
-            <img src="/images/grid.svg" className="loading" />
-            <img src={this.props.items[0].artwork.small} className="img-rounded album-artwork incomplete" width="100%" />
+            <div className="artwork" style={{backgroundImage: "url("+this.props.items[0].artwork.small+")"}}>
+            </div>
+            <div className="loading-wrap">
+              <img src="/images/eq.svg" className="loading" />
+            </div>
             <div className="service-link">
               <img src={"/images/" + this.props.item.service + ".png"} className="img-rounded" />
             </div>
@@ -25,8 +28,8 @@ var MusicItem = React.createClass({
       return (
         <div className="col-md-3 col-xs-6">
           <div className="service">
-            <img src={this.props.items[0].artwork.small} className="img-rounded album-artwork not-found" width="100%" />
-            <div className="service-link">
+            <div className="artwork not-found" style={{backgroundImage: "url("+this.props.items[0].artwork.small+")"}}></div>
+            <div className="service-link not-found">
               <img src={"/images/" + this.props.item.service + ".png"} className="img-rounded" />
             </div>
           </div>
@@ -38,7 +41,8 @@ var MusicItem = React.createClass({
           <div className={"service" + (this.props.inc == 0 ? " source-service" : "")}>
             <div className="matching-from hidden-xs">{this.props.inc == 0 ? "Found matches using this link": ""}</div>
             <a href={this.props.item.streamUrl || this.props.item.purchaseUrl}>
-            <img src={this.props.item.artwork.small} className="img-rounded album-artwork" width="100%" /></a>
+              <div className="artwork" style={{backgroundImage: "url("+this.props.item.artwork.small+")"}}></div>
+            </a>
             <div className="service-link">
               <a href={this.props.item.streamUrl || this.props.item.purchaseUrl}>
                 <img src={"/images/" + this.props.item.service + ".png"} className="img-rounded" />

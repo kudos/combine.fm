@@ -134,17 +134,33 @@ h3 {
   border-radius: 5px;
   background: #eee;
 }
-.album-artwork {
+
+.artwork {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
   margin-bottom: 10px;
+  background-repeat: none;
+  background-size: cover;
+  border-radius: 5px;
 }
 .not-found {
-  opacity: 0.3;
+  opacity: 0.2;
+}
+.loading-wrap {
+  position: absolute;
+  top: 0;left: 0;
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  opacity: 0.8;
 }
 .loading {
   position: absolute;
-  top: 33%;
-  left: 33%;
-  width: 33%;
+  top: 35%;
+  left: 40%;
+  width: 20%;
 }
 .service-link {
   text-align: center;
