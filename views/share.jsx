@@ -29,6 +29,9 @@ var MusicItem = React.createClass({
         <div className="col-md-3 col-xs-6">
           <div className="service">
             <div className="artwork not-found" style={{backgroundImage: "url("+this.props.items[0].artwork.small+")"}}></div>
+            <div className="no-match">
+              No Match
+            </div>
             <div className="service-link not-found">
               <img src={"/images/" + this.props.item.service + ".png"} className="img-rounded" />
             </div>

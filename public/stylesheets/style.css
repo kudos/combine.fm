@@ -148,6 +148,17 @@ h3 {
 .not-found {
   opacity: 0.2;
 }
+.no-match {
+  position: absolute;
+  bottom: 80px;
+  right: 37px;
+  background: #fff;
+  color: #FE4365;
+  padding: 3px 6px;
+  border-radius: 3px;
+  opacity: 0.7;
+  font-weight: bold;
+}
 .loading-wrap {
   position: absolute;
   top: 0;left: 0;
