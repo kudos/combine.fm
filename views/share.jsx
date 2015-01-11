@@ -192,7 +192,7 @@ module.exports = React.createClass({
               <div className="col-md-3 col-sm-4 hidden-xs">
                 <ul className="list-inline share-tools">
                   <li>Share this</li>
-                  <li><a href={"http://twitter.com/intent/tweet/?text=Check out " + this.state.name + " by " + this.state.artist + "&via=MatchAudio"} className="share-dialog"><img src="/images/twitter.png" alt="Twitter" /></a></li>
+                  <li><a href={"http://twitter.com/intent/tweet/?text=Check out " + encodeURIComponent(this.state.name) + " by " + encodeURIComponent(this.state.artist) + "&via=MatchAudio"} className="share-dialog"><img src="/images/twitter.png" alt="Twitter" /></a></li>
                   <li><a href="http://www.facebook.com/sharer/sharer.php" className="share-dialog"><img src="/images/facebook.png" alt="Facebook" /></a></li>
                   <li><a href="https://plus.google.com/share" className="share-dialog"><img src="/images/googleplus.png" alt="Google+" /></a></li>
                 </ul>
