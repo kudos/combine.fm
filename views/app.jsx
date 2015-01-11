@@ -20,7 +20,7 @@ var App = React.createClass({
     
     return (
       <html>
-        <Head />
+        <Head {...this.props} />
         <body className="home">
           <RouteHandler {...this.props} />
           <GAInitiailizer />

@@ -5,6 +5,8 @@ var React = require('react');
 module.exports = React.createClass({
 
   render: function() {
+    var image = this.props.shares ? this.props.shares[0].artwork.large : "https://match.audio/images/logo-512.png";
+    var title = this.props.shares ? this.props.shares[0].artist.name + " by " + this.props.shares[0].name : "Match Audio";
     return (
       <head>
         <meta charSet="utf-8" />
@@ -15,9 +17,9 @@ module.exports = React.createClass({
         <meta name="theme-color" content="#FE4365" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@MatchAudio" />
-        <meta name="twitter:title" property="og:title" content="" />
+        <meta name="twitter:title" property="og:title" content={title} />
         <meta name="twitter:description" property="og:description" content="We've matched this music on Rdio, Spotify, Deezer, Beats Music, Google Music and iTunes so you can open it in the service you use." />
-        <meta name="twitter:image:src" property="og:image" content="" />
+        <meta name="twitter:image:src" property="og:image" content={image} />
         <meta property="og:url" content="" />
         <link rel="shortcut icon" href="/images/favicon.png" />
         <link rel="icon" sizes="512x512" href="/images/logo-512.png" />
