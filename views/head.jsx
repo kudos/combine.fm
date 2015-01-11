@@ -20,6 +20,7 @@ module.exports = React.createClass({
         <meta name="twitter:image:src" property="og:image" content="" />
         <meta property="og:url" content="" />
         <link rel="shortcut icon" href="/images/favicon.png" />
+        <link rel="icon" sizes="512x512" href="/images/logo-512.png" />
         <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css' />
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
         <link rel="stylesheet" href="/stylesheets/style.css" />
