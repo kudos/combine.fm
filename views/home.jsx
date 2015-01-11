@@ -143,6 +143,19 @@ module.exports = React.createClass({
             </div>
             <Recent recents={this.state.recents} />
             <Faq />
+            <div className="row">
+              <div className="col-md-6 col-md-offset-3">
+                <h2>Tools</h2>
+                <div className="row">
+                  <div className="col-md-6">
+                    <p>Download the Chrome Extension and get Match Audio links right from your address bar.</p>
+                  </div>
+                  <div className="col-md-6">
+                    <p><a href="https://chrome.google.com/webstore/detail/kjfpkmfgcflggjaldcfnoppjlpnidolk"><img src="/images/chrome-web-store.png" alt="Download the Chrome Extension" height="75" /></a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <Foot page="home" />
