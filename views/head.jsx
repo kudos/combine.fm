@@ -1,12 +1,16 @@
 'use strict';
 
 var React = require('react');
+var Router = require('react-router');
 
 module.exports = React.createClass({
+  
+  mixins: [ Router.State ],
 
   render: function() {
     var image = this.props.shares ? this.props.shares[0].artwork.large : "https://match.audio/images/logo-512.png";
     var title = this.props.shares ? this.props.shares[0].artist.name + " by " + this.props.shares[0].name : "Match Audio";
+    var shareUrl = "https://match.audio/" + this.getParams().service + "/" + this.getParams().type + "/" + this.getParams().id;
     return (
       <head>
         <meta charSet="utf-8" />
@@ -20,7 +24,7 @@ module.exports = React.createClass({
         <meta name="twitter:title" property="og:title" content={title} />
         <meta name="twitter:description" property="og:description" content="We've matched this music on Rdio, Spotify, Deezer, Beats Music, Google Music and iTunes so you can open it in the service you use." />
         <meta name="twitter:image:src" property="og:image" content={image} />
-        <meta property="og:url" content="" />
+        <meta property="og:url" content={shareUrl} />
         <link rel="shortcut icon" href="/images/favicon.png" />
         <link rel="icon" sizes="512x512" href="/images/logo-512.png" />
         <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css' />

@@ -87,15 +87,17 @@ module.exports = React.createClass({
   getInitialState: function () {
     if (this.props.shares && this.props.shares[0].id == this.getParams().id) {
       return {
-        name: this.props.shares ? this.props.shares[0].name : "",
-        artist: this.props.shares ? this.props.shares[0].artist.name : "",
-        shares: this.props.shares || []
+        name: this.props.shares[0].name,
+        artist: this.props.shares[0].artist.name,
+        shares: this.props.shares,
+        shareUrl: "https://match.audio/" + this.getParams().service + "/" + this.getParams().type + "/" + this.getParams().id
       };
     }
     return {
       name: "",
       artist: "",
-      shares: []
+      shares: [],
+      shareUrl: ""
     };
   },
 
@@ -110,7 +112,6 @@ module.exports = React.createClass({
     
     this.state.shares.forEach(function(share) {
       if (typeof share.matched_at === "undefined") {
-        console.log(share)
         complete = false;
       }
     });
@@ -192,9 +193,9 @@ module.exports = React.createClass({
               <div className="col-md-3 col-sm-4 hidden-xs">
                 <ul className="list-inline share-tools">
                   <li>Share this</li>
-                  <li><a href={"http://twitter.com/intent/tweet/?text=Check out " + encodeURIComponent(this.state.name) + " by " + encodeURIComponent(this.state.artist) + "&via=MatchAudio"} className="share-dialog"><img src="/images/twitter.png" alt="Twitter" /></a></li>
-                  <li><a href="http://www.facebook.com/sharer/sharer.php" className="share-dialog"><img src="/images/facebook.png" alt="Facebook" /></a></li>
-                  <li><a href="https://plus.google.com/share" className="share-dialog"><img src="/images/googleplus.png" alt="Google+" /></a></li>
+                  <li><a href={"http://twitter.com/intent/tweet/?text=" + encodeURIComponent(this.state.name) + " by " + encodeURIComponent(this.state.artist) + "&via=MatchAudio&url=" + this.state.shareUrl} className="share-dialog"><img src="/images/twitter.png" alt="Twitter" /></a></li>
+                  <li><a href={"http://www.facebook.com/sharer/sharer.php?p[url]=" + this.state.shareUrl} className="share-dialog"><img src="/images/facebook.png" alt="Facebook" /></a></li>
+                  <li><a href={"https://plus.google.com/share?url=" + this.state.shareUrl} className="share-dialog"><img src="/images/googleplus.png" alt="Google+" /></a></li>
                 </ul>
               </div>
             </div>
