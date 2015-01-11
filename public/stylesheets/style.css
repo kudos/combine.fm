@@ -60,6 +60,14 @@ header h1 a:hover, header h1 a:focus{
   outline: 0 none;
 }
 
+.faq ul {
+  padding: 0;
+}
+
+.faq li {
+  list-style: none;
+}
+
 .share header h1, .share header h1 {
   text-align: left;
   font-size: 1.5em;

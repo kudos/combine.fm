@@ -4,6 +4,7 @@ var React = require('react');
 var request = require('superagent');
 var Router = require('react-router');
 var Link = require('react-router').Link;
+var Faq = require('./faq.jsx');
 var Foot = require('./foot.jsx');
 
 var Recent = React.createClass({
@@ -141,6 +142,7 @@ module.exports = React.createClass({
               </div>
             </div>
             <Recent recents={this.state.recents} />
+            <Faq />
           </div>
         </div>
         <Foot page="home" />
