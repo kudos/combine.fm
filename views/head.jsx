@@ -12,6 +12,7 @@ module.exports = React.createClass({
         <title>Match Audio</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#FE4365" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@MatchAudio" />
         <meta name="twitter:title" property="og:title" content="" />
