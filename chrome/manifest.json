@@ -1,6 +1,6 @@
 {
   "name" : "Match Audio",
-  "version" : "0.2.0",
+  "version" : "0.2.1",
   "description" : "Match Audio makes sharing from music services better.",
   "background" : {
     "persistent": false,

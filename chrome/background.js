@@ -41,10 +41,9 @@ chrome.pageAction.onClicked.addListener(function(tab) {
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
-      var parser = document.createElement('a');
-      parser.href = xhr.responseURL;
-      if (!parser.pathname.match(/^(\/search|\/)$/)) {
-        chrome.tabs.create({ url: xhr.responseURL});
+      var match = JSON.parse(xhr.response);
+      if (match.id) {
+        chrome.tabs.create({ url: "https://match.audio/" + match.service + "/" + match.type + "/" + match.id});
       }
     }
   }
