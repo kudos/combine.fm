@@ -65,7 +65,8 @@ var VideoItem = React.createClass({
     if (this.props.item.id) {
       return (
         <div className="col-md-6 col-xs-12">
-          <div className="service">
+          <div className={"service" + (this.props.inc == 0 ? " source-service" : "")}>
+            <div className="matching-from hidden-xs">{this.props.inc == 0 ? "Found matches using this link": ""}</div>
             <div className="js-video widescreen">
               <iframe width="100%" src={"//www.youtube.com/embed/" + this.props.item.id} frameBorder="0" allowFullScreen></iframe>
             </div>

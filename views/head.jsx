@@ -22,7 +22,7 @@ module.exports = React.createClass({
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@MatchAudio" />
         <meta name="twitter:title" property="og:title" content={title} />
-        <meta name="twitter:description" property="og:description" content="We've matched this music on Rdio, Spotify, Deezer, Beats Music, Google Music and iTunes so you can open it in the service you use." />
+        <meta name="twitter:description" property="og:description" content="We've matched this music on Rdio, Spotify, Deezer, Beats Music, Google Music and iTunes so you can open it in your favourite service." />
         <meta name="twitter:image:src" property="og:image" content={image} />
         <meta property="og:url" content={shareUrl} />
         <link rel="shortcut icon" href="/images/favicon.png" />
