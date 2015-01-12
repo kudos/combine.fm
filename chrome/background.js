@@ -6,19 +6,22 @@ chrome.runtime.onInstalled.addListener(function() {
 	    {
 	      conditions: [
 	        new chrome.declarativeContent.PageStateMatcher({
+	          pageUrl: { hostSuffix: 'beatsmusic.com', pathPrefix: "/album" },
+	        }),
+	        new chrome.declarativeContent.PageStateMatcher({
+	          pageUrl: { hostSuffix: 'beatsmusic.com', pathPrefix: "/track" },
+	        }),
+	        new chrome.declarativeContent.PageStateMatcher({
+	          pageUrl: { hostSuffix: 'deezer.com', pathPrefix: "/album" },
+	        }),
+	        new chrome.declarativeContent.PageStateMatcher({
+	          pageUrl: { hostSuffix: 'deezer.com', pathPrefix: "/track" },
+	        }),
+	        new chrome.declarativeContent.PageStateMatcher({
 	          pageUrl: { hostEquals: 'play.google.com', pathPrefix: "/music" },
 	        }),
           new chrome.declarativeContent.PageStateMatcher({
             pageUrl: { hostEquals: 'itunes.apple.com', pathPrefix: "/music" },
-          }),
-          new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { hostSuffix: 'spotify.com' },
-          }),
-          new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { hostSuffix: 'beatsmusic.com' },
-          }),
-          new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { hostSuffix: 'deezer.com' },
           }),
           new chrome.declarativeContent.PageStateMatcher({
             pageUrl: { hostSuffix: 'rdio.com' },
@@ -26,6 +29,21 @@ chrome.runtime.onInstalled.addListener(function() {
           new chrome.declarativeContent.PageStateMatcher({
             pageUrl: { hostSuffix: 'rd.io' },
           }),
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: { hostSuffix: 'spotify.com', pathPrefix: "/album" },
+          }),
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: { hostSuffix: 'spotify.com', pathPrefix: "/track" },
+          }),
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: { hostSuffix: 'music.xbox.com', pathPrefix: "/track" },
+          }),
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: { hostSuffix: 'music.xbox.com', pathPrefix: "/album" },
+          }),
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: { hostSuffix: 'youtube.com' },
+          }, [])
 	      ],
 
 	      actions: [ new chrome.declarativeContent.ShowPageAction() ]
