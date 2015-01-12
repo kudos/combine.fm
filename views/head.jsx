@@ -9,7 +9,7 @@ module.exports = React.createClass({
 
   render: function() {
     var image = this.props.shares ? this.props.shares[0].artwork.large : "https://match.audio/images/logo-512.png";
-    var title = this.props.shares ? this.props.shares[0].artist.name + " by " + this.props.shares[0].name : "Match Audio";
+    var title = this.props.shares ? this.props.shares[0].name + " by " + this.props.shares[0].artist.name : "Match Audio";
     var shareUrl = "https://match.audio/" + this.getParams().service + "/" + this.getParams().type + "/" + this.getParams().id;
     return (
       <head>
