@@ -47,7 +47,8 @@ var SearchForm = React.createClass({
 
   getInitialState: function () {
     return {
-      submitting: true
+      submitting: true,
+      error: false
     };
   },
 
@@ -69,7 +70,7 @@ var SearchForm = React.createClass({
         submitting: false
       });
       if (res.body.error) {
-        return alert(res.body.error.message)
+        that.setState({error: res.body.error.message});
       }
       that.transitionTo("share", res.body);
     });
@@ -77,7 +78,8 @@ var SearchForm = React.createClass({
 
   componentDidMount: function () {
     this.setState({
-      submitting: false
+      submitting: false,
+      error: false
     });
   },
 
@@ -89,6 +91,9 @@ var SearchForm = React.createClass({
           <span className="input-group-btn">
             <input type="submit" className="btn btn-lg btn-custom" value="Share Music" disabled={this.state.submitting} />
           </span>
+        </div>
+        <div className={this.state.error ? "alert alert-warning" : ""} role="alert">
+          {this.state.error}
         </div>
       </form>
     );

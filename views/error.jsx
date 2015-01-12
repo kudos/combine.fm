@@ -9,7 +9,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <html>
-      <Head />
+      <Head {...this.props} />
       <body>
       <div className="error">
         <header>

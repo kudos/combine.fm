@@ -105,6 +105,10 @@ h3 {
   margin-bottom: 30px;
 }
 
+.share-form .alert {
+  margin-top: 20px;
+}
+
 .btn-custom {
   background-color: #FE4365;
 }

@@ -10,7 +10,16 @@ module.exports = function(req, res, next) {
     return res.json({error:{message:"You need to submit a url."}});
   }
   
-  lookup(req.body.url).then(function(item) {
+  var promise = lookup(req.body.url);
+  
+  if (!promise) {
+    return res.json({error: {message: "No supported music found at that link :("}});
+  }
+  
+  promise.then(function(item) {
+    if (!item) {
+      return res.json({error: {message: "No supported music found at that link :("}});
+    }
     item.matched_at = new Date();
     var matches = {};
     matches[item.service] = item;
@@ -30,7 +39,7 @@ module.exports = function(req, res, next) {
       res.json(item);
     });
   }, function(error) {
-    console.log(error.stack)
-    res.json({error: "No matches found for url"});
+    console.log(error.stack);
+    res.json({error: {message: "No matches found for this link, sorry :("}});
   });
 };

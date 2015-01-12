@@ -22,6 +22,10 @@ module.exports = React.createClass({
               <h3>Where do I find a link to paste in the box?</h3>
               <p>Most music services have a "share" dialog for albums and tracks in their interface. If you have them open in a web browser instead of an app, you can simply copy and paste the address bar and we'll work out the rest.</p>
             </li>
+            <li>
+              <h3>Why don't you guys support Bandcamp, Amazon Music, Sony Music Unlimited&hellip; ?</h3>
+              <p>Let me stop you there. <a href="https://github.com/kudos/match.audio">Match Audio is open source</a>, that means any capable programmer who wants to add other music services can look at our code and submit changes. If you're not a programmer, you can always <a href="https://github.com/kudos/match.audio/issues">submit a request</a> and maybe we'll do it for you.</p>
+            </li>
           </ul>
         </div>
       </div>
