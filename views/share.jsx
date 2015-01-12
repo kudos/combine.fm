@@ -90,7 +90,7 @@ module.exports = React.createClass({
         name: this.props.shares[0].name,
         artist: this.props.shares[0].artist.name,
         shares: this.props.shares,
-        shareUrl: "https://match.audio/" + this.getParams().service + "/" + this.getParams().type + "/" + this.getParams().id
+        shareUrl: "https://match.audio/" + this.props.shares[0].service + "/" + this.props.shares[0].type + "/" + this.props.shares[0].id
       };
     }
     return {
