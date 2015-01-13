@@ -33,7 +33,7 @@ var RecentItem = React.createClass({
     return (
       <div className="col-sm-4 col-xs-6">
         <Link to="share" params={this.props.item}>
-          <div className="artwork" style={{backgroundImage: "url("+this.props.item.artwork.small+")"}}></div>
+          <div className={this.props.item.service == "youtube" ? "artwork-youtube artwork" : "artwork"} style={{backgroundImage: "url("+this.props.item.artwork.small+")"}}></div>
         </Link>
       </div>
     );

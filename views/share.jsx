@@ -44,7 +44,7 @@ var MusicItem = React.createClass({
           <div className={"service" + (this.props.inc == 0 ? " source-service" : "")}>
             <div className="matching-from hidden-xs">{this.props.inc == 0 ? "Found matches using this link": ""}</div>
             <a href={this.props.item.streamUrl || this.props.item.purchaseUrl}>
-              <div className="artwork" style={{backgroundImage: "url("+this.props.item.artwork.small+")"}}>
+              <div className={this.props.item.service == "youtube" ? "artwork-youtube artwork" : "artwork"} style={{backgroundImage: "url("+this.props.item.artwork.small+")"}}>
               </div>
               <div className={this.props.item.service == "youtube" && this.props.inc > 0 ? "youtube" : ""}>
                 {this.props.item.service == "youtube" && this.props.inc > 0 ? this.props.item.name : ""}

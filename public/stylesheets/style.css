@@ -157,6 +157,10 @@ h3 {
   background-size: cover;
   border-radius: 5px;
 }
+.artwork-youtube {
+  background-position: 50% 0%;
+}
+
 .not-found {
   opacity: 0.2;
 }
