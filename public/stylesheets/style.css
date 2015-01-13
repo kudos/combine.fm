@@ -171,6 +171,17 @@ h3 {
   opacity: 0.7;
   font-weight: bold;
 }
+.youtube {
+  position: absolute;
+  font-weight: bold;
+  bottom: 65px;
+  left: 25px;
+  right: 25px;
+  padding: 10px;
+  opacity: 0.85;
+  background: #fff;
+  color: #FE4365;
+}
 .loading-wrap {
   position: absolute;
   top: 0;left: 0;

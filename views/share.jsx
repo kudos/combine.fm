@@ -44,7 +44,11 @@ var MusicItem = React.createClass({
           <div className={"service" + (this.props.inc == 0 ? " source-service" : "")}>
             <div className="matching-from hidden-xs">{this.props.inc == 0 ? "Found matches using this link": ""}</div>
             <a href={this.props.item.streamUrl || this.props.item.purchaseUrl}>
-              <div className="artwork" style={{backgroundImage: "url("+this.props.item.artwork.small+")"}}></div>
+              <div className="artwork" style={{backgroundImage: "url("+this.props.item.artwork.small+")"}}>
+              </div>
+              <div className={this.props.item.service == "youtube" && this.props.inc > 0 ? "youtube" : ""}>
+                {this.props.item.service == "youtube" && this.props.inc > 0 ? this.props.item.name : ""}
+              </div>
             </a>
             <div className="service-link">
               <a href={this.props.item.streamUrl || this.props.item.purchaseUrl}>
@@ -54,28 +58,6 @@ var MusicItem = React.createClass({
           </div>
         </div>
       );
-    }
-  }
-
-});
-
-var VideoItem = React.createClass({
-
-  render: function() {
-    if (this.props.item.id) {
-      return (
-        <div className="col-md-6 col-xs-12">
-          <div className={"service" + (this.props.inc == 0 ? " source-service" : "")}>
-            <div className="matching-from hidden-xs">{this.props.inc == 0 ? "Found matches using this link": ""}</div>
-            <div className="js-video widescreen">
-              <iframe width="100%" src={"//www.youtube.com/embed/" + this.props.item.id} frameBorder="0" allowFullScreen></iframe>
-            </div>
-            <a href={"https://www.youtube.com/results?search_query=" + this.props.items[0].name + " " + this.props.items[0].artist.name}>More Youtube matches</a>
-          </div>
-        </div>
-      );
-    } else {
-      return (<div />);
     }
   }
 
@@ -202,11 +184,7 @@ module.exports = React.createClass({
             </div>
             <div className="row">
               {this.state.shares.map(function(item, i){
-                if (item.service == "youtube") {
-                  return (<VideoItem items={this.state.shares} item={item} inc={i} key={i} />);
-                } else {
-                  return (<MusicItem items={this.state.shares} item={item} inc={i} key={i} />);
-                }
+                return (<MusicItem items={this.state.shares} item={item} inc={i} key={i} />);
               }.bind(this))}
             </div>
           </div>
