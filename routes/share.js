@@ -16,8 +16,6 @@ var formatAndSort = function(matches, serviceId) {
   matches.sort(function(a, b) {
     return a.id && !b.id;
   }).sort(function(a, b) {
-    return b.type == "video";
-  }).sort(function(a, b) {
     return a.service != serviceId;
   });
   return matches;
