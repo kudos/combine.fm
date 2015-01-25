@@ -116,7 +116,8 @@ module.exports = React.createClass({
         this.setState({
           name: shares[0].name,
           artist: shares[0].artist.name,
-          shares: shares
+          shares: shares,
+          shareUrl: "https://match.audio/" + this.props.shares[0].service + "/" + this.props.shares[0].type + "/" + this.props.shares[0].id
         });
       }.bind(this));
     }.bind(this)

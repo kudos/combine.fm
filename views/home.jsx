@@ -141,8 +141,9 @@ module.exports = React.createClass({
             </div>
             <div className="row blurb">
               <div className="col-md-6 col-md-offset-3">
-                <p>Make sharing from music services better.
-                We match album and track links from Rdio, Spotify, Deezer, Beats Music, Google Music and iTunes and give you back a link with all of them.
+                <p>Match Audio makes sharing from music services better.
+                What happens when you share your favourite song on Spotify with a friend, but they don't use Spotify?
+                </p><p>We match album and track links from Youtube, Rdio, Spotify, Deezer, Google Music, Xbox Music, Beats Music, and iTunes and give you back one link with matches we find on all of them.
                 </p>
               </div>
             </div>

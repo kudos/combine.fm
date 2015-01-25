@@ -16,13 +16,13 @@ module.exports = React.createClass({
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <title>{this.props.shares ? "Listen to " + this.props.shares[0].name + " by " + this.props.shares[0].artist.name + " on Match Audio": "Match Audio"}</title>
-        <meta name="description" content="" />
+        <meta name="description" content="Match Audio matches album and track links from Youtube, Rdio, Spotify, Deezer, Google Music, Xbox Music, Beats Music, and iTunes and give you back one link with matches we find on all of them." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#FE4365" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@MatchAudio" />
         <meta name="twitter:title" property="og:title" content={title} />
-        <meta name="twitter:description" property="og:description" content="We've matched this music on Rdio, Spotify, Deezer, Beats Music, Google Music and iTunes so you can open it in your favourite service." />
+        <meta name="twitter:description" property="og:description" content="Match Audio matches album and track links from Youtube, Rdio, Spotify, Deezer, Google Music, Xbox Music, Beats Music, and iTunes and give you back one link with matches we find on all of them." />
         <meta name="twitter:image:src" property="og:image" content={image} />
         <meta property="og:url" content={shareUrl} />
         <link rel="shortcut icon" href="/images/favicon.png" />
