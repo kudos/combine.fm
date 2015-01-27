@@ -35,6 +35,7 @@
     "express": "~4.10.6",
     "express-session": "^1.9.2",
     "helmet": "^0.5.2",
+    "moment": "^2.9.0",
     "morgan": "~1.5.0",
     "node-jsx": "^0.12.4",
     "node-uuid": "^1.4.2",
