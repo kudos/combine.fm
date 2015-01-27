@@ -113,12 +113,14 @@ module.exports = React.createClass({
           clearInterval(this.state.interval);
         }
         
-        this.setState({
-          name: shares[0].name,
-          artist: shares[0].artist.name,
-          shares: shares,
-          shareUrl: "https://match.audio/" + this.props.shares[0].service + "/" + this.props.shares[0].type + "/" + this.props.shares[0].id
-        });
+        if (shares.length) {
+          this.setState({
+            name: shares[0].name,
+            artist: shares[0].artist.name,
+            shares: shares,
+            shareUrl: "https://match.audio/" + shares[0].service + "/" + shares[0].type + "/" + shares[0].id
+          });
+        }
       }.bind(this));
     }.bind(this)
     
