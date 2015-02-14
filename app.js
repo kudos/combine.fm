@@ -62,7 +62,7 @@ if (development) {
 app.get('*', function(req,res,next) {
   // force SSL
   if (req.headers['cf-visitor'] && req.headers['cf-visitor'] != '{"scheme":"https"}') {
-    return res.redirect("https://" + req.headers['host'] + req.url);
+    return res.redirect("https://" + req.headers.host + req.url);
   } else if (req.headers['cf-visitor']) {
     req.userProtocol = "https";
   } else {
@@ -84,7 +84,7 @@ app.get('/recent', function(req, res, next) {
   req.db.matches.find().sort({created_at:-1}).limit(6).toArray().then(function(docs){
     var recents = [];
     docs.forEach(function(doc) {
-      recents.push(doc.services[doc._id.split("$$")[0]])
+      recents.push(doc.services[doc._id.split("$$")[0]]);
     });
     res.json({recents:recents});
   }).catch(function (error) {
@@ -105,10 +105,10 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
-    console.log(err.stack)
+    console.log(err.stack);
     res.status(err.status || 500);
     
-    var content = React.renderToString(ErrorView({status: err.status || 500, message: err.message, error: err}));
+    var content = React.renderToString(new ErrorView({status: err.status || 500, message: err.message, error: err}));
     res.send('<!doctype html>\n' + content);
   });
 }
@@ -118,7 +118,7 @@ if (app.get('env') === 'development') {
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   
-  var content = React.renderToString(ErrorView({status: err.status || 500, message: err.message, error: {status: err.status || 500}}));
+  var content = React.renderToString(new ErrorView({status: err.status || 500, message: err.message, error: {status: err.status || 500}}));
   res.send('<!doctype html>\n' + content);
 });
 
