@@ -9,7 +9,7 @@
     "clean": "rm -f ./public/javascript/bundle.js"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "0.12.x"
   },
   "browserify": {
     "transform": [
@@ -39,6 +39,7 @@
     "morgan": "~1.5.0",
     "node-jsx": "^0.12.4",
     "node-uuid": "^1.4.2",
+    "playmusic": "^2.0.0",
     "promised-mongo": "^0.11.1",
     "rdio": "^1.5.2",
     "react": "^0.12.1",

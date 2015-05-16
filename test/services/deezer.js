@@ -24,7 +24,7 @@ describe('Deezer', function(){
   describe('search', function(){
     it('should find album by search', function(done){
       deezer.search({type: "album", artist: {name: "David Guetta"}, name: "Listen (Deluxe)"}).then(function(result) {
-        result.name.should.equal("Listen (Deluxe)");
+        result.name.should.equal("Listen");
         done();
       });
     });
