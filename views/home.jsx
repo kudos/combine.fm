@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-var React = require('react');
-var request = require('superagent');
-var Router = require('react-router');
-var Link = require('react-router').Link;
-var Faq = require('./faq.jsx');
-var Foot = require('./foot.jsx');
+var React = require("react");
+var request = require("superagent");
+var Router = require("react-router");
+var Link = require("react-router").Link;
+var Faq = require("./faq.jsx");
+var Foot = require("./foot.jsx");
 
 var Recent = React.createClass({
 
@@ -33,7 +33,7 @@ var RecentItem = React.createClass({
     return (
       <div className="col-sm-4 col-xs-6">
         <Link to="share" params={this.props.item}>
-          <div className={this.props.item.service == "youtube" ? "artwork-youtube artwork" : "artwork"} style={{backgroundImage: "url("+this.props.item.artwork.small+")"}}></div>
+          <div className={this.props.item.service === "youtube" ? "artwork-youtube artwork" : "artwork"} style={{backgroundImage: "url(" + this.props.item.artwork.small + ")"}}></div>
         </Link>
       </div>
     );
@@ -65,7 +65,7 @@ var SearchForm = React.createClass({
       });
       return;
     }
-    request.post('/search').send({url:url}).end(function(res) {
+    request.post("/search").send({url: url}).end(function(res) {
       that.setState({
         submitting: false
       });
@@ -115,10 +115,10 @@ module.exports = React.createClass({
       recents: []
     };
   },
-  
+
   componentDidMount: function () {
     if (!this.props.recents) {
-      request.get('/recent').set('Accept', 'application/json').end(function(res) {
+      request.get("/recent").set("Accept", "application/json").end(function(res) {
         this.setState({
           recents: res.body.recents
         });
@@ -142,7 +142,7 @@ module.exports = React.createClass({
             <div className="row blurb">
               <div className="col-md-6 col-md-offset-3">
                 <p>Match Audio makes sharing from music services better.
-                What happens when you share your favourite song on Spotify with a friend, but they don't use Spotify?
+                What happens when you share your favourite song on Spotify with a friend, but they don"t use Spotify?
                 </p><p>We match album and track links from Youtube, Rdio, Spotify, Deezer, Google Music, Xbox Music, Beats Music, and iTunes and give you back one link with matches we find on all of them.
                 </p>
               </div>

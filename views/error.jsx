@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-var React = require('react');
-var Head = require('./head.jsx');
-var Foot = require('./foot.jsx');
+var React = require("react");
+var Head = require("./head.jsx");
+var Foot = require("./foot.jsx");
 
 module.exports = React.createClass({
 

@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
-var React = require('react');
-var request = require('superagent');
-var Router = require('react-router');
-var Link = require('react-router').Link;
-var Foot = require('./foot.jsx');
+var React = require("react");
+var request = require("superagent");
+var Router = require("react-router");
+var Link = require("react-router").Link;
+var Foot = require("./foot.jsx");
 
 var MusicItem = React.createClass({
 
@@ -13,7 +13,7 @@ var MusicItem = React.createClass({
       return (
         <div className="col-md-3 col-xs-6">
           <div className="service">
-            <div className="artwork" style={{backgroundImage: "url("+this.props.items[0].artwork.small+")"}}>
+            <div className="artwork" style={{backgroundImage: "url(" + this.props.items[0].artwork.small + ")"}}>
             </div>
             <div className="loading-wrap">
               <img src="/images/eq.svg" className="loading" />
@@ -28,7 +28,7 @@ var MusicItem = React.createClass({
       return (
         <div className="col-md-3 col-xs-6">
           <div className="service">
-            <div className="artwork not-found" style={{backgroundImage: "url("+this.props.items[0].artwork.small+")"}}></div>
+            <div className="artwork not-found" style={{backgroundImage: "url(" + this.props.items[0].artwork.small + ")"}}></div>
             <div className="no-match">
               No Match
             </div>
@@ -41,13 +41,13 @@ var MusicItem = React.createClass({
     } else {
       return (
         <div className="col-md-3 col-xs-6">
-          <div className={"service" + (this.props.inc == 0 ? " source-service" : "")}>
-            <div className="matching-from hidden-xs">{this.props.inc == 0 ? "Found matches using this link": ""}</div>
+          <div className={"service" + (this.props.inc === 0 ? " source-service" : "")}>
+            <div className="matching-from hidden-xs">{this.props.inc === 0 ? "Found matches using this link" : ""}</div>
             <a href={this.props.item.streamUrl || this.props.item.purchaseUrl}>
-              <div className={this.props.item.service == "youtube" ? "artwork-youtube artwork" : "artwork"} style={{backgroundImage: "url("+this.props.item.artwork.small+")"}}>
+              <div className={this.props.item.service === "youtube" ? "artwork-youtube artwork" : "artwork"} style={{backgroundImage: "url(" + this.props.item.artwork.small + ")"}}>
               </div>
-              <div className={this.props.item.service == "youtube" && this.props.inc > 0 ? "youtube" : ""}>
-                {this.props.item.service == "youtube" && this.props.inc > 0 ? this.props.item.name : ""}
+              <div className={this.props.item.service === "youtube" && this.props.inc > 0 ? "youtube" : ""}>
+                {this.props.item.service === "youtube" && this.props.inc > 0 ? this.props.item.name : ""}
               </div>
             </a>
             <div className="service-link">
@@ -68,7 +68,7 @@ module.exports = React.createClass({
   mixins: [ Router.State ],
 
   getInitialState: function () {
-    if (this.props.shares && this.props.shares[0].id == this.getParams().id) {
+    if (this.props.shares && this.props.shares[0].id === this.getParams().id) {
       return {
         name: this.props.shares[0].name,
         artist: this.props.shares[0].artist.name,
@@ -92,13 +92,13 @@ module.exports = React.createClass({
 
   componentDidMount: function () {
     var complete = this.state.shares.length > 0;
-    
+
     this.state.shares.forEach(function(share) {
       if (typeof share.matched_at === "undefined") {
         complete = false;
       }
     });
-    
+
     var getShares = function() {
       request.get(this.getPathname() + ".json").end(function(res) {
         var shares = res.body.shares;
@@ -108,11 +108,11 @@ module.exports = React.createClass({
             complete = false;
           }
         });
-        
+
         if (complete) {
           clearInterval(this.state.interval);
         }
-        
+
         if (shares.length) {
           this.setState({
             name: shares[0].name,
@@ -122,8 +122,8 @@ module.exports = React.createClass({
           });
         }
       }.bind(this));
-    }.bind(this)
-    
+    }.bind(this);
+
     if (!this.state.shares.length) {
       getShares();
     }
@@ -133,23 +133,23 @@ module.exports = React.createClass({
       if (!complete) {
         getShares();
       }
-    }.bind(this), 2000);
-    
+    }, 2000);
+
     // Some hacks to pop open the Twitter/Facebook/Google Plus sharing dialogs without using their code.
     Array.prototype.forEach.call(document.querySelectorAll(".share-dialog"), function(dialog){
       dialog.addEventListener("click", function(event) {
         event.preventDefault();
         var w = 845;
         var h = 670;
-        var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
-        var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
-    
+        var dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : screen.left;
+        var dualScreenTop = window.screenTop !== undefined ? window.screenTop : screen.top;
+
         var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
         var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
-    
+
         var left = ((width / 2) - (w / 2)) + dualScreenLeft;
         var top = ((height / 2) - (h / 2)) + dualScreenTop;
-        var newWindow = window.open(dialog.href, "Share Music", 'scrollbars=yes, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+        var newWindow = window.open(dialog.href, "Share Music", "scrollbars=yes, width=" + w + ", height=" + h + ", top=" + top + ", left=" + left);
         if (window.focus) {
           newWindow.focus();
         }

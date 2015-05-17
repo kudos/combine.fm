@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 "use strict";
-var debug = require('debug')('unify.audio');
+var debug = require('debug')('match.audio');
 var app = require('../app');
 
 app.set('port', process.env.PORT || 3000);

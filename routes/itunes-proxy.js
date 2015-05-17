@@ -1,6 +1,6 @@
 "use strict";
-var parse = require('url').parse;
-var request = require('superagent');
+var parse = require("url").parse;
+var request = require("superagent");
 
 module.exports = function(req, res) {
   var url = "http://" + req.url.substr(8);

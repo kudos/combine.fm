@@ -1,0 +1,11 @@
+{
+  "ecmaFeatures": {
+  	"jsx": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "env": {
+  	"browser": true
+  }
+}
