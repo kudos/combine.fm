@@ -39,7 +39,7 @@
     "morgan": "~1.5.0",
     "node-jsx": "^0.12.4",
     "node-uuid": "^1.4.2",
-    "playmusic": "^2.0.0",
+    "playmusic": "^2.0.2",
     "promised-mongo": "^0.11.1",
     "rdio": "^1.5.2",
     "react": "^0.12.1",
