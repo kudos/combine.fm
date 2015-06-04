@@ -1,13 +1,9 @@
-"use strict";
+import React from 'react';
+import createHandler from '../lib/react-handler';
+import {routes} from '../views/app.jsx';
+import services from '../lib/services';
 
-var React = require("react");
-var Router = require("react-router");
-require("node-jsx").install();
-var routes = require("../views/app.jsx").routes;
-
-var services = require("../lib/services");
-
-var formatAndSort = function(matches, serviceId) {
+let formatAndSort = function(matches, serviceId) {
   matches = Object.keys(matches).map(function (key) {return matches[key]; });
   matches.sort(function(a, b) {
     return a.id && !b.id;
@@ -17,60 +13,34 @@ var formatAndSort = function(matches, serviceId) {
   return matches;
 };
 
-module.exports = function(req, res, next) {
-  var serviceId = req.params.service;
-  var type = req.params.type;
-  var itemId = req.params.id;
-
-  var matchedService;
+module.exports = function* (serviceId, type, itemId, format, next) {
+  let matchedService;
   services.some(function(service) {
     matchedService = serviceId === service.id ? service : null;
     return matchedService;
   });
 
-  if (!matchedService || (type !== "album" && type !== "track")) {
-    return next();
+  if (!matchedService || (type !== 'album' && type !== 'track')) {
+    return yield next;
   }
 
-  return req.db.matches.findOne({_id: serviceId + "$$" + itemId}).then(function(doc) {
-    if (!doc) {
-      return matchedService.lookupId(itemId, type).then(function(item) {
-        var matches = {};
-        item.matched_at = new Date(); // eslint-disable-line camelcase
-        matches[item.service] = item;
-        services.forEach(function(service) {
-          if (service.id === item.service) {
-            return;
-          }
-          matches[service.id] = {service: service.id};
-          service.search(item).then(function(match) {
-            match.matched_at = new Date(); // eslint-disable-line camelcase
-            var update = {};
-            update["services." + match.service] = match;
-            req.db.matches.update({_id: item.service + "$$" + item.id}, {"$set": update});
-          });
-        });
-        return req.db.matches.save({_id: item.service + "$$" + item.id, "created_at": new Date(), services: matches}).then(function() {
-          var newShares = formatAndSort(matches, serviceId);
-          Router.run(routes, req.url, function (Handler) {
-            var App = React.createFactory(Handler);
-            var content = React.renderToString(new App({shares: newShares}));
-            res.send("<!doctype html>\n" + content.replace("</body></html>", "<script>var shares = " + JSON.stringify(newShares) + "</script></body></html>"));
-          });
-        });
-      });
-    }
-    var shares = formatAndSort(doc.services, serviceId);
-    if (req.params.format === "json") {
-      return res.json({shares: shares});
-    }
-    Router.run(routes, req.url, function (Handler) {
-      var App = React.createFactory(Handler);
-      var content = React.renderToString(new App({shares: shares}));
-      res.send("<!doctype html>\n" + content.replace("</body></html>", "<script>var shares = " + JSON.stringify(shares) + "</script></body></html>"));
-    });
-  }).catch(function (error) {
-    return next(error);
-  });
+  let shares = [];
+  let doc = yield this.db.matches.findOne({_id: serviceId + '$$' + itemId});
 
+  this.assert(doc, 404, 'Not Found');
+
+  shares = formatAndSort(doc.services, serviceId);
+
+  if (format === 'json') {
+    this.body = {shares: shares};
+  } else {
+    let Handler = yield createHandler(routes, this.request.url);
+
+    let App = React.createFactory(Handler);
+    let content = React.renderToString(new App({shares: shares}));
+
+    content = content.replace('</body></html>', '<script>var shares = ' + JSON.stringify(shares) + '</script></body></html>');
+
+    this.body = '<!doctype html>\n' + content;
+  }
 };

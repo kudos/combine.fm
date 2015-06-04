@@ -65,7 +65,7 @@ var SearchForm = React.createClass({
       });
       return;
     }
-    request.post("/search").send({url: url}).end(function(res) {
+    request.post("/search").send({url: url}).end(function(req, res) {
       that.setState({
         submitting: false
       });
@@ -118,7 +118,7 @@ module.exports = React.createClass({
 
   componentDidMount: function () {
     if (!this.props.recents) {
-      request.get("/recent").set("Accept", "application/json").end(function(res) {
+      request.get("/recent").set("Accept", "application/json").end(function(err, res) {
         this.setState({
           recents: res.body.recents
         });

@@ -1,4 +1,10 @@
 {
+  "ecmaFeatures": {
+    "modules": true
+  },
+  "rules": {
+    "quotes": [2, "single", "avoid-escape"]
+  },
   "env": {
     "node": true,
     "es6": true

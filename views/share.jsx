@@ -100,7 +100,7 @@ module.exports = React.createClass({
     });
 
     var getShares = function() {
-      request.get(this.getPathname() + ".json").end(function(res) {
+      request.get(this.getPathname() + ".json").end(function(err, res) {
         var shares = res.body.shares;
         complete = true;
         shares.forEach(function(share) {
