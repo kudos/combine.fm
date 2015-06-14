@@ -7,7 +7,6 @@ Make sharing from music services better. We match links from Rdio, Spotify, Deez
 * Spotify
 * iTunes
 * Deezer
-* Beats (requires `BEATS_KEY` and `BEATS_SECRET`)
 * Google Play Music (requires `GOOGLE_EMAIL` and `GOOGLE_PASSWORD`)
 * Rdio (requires `RDIO_API_KEY` and `RDIO_API_SHARED`)
 * Youtube (requires `YOUTUBE_KEY`)
