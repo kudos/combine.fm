@@ -1,9 +1,9 @@
-FROM node:0.12.0-slim
+FROM iojs:slim
 MAINTAINER Jonathan Cremin <jonathan@crem.in>
 
 ADD   package.json package.json
 RUN   npm install
-COPY   . .
+COPY  . .
 
 RUN   npm run build
 EXPOSE 3000

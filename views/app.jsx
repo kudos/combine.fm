@@ -20,7 +20,7 @@ var App = React.createClass({
         <body className='home'>
           <RouteHandler {...this.props} />
           <GAInitiailizer />
-          <script src='/javascript/bundle.js' />
+          <script src='/scripts/bundle.js' />
         </body>
       </html>
     );

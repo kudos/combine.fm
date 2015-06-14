@@ -3,13 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "babel-node app.js",
+    "start": "node -r 'babel/register' app.js",
     "test": "mocha --require co-mocha --compilers js:babel/register test/**/*.js --timeout=10000",
-    "build": "browserify -t babelify ./views/app.jsx > ./public/javascript/bundle.js",
-    "clean": "rm -f ./public/javascript/bundle.js"
+    "build": "browserify ./views/app.jsx > ./public/javascript/bundle.js",
+    "watch": "parallelshell \"npm run watch-js\" \"npm run watch-server\"",
+    "watch-server": "nodemon -x \"node -r 'babel/register'\" -e js,jsx -i public/ app.js",
+    "watch-js": "browserify ./views/app.jsx | uglifyjs -cm 2>/dev/null > ./public/scripts/bundle.js",
+    "clean": "rm -f ./public/scripts/bundle.js"
   },
   "engines": {
-    "iojs": "2.2.1"
+    "iojs": "2.3.0"
   },
   "browserify": {
     "transform": [
@@ -22,9 +25,9 @@
     ]
   },
   "dependencies": {
-    "babel": "^5.2.17",
+    "babel": "^5.5.8",
     "babelify": "^6.0.2",
-    "bluebird": "^2.9.25",
+    "bluebird": "^2.9.30",
     "browserify": "^10.1.3",
     "co": "^4.5.4",
     "debug": "^2.1.1",
@@ -46,12 +49,13 @@
     "reactify": "^1.1.1",
     "spotify": "^0.3.0",
     "superagent": "^1.2.0",
-    "superagent-bluebird-promise": "^2.0.2"
+    "superagent-bluebird-promise": "^2.0.2",
+    "uglifyjs": "^2.4.10"
   },
   "devDependencies": {
     "co-mocha": "^1.1.0",
     "eslint": "^0.22.1",
-    "eslint-plugin-react": "^2.5.0",
+    "eslint-plugin-react": "^2.5.1",
     "mocha": "^2.1.0",
     "nodemon": "^1.3.7",
     "parallelshell": "^1.1.1",
