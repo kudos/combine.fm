@@ -5,11 +5,12 @@
   "scripts": {
     "start": "node -r 'babel/register' app.js",
     "test": "mocha --require co-mocha --compilers js:babel/register test/**/*.js --timeout=10000",
-    "build": "browserify ./views/app.jsx > ./public/javascript/bundle.js",
+    "build": "babel -d public/views views",
     "watch": "parallelshell \"npm run watch-js\" \"npm run watch-server\"",
     "watch-server": "nodemon -x \"node -r 'babel/register'\" -e js,jsx -i public/ app.js",
-    "watch-js": "browserify ./views/app.jsx | uglifyjs -cm 2>/dev/null > ./public/scripts/bundle.js",
-    "clean": "rm -f ./public/scripts/bundle.js"
+    "watch-js": "babel -wd public/views views",
+    "clean": "rm -f ./public/scripts/bundle.js",
+    "postinstall": "jspm install"
   },
   "engines": {
     "iojs": "2.3.0"
@@ -31,6 +32,7 @@
     "browserify": "^10.1.3",
     "co": "^4.5.4",
     "debug": "^2.1.1",
+    "jspm": "^0.15.7",
     "koa": "^0.21.0",
     "koa-bodyparser": "^2.0.0",
     "koa-compress": "^1.0.8",
@@ -60,5 +62,23 @@
     "nodemon": "^1.3.7",
     "parallelshell": "^1.1.1",
     "should": "^6.0.3"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "public"
+    },
+    "dependencies": {
+      "babel-core": "npm:babel-core@^5.5.8",
+      "jsx": "github:floatdrop/plugin-jsx@^1.1.0",
+      "react": "npm:react@0.13.3",
+      "react-google-analytics": "npm:react-google-analytics@0.2.0",
+      "react-router": "npm:react-router@0.13.3",
+      "superagent": "npm:superagent@^1.2.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.4"
+    }
   }
 }

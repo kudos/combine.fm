@@ -20,7 +20,9 @@ var App = React.createClass({
         <body className='home'>
           <RouteHandler {...this.props} />
           <GAInitiailizer />
-          <script src='/scripts/bundle.js' />
+          <script src='jspm_packages/system.js'></script>
+          <script src='config.js'></script>
+          <script dangerouslySetInnerHTML={{__html: 'System.import(\'views/app.jsx\');'}}></script>
         </body>
       </html>
     );
@@ -35,18 +37,17 @@ var routes = (
   </Route>
 );
 
-module.exports.routes = routes;
-
 if (typeof window !== 'undefined') {
-  window.onload = function() {
-    Router.run(routes, Router.HistoryLocation, function (Handler) {
-      if (typeof window.recents !== 'undefined') {
-        React.render(<Handler recents={window.recents} />, document);
-      } else if (typeof shares !== 'undefined') {
-        React.render(<Handler shares={window.shares} />, document);
-      }
-    });
-    ga('create', 'UA-66209-8', 'auto');
-    ga('send', 'pageview');
-  };
+  console.log("HEREER")
+  Router.run(routes, Router.HistoryLocation, function (Handler) {
+    if (typeof window.recents !== 'undefined') {
+      React.render(<Handler recents={window.recents} />, document);
+    } else if (typeof shares !== 'undefined') {
+      React.render(<Handler shares={window.shares} />, document);
+    }
+  });
+  ga('create', 'UA-66209-8', 'auto');
+  ga('send', 'pageview');
 }
+
+module.exports.routes = routes;
