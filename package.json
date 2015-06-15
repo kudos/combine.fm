@@ -14,16 +14,6 @@
   "engines": {
     "iojs": "2.3.0"
   },
-  "browserify": {
-    "transform": [
-      [
-        "reactify",
-        {
-          "harmony": true
-        }
-      ]
-    ]
-  },
   "dependencies": {
     "babel": "^5.5.8",
     "babelify": "^6.0.2",
@@ -67,16 +57,11 @@
       "baseURL": "public"
     },
     "dependencies": {
-      "jsx": "github:floatdrop/plugin-jsx@^1.1.0",
-      "react": "npm:react@0.13.3",
-      "react-google-analytics": "npm:react-google-analytics@0.2.0",
-      "react-router": "npm:react-router@0.13.3",
-      "superagent": "npm:superagent@1.2.0"
+      "react": "npm:react@^0.13.3",
+      "react-google-analytics": "npm:react-google-analytics@^0.2.0",
+      "react-router": "npm:react-router@^0.13.3",
+      "superagent": "npm:superagent@^1.2.0"
     },
-    "devDependencies": {
-      "babel": "npm:babel-core@^5.1.13",
-      "babel-runtime": "npm:babel-runtime@^5.1.13",
-      "core-js": "npm:core-js@^0.9.4"
-    }
+    "devDependencies": {}
   }
 }

@@ -33,7 +33,7 @@ let routes = (
 );
 
 if (typeof window !== 'undefined') {
-  console.info('Time since page started rendering: ' + (Date.now() - timerStart) + 'ms');
+  console.info('Time since page started rendering: ' + (Date.now() - timerStart) + 'ms'); // eslint-disable-line no-undef
   Router.run(routes, Router.HistoryLocation, function (Handler) {
     if (typeof window.recents !== 'undefined') {
       React.render(<Handler recents={window.recents} />, document);
