@@ -1,6 +1,6 @@
 import React from 'react';
 import createHandler from '../lib/react-handler';
-import {routes} from '../views/app.jsx';
+import {routes} from '../views/app';
 import services from '../lib/services';
 
 let formatAndSort = function(matches, serviceId) {

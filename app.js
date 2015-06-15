@@ -4,7 +4,7 @@ import route from 'koa-route';
 import logger from 'koa-logger';
 import favicon from 'koa-favicon';
 import compress from 'koa-compress';
-import staticHandler from 'koa-static';
+import staticHandler from 'koa-file-server';
 import bodyparser from 'koa-bodyparser';
 import React from 'react';
 import co from 'co';
@@ -13,7 +13,7 @@ import index from './routes/index';
 import search from './routes/search';
 import share from './routes/share';
 import itunesProxy from './routes/itunes-proxy';
-import {routes} from './views/app.jsx';
+import {routes} from './views/app';
 import zlib from 'zlib';
 import createHandler from './lib/react-handler';
 
@@ -46,7 +46,7 @@ app.use(bodyparser());
 app.use(compress({flush: zlib.Z_SYNC_FLUSH }));
 app.use(favicon(path.join(__dirname, '/public/images/favicon.png')));
 app.use(logger());
-app.use(staticHandler(path.join(__dirname, 'public')));
+app.use(staticHandler({root: 'public', maxage: 31536000000}));
 
 let mongo = {};
 
@@ -96,7 +96,17 @@ app.use(route.get('*', function* () {
 module.exports = app;
 
 if (!module.parent) {
-  app.listen(process.env.PORT || 3000, function() {
-    debug('Koa server listening on port ' + (process.env.PORT || 3000));
-  });
+  if (process.env.LOCALHOST_KEY) {
+    require('spdy').createServer({
+      key: process.env.LOCALHOST_KEY,
+      cert: process.env.LOCALHOST_CRT
+    }, app.callback()).listen(3000, function() {
+      debug('Koa SPDY server listening on port ' + (process.env.PORT || 3000));
+    });
+  } else {
+    app.listen(process.env.PORT || 3000, function() {
+      debug('Koa HTTP server listening on port ' + (process.env.PORT || 3000));
+    });
+  }
+
 }

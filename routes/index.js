@@ -2,7 +2,7 @@
 
 import React from 'react';
 import createHandler from '../lib/react-handler';
-import {routes} from '../views/app.jsx';
+import {routes} from '../views/app';
 
 module.exports = function* () {
   let recents = [];

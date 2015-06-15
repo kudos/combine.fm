@@ -1,19 +1,16 @@
-"use strict";
-
-var React = require("react");
-var request = require("superagent");
-var Router = require("react-router");
-var Link = require("react-router").Link;
-var Faq = require("./faq.jsx");
-var Foot = require("./foot.jsx");
+import React from 'react';
+import request from 'superagent';
+import {Navigation, State, Link} from 'react-router';
+import Faq from './faq';
+import Foot from './foot';
 
 var Recent = React.createClass({
 
   render: function() {
-    return (<div className="row">
-      <div className="col-md-6 col-md-offset-3">
+    return (<div className='row'>
+      <div className='col-md-6 col-md-offset-3'>
         <h2>Recently Shared</h2>
-        <div className="row recent">
+        <div className='row recent'>
         {this.props.recents.map(function(item, i){
           return (<RecentItem item={item} key={i} />);
         })}
@@ -31,9 +28,9 @@ var RecentItem = React.createClass({
       return false;
     }
     return (
-      <div className="col-sm-4 col-xs-6">
-        <Link to="share" params={this.props.item}>
-          <div className={this.props.item.service === "youtube" ? "artwork-youtube artwork" : "artwork"} style={{backgroundImage: "url(" + this.props.item.artwork.small + ")"}}></div>
+      <div className='col-sm-4 col-xs-6'>
+        <Link to='share' params={this.props.item}>
+          <div className={this.props.item.service === 'youtube' ? 'artwork-youtube artwork' : 'artwork'} style={{backgroundImage: 'url(' + this.props.item.artwork.small + ')'}}></div>
         </Link>
       </div>
     );
@@ -43,7 +40,7 @@ var RecentItem = React.createClass({
 
 var SearchForm = React.createClass({
 
-  mixins: [ Router.Navigation, Router.State ],
+  mixins: [ Navigation, State ],
 
   getInitialState: function () {
     return {
@@ -65,14 +62,14 @@ var SearchForm = React.createClass({
       });
       return;
     }
-    request.post("/search").send({url: url}).end(function(req, res) {
+    request.post('/search').send({url: url}).end(function(req, res) {
       that.setState({
         submitting: false
       });
       if (res.body.error) {
         that.setState({error: res.body.error.message});
       }
-      that.transitionTo("share", res.body);
+      that.transitionTo('share', res.body);
     });
   },
 
@@ -85,14 +82,14 @@ var SearchForm = React.createClass({
 
   render: function() {
     return (
-      <form role="form" method="post" action="/search" onSubmit={this.handleSubmit}>
-        <div className="input-group input-group-lg">
-          <input type="text" name="url" placeholder="Paste link here" className="form-control" autofocus ref="url" />
-          <span className="input-group-btn">
-            <input type="submit" className="btn btn-lg btn-custom" value="Share Music" disabled={this.state.submitting} />
+      <form role='form' method='post' action='/search' onSubmit={this.handleSubmit}>
+        <div className='input-group input-group-lg'>
+          <input type='text' name='url' placeholder='Paste link here' className='form-control' autofocus ref='url' />
+          <span className='input-group-btn'>
+            <input type='submit' className='btn btn-lg btn-custom' value='Share Music' disabled={this.state.submitting} />
           </span>
         </div>
-        <div className={this.state.error ? "alert alert-warning" : ""} role="alert">
+        <div className={this.state.error ? 'alert alert-warning' : ''} role='alert'>
           {this.state.error}
         </div>
       </form>
@@ -100,7 +97,7 @@ var SearchForm = React.createClass({
   }
 });
 
-module.exports = React.createClass({
+export default React.createClass({
 
   getInitialState: function () {
     // Use this only on first page load, refresh whenever we navigate back.
@@ -118,7 +115,7 @@ module.exports = React.createClass({
 
   componentDidMount: function () {
     if (!this.props.recents) {
-      request.get("/recent").set("Accept", "application/json").end(function(err, res) {
+      request.get('/recent').set('Accept', 'application/json').end(function(err, res) {
         this.setState({
           recents: res.body.recents
         });
@@ -129,42 +126,42 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div>
-        <div className="page-wrap">
+        <div className='page-wrap'>
           <header>
-            <h1><Link to="home">match<span className="audio-lighten">.audio</span></Link></h1>
+            <h1><Link to='home'>match<span className='audio-lighten'>.audio</span></Link></h1>
           </header>
-          <div className="container">
-            <div className="row share-form">
-              <div className="col-md-6 col-md-offset-3">
+          <div className='container'>
+            <div className='row share-form'>
+              <div className='col-md-6 col-md-offset-3'>
                 <SearchForm />
               </div>
             </div>
-            <div className="row blurb">
-              <div className="col-md-6 col-md-offset-3">
+            <div className='row blurb'>
+              <div className='col-md-6 col-md-offset-3'>
                 <p>Match Audio makes sharing from music services better.
-                What happens when you share your favourite song on Spotify with a friend, but they don"t use Spotify?
+                What happens when you share your favourite song on Spotify with a friend, but they don't use Spotify?
                 </p><p>We match album and track links from Youtube, Rdio, Spotify, Deezer, Google Music, Xbox Music, Beats Music, and iTunes and give you back one link with matches we find on all of them.
                 </p>
               </div>
             </div>
             <Recent recents={this.state.recents} />
             <Faq />
-            <div className="row">
-              <div className="col-md-6 col-md-offset-3">
+            <div className='row'>
+              <div className='col-md-6 col-md-offset-3'>
                 <h2>Tools</h2>
-                <div className="row">
-                  <div className="col-md-6">
+                <div className='row'>
+                  <div className='col-md-6'>
                     <p>Download the Chrome Extension and get Match Audio links right from your address bar.</p>
                   </div>
-                  <div className="col-md-6">
-                    <p><a href="https://chrome.google.com/webstore/detail/kjfpkmfgcflggjaldcfnoppjlpnidolk"><img src="/images/chrome-web-store.png" alt="Download the Chrome Extension" height="75" /></a></p>
+                  <div className='col-md-6'>
+                    <p><a href='https://chrome.google.com/webstore/detail/kjfpkmfgcflggjaldcfnoppjlpnidolk'><img src='/images/chrome-web-store.png' alt='Download the Chrome Extension' height='75' /></a></p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <Foot page="home" />
+        <Foot page='home' />
       </div>
     );
   }

@@ -8,8 +8,7 @@
     "build": "babel -d public/views views",
     "watch": "parallelshell \"npm run watch-js\" \"npm run watch-server\"",
     "watch-server": "nodemon -x \"node -r 'babel/register'\" -e js,jsx -i public/ app.js",
-    "watch-js": "babel -wd public/views views",
-    "clean": "rm -f ./public/scripts/bundle.js",
+    "watch-js": "babel --modules system -wd public/views views",
     "postinstall": "jspm install"
   },
   "engines": {
@@ -32,14 +31,14 @@
     "browserify": "^10.1.3",
     "co": "^4.5.4",
     "debug": "^2.1.1",
-    "jspm": "^0.15.7",
+    "jspm": "^0.16.0-beta",
     "koa": "^0.21.0",
     "koa-bodyparser": "^2.0.0",
     "koa-compress": "^1.0.8",
     "koa-favicon": "^1.2.0",
+    "koa-file-server": "^2.3.1",
     "koa-logger": "^1.2.2",
     "koa-route": "^2.4.0",
-    "koa-static": "^1.4.9",
     "moment": "^2.10.3",
     "mongodb-promisified": "^1.0.2",
     "node-uuid": "^1.4.2",
@@ -51,8 +50,7 @@
     "reactify": "^1.1.1",
     "spotify": "^0.3.0",
     "superagent": "^1.2.0",
-    "superagent-bluebird-promise": "^2.0.2",
-    "uglifyjs": "^2.4.10"
+    "superagent-bluebird-promise": "^2.0.2"
   },
   "devDependencies": {
     "co-mocha": "^1.1.0",
@@ -61,19 +59,19 @@
     "mocha": "^2.1.0",
     "nodemon": "^1.3.7",
     "parallelshell": "^1.1.1",
-    "should": "^6.0.3"
+    "should": "^6.0.3",
+    "spdy": "^1.32.0"
   },
   "jspm": {
     "directories": {
       "baseURL": "public"
     },
     "dependencies": {
-      "babel-core": "npm:babel-core@^5.5.8",
       "jsx": "github:floatdrop/plugin-jsx@^1.1.0",
       "react": "npm:react@0.13.3",
       "react-google-analytics": "npm:react-google-analytics@0.2.0",
       "react-router": "npm:react-router@0.13.3",
-      "superagent": "npm:superagent@^1.2.0"
+      "superagent": "npm:superagent@1.2.0"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.1.13",
