@@ -14,6 +14,7 @@ let App = React.createClass({
         <body className='home'>
           <RouteHandler {...this.props} />
           <GAInitiailizer />
+          <script src='/jspm_packages/system-polyfills.src.js'></script>
           <script src='/jspm_packages/system.src.js'></script>
           <script src='/config.js'></script>
           <script dangerouslySetInnerHTML={{__html: 'System.import(\'views/app\');'}}></script>
@@ -22,7 +23,6 @@ let App = React.createClass({
     );
   }
 });
-
 
 let routes = (
   <Route name='home' handler={App} path='/'>

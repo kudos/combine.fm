@@ -62,6 +62,10 @@
       "react-router": "npm:react-router@^0.13.3",
       "superagent": "npm:superagent@^1.2.0"
     },
-    "devDependencies": {}
+    "devDependencies": {},
+    "buildConfig": {
+      "minify": true,
+      "transpileES6": true
+    }
   }
 }
