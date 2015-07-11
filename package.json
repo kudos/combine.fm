@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "babel -d public/views views",
+    "build": "babel -d public/views views && npm run jspm",
     "jspm": "./node_modules/.bin/jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN && jspm install",
     "start": "node -r 'babel/register' app.js",
     "test": "mocha --require co-mocha --compilers js:babel/register test/**/*.js --timeout=10000",
