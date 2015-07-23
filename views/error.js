@@ -24,7 +24,7 @@ export default React.createClass({
             <div className='col-md-6 col-md-offset-3'>
               <h2>{this.props.status}</h2>
               <h1>{this.props.message}</h1>
-              <pre>{this.props.error.stack || ''}</pre>
+              <pre>{this.props.error || ''}</pre>
             </div>
           </div>
         </div>

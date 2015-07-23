@@ -28,7 +28,7 @@ app.use(function* (next) {
     yield next;
   } catch (err) {
     if (!err.status) {
-      console.error(err.stack);
+      debug('Error: %o', err);
     } else if (err.status === 404) {
       let Handler = yield createHandler(routes, this.request.url);
 
@@ -37,6 +37,7 @@ app.use(function* (next) {
 
       this.body = '<!doctype html>\n' + content;
     } else {
+      debug('Error: %o', err);
       throw err;
     }
   }
@@ -87,10 +88,6 @@ app.use(route.get('/recent', function* () {
     recents.push(doc.services[doc._id.split('$$')[0]]); // eslint-disable-line no-underscore-dangle
   });
   this.body = {recents: recents};
-}));
-
-app.use(route.get('*', function* () {
-  this.throw(404);
 }));
 
 module.exports = app;
