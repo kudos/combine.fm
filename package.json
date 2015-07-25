@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "babel -d public/views views && npm run jspm",
+    "build": "babel -d public/views views",
     "cover": "istanbul cover _mocha -- --require babel/register --require co-mocha test/**/*.js",
     "jspm": "./node_modules/.bin/jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN && jspm install",
     "start": "node -r babel/register app.js",
