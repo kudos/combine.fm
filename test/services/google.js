@@ -16,20 +16,20 @@ describe('Google Play Music', function(){
 
   describe('search', function(){
     it('should find album by search', function* (){
-      let result = yield google.search({type: 'album', artist: {name: 'David Guetta'}, name: 'Listen (Deluxe)'});
-      result.name.should.equal('Listen (Deluxe)');
+      let result = yield google.search({type: 'album', artist: {name: 'Jamie xx'}, name: 'In Colour'});
+      result.name.should.equal('In Colour');
     });
   });
 
   describe('lookupUrl', function(){
     it('should parse regular url into album ID', function* (){
-      let result = yield google.parseUrl('https://play.google.com/music/listen#/album/Byp6lvzimyf74wxi5634ul4tgam/David+Guetta/Listen+(Deluxe)');
+      let result = yield google.parseUrl('https://play.google.com/music/listen#/album/Byp6lvzimyf74wxi5634ul4tgam/Jamie+xx/In+Colour');
       result.id.should.equal('Byp6lvzimyf74wxi5634ul4tgam');
     });
 
     it('should parse url without ID into album ID', function* (){
-      let result = yield google.parseUrl('https://play.google.com/music/listen#/album//David+Guetta/Listen+(Deluxe)');
-      result.id.should.equal('Byp6lvzimyf74wxi5634ul4tgam');
+      let result = yield google.parseUrl('https://play.google.com/music/listen#/album//Jamie+xx/In+Colour');
+      result.id.should.equal('Bvfmezcj3n42lo4xeuslpclbyrm');
     });
 
     it('should parse share url into album ID', function* (){

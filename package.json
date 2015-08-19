@@ -5,8 +5,7 @@
   "scripts": {
     "build": "babel -d public/views views",
     "cover": "istanbul cover _mocha -- --require babel/register --require co-mocha test/**/*.js",
-    "jspm": "./node_modules/.bin/jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN && jspm install",
-    "start": "node -r babel/register app.js",
+    "start": "babel-node app.js",
     "postinstall": "npm run build",
     "test": "mocha --require co-mocha --compilers js:babel/register test/**/*.js --timeout=10000",
     "watch": "parallelshell \"npm run watch-js\" \"npm run watch-server\"",
