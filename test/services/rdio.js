@@ -1,5 +1,5 @@
 import 'should';
-import rdio from '../../lib/services/rdio';
+import * as rdio from '../../lib/services/rdio';
 
 describe('Rdio', function(){
   describe('lookupId', function(){

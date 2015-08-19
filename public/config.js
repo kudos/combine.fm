@@ -1,15 +1,13 @@
 System.config({
-  "baseURL": "/",
-  "defaultJSExtensions": true,
-  "transpiler": "none",
-  "paths": {
+  baseURL: "/",
+  defaultJSExtensions: true,
+  transpiler: "none",
+  paths: {
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
-  }
-});
+  },
 
-System.config({
-  "depCache": {
+  depCache: {
     "npm:react@0.13.3/lib/PooledClass.js": [
       "npm:react@0.13.3/lib/invariant.js",
       "github:jspm/nodelibs-process@0.1.1.js"
@@ -1082,11 +1080,9 @@ System.config({
       "views/head.js",
       "views/error.js"
     ]
-  }
-});
+  },
 
-System.config({
-  "map": {
+  map: {
     "react": "npm:react@0.13.3",
     "react-google-analytics": "npm:react-google-analytics@0.2.0",
     "react-router": "npm:react-router@0.13.3",
@@ -1095,7 +1091,7 @@ System.config({
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.3.1"
+      "buffer": "npm:buffer@3.4.2"
     },
     "github:jspm/nodelibs-constants@0.1.0": {
       "constants-browserify": "npm:constants-browserify@0.0.1"
@@ -1169,7 +1165,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:asn1.js@2.1.3": {
+    "npm:asn1.js@2.2.0": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "bn.js": "npm:bn.js@2.2.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -1184,7 +1180,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
-    "npm:browserify-aes@1.0.2": {
+    "npm:browserify-aes@1.0.3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "buffer-xor": "npm:buffer-xor@1.0.2",
       "create-hash": "npm:create-hash@1.1.1",
@@ -1201,7 +1197,7 @@ System.config({
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "randombytes": "npm:randombytes@2.0.1"
     },
-    "npm:browserify-sign@3.0.2": {
+    "npm:browserify-sign@3.0.3": {
       "bn.js": "npm:bn.js@2.2.0",
       "browserify-rsa": "npm:browserify-rsa@2.0.1",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -1211,8 +1207,7 @@ System.config({
       "elliptic": "npm:elliptic@3.1.0",
       "inherits": "npm:inherits@2.0.1",
       "parse-asn1": "npm:parse-asn1@3.0.1",
-      "stream": "github:jspm/nodelibs-stream@0.1.0",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+      "stream": "github:jspm/nodelibs-stream@0.1.0"
     },
     "npm:browserify-zlib@0.1.4": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
@@ -1226,7 +1221,7 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
-    "npm:buffer@3.3.1": {
+    "npm:buffer@3.4.2": {
       "base64-js": "npm:base64-js@0.0.8",
       "ieee754": "npm:ieee754@1.1.6",
       "is-array": "npm:is-array@1.0.1"
@@ -1266,8 +1261,8 @@ System.config({
       "stream": "github:jspm/nodelibs-stream@0.1.0"
     },
     "npm:crypto-browserify@3.9.14": {
-      "browserify-aes": "npm:browserify-aes@1.0.2",
-      "browserify-sign": "npm:browserify-sign@3.0.2",
+      "browserify-aes": "npm:browserify-aes@1.0.3",
+      "browserify-sign": "npm:browserify-sign@3.0.3",
       "create-ecdh": "npm:create-ecdh@2.0.1",
       "create-hash": "npm:create-hash@1.1.1",
       "create-hmac": "npm:create-hmac@1.1.3",
@@ -1386,8 +1381,8 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:parse-asn1@3.0.1": {
-      "asn1.js": "npm:asn1.js@2.1.3",
-      "browserify-aes": "npm:browserify-aes@1.0.2",
+      "asn1.js": "npm:asn1.js@2.2.0",
+      "browserify-aes": "npm:browserify-aes@1.0.3",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "create-hash": "npm:create-hash@1.1.1",
       "pbkdf2": "npm:pbkdf2@3.0.4",
@@ -1518,4 +1513,3 @@ System.config({
     }
   }
 });
-

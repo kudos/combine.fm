@@ -11,11 +11,11 @@
     "test": "mocha --require co-mocha --compilers js:babel/register test/**/*.js --timeout=10000",
     "watch": "parallelshell \"npm run watch-js\" \"npm run watch-server\"",
     "watch-js": "babel --modules system -wd public/views views",
-    "watch-server": "nodemon -x \"node -r babel/register\" -e js,jsx -i public/ app.js"
+    "watch-server": "nodemon -x \"babel-node\" -e js,jsx -i public/ app.js"
   },
   "engines": {
-    "iojs": "^2.4.0",
-    "npm": "^3.2.0"
+    "iojs": "^2.5.0",
+    "npm": "^3.3.0"
   },
   "dependencies": {
     "babel": "~5.8.3",
@@ -24,7 +24,7 @@
     "browserify": "~11.0.0",
     "co": "~4.6.0",
     "debug": "~2.2.0",
-    "jspm": "~0.16.0-beta.3",
+    "jspm": "~0.16.0",
     "koa": "~0.21.0",
     "koa-bodyparser": "~2.0.0",
     "koa-compress": "~1.0.8",
@@ -36,25 +36,25 @@
     "mongodb-promisified": "~1.0.2",
     "node-uuid": "~1.4.2",
     "playmusic": "~2.0.0",
-    "rdio": "~2.0.0",
+    "rdio": "^3.1.0",
     "react": "~0.13.3",
     "react-google-analytics": "~0.2.0",
     "react-router": "~0.13.3",
     "reactify": "~1.1.1",
     "spotify": "~0.3.0",
-    "superagent": "~1.2.0",
+    "superagent": "~1.3.0",
     "superagent-bluebird-promise": "~2.0.2"
   },
   "devDependencies": {
     "co-mocha": "~1.1.0",
-    "eslint": "~0.24.0",
-    "eslint-plugin-react": "~3.0.0",
+    "eslint": "~1.2.0",
+    "eslint-plugin-react": "~3.2.3",
     "istanbul": "^0.3.17",
     "mocha": "~2.2.5",
-    "nodemon": "~1.3.8",
-    "parallelshell": "~1.2.0",
+    "nodemon": "~1.4.1",
+    "parallelshell": "~2.0.0",
     "should": "~7.0.1",
-    "spdy": "~1.32.4"
+    "spdy": "~2.0.4"
   },
   "jspm": {
     "directories": {
