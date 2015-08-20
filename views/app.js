@@ -1,12 +1,12 @@
 import React from 'react';
-import Router, {Route, DefaultRoute, NotFoundRoute, RouteHandler} from 'react-router';
-import ga, {Initializer as GAInitiailizer} from 'react-google-analytics';
+import Router, { Route, DefaultRoute, NotFoundRoute, RouteHandler } from 'react-router';
+import ga, { Initializer as GAInitiailizer } from 'react-google-analytics';
 import Home from './home';
 import Share from './share';
 import Head from './head';
 import ErrorView from './error';
 
-let App = React.createClass({
+const App = React.createClass({
   render: function () {
     return (
       <html>
@@ -24,7 +24,7 @@ let App = React.createClass({
   }
 });
 
-let routes = (
+const routes = (
   <Route name='home' handler={App} path='/'>
     <DefaultRoute handler={Home} />
     <Route name='share' path=':service/:type/:id' handler={Share}/>
@@ -45,4 +45,4 @@ if (typeof window !== 'undefined') {
   ga('send', 'pageview');
 }
 
-export {routes};
+export { routes };

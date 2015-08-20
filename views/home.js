@@ -1,10 +1,10 @@
 import React from 'react';
 import request from 'superagent';
-import {Navigation, State, Link} from 'react-router';
+import { Navigation, State, Link } from 'react-router';
 import Faq from './faq';
 import Foot from './foot';
 
-var Recent = React.createClass({
+const Recent = React.createClass({
 
   render: function() {
     return (<div className='row'>
@@ -21,7 +21,7 @@ var Recent = React.createClass({
 
 });
 
-var RecentItem = React.createClass({
+const RecentItem = React.createClass({
 
   render: function() {
     if (!this.props.item.artwork) {
@@ -38,7 +38,7 @@ var RecentItem = React.createClass({
 
 });
 
-var SearchForm = React.createClass({
+const SearchForm = React.createClass({
 
   mixins: [ Navigation, State ],
 
@@ -50,26 +50,25 @@ var SearchForm = React.createClass({
   },
 
   handleSubmit: function(e) {
+    e.preventDefault();
     this.setState({
       submitting: true
     });
-    var that = this;
-    e.preventDefault();
-    var url = this.refs.url.getDOMNode().value.trim();
+    const url = this.refs.url.getDOMNode().value.trim();
     if (!url) {
-      that.setState({
+      this.setState({
         submitting: false
       });
       return;
     }
-    request.post('/search').send({url: url}).end(function(req, res) {
-      that.setState({
+    request.post('/search').send({url: url}).end((req, res) => {
+      this.setState({
         submitting: false
       });
       if (res.body.error) {
-        that.setState({error: res.body.error.message});
+        this.setState({error: res.body.error.message});
       }
-      that.transitionTo('share', res.body);
+      this.transitionTo('share', res.body);
     });
   },
 
@@ -102,7 +101,7 @@ export default React.createClass({
   getInitialState: function () {
     // Use this only on first page load, refresh whenever we navigate back.
     if (this.props.recents) {
-      var recents = this.props.recents;
+      const recents = this.props.recents;
       delete this.props.recents;
       return {
         recents: recents
@@ -115,11 +114,11 @@ export default React.createClass({
 
   componentDidMount: function () {
     if (!this.props.recents) {
-      request.get('/recent').set('Accept', 'application/json').end(function(err, res) {
+      request.get('/recent').set('Accept', 'application/json').end((err, res) => {
         this.setState({
           recents: res.body.recents
         });
-      }.bind(this));
+      });
     }
   },
 

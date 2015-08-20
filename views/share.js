@@ -1,9 +1,9 @@
 import React from 'react';
 import request from 'superagent';
-import {State, Link} from 'react-router';
+import { State, Link } from 'react-router';
 import Foot from './foot';
 
-var MusicItem = React.createClass({
+const MusicItem = React.createClass({
 
   render: function() {
     if (!this.props.item.matched_at) {
@@ -88,7 +88,7 @@ export default React.createClass({
   },
 
   componentDidMount: function () {
-    var complete = this.state.shares.length > 0;
+    let complete = this.state.shares.length > 0;
 
     this.state.shares.forEach(function(share) {
       if (typeof share.matched_at === 'undefined') {
@@ -96,9 +96,9 @@ export default React.createClass({
       }
     });
 
-    var getShares = function() {
-      request.get(this.getPathname() + '.json').end(function(err, res) {
-        var shares = res.body.shares;
+    const getShares = () => {
+      request.get(this.getPathname() + '.json').end((err, res) => {
+        const shares = res.body.shares;
         complete = true;
         shares.forEach(function(share) {
           if (typeof share.matched_at === 'undefined') {
@@ -118,8 +118,8 @@ export default React.createClass({
             shareUrl: 'https://match.audio/' + shares[0].service + '/' + shares[0].type + '/' + shares[0].id
           });
         }
-      }.bind(this));
-    }.bind(this);
+      });
+    };
 
     if (!this.state.shares.length) {
       getShares();
@@ -134,19 +134,19 @@ export default React.createClass({
 
     // Some hacks to pop open the Twitter/Facebook/Google Plus sharing dialogs without using their code.
     Array.prototype.forEach.call(document.querySelectorAll('.share-dialog'), function(dialog){
-      dialog.addEventListener('click', function(event) {
-        event.preventDefault();
-        var w = 845;
-        var h = 670;
-        var dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : screen.left;
-        var dualScreenTop = window.screenTop !== undefined ? window.screenTop : screen.top;
+      dialog.addEventListener('click', function(e) {
+        e.preventDefault();
+        const w = 845;
+        const h = 670;
+        const dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : screen.left;
+        const dualScreenTop = window.screenTop !== undefined ? window.screenTop : screen.top;
 
-        var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
-        var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+        const width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+        const height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
 
-        var left = ((width / 2) - (w / 2)) + dualScreenLeft;
-        var top = ((height / 2) - (h / 2)) + dualScreenTop;
-        var newWindow = window.open(dialog.href, 'Share Music', 'scrollbars=yes, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+        const left = ((width / 2) - (w / 2)) + dualScreenLeft;
+        const top = ((height / 2) - (h / 2)) + dualScreenTop;
+        const newWindow = window.open(dialog.href, 'Share Music', 'scrollbars=yes, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
         if (window.focus) {
           newWindow.focus();
         }
@@ -183,9 +183,9 @@ export default React.createClass({
               </div>
             </div>
             <div className='row'>
-              {this.state.shares.map(function(item, i){
+              {this.state.shares.map((item, i) => {
                 return (<MusicItem items={this.state.shares} item={item} inc={i} key={i} />);
-              }.bind(this))}
+              })}
             </div>
           </div>
         </div>

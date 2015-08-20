@@ -1,18 +1,18 @@
-import {parse} from 'url';
+import { parse } from 'url';
 import co from 'co';
 import lookup from '../lib/lookup';
 import services from '../lib/services';
 
 module.exports = function* () {
-  let url = parse(this.request.body.url);
+  const url = parse(this.request.body.url);
   this.assert(url.host, 400, {error: {message: 'You need to submit a url.'}});
 
-  let item = yield lookup(this.request.body.url);
+  const item = yield lookup(this.request.body.url);
 
   this.assert(item, 400, {error: {message: 'No supported music found at that link :('}});
 
   item.matched_at = new Date(); // eslint-disable-line camelcase
-  let matches = {};
+  const matches = {};
   matches[item.service] = item;
 
 
@@ -32,9 +32,9 @@ module.exports = function* () {
         continue;
       }
       matches[service.id] = {service: service.id};
-      let match = yield service.search(item);
+      const match = yield service.search(item);
       match.matched_at = new Date(); // eslint-disable-line camelcase
-      let update = {};
+      const update = {};
       update['services.' + match.service] = match;
       yield this.db.matches.updateOne({_id: item.service + '$$' + item.id}, {'$set': update});
     }

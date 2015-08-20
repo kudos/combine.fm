@@ -1,9 +1,9 @@
 import React from 'react';
 import createHandler from '../lib/react-handler';
-import {routes} from '../views/app';
+import { routes } from '../views/app';
 import services from '../lib/services';
 
-let formatAndSort = function(matches, serviceId) {
+function formatAndSort(matches, serviceId) {
   matches = Object.keys(matches).map(function (key) {return matches[key]; });
   matches.sort(function(a, b) {
     return a.id && !b.id;
@@ -13,7 +13,7 @@ let formatAndSort = function(matches, serviceId) {
   return matches;
 };
 
-module.exports = function* (serviceId, type, itemId, format, next) {
+export default function* (serviceId, type, itemId, format, next) {
   let matchedService;
   services.some(function(service) {
     matchedService = serviceId === service.id ? service : null;
@@ -24,19 +24,18 @@ module.exports = function* (serviceId, type, itemId, format, next) {
     return yield next;
   }
 
-  let shares = [];
-  let doc = yield this.db.matches.findOne({_id: serviceId + '$$' + itemId});
+  const doc = yield this.db.matches.findOne({_id: serviceId + '$$' + itemId});
 
   this.assert(doc, 404, 'Not Found');
 
-  shares = formatAndSort(doc.services, serviceId);
+  const shares = formatAndSort(doc.services, serviceId);
 
   if (format === 'json') {
     this.body = {shares: shares};
   } else {
-    let Handler = yield createHandler(routes, this.request.url);
+    const Handler = yield createHandler(routes, this.request.url);
 
-    let App = React.createFactory(Handler);
+    const App = React.createFactory(Handler);
     let content = React.renderToString(new App({shares: shares}));
 
     content = content.replace('</body></html>', '<script>var shares = ' + JSON.stringify(shares) + '</script></body></html>');

@@ -1,5 +1,5 @@
 import React from 'react';
-import {State} from 'react-router';
+import { State } from 'react-router';
 
 export default React.createClass({
 
@@ -8,9 +8,9 @@ export default React.createClass({
     router: React.PropTypes.func.isRequired
   },
   render: function() {
-    var image = this.props.shares ? this.props.shares[0].artwork.large : 'https://match.audio/images/logo-512.png';
-    var title = this.props.shares ? this.props.shares[0].name + ' by ' + this.props.shares[0].artist.name : 'Match Audio';
-    var shareUrl = 'https://match.audio/' + this.getParams().service + '/' + this.getParams().type + '/' + this.getParams().id;
+    const image = this.props.shares ? this.props.shares[0].artwork.large : 'https://match.audio/images/logo-512.png';
+    const title = this.props.shares ? this.props.shares[0].name + ' by ' + this.props.shares[0].artist.name : 'Match Audio';
+    const shareUrl = 'https://match.audio/' + this.getParams().service + '/' + this.getParams().type + '/' + this.getParams().id;
     return (
       <head>
         <script dangerouslySetInnerHTML={{__html: 'var timerStart = Date.now();'}}></script>

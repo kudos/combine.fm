@@ -1,4 +1,5 @@
 import path from 'path';
+import zlib from 'zlib';
 import koa from 'koa';
 import route from 'koa-route';
 import logger from 'koa-logger';
@@ -13,8 +14,7 @@ import index from './routes/index';
 import search from './routes/search';
 import share from './routes/share';
 import itunesProxy from './routes/itunes-proxy';
-import {routes} from './views/app';
-import zlib from 'zlib';
+import { routes } from './views/app';
 import createHandler from './lib/react-handler';
 
 import debuglog from 'debug';
@@ -29,6 +29,7 @@ app.use(function* (next) {
   } catch (err) {
     if (!err.status) {
       debug('Error: %o', err);
+      throw err;
     } else if (err.status === 404) {
       let Handler = yield createHandler(routes, this.request.url);
 
@@ -90,20 +91,10 @@ app.use(route.get('/recent', function* () {
   this.body = {recents: recents};
 }));
 
-module.exports = app;
-
 if (!module.parent) {
-  if (process.env.LOCALHOST_KEY) {
-    require('spdy').createServer({
-      key: process.env.LOCALHOST_KEY,
-      cert: process.env.LOCALHOST_CRT
-    }, app.callback()).listen(3000, function() {
-      debug('Koa SPDY server listening on port ' + (process.env.PORT || 3000));
-    });
-  } else {
-    app.listen(process.env.PORT || 3000, function() {
-      debug('Koa HTTP server listening on port ' + (process.env.PORT || 3000));
-    });
-  }
-
+  app.listen(process.env.PORT || 3000, function() {
+    debug('Koa HTTP server listening on port ' + (process.env.PORT || 3000));
+  });
 }
+
+export default app;

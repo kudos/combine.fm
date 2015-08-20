@@ -1,6 +1,6 @@
 #match.audio [![Circle CI](https://circleci.com/gh/kudos/match.audio.svg?style=svg)](https://circleci.com/gh/kudos/match.audio)
 
-Make sharing from music services better. We match links from Rdio, Spotify, Deezer, Beats Music, Google Music and iTunes and give you back a link with all of them.
+Make sharing from music services better. We match links from Rdio, Spotify, Deezer, Google Music and iTunes and give you back a link with all of them.
 
 ## Supported Services
 
