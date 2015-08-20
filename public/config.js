@@ -8,394 +8,51 @@ System.config({
   },
 
   depCache: {
-    "npm:react@0.13.3/lib/PooledClass.js": [
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
+    "npm:react@0.13.3.js": [
+      "npm:react@0.13.3/react.js"
     ],
-    "npm:react@0.13.3/lib/emptyObject.js": [
-      "github:jspm/nodelibs-process@0.1.1.js"
+    "npm:react@0.13.3/react.js": [
+      "npm:react@0.13.3/lib/React.js"
     ],
-    "npm:react@0.13.3/lib/ReactLifeCycle.js": [
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/CallbackQueue.js": [
-      "npm:react@0.13.3/lib/PooledClass.js",
-      "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactPerf.js": [
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactOwner.js": [
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactPropTypeLocations.js": [
-      "npm:react@0.13.3/lib/keyMirror.js"
-    ],
-    "npm:react@0.13.3/lib/ReactPropTypeLocationNames.js": [
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactNativeComponent.js": [
-      "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/Transaction.js": [
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/DOMProperty.js": [
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/dangerousStyleValue.js": [
-      "npm:react@0.13.3/lib/CSSProperty.js"
-    ],
-    "npm:react@0.13.3/lib/toArray.js": [
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/getMarkupWrap.js": [
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactMultiChildUpdateTypes.js": [
-      "npm:react@0.13.3/lib/keyMirror.js"
-    ],
-    "npm:react@0.13.3/lib/setInnerHTML.js": [
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/EventPluginRegistry.js": [
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/accumulateInto.js": [
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactEventEmitterMixin.js": [
-      "npm:react@0.13.3/lib/EventPluginHub.js"
-    ],
-    "npm:react@0.13.3/lib/isEventSupported.js": [
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js"
-    ],
-    "npm:react@0.13.3/lib/ReactEmptyComponent.js": [
-      "npm:react@0.13.3/lib/ReactElement.js",
-      "npm:react@0.13.3/lib/ReactInstanceMap.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactComponentEnvironment.js": [
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/shouldUpdateReactComponent.js": [
-      "npm:react@0.13.3/lib/warning.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/flattenChildren.js": [
-      "npm:react@0.13.3/lib/traverseAllChildren.js",
-      "npm:react@0.13.3/lib/warning.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/EventPropagators.js": [
-      "npm:react@0.13.3/lib/EventConstants.js",
-      "npm:react@0.13.3/lib/EventPluginHub.js",
-      "npm:react@0.13.3/lib/accumulateInto.js",
-      "npm:react@0.13.3/lib/forEachAccumulated.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/getTextContentAccessor.js": [
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js"
-    ],
-    "npm:react@0.13.3/lib/SyntheticInputEvent.js": [
-      "npm:react@0.13.3/lib/SyntheticEvent.js"
-    ],
-    "npm:react@0.13.3/lib/DefaultEventPluginOrder.js": [
-      "npm:react@0.13.3/lib/keyOf.js"
-    ],
-    "npm:react@0.13.3/lib/SyntheticUIEvent.js": [
-      "npm:react@0.13.3/lib/SyntheticEvent.js",
-      "npm:react@0.13.3/lib/getEventTarget.js"
-    ],
-    "npm:react@0.13.3/lib/HTMLDOMPropertyConfig.js": [
-      "npm:react@0.13.3/lib/DOMProperty.js",
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js"
-    ],
-    "npm:react@0.13.3/lib/MobileSafariClickEventPlugin.js": [
-      "npm:react@0.13.3/lib/EventConstants.js",
-      "npm:react@0.13.3/lib/emptyFunction.js"
-    ],
-    "npm:react@0.13.3/lib/findDOMNode.js": [
+    "npm:react@0.13.3/lib/React.js": [
+      "npm:react@0.13.3/lib/EventPluginUtils.js",
+      "npm:react@0.13.3/lib/ReactChildren.js",
+      "npm:react@0.13.3/lib/ReactComponent.js",
+      "npm:react@0.13.3/lib/ReactClass.js",
+      "npm:react@0.13.3/lib/ReactContext.js",
       "npm:react@0.13.3/lib/ReactCurrentOwner.js",
-      "npm:react@0.13.3/lib/ReactInstanceMap.js",
+      "npm:react@0.13.3/lib/ReactElement.js",
+      "npm:react@0.13.3/lib/ReactElementValidator.js",
+      "npm:react@0.13.3/lib/ReactDOM.js",
+      "npm:react@0.13.3/lib/ReactDOMTextComponent.js",
+      "npm:react@0.13.3/lib/ReactDefaultInjection.js",
+      "npm:react@0.13.3/lib/ReactInstanceHandles.js",
       "npm:react@0.13.3/lib/ReactMount.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "npm:react@0.13.3/lib/isNode.js",
-      "npm:react@0.13.3/lib/warning.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactDefaultBatchingStrategy.js": [
-      "npm:react@0.13.3/lib/ReactUpdates.js",
-      "npm:react@0.13.3/lib/Transaction.js",
-      "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react@0.13.3/lib/emptyFunction.js"
-    ],
-    "npm:react@0.13.3/lib/LocalEventTrapMixin.js": [
-      "npm:react@0.13.3/lib/ReactBrowserEventEmitter.js",
-      "npm:react@0.13.3/lib/accumulateInto.js",
-      "npm:react@0.13.3/lib/forEachAccumulated.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactDOMImg.js": [
-      "npm:react@0.13.3/lib/EventConstants.js",
-      "npm:react@0.13.3/lib/LocalEventTrapMixin.js",
-      "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js",
-      "npm:react@0.13.3/lib/ReactClass.js",
-      "npm:react@0.13.3/lib/ReactElement.js"
-    ],
-    "npm:react@0.13.3/lib/ReactDOMIframe.js": [
-      "npm:react@0.13.3/lib/EventConstants.js",
-      "npm:react@0.13.3/lib/LocalEventTrapMixin.js",
-      "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js",
-      "npm:react@0.13.3/lib/ReactClass.js",
-      "npm:react@0.13.3/lib/ReactElement.js"
-    ],
-    "npm:react@0.13.3/lib/ReactPropTypes.js": [
-      "npm:react@0.13.3/lib/ReactElement.js",
-      "npm:react@0.13.3/lib/ReactFragment.js",
-      "npm:react@0.13.3/lib/ReactPropTypeLocationNames.js",
-      "npm:react@0.13.3/lib/emptyFunction.js"
-    ],
-    "npm:react@0.13.3/lib/ReactDOMOption.js": [
-      "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js",
-      "npm:react@0.13.3/lib/ReactClass.js",
-      "npm:react@0.13.3/lib/ReactElement.js",
-      "npm:react@0.13.3/lib/warning.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactDOMSelect.js": [
-      "npm:react@0.13.3/lib/AutoFocusMixin.js",
-      "npm:react@0.13.3/lib/LinkedValueUtils.js",
-      "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js",
-      "npm:react@0.13.3/lib/ReactClass.js",
-      "npm:react@0.13.3/lib/ReactElement.js",
-      "npm:react@0.13.3/lib/ReactUpdates.js",
-      "npm:react@0.13.3/lib/Object.assign.js"
-    ],
-    "npm:react@0.13.3/lib/ReactDOMTextarea.js": [
-      "npm:react@0.13.3/lib/AutoFocusMixin.js",
-      "npm:react@0.13.3/lib/DOMPropertyOperations.js",
-      "npm:react@0.13.3/lib/LinkedValueUtils.js",
-      "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js",
-      "npm:react@0.13.3/lib/ReactClass.js",
-      "npm:react@0.13.3/lib/ReactElement.js",
-      "npm:react@0.13.3/lib/ReactUpdates.js",
-      "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "npm:react@0.13.3/lib/warning.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/EventListener.js": [
-      "npm:react@0.13.3/lib/emptyFunction.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactInjection.js": [
-      "npm:react@0.13.3/lib/DOMProperty.js",
-      "npm:react@0.13.3/lib/EventPluginHub.js",
-      "npm:react@0.13.3/lib/ReactComponentEnvironment.js",
-      "npm:react@0.13.3/lib/ReactClass.js",
-      "npm:react@0.13.3/lib/ReactEmptyComponent.js",
-      "npm:react@0.13.3/lib/ReactBrowserEventEmitter.js",
-      "npm:react@0.13.3/lib/ReactNativeComponent.js",
-      "npm:react@0.13.3/lib/ReactDOMComponent.js",
       "npm:react@0.13.3/lib/ReactPerf.js",
-      "npm:react@0.13.3/lib/ReactRootIndex.js",
-      "npm:react@0.13.3/lib/ReactUpdates.js"
+      "npm:react@0.13.3/lib/ReactPropTypes.js",
+      "npm:react@0.13.3/lib/ReactReconciler.js",
+      "npm:react@0.13.3/lib/ReactServerRendering.js",
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/findDOMNode.js",
+      "npm:react@0.13.3/lib/onlyChild.js",
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "npm:react@0.13.3/lib/ReactPutListenerQueue.js": [
-      "npm:react@0.13.3/lib/PooledClass.js",
-      "npm:react@0.13.3/lib/ReactBrowserEventEmitter.js",
-      "npm:react@0.13.3/lib/Object.assign.js"
-    ],
-    "npm:react@0.13.3/lib/SyntheticClipboardEvent.js": [
-      "npm:react@0.13.3/lib/SyntheticEvent.js"
-    ],
-    "npm:react@0.13.3/lib/SyntheticFocusEvent.js": [
-      "npm:react@0.13.3/lib/SyntheticUIEvent.js"
-    ],
-    "npm:react@0.13.3/lib/getEventKey.js": [
-      "npm:react@0.13.3/lib/getEventCharCode.js"
-    ],
-    "npm:react@0.13.3/lib/SyntheticDragEvent.js": [
-      "npm:react@0.13.3/lib/SyntheticMouseEvent.js"
-    ],
-    "npm:react@0.13.3/lib/SyntheticTouchEvent.js": [
-      "npm:react@0.13.3/lib/SyntheticUIEvent.js",
-      "npm:react@0.13.3/lib/getEventModifierState.js"
-    ],
-    "npm:react@0.13.3/lib/SyntheticWheelEvent.js": [
-      "npm:react@0.13.3/lib/SyntheticMouseEvent.js"
-    ],
-    "npm:react@0.13.3/lib/SVGDOMPropertyConfig.js": [
-      "npm:react@0.13.3/lib/DOMProperty.js"
-    ],
-    "npm:react@0.13.3/lib/createFullPageComponent.js": [
-      "npm:react@0.13.3/lib/ReactClass.js",
-      "npm:react@0.13.3/lib/ReactElement.js",
+    "npm:react@0.13.3/lib/EventPluginUtils.js": [
+      "npm:react@0.13.3/lib/EventConstants.js",
       "npm:react@0.13.3/lib/invariant.js",
       "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "npm:react@0.13.3/lib/ReactDefaultPerfAnalysis.js": [
-      "npm:react@0.13.3/lib/Object.assign.js"
-    ],
-    "npm:react@0.13.3/lib/performance.js": [
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js"
-    ],
-    "npm:react@0.13.3/lib/ReactServerRenderingTransaction.js": [
-      "npm:react@0.13.3/lib/PooledClass.js",
-      "npm:react@0.13.3/lib/CallbackQueue.js",
-      "npm:react@0.13.3/lib/ReactPutListenerQueue.js",
-      "npm:react@0.13.3/lib/Transaction.js",
-      "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react@0.13.3/lib/emptyFunction.js"
-    ],
-    "npm:react@0.13.3/lib/onlyChild.js": [
-      "npm:react@0.13.3/lib/ReactElement.js",
+    "npm:react@0.13.3/lib/ReactComponent.js": [
+      "npm:react@0.13.3/lib/ReactUpdateQueue.js",
       "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:qs@2.4.1/lib/parse.js": [
-      "npm:qs@2.4.1/lib/utils.js"
-    ],
-    "npm:react-router@0.13.3/lib/components/ContextWrapper.js": [
-      "npm:react@0.13.3.js"
-    ],
-    "npm:react-router@0.13.3/lib/components/Route.js": [
-      "npm:react@0.13.3.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "npm:react-router@0.13.3/lib/PropTypes.js",
-      "npm:react-router@0.13.3/lib/components/RouteHandler.js"
-    ],
-    "npm:react-router@0.13.3/lib/components/Link.js": [
-      "npm:react@0.13.3.js",
-      "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react-router@0.13.3/lib/PropTypes.js"
-    ],
-    "npm:react-router@0.13.3/lib/components/NotFoundRoute.js": [
-      "npm:react-router@0.13.3/lib/PropTypes.js",
-      "npm:react-router@0.13.3/lib/components/RouteHandler.js",
-      "npm:react-router@0.13.3/lib/components/Route.js"
-    ],
-    "npm:react-router@0.13.3/lib/components/Redirect.js": [
-      "npm:react-router@0.13.3/lib/PropTypes.js",
-      "npm:react-router@0.13.3/lib/components/Route.js"
-    ],
-    "npm:react-router@0.13.3/lib/History.js": [
-      "npm:react@0.13.3/lib/invariant.js",
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js"
-    ],
-    "npm:react-router@0.13.3/lib/locations/HistoryLocation.js": [
-      "npm:react-router@0.13.3/lib/actions/LocationActions.js",
-      "npm:react-router@0.13.3/lib/History.js"
-    ],
-    "npm:react-router@0.13.3/lib/locations/RefreshLocation.js": [
-      "npm:react-router@0.13.3/lib/locations/HistoryLocation.js",
-      "npm:react-router@0.13.3/lib/History.js"
-    ],
-    "npm:react-router@0.13.3/lib/locations/StaticLocation.js": [
-      "npm:react@0.13.3/lib/invariant.js"
-    ],
-    "npm:react-router@0.13.3/lib/locations/TestLocation.js": [
-      "npm:react@0.13.3/lib/invariant.js",
-      "npm:react-router@0.13.3/lib/actions/LocationActions.js",
-      "npm:react-router@0.13.3/lib/History.js"
-    ],
-    "npm:react-router@0.13.3/lib/behaviors/ImitateBrowserBehavior.js": [
-      "npm:react-router@0.13.3/lib/actions/LocationActions.js"
-    ],
-    "npm:react-router@0.13.3/lib/Navigation.js": [
-      "npm:react-router@0.13.3/lib/PropTypes.js"
-    ],
-    "npm:react-router@0.13.3/lib/State.js": [
-      "npm:react-router@0.13.3/lib/PropTypes.js"
-    ],
-    "npm:react-router@0.13.3/lib/createRoutesFromReactChildren.js": [
-      "npm:react@0.13.3.js",
-      "npm:react@0.13.3/lib/Object.assign.js",
       "npm:react@0.13.3/lib/warning.js",
-      "npm:react-router@0.13.3/lib/components/DefaultRoute.js",
-      "npm:react-router@0.13.3/lib/components/NotFoundRoute.js",
-      "npm:react-router@0.13.3/lib/components/Redirect.js",
-      "npm:react-router@0.13.3/lib/Route.js"
-    ],
-    "npm:react-router@0.13.3/lib/getWindowScrollPosition.js": [
-      "npm:react@0.13.3/lib/invariant.js",
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js"
-    ],
-    "npm:react-router@0.13.3/lib/isReactChildren.js": [
-      "npm:react@0.13.3.js"
-    ],
-    "npm:react-router@0.13.3/lib/Match.js": [
-      "npm:react-router@0.13.3/lib/PathUtils.js"
-    ],
-    "npm:react-router@0.13.3/lib/runRouter.js": [
-      "npm:react-router@0.13.3/lib/createRouter.js"
-    ],
-    "npm:react-google-analytics@0.2.0/lib/index.js": [
-      "npm:react@0.13.3.js"
-    ],
-    "views/faq.js": [
-      "npm:react@0.13.3.js"
-    ],
-    "views/foot.js": [
-      "npm:react@0.13.3.js"
-    ],
-    "views/share.js": [
-      "npm:react@0.13.3.js",
-      "npm:superagent@1.2.0.js",
-      "npm:react-router@0.13.3.js",
-      "views/foot.js"
-    ],
-    "views/head.js": [
-      "npm:react@0.13.3.js",
-      "npm:react-router@0.13.3.js"
-    ],
-    "views/error.js": [
-      "npm:react@0.13.3.js",
-      "views/head.js",
-      "views/foot.js"
-    ],
-    "npm:process@0.10.1.js": [
-      "npm:process@0.10.1/browser.js"
-    ],
-    "npm:react@0.13.3/lib/warning.js": [
-      "npm:react@0.13.3/lib/emptyFunction.js",
       "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "npm:react@0.13.3/lib/ReactInstanceHandles.js": [
-      "npm:react@0.13.3/lib/ReactRootIndex.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactRef.js": [
-      "npm:react@0.13.3/lib/ReactOwner.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactElementValidator.js": [
-      "npm:react@0.13.3/lib/ReactElement.js",
+    "npm:react@0.13.3/lib/ReactChildren.js": [
+      "npm:react@0.13.3/lib/PooledClass.js",
       "npm:react@0.13.3/lib/ReactFragment.js",
-      "npm:react@0.13.3/lib/ReactPropTypeLocations.js",
-      "npm:react@0.13.3/lib/ReactPropTypeLocationNames.js",
-      "npm:react@0.13.3/lib/ReactCurrentOwner.js",
-      "npm:react@0.13.3/lib/ReactNativeComponent.js",
-      "npm:react@0.13.3/lib/getIteratorFn.js",
-      "npm:react@0.13.3/lib/invariant.js",
+      "npm:react@0.13.3/lib/traverseAllChildren.js",
       "npm:react@0.13.3/lib/warning.js",
       "github:jspm/nodelibs-process@0.1.1.js"
     ],
@@ -416,368 +73,11 @@ System.config({
       "npm:react@0.13.3/lib/warning.js",
       "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "npm:react@0.13.3/lib/ReactDOM.js": [
-      "npm:react@0.13.3/lib/ReactElement.js",
-      "npm:react@0.13.3/lib/ReactElementValidator.js",
-      "npm:react@0.13.3/lib/mapObject.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/quoteAttributeValueForBrowser.js": [
-      "npm:react@0.13.3/lib/escapeTextContentForBrowser.js"
-    ],
-    "npm:react@0.13.3/lib/camelizeStyleName.js": [
-      "npm:react@0.13.3/lib/camelize.js"
-    ],
-    "npm:react@0.13.3/lib/hyphenateStyleName.js": [
-      "npm:react@0.13.3/lib/hyphenate.js"
-    ],
-    "npm:react@0.13.3/lib/createArrayFromMixed.js": [
-      "npm:react@0.13.3/lib/toArray.js"
-    ],
-    "npm:react@0.13.3/lib/setTextContent.js": [
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
-      "npm:react@0.13.3/lib/escapeTextContentForBrowser.js",
-      "npm:react@0.13.3/lib/setInnerHTML.js"
-    ],
-    "npm:react@0.13.3/lib/EventPluginHub.js": [
-      "npm:react@0.13.3/lib/EventPluginRegistry.js",
-      "npm:react@0.13.3/lib/EventPluginUtils.js",
-      "npm:react@0.13.3/lib/accumulateInto.js",
-      "npm:react@0.13.3/lib/forEachAccumulated.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactMarkupChecksum.js": [
-      "npm:react@0.13.3/lib/adler32.js"
-    ],
-    "npm:react@0.13.3/lib/isTextNode.js": [
-      "npm:react@0.13.3/lib/isNode.js"
-    ],
-    "npm:react@0.13.3/lib/ReactCompositeComponent.js": [
-      "npm:react@0.13.3/lib/ReactComponentEnvironment.js",
-      "npm:react@0.13.3/lib/ReactContext.js",
-      "npm:react@0.13.3/lib/ReactCurrentOwner.js",
-      "npm:react@0.13.3/lib/ReactElement.js",
-      "npm:react@0.13.3/lib/ReactElementValidator.js",
-      "npm:react@0.13.3/lib/ReactInstanceMap.js",
-      "npm:react@0.13.3/lib/ReactLifeCycle.js",
-      "npm:react@0.13.3/lib/ReactNativeComponent.js",
-      "npm:react@0.13.3/lib/ReactPerf.js",
-      "npm:react@0.13.3/lib/ReactPropTypeLocations.js",
-      "npm:react@0.13.3/lib/ReactPropTypeLocationNames.js",
-      "npm:react@0.13.3/lib/ReactReconciler.js",
-      "npm:react@0.13.3/lib/ReactUpdates.js",
-      "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react@0.13.3/lib/emptyObject.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "npm:react@0.13.3/lib/shouldUpdateReactComponent.js",
-      "npm:react@0.13.3/lib/warning.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactChildReconciler.js": [
-      "npm:react@0.13.3/lib/ReactReconciler.js",
-      "npm:react@0.13.3/lib/flattenChildren.js",
-      "npm:react@0.13.3/lib/instantiateReactComponent.js",
-      "npm:react@0.13.3/lib/shouldUpdateReactComponent.js"
-    ],
-    "npm:react@0.13.3/lib/FallbackCompositionState.js": [
-      "npm:react@0.13.3/lib/PooledClass.js",
-      "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react@0.13.3/lib/getTextContentAccessor.js"
-    ],
-    "npm:react@0.13.3/lib/SyntheticEvent.js": [
-      "npm:react@0.13.3/lib/PooledClass.js",
-      "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react@0.13.3/lib/emptyFunction.js",
-      "npm:react@0.13.3/lib/getEventTarget.js"
-    ],
-    "npm:react@0.13.3/lib/ChangeEventPlugin.js": [
-      "npm:react@0.13.3/lib/EventConstants.js",
-      "npm:react@0.13.3/lib/EventPluginHub.js",
-      "npm:react@0.13.3/lib/EventPropagators.js",
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
-      "npm:react@0.13.3/lib/ReactUpdates.js",
-      "npm:react@0.13.3/lib/SyntheticEvent.js",
-      "npm:react@0.13.3/lib/isEventSupported.js",
-      "npm:react@0.13.3/lib/isTextInputElement.js",
-      "npm:react@0.13.3/lib/keyOf.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/SyntheticMouseEvent.js": [
-      "npm:react@0.13.3/lib/SyntheticUIEvent.js",
-      "npm:react@0.13.3/lib/ViewportMetrics.js",
-      "npm:react@0.13.3/lib/getEventModifierState.js"
-    ],
-    "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js": [
-      "npm:react@0.13.3/lib/findDOMNode.js"
-    ],
-    "npm:react@0.13.3/lib/AutoFocusMixin.js": [
-      "npm:react@0.13.3/lib/focusNode.js"
-    ],
-    "npm:react@0.13.3/lib/ReactDOMForm.js": [
-      "npm:react@0.13.3/lib/EventConstants.js",
-      "npm:react@0.13.3/lib/LocalEventTrapMixin.js",
-      "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js",
-      "npm:react@0.13.3/lib/ReactClass.js",
-      "npm:react@0.13.3/lib/ReactElement.js"
-    ],
-    "npm:react@0.13.3/lib/LinkedValueUtils.js": [
-      "npm:react@0.13.3/lib/ReactPropTypes.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactEventListener.js": [
-      "npm:react@0.13.3/lib/EventListener.js",
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
-      "npm:react@0.13.3/lib/PooledClass.js",
-      "npm:react@0.13.3/lib/ReactInstanceHandles.js",
-      "npm:react@0.13.3/lib/ReactMount.js",
-      "npm:react@0.13.3/lib/ReactUpdates.js",
-      "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react@0.13.3/lib/getEventTarget.js",
-      "npm:react@0.13.3/lib/getUnboundedScrollPosition.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactDOMSelection.js": [
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
-      "npm:react@0.13.3/lib/getNodeForCharacterOffset.js",
-      "npm:react@0.13.3/lib/getTextContentAccessor.js"
-    ],
-    "npm:react@0.13.3/lib/SelectEventPlugin.js": [
-      "npm:react@0.13.3/lib/EventConstants.js",
-      "npm:react@0.13.3/lib/EventPropagators.js",
-      "npm:react@0.13.3/lib/ReactInputSelection.js",
-      "npm:react@0.13.3/lib/SyntheticEvent.js",
-      "npm:react@0.13.3/lib/getActiveElement.js",
-      "npm:react@0.13.3/lib/isTextInputElement.js",
-      "npm:react@0.13.3/lib/keyOf.js",
-      "npm:react@0.13.3/lib/shallowEqual.js"
-    ],
-    "npm:react@0.13.3/lib/SyntheticKeyboardEvent.js": [
-      "npm:react@0.13.3/lib/SyntheticUIEvent.js",
-      "npm:react@0.13.3/lib/getEventCharCode.js",
-      "npm:react@0.13.3/lib/getEventKey.js",
-      "npm:react@0.13.3/lib/getEventModifierState.js"
-    ],
-    "npm:react@0.13.3/lib/performanceNow.js": [
-      "npm:react@0.13.3/lib/performance.js"
-    ],
-    "npm:react@0.13.3/lib/ReactServerRendering.js": [
-      "npm:react@0.13.3/lib/ReactElement.js",
-      "npm:react@0.13.3/lib/ReactInstanceHandles.js",
-      "npm:react@0.13.3/lib/ReactMarkupChecksum.js",
-      "npm:react@0.13.3/lib/ReactServerRenderingTransaction.js",
-      "npm:react@0.13.3/lib/emptyObject.js",
-      "npm:react@0.13.3/lib/instantiateReactComponent.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:object-assign@2.1.1.js": [
-      "npm:object-assign@2.1.1/index.js"
-    ],
-    "npm:qs@2.4.1/lib/stringify.js": [
-      "npm:qs@2.4.1/lib/utils.js"
-    ],
-    "npm:react-router@0.13.3/lib/components/RouteHandler.js": [
-      "npm:react@0.13.3.js",
-      "npm:react-router@0.13.3/lib/components/ContextWrapper.js",
-      "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react-router@0.13.3/lib/PropTypes.js"
-    ],
-    "npm:react-router@0.13.3/lib/locations/HashLocation.js": [
-      "npm:react-router@0.13.3/lib/actions/LocationActions.js",
-      "npm:react-router@0.13.3/lib/History.js"
-    ],
-    "npm:react-router@0.13.3/lib/ScrollHistory.js": [
-      "npm:react@0.13.3/lib/invariant.js",
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
-      "npm:react-router@0.13.3/lib/getWindowScrollPosition.js"
-    ],
-    "npm:react-router@0.13.3/lib/Transition.js": [
-      "npm:react-router@0.13.3/lib/Cancellation.js",
-      "npm:react-router@0.13.3/lib/Redirect.js"
-    ],
-    "npm:react-google-analytics@0.2.0.js": [
-      "npm:react-google-analytics@0.2.0/lib/index.js"
-    ],
-    "npm:component-emitter@1.1.2.js": [
-      "npm:component-emitter@1.1.2/index.js"
-    ],
-    "npm:reduce-component@1.0.1.js": [
-      "npm:reduce-component@1.0.1/index.js"
-    ],
-    "github:jspm/nodelibs-process@0.1.1/index.js": [
-      "npm:process@0.10.1.js"
-    ],
     "npm:react@0.13.3/lib/ReactContext.js": [
       "npm:react@0.13.3/lib/Object.assign.js",
       "npm:react@0.13.3/lib/emptyObject.js",
       "npm:react@0.13.3/lib/warning.js",
       "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/traverseAllChildren.js": [
-      "npm:react@0.13.3/lib/ReactElement.js",
-      "npm:react@0.13.3/lib/ReactFragment.js",
-      "npm:react@0.13.3/lib/ReactInstanceHandles.js",
-      "npm:react@0.13.3/lib/getIteratorFn.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "npm:react@0.13.3/lib/warning.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactReconciler.js": [
-      "npm:react@0.13.3/lib/ReactRef.js",
-      "npm:react@0.13.3/lib/ReactElementValidator.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/DOMPropertyOperations.js": [
-      "npm:react@0.13.3/lib/DOMProperty.js",
-      "npm:react@0.13.3/lib/quoteAttributeValueForBrowser.js",
-      "npm:react@0.13.3/lib/warning.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/CSSPropertyOperations.js": [
-      "npm:react@0.13.3/lib/CSSProperty.js",
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
-      "npm:react@0.13.3/lib/camelizeStyleName.js",
-      "npm:react@0.13.3/lib/dangerousStyleValue.js",
-      "npm:react@0.13.3/lib/hyphenateStyleName.js",
-      "npm:react@0.13.3/lib/memoizeStringOnly.js",
-      "npm:react@0.13.3/lib/warning.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/createNodesFromMarkup.js": [
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
-      "npm:react@0.13.3/lib/createArrayFromMixed.js",
-      "npm:react@0.13.3/lib/getMarkupWrap.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactBrowserEventEmitter.js": [
-      "npm:react@0.13.3/lib/EventConstants.js",
-      "npm:react@0.13.3/lib/EventPluginHub.js",
-      "npm:react@0.13.3/lib/EventPluginRegistry.js",
-      "npm:react@0.13.3/lib/ReactEventEmitterMixin.js",
-      "npm:react@0.13.3/lib/ViewportMetrics.js",
-      "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react@0.13.3/lib/isEventSupported.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/containsNode.js": [
-      "npm:react@0.13.3/lib/isTextNode.js"
-    ],
-    "npm:react@0.13.3/lib/instantiateReactComponent.js": [
-      "npm:react@0.13.3/lib/ReactCompositeComponent.js",
-      "npm:react@0.13.3/lib/ReactEmptyComponent.js",
-      "npm:react@0.13.3/lib/ReactNativeComponent.js",
-      "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "npm:react@0.13.3/lib/warning.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactMultiChild.js": [
-      "npm:react@0.13.3/lib/ReactComponentEnvironment.js",
-      "npm:react@0.13.3/lib/ReactMultiChildUpdateTypes.js",
-      "npm:react@0.13.3/lib/ReactReconciler.js",
-      "npm:react@0.13.3/lib/ReactChildReconciler.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/SyntheticCompositionEvent.js": [
-      "npm:react@0.13.3/lib/SyntheticEvent.js"
-    ],
-    "npm:react@0.13.3/lib/EnterLeaveEventPlugin.js": [
-      "npm:react@0.13.3/lib/EventConstants.js",
-      "npm:react@0.13.3/lib/EventPropagators.js",
-      "npm:react@0.13.3/lib/SyntheticMouseEvent.js",
-      "npm:react@0.13.3/lib/ReactMount.js",
-      "npm:react@0.13.3/lib/keyOf.js"
-    ],
-    "npm:react@0.13.3/lib/ReactDOMButton.js": [
-      "npm:react@0.13.3/lib/AutoFocusMixin.js",
-      "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js",
-      "npm:react@0.13.3/lib/ReactClass.js",
-      "npm:react@0.13.3/lib/ReactElement.js",
-      "npm:react@0.13.3/lib/keyMirror.js"
-    ],
-    "npm:react@0.13.3/lib/ReactDOMInput.js": [
-      "npm:react@0.13.3/lib/AutoFocusMixin.js",
-      "npm:react@0.13.3/lib/DOMPropertyOperations.js",
-      "npm:react@0.13.3/lib/LinkedValueUtils.js",
-      "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js",
-      "npm:react@0.13.3/lib/ReactClass.js",
-      "npm:react@0.13.3/lib/ReactElement.js",
-      "npm:react@0.13.3/lib/ReactMount.js",
-      "npm:react@0.13.3/lib/ReactUpdates.js",
-      "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactInputSelection.js": [
-      "npm:react@0.13.3/lib/ReactDOMSelection.js",
-      "npm:react@0.13.3/lib/containsNode.js",
-      "npm:react@0.13.3/lib/focusNode.js",
-      "npm:react@0.13.3/lib/getActiveElement.js"
-    ],
-    "npm:react@0.13.3/lib/SimpleEventPlugin.js": [
-      "npm:react@0.13.3/lib/EventConstants.js",
-      "npm:react@0.13.3/lib/EventPluginUtils.js",
-      "npm:react@0.13.3/lib/EventPropagators.js",
-      "npm:react@0.13.3/lib/SyntheticClipboardEvent.js",
-      "npm:react@0.13.3/lib/SyntheticEvent.js",
-      "npm:react@0.13.3/lib/SyntheticFocusEvent.js",
-      "npm:react@0.13.3/lib/SyntheticKeyboardEvent.js",
-      "npm:react@0.13.3/lib/SyntheticMouseEvent.js",
-      "npm:react@0.13.3/lib/SyntheticDragEvent.js",
-      "npm:react@0.13.3/lib/SyntheticTouchEvent.js",
-      "npm:react@0.13.3/lib/SyntheticUIEvent.js",
-      "npm:react@0.13.3/lib/SyntheticWheelEvent.js",
-      "npm:react@0.13.3/lib/getEventCharCode.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "npm:react@0.13.3/lib/keyOf.js",
-      "npm:react@0.13.3/lib/warning.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactDefaultPerf.js": [
-      "npm:react@0.13.3/lib/DOMProperty.js",
-      "npm:react@0.13.3/lib/ReactDefaultPerfAnalysis.js",
-      "npm:react@0.13.3/lib/ReactMount.js",
-      "npm:react@0.13.3/lib/ReactPerf.js",
-      "npm:react@0.13.3/lib/performanceNow.js"
-    ],
-    "npm:qs@2.4.1/lib/index.js": [
-      "npm:qs@2.4.1/lib/stringify.js",
-      "npm:qs@2.4.1/lib/parse.js"
-    ],
-    "npm:react-router@0.13.3/lib/createRouter.js": [
-      "npm:react@0.13.3.js",
-      "npm:react@0.13.3/lib/warning.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
-      "npm:react-router@0.13.3/lib/actions/LocationActions.js",
-      "npm:react-router@0.13.3/lib/behaviors/ImitateBrowserBehavior.js",
-      "npm:react-router@0.13.3/lib/locations/HashLocation.js",
-      "npm:react-router@0.13.3/lib/locations/HistoryLocation.js",
-      "npm:react-router@0.13.3/lib/locations/RefreshLocation.js",
-      "npm:react-router@0.13.3/lib/locations/StaticLocation.js",
-      "npm:react-router@0.13.3/lib/ScrollHistory.js",
-      "npm:react-router@0.13.3/lib/createRoutesFromReactChildren.js",
-      "npm:react-router@0.13.3/lib/isReactChildren.js",
-      "npm:react-router@0.13.3/lib/Transition.js",
-      "npm:react-router@0.13.3/lib/PropTypes.js",
-      "npm:react-router@0.13.3/lib/Redirect.js",
-      "npm:react-router@0.13.3/lib/History.js",
-      "npm:react-router@0.13.3/lib/Cancellation.js",
-      "npm:react-router@0.13.3/lib/Match.js",
-      "npm:react-router@0.13.3/lib/Route.js",
-      "npm:react-router@0.13.3/lib/supportsHistory.js",
-      "npm:react-router@0.13.3/lib/PathUtils.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:superagent@1.2.0/lib/client.js": [
-      "npm:component-emitter@1.1.2.js",
-      "npm:reduce-component@1.0.1.js"
-    ],
-    "github:jspm/nodelibs-process@0.1.1.js": [
-      "github:jspm/nodelibs-process@0.1.1/index.js"
     ],
     "npm:react@0.13.3/lib/ReactElement.js": [
       "npm:react@0.13.3/lib/ReactContext.js",
@@ -786,116 +86,33 @@ System.config({
       "npm:react@0.13.3/lib/warning.js",
       "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "npm:react@0.13.3/lib/ReactUpdates.js": [
-      "npm:react@0.13.3/lib/CallbackQueue.js",
-      "npm:react@0.13.3/lib/PooledClass.js",
+    "npm:react@0.13.3/lib/ReactElementValidator.js": [
+      "npm:react@0.13.3/lib/ReactElement.js",
+      "npm:react@0.13.3/lib/ReactFragment.js",
+      "npm:react@0.13.3/lib/ReactPropTypeLocations.js",
+      "npm:react@0.13.3/lib/ReactPropTypeLocationNames.js",
       "npm:react@0.13.3/lib/ReactCurrentOwner.js",
-      "npm:react@0.13.3/lib/ReactPerf.js",
-      "npm:react@0.13.3/lib/ReactReconciler.js",
-      "npm:react@0.13.3/lib/Transaction.js",
-      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/ReactNativeComponent.js",
+      "npm:react@0.13.3/lib/getIteratorFn.js",
       "npm:react@0.13.3/lib/invariant.js",
       "npm:react@0.13.3/lib/warning.js",
       "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "npm:react@0.13.3/lib/Danger.js": [
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
-      "npm:react@0.13.3/lib/createNodesFromMarkup.js",
-      "npm:react@0.13.3/lib/emptyFunction.js",
-      "npm:react@0.13.3/lib/getMarkupWrap.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactMount.js": [
-      "npm:react@0.13.3/lib/DOMProperty.js",
-      "npm:react@0.13.3/lib/ReactBrowserEventEmitter.js",
-      "npm:react@0.13.3/lib/ReactCurrentOwner.js",
+    "npm:react@0.13.3/lib/ReactDOM.js": [
       "npm:react@0.13.3/lib/ReactElement.js",
       "npm:react@0.13.3/lib/ReactElementValidator.js",
-      "npm:react@0.13.3/lib/ReactEmptyComponent.js",
-      "npm:react@0.13.3/lib/ReactInstanceHandles.js",
-      "npm:react@0.13.3/lib/ReactInstanceMap.js",
-      "npm:react@0.13.3/lib/ReactMarkupChecksum.js",
-      "npm:react@0.13.3/lib/ReactPerf.js",
-      "npm:react@0.13.3/lib/ReactReconciler.js",
-      "npm:react@0.13.3/lib/ReactUpdateQueue.js",
-      "npm:react@0.13.3/lib/ReactUpdates.js",
-      "npm:react@0.13.3/lib/emptyObject.js",
-      "npm:react@0.13.3/lib/containsNode.js",
-      "npm:react@0.13.3/lib/getReactRootElementInContainer.js",
-      "npm:react@0.13.3/lib/instantiateReactComponent.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "npm:react@0.13.3/lib/setInnerHTML.js",
-      "npm:react@0.13.3/lib/shouldUpdateReactComponent.js",
-      "npm:react@0.13.3/lib/warning.js",
+      "npm:react@0.13.3/lib/mapObject.js",
       "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "npm:react@0.13.3/lib/ReactDOMComponent.js": [
-      "npm:react@0.13.3/lib/CSSPropertyOperations.js",
-      "npm:react@0.13.3/lib/DOMProperty.js",
+    "npm:react@0.13.3/lib/ReactDOMTextComponent.js": [
       "npm:react@0.13.3/lib/DOMPropertyOperations.js",
-      "npm:react@0.13.3/lib/ReactBrowserEventEmitter.js",
       "npm:react@0.13.3/lib/ReactComponentBrowserEnvironment.js",
-      "npm:react@0.13.3/lib/ReactMount.js",
-      "npm:react@0.13.3/lib/ReactMultiChild.js",
-      "npm:react@0.13.3/lib/ReactPerf.js",
+      "npm:react@0.13.3/lib/ReactDOMComponent.js",
       "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react@0.13.3/lib/escapeTextContentForBrowser.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "npm:react@0.13.3/lib/isEventSupported.js",
-      "npm:react@0.13.3/lib/keyOf.js",
-      "npm:react@0.13.3/lib/warning.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
+      "npm:react@0.13.3/lib/escapeTextContentForBrowser.js"
     ],
-    "npm:react@0.13.3/lib/BeforeInputEventPlugin.js": [
-      "npm:react@0.13.3/lib/EventConstants.js",
-      "npm:react@0.13.3/lib/EventPropagators.js",
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
-      "npm:react@0.13.3/lib/FallbackCompositionState.js",
-      "npm:react@0.13.3/lib/SyntheticCompositionEvent.js",
-      "npm:react@0.13.3/lib/SyntheticInputEvent.js",
-      "npm:react@0.13.3/lib/keyOf.js"
-    ],
-    "npm:react@0.13.3/lib/ReactReconcileTransaction.js": [
-      "npm:react@0.13.3/lib/CallbackQueue.js",
-      "npm:react@0.13.3/lib/PooledClass.js",
-      "npm:react@0.13.3/lib/ReactBrowserEventEmitter.js",
-      "npm:react@0.13.3/lib/ReactInputSelection.js",
-      "npm:react@0.13.3/lib/ReactPutListenerQueue.js",
-      "npm:react@0.13.3/lib/Transaction.js",
-      "npm:react@0.13.3/lib/Object.assign.js"
-    ],
-    "npm:qs@2.4.1/index.js": [
-      "npm:qs@2.4.1/lib/index.js"
-    ],
-    "npm:superagent@1.2.0.js": [
-      "npm:superagent@1.2.0/lib/client.js"
-    ],
-    "npm:react@0.13.3/lib/invariant.js": [
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactFragment.js": [
-      "npm:react@0.13.3/lib/ReactElement.js",
-      "npm:react@0.13.3/lib/warning.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/ReactUpdateQueue.js": [
-      "npm:react@0.13.3/lib/ReactLifeCycle.js",
-      "npm:react@0.13.3/lib/ReactCurrentOwner.js",
-      "npm:react@0.13.3/lib/ReactElement.js",
-      "npm:react@0.13.3/lib/ReactInstanceMap.js",
-      "npm:react@0.13.3/lib/ReactUpdates.js",
-      "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "npm:react@0.13.3/lib/warning.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
-    ],
-    "npm:react@0.13.3/lib/DOMChildrenOperations.js": [
-      "npm:react@0.13.3/lib/Danger.js",
-      "npm:react@0.13.3/lib/ReactMultiChildUpdateTypes.js",
-      "npm:react@0.13.3/lib/setTextContent.js",
-      "npm:react@0.13.3/lib/invariant.js",
-      "github:jspm/nodelibs-process@0.1.1.js"
+    "github:jspm/nodelibs-process@0.1.1.js": [
+      "github:jspm/nodelibs-process@0.1.1/index.js"
     ],
     "npm:react@0.13.3/lib/ReactDefaultInjection.js": [
       "npm:react@0.13.3/lib/BeforeInputEventPlugin.js",
@@ -935,32 +152,232 @@ System.config({
       "npm:react@0.13.3/lib/ReactDefaultPerf.js",
       "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "npm:qs@2.4.1.js": [
-      "npm:qs@2.4.1/index.js"
+    "npm:react@0.13.3/lib/ReactInstanceHandles.js": [
+      "npm:react@0.13.3/lib/ReactRootIndex.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "views/home.js": [
-      "npm:react@0.13.3.js",
-      "npm:superagent@1.2.0.js",
-      "npm:react-router@0.13.3.js",
-      "views/faq.js",
-      "views/foot.js"
+    "npm:react@0.13.3/lib/ReactMount.js": [
+      "npm:react@0.13.3/lib/DOMProperty.js",
+      "npm:react@0.13.3/lib/ReactBrowserEventEmitter.js",
+      "npm:react@0.13.3/lib/ReactCurrentOwner.js",
+      "npm:react@0.13.3/lib/ReactElement.js",
+      "npm:react@0.13.3/lib/ReactElementValidator.js",
+      "npm:react@0.13.3/lib/ReactEmptyComponent.js",
+      "npm:react@0.13.3/lib/ReactInstanceHandles.js",
+      "npm:react@0.13.3/lib/ReactInstanceMap.js",
+      "npm:react@0.13.3/lib/ReactMarkupChecksum.js",
+      "npm:react@0.13.3/lib/ReactPerf.js",
+      "npm:react@0.13.3/lib/ReactReconciler.js",
+      "npm:react@0.13.3/lib/ReactUpdateQueue.js",
+      "npm:react@0.13.3/lib/ReactUpdates.js",
+      "npm:react@0.13.3/lib/emptyObject.js",
+      "npm:react@0.13.3/lib/containsNode.js",
+      "npm:react@0.13.3/lib/getReactRootElementInContainer.js",
+      "npm:react@0.13.3/lib/instantiateReactComponent.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "npm:react@0.13.3/lib/setInnerHTML.js",
+      "npm:react@0.13.3/lib/shouldUpdateReactComponent.js",
+      "npm:react@0.13.3/lib/warning.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactPerf.js": [
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactReconciler.js": [
+      "npm:react@0.13.3/lib/ReactRef.js",
+      "npm:react@0.13.3/lib/ReactElementValidator.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactPropTypes.js": [
+      "npm:react@0.13.3/lib/ReactElement.js",
+      "npm:react@0.13.3/lib/ReactFragment.js",
+      "npm:react@0.13.3/lib/ReactPropTypeLocationNames.js",
+      "npm:react@0.13.3/lib/emptyFunction.js"
+    ],
+    "npm:react@0.13.3/lib/ReactServerRendering.js": [
+      "npm:react@0.13.3/lib/ReactElement.js",
+      "npm:react@0.13.3/lib/ReactInstanceHandles.js",
+      "npm:react@0.13.3/lib/ReactMarkupChecksum.js",
+      "npm:react@0.13.3/lib/ReactServerRenderingTransaction.js",
+      "npm:react@0.13.3/lib/emptyObject.js",
+      "npm:react@0.13.3/lib/instantiateReactComponent.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/findDOMNode.js": [
+      "npm:react@0.13.3/lib/ReactCurrentOwner.js",
+      "npm:react@0.13.3/lib/ReactInstanceMap.js",
+      "npm:react@0.13.3/lib/ReactMount.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "npm:react@0.13.3/lib/isNode.js",
+      "npm:react@0.13.3/lib/warning.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/onlyChild.js": [
+      "npm:react@0.13.3/lib/ReactElement.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/invariant.js": [
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactUpdateQueue.js": [
+      "npm:react@0.13.3/lib/ReactLifeCycle.js",
+      "npm:react@0.13.3/lib/ReactCurrentOwner.js",
+      "npm:react@0.13.3/lib/ReactElement.js",
+      "npm:react@0.13.3/lib/ReactInstanceMap.js",
+      "npm:react@0.13.3/lib/ReactUpdates.js",
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "npm:react@0.13.3/lib/warning.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/warning.js": [
+      "npm:react@0.13.3/lib/emptyFunction.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactFragment.js": [
+      "npm:react@0.13.3/lib/ReactElement.js",
+      "npm:react@0.13.3/lib/warning.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/PooledClass.js": [
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/traverseAllChildren.js": [
+      "npm:react@0.13.3/lib/ReactElement.js",
+      "npm:react@0.13.3/lib/ReactFragment.js",
+      "npm:react@0.13.3/lib/ReactInstanceHandles.js",
+      "npm:react@0.13.3/lib/getIteratorFn.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "npm:react@0.13.3/lib/warning.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/EventConstants.js": [
+      "npm:react@0.13.3/lib/keyMirror.js"
+    ],
+    "npm:react@0.13.3/lib/ReactLifeCycle.js": [
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactPropTypeLocations.js": [
+      "npm:react@0.13.3/lib/keyMirror.js"
+    ],
+    "npm:react@0.13.3/lib/ReactPropTypeLocationNames.js": [
+      "github:jspm/nodelibs-process@0.1.1.js"
     ],
     "npm:react@0.13.3/lib/keyMirror.js": [
       "npm:react@0.13.3/lib/invariant.js",
       "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "npm:react@0.13.3/lib/ReactChildren.js": [
-      "npm:react@0.13.3/lib/PooledClass.js",
-      "npm:react@0.13.3/lib/ReactFragment.js",
-      "npm:react@0.13.3/lib/traverseAllChildren.js",
+    "npm:react@0.13.3/lib/ReactNativeComponent.js": [
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/emptyObject.js": [
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/DOMPropertyOperations.js": [
+      "npm:react@0.13.3/lib/DOMProperty.js",
+      "npm:react@0.13.3/lib/quoteAttributeValueForBrowser.js",
       "npm:react@0.13.3/lib/warning.js",
       "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "npm:react@0.13.3/lib/ReactComponent.js": [
-      "npm:react@0.13.3/lib/ReactUpdateQueue.js",
+    "npm:react@0.13.3/lib/ReactComponentBrowserEnvironment.js": [
+      "npm:react@0.13.3/lib/ReactDOMIDOperations.js",
+      "npm:react@0.13.3/lib/ReactMount.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactDOMComponent.js": [
+      "npm:react@0.13.3/lib/CSSPropertyOperations.js",
+      "npm:react@0.13.3/lib/DOMProperty.js",
+      "npm:react@0.13.3/lib/DOMPropertyOperations.js",
+      "npm:react@0.13.3/lib/ReactBrowserEventEmitter.js",
+      "npm:react@0.13.3/lib/ReactComponentBrowserEnvironment.js",
+      "npm:react@0.13.3/lib/ReactMount.js",
+      "npm:react@0.13.3/lib/ReactMultiChild.js",
+      "npm:react@0.13.3/lib/ReactPerf.js",
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/escapeTextContentForBrowser.js",
       "npm:react@0.13.3/lib/invariant.js",
+      "npm:react@0.13.3/lib/isEventSupported.js",
+      "npm:react@0.13.3/lib/keyOf.js",
       "npm:react@0.13.3/lib/warning.js",
       "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/BeforeInputEventPlugin.js": [
+      "npm:react@0.13.3/lib/EventConstants.js",
+      "npm:react@0.13.3/lib/EventPropagators.js",
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
+      "npm:react@0.13.3/lib/FallbackCompositionState.js",
+      "npm:react@0.13.3/lib/SyntheticCompositionEvent.js",
+      "npm:react@0.13.3/lib/SyntheticInputEvent.js",
+      "npm:react@0.13.3/lib/keyOf.js"
+    ],
+    "github:jspm/nodelibs-process@0.1.1/index.js": [
+      "npm:process@0.10.1.js"
+    ],
+    "npm:react@0.13.3/lib/ChangeEventPlugin.js": [
+      "npm:react@0.13.3/lib/EventConstants.js",
+      "npm:react@0.13.3/lib/EventPluginHub.js",
+      "npm:react@0.13.3/lib/EventPropagators.js",
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
+      "npm:react@0.13.3/lib/ReactUpdates.js",
+      "npm:react@0.13.3/lib/SyntheticEvent.js",
+      "npm:react@0.13.3/lib/isEventSupported.js",
+      "npm:react@0.13.3/lib/isTextInputElement.js",
+      "npm:react@0.13.3/lib/keyOf.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/DefaultEventPluginOrder.js": [
+      "npm:react@0.13.3/lib/keyOf.js"
+    ],
+    "npm:react@0.13.3/lib/EnterLeaveEventPlugin.js": [
+      "npm:react@0.13.3/lib/EventConstants.js",
+      "npm:react@0.13.3/lib/EventPropagators.js",
+      "npm:react@0.13.3/lib/SyntheticMouseEvent.js",
+      "npm:react@0.13.3/lib/ReactMount.js",
+      "npm:react@0.13.3/lib/keyOf.js"
+    ],
+    "npm:react@0.13.3/lib/HTMLDOMPropertyConfig.js": [
+      "npm:react@0.13.3/lib/DOMProperty.js",
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js"
+    ],
+    "npm:react@0.13.3/lib/MobileSafariClickEventPlugin.js": [
+      "npm:react@0.13.3/lib/EventConstants.js",
+      "npm:react@0.13.3/lib/emptyFunction.js"
+    ],
+    "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js": [
+      "npm:react@0.13.3/lib/findDOMNode.js"
+    ],
+    "npm:react@0.13.3/lib/ReactDefaultBatchingStrategy.js": [
+      "npm:react@0.13.3/lib/ReactUpdates.js",
+      "npm:react@0.13.3/lib/Transaction.js",
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/emptyFunction.js"
+    ],
+    "npm:react@0.13.3/lib/ReactDOMButton.js": [
+      "npm:react@0.13.3/lib/AutoFocusMixin.js",
+      "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js",
+      "npm:react@0.13.3/lib/ReactClass.js",
+      "npm:react@0.13.3/lib/ReactElement.js",
+      "npm:react@0.13.3/lib/keyMirror.js"
+    ],
+    "npm:react@0.13.3/lib/ReactDOMForm.js": [
+      "npm:react@0.13.3/lib/EventConstants.js",
+      "npm:react@0.13.3/lib/LocalEventTrapMixin.js",
+      "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js",
+      "npm:react@0.13.3/lib/ReactClass.js",
+      "npm:react@0.13.3/lib/ReactElement.js"
+    ],
+    "npm:react@0.13.3/lib/ReactDOMImg.js": [
+      "npm:react@0.13.3/lib/EventConstants.js",
+      "npm:react@0.13.3/lib/LocalEventTrapMixin.js",
+      "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js",
+      "npm:react@0.13.3/lib/ReactClass.js",
+      "npm:react@0.13.3/lib/ReactElement.js"
     ],
     "npm:react@0.13.3/lib/ReactDOMIDOperations.js": [
       "npm:react@0.13.3/lib/CSSPropertyOperations.js",
@@ -972,73 +389,460 @@ System.config({
       "npm:react@0.13.3/lib/setInnerHTML.js",
       "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "npm:react-router@0.13.3/lib/PathUtils.js": [
-      "npm:react@0.13.3/lib/invariant.js",
-      "npm:object-assign@2.1.1.js",
-      "npm:qs@2.4.1.js"
+    "npm:react@0.13.3/lib/ReactDOMIframe.js": [
+      "npm:react@0.13.3/lib/EventConstants.js",
+      "npm:react@0.13.3/lib/LocalEventTrapMixin.js",
+      "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js",
+      "npm:react@0.13.3/lib/ReactClass.js",
+      "npm:react@0.13.3/lib/ReactElement.js"
     ],
-    "npm:react@0.13.3/lib/EventConstants.js": [
-      "npm:react@0.13.3/lib/keyMirror.js"
-    ],
-    "npm:react@0.13.3/lib/ReactComponentBrowserEnvironment.js": [
-      "npm:react@0.13.3/lib/ReactDOMIDOperations.js",
+    "npm:react@0.13.3/lib/ReactDOMInput.js": [
+      "npm:react@0.13.3/lib/AutoFocusMixin.js",
+      "npm:react@0.13.3/lib/DOMPropertyOperations.js",
+      "npm:react@0.13.3/lib/LinkedValueUtils.js",
+      "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js",
+      "npm:react@0.13.3/lib/ReactClass.js",
+      "npm:react@0.13.3/lib/ReactElement.js",
       "npm:react@0.13.3/lib/ReactMount.js",
+      "npm:react@0.13.3/lib/ReactUpdates.js",
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/invariant.js",
       "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "npm:react-router@0.13.3/lib/Route.js": [
+    "npm:react@0.13.3/lib/ReactDOMOption.js": [
+      "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js",
+      "npm:react@0.13.3/lib/ReactClass.js",
+      "npm:react@0.13.3/lib/ReactElement.js",
+      "npm:react@0.13.3/lib/warning.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactDOMSelect.js": [
+      "npm:react@0.13.3/lib/AutoFocusMixin.js",
+      "npm:react@0.13.3/lib/LinkedValueUtils.js",
+      "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js",
+      "npm:react@0.13.3/lib/ReactClass.js",
+      "npm:react@0.13.3/lib/ReactElement.js",
+      "npm:react@0.13.3/lib/ReactUpdates.js",
+      "npm:react@0.13.3/lib/Object.assign.js"
+    ],
+    "npm:react@0.13.3/lib/ReactDOMTextarea.js": [
+      "npm:react@0.13.3/lib/AutoFocusMixin.js",
+      "npm:react@0.13.3/lib/DOMPropertyOperations.js",
+      "npm:react@0.13.3/lib/LinkedValueUtils.js",
+      "npm:react@0.13.3/lib/ReactBrowserComponentMixin.js",
+      "npm:react@0.13.3/lib/ReactClass.js",
+      "npm:react@0.13.3/lib/ReactElement.js",
+      "npm:react@0.13.3/lib/ReactUpdates.js",
       "npm:react@0.13.3/lib/Object.assign.js",
       "npm:react@0.13.3/lib/invariant.js",
       "npm:react@0.13.3/lib/warning.js",
-      "npm:react-router@0.13.3/lib/PathUtils.js"
+      "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "npm:react@0.13.3/lib/EventPluginUtils.js": [
+    "npm:react@0.13.3/lib/ReactEventListener.js": [
+      "npm:react@0.13.3/lib/EventListener.js",
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
+      "npm:react@0.13.3/lib/PooledClass.js",
+      "npm:react@0.13.3/lib/ReactInstanceHandles.js",
+      "npm:react@0.13.3/lib/ReactMount.js",
+      "npm:react@0.13.3/lib/ReactUpdates.js",
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/getEventTarget.js",
+      "npm:react@0.13.3/lib/getUnboundedScrollPosition.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactInjection.js": [
+      "npm:react@0.13.3/lib/DOMProperty.js",
+      "npm:react@0.13.3/lib/EventPluginHub.js",
+      "npm:react@0.13.3/lib/ReactComponentEnvironment.js",
+      "npm:react@0.13.3/lib/ReactClass.js",
+      "npm:react@0.13.3/lib/ReactEmptyComponent.js",
+      "npm:react@0.13.3/lib/ReactBrowserEventEmitter.js",
+      "npm:react@0.13.3/lib/ReactNativeComponent.js",
+      "npm:react@0.13.3/lib/ReactDOMComponent.js",
+      "npm:react@0.13.3/lib/ReactPerf.js",
+      "npm:react@0.13.3/lib/ReactRootIndex.js",
+      "npm:react@0.13.3/lib/ReactUpdates.js"
+    ],
+    "npm:react@0.13.3/lib/ReactReconcileTransaction.js": [
+      "npm:react@0.13.3/lib/CallbackQueue.js",
+      "npm:react@0.13.3/lib/PooledClass.js",
+      "npm:react@0.13.3/lib/ReactBrowserEventEmitter.js",
+      "npm:react@0.13.3/lib/ReactInputSelection.js",
+      "npm:react@0.13.3/lib/ReactPutListenerQueue.js",
+      "npm:react@0.13.3/lib/Transaction.js",
+      "npm:react@0.13.3/lib/Object.assign.js"
+    ],
+    "npm:react@0.13.3/lib/SelectEventPlugin.js": [
       "npm:react@0.13.3/lib/EventConstants.js",
+      "npm:react@0.13.3/lib/EventPropagators.js",
+      "npm:react@0.13.3/lib/ReactInputSelection.js",
+      "npm:react@0.13.3/lib/SyntheticEvent.js",
+      "npm:react@0.13.3/lib/getActiveElement.js",
+      "npm:react@0.13.3/lib/isTextInputElement.js",
+      "npm:react@0.13.3/lib/keyOf.js",
+      "npm:react@0.13.3/lib/shallowEqual.js"
+    ],
+    "npm:react@0.13.3/lib/SimpleEventPlugin.js": [
+      "npm:react@0.13.3/lib/EventConstants.js",
+      "npm:react@0.13.3/lib/EventPluginUtils.js",
+      "npm:react@0.13.3/lib/EventPropagators.js",
+      "npm:react@0.13.3/lib/SyntheticClipboardEvent.js",
+      "npm:react@0.13.3/lib/SyntheticEvent.js",
+      "npm:react@0.13.3/lib/SyntheticFocusEvent.js",
+      "npm:react@0.13.3/lib/SyntheticKeyboardEvent.js",
+      "npm:react@0.13.3/lib/SyntheticMouseEvent.js",
+      "npm:react@0.13.3/lib/SyntheticDragEvent.js",
+      "npm:react@0.13.3/lib/SyntheticTouchEvent.js",
+      "npm:react@0.13.3/lib/SyntheticUIEvent.js",
+      "npm:react@0.13.3/lib/SyntheticWheelEvent.js",
+      "npm:react@0.13.3/lib/getEventCharCode.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "npm:react@0.13.3/lib/keyOf.js",
+      "npm:react@0.13.3/lib/warning.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/SVGDOMPropertyConfig.js": [
+      "npm:react@0.13.3/lib/DOMProperty.js"
+    ],
+    "npm:react@0.13.3/lib/createFullPageComponent.js": [
+      "npm:react@0.13.3/lib/ReactClass.js",
+      "npm:react@0.13.3/lib/ReactElement.js",
       "npm:react@0.13.3/lib/invariant.js",
       "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "npm:react@0.13.3/lib/ReactDOMTextComponent.js": [
-      "npm:react@0.13.3/lib/DOMPropertyOperations.js",
-      "npm:react@0.13.3/lib/ReactComponentBrowserEnvironment.js",
-      "npm:react@0.13.3/lib/ReactDOMComponent.js",
+    "npm:react@0.13.3/lib/ReactDefaultPerf.js": [
+      "npm:react@0.13.3/lib/DOMProperty.js",
+      "npm:react@0.13.3/lib/ReactDefaultPerfAnalysis.js",
+      "npm:react@0.13.3/lib/ReactMount.js",
+      "npm:react@0.13.3/lib/ReactPerf.js",
+      "npm:react@0.13.3/lib/performanceNow.js"
+    ],
+    "npm:react@0.13.3/lib/DOMProperty.js": [
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactBrowserEventEmitter.js": [
+      "npm:react@0.13.3/lib/EventConstants.js",
+      "npm:react@0.13.3/lib/EventPluginHub.js",
+      "npm:react@0.13.3/lib/EventPluginRegistry.js",
+      "npm:react@0.13.3/lib/ReactEventEmitterMixin.js",
+      "npm:react@0.13.3/lib/ViewportMetrics.js",
       "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/isEventSupported.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactEmptyComponent.js": [
+      "npm:react@0.13.3/lib/ReactElement.js",
+      "npm:react@0.13.3/lib/ReactInstanceMap.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactMarkupChecksum.js": [
+      "npm:react@0.13.3/lib/adler32.js"
+    ],
+    "npm:react@0.13.3/lib/ReactUpdates.js": [
+      "npm:react@0.13.3/lib/CallbackQueue.js",
+      "npm:react@0.13.3/lib/PooledClass.js",
+      "npm:react@0.13.3/lib/ReactCurrentOwner.js",
+      "npm:react@0.13.3/lib/ReactPerf.js",
+      "npm:react@0.13.3/lib/ReactReconciler.js",
+      "npm:react@0.13.3/lib/Transaction.js",
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "npm:react@0.13.3/lib/warning.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/containsNode.js": [
+      "npm:react@0.13.3/lib/isTextNode.js"
+    ],
+    "npm:react@0.13.3/lib/instantiateReactComponent.js": [
+      "npm:react@0.13.3/lib/ReactCompositeComponent.js",
+      "npm:react@0.13.3/lib/ReactEmptyComponent.js",
+      "npm:react@0.13.3/lib/ReactNativeComponent.js",
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "npm:react@0.13.3/lib/warning.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/setInnerHTML.js": [
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/shouldUpdateReactComponent.js": [
+      "npm:react@0.13.3/lib/warning.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactRef.js": [
+      "npm:react@0.13.3/lib/ReactOwner.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactServerRenderingTransaction.js": [
+      "npm:react@0.13.3/lib/PooledClass.js",
+      "npm:react@0.13.3/lib/CallbackQueue.js",
+      "npm:react@0.13.3/lib/ReactPutListenerQueue.js",
+      "npm:react@0.13.3/lib/Transaction.js",
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/emptyFunction.js"
+    ],
+    "npm:react@0.13.3/lib/ReactMultiChild.js": [
+      "npm:react@0.13.3/lib/ReactComponentEnvironment.js",
+      "npm:react@0.13.3/lib/ReactMultiChildUpdateTypes.js",
+      "npm:react@0.13.3/lib/ReactReconciler.js",
+      "npm:react@0.13.3/lib/ReactChildReconciler.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/quoteAttributeValueForBrowser.js": [
       "npm:react@0.13.3/lib/escapeTextContentForBrowser.js"
     ],
-    "npm:react-router@0.13.3/lib/PropTypes.js": [
-      "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react@0.13.3.js",
-      "npm:react-router@0.13.3/lib/Route.js"
+    "npm:react@0.13.3/lib/CSSPropertyOperations.js": [
+      "npm:react@0.13.3/lib/CSSProperty.js",
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
+      "npm:react@0.13.3/lib/camelizeStyleName.js",
+      "npm:react@0.13.3/lib/dangerousStyleValue.js",
+      "npm:react@0.13.3/lib/hyphenateStyleName.js",
+      "npm:react@0.13.3/lib/memoizeStringOnly.js",
+      "npm:react@0.13.3/lib/warning.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "npm:react@0.13.3/lib/React.js": [
+    "npm:react@0.13.3/lib/isEventSupported.js": [
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js"
+    ],
+    "npm:react@0.13.3/lib/EventPropagators.js": [
+      "npm:react@0.13.3/lib/EventConstants.js",
+      "npm:react@0.13.3/lib/EventPluginHub.js",
+      "npm:react@0.13.3/lib/accumulateInto.js",
+      "npm:react@0.13.3/lib/forEachAccumulated.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/FallbackCompositionState.js": [
+      "npm:react@0.13.3/lib/PooledClass.js",
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/getTextContentAccessor.js"
+    ],
+    "npm:react@0.13.3/lib/SyntheticCompositionEvent.js": [
+      "npm:react@0.13.3/lib/SyntheticEvent.js"
+    ],
+    "npm:react@0.13.3/lib/SyntheticInputEvent.js": [
+      "npm:react@0.13.3/lib/SyntheticEvent.js"
+    ],
+    "npm:process@0.10.1.js": [
+      "npm:process@0.10.1/browser.js"
+    ],
+    "npm:react@0.13.3/lib/SyntheticEvent.js": [
+      "npm:react@0.13.3/lib/PooledClass.js",
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/emptyFunction.js",
+      "npm:react@0.13.3/lib/getEventTarget.js"
+    ],
+    "npm:react@0.13.3/lib/EventPluginHub.js": [
+      "npm:react@0.13.3/lib/EventPluginRegistry.js",
       "npm:react@0.13.3/lib/EventPluginUtils.js",
-      "npm:react@0.13.3/lib/ReactChildren.js",
-      "npm:react@0.13.3/lib/ReactComponent.js",
-      "npm:react@0.13.3/lib/ReactClass.js",
+      "npm:react@0.13.3/lib/accumulateInto.js",
+      "npm:react@0.13.3/lib/forEachAccumulated.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/SyntheticMouseEvent.js": [
+      "npm:react@0.13.3/lib/SyntheticUIEvent.js",
+      "npm:react@0.13.3/lib/ViewportMetrics.js",
+      "npm:react@0.13.3/lib/getEventModifierState.js"
+    ],
+    "npm:react@0.13.3/lib/Transaction.js": [
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/AutoFocusMixin.js": [
+      "npm:react@0.13.3/lib/focusNode.js"
+    ],
+    "npm:react@0.13.3/lib/LocalEventTrapMixin.js": [
+      "npm:react@0.13.3/lib/ReactBrowserEventEmitter.js",
+      "npm:react@0.13.3/lib/accumulateInto.js",
+      "npm:react@0.13.3/lib/forEachAccumulated.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/DOMChildrenOperations.js": [
+      "npm:react@0.13.3/lib/Danger.js",
+      "npm:react@0.13.3/lib/ReactMultiChildUpdateTypes.js",
+      "npm:react@0.13.3/lib/setTextContent.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/LinkedValueUtils.js": [
+      "npm:react@0.13.3/lib/ReactPropTypes.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/EventListener.js": [
+      "npm:react@0.13.3/lib/emptyFunction.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactComponentEnvironment.js": [
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/CallbackQueue.js": [
+      "npm:react@0.13.3/lib/PooledClass.js",
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactInputSelection.js": [
+      "npm:react@0.13.3/lib/ReactDOMSelection.js",
+      "npm:react@0.13.3/lib/containsNode.js",
+      "npm:react@0.13.3/lib/focusNode.js",
+      "npm:react@0.13.3/lib/getActiveElement.js"
+    ],
+    "npm:react@0.13.3/lib/ReactPutListenerQueue.js": [
+      "npm:react@0.13.3/lib/PooledClass.js",
+      "npm:react@0.13.3/lib/ReactBrowserEventEmitter.js",
+      "npm:react@0.13.3/lib/Object.assign.js"
+    ],
+    "npm:react@0.13.3/lib/SyntheticFocusEvent.js": [
+      "npm:react@0.13.3/lib/SyntheticUIEvent.js"
+    ],
+    "npm:react@0.13.3/lib/SyntheticClipboardEvent.js": [
+      "npm:react@0.13.3/lib/SyntheticEvent.js"
+    ],
+    "npm:react@0.13.3/lib/SyntheticKeyboardEvent.js": [
+      "npm:react@0.13.3/lib/SyntheticUIEvent.js",
+      "npm:react@0.13.3/lib/getEventCharCode.js",
+      "npm:react@0.13.3/lib/getEventKey.js",
+      "npm:react@0.13.3/lib/getEventModifierState.js"
+    ],
+    "npm:react@0.13.3/lib/SyntheticTouchEvent.js": [
+      "npm:react@0.13.3/lib/SyntheticUIEvent.js",
+      "npm:react@0.13.3/lib/getEventModifierState.js"
+    ],
+    "npm:react@0.13.3/lib/SyntheticDragEvent.js": [
+      "npm:react@0.13.3/lib/SyntheticMouseEvent.js"
+    ],
+    "npm:react@0.13.3/lib/SyntheticUIEvent.js": [
+      "npm:react@0.13.3/lib/SyntheticEvent.js",
+      "npm:react@0.13.3/lib/getEventTarget.js"
+    ],
+    "npm:react@0.13.3/lib/SyntheticWheelEvent.js": [
+      "npm:react@0.13.3/lib/SyntheticMouseEvent.js"
+    ],
+    "npm:react@0.13.3/lib/ReactDefaultPerfAnalysis.js": [
+      "npm:react@0.13.3/lib/Object.assign.js"
+    ],
+    "npm:react@0.13.3/lib/performanceNow.js": [
+      "npm:react@0.13.3/lib/performance.js"
+    ],
+    "npm:react@0.13.3/lib/ReactEventEmitterMixin.js": [
+      "npm:react@0.13.3/lib/EventPluginHub.js"
+    ],
+    "npm:react@0.13.3/lib/EventPluginRegistry.js": [
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactCompositeComponent.js": [
+      "npm:react@0.13.3/lib/ReactComponentEnvironment.js",
       "npm:react@0.13.3/lib/ReactContext.js",
       "npm:react@0.13.3/lib/ReactCurrentOwner.js",
       "npm:react@0.13.3/lib/ReactElement.js",
       "npm:react@0.13.3/lib/ReactElementValidator.js",
-      "npm:react@0.13.3/lib/ReactDOM.js",
-      "npm:react@0.13.3/lib/ReactDOMTextComponent.js",
-      "npm:react@0.13.3/lib/ReactDefaultInjection.js",
-      "npm:react@0.13.3/lib/ReactInstanceHandles.js",
-      "npm:react@0.13.3/lib/ReactMount.js",
+      "npm:react@0.13.3/lib/ReactInstanceMap.js",
+      "npm:react@0.13.3/lib/ReactLifeCycle.js",
+      "npm:react@0.13.3/lib/ReactNativeComponent.js",
       "npm:react@0.13.3/lib/ReactPerf.js",
-      "npm:react@0.13.3/lib/ReactPropTypes.js",
+      "npm:react@0.13.3/lib/ReactPropTypeLocations.js",
+      "npm:react@0.13.3/lib/ReactPropTypeLocationNames.js",
       "npm:react@0.13.3/lib/ReactReconciler.js",
-      "npm:react@0.13.3/lib/ReactServerRendering.js",
+      "npm:react@0.13.3/lib/ReactUpdates.js",
       "npm:react@0.13.3/lib/Object.assign.js",
-      "npm:react@0.13.3/lib/findDOMNode.js",
-      "npm:react@0.13.3/lib/onlyChild.js",
-      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
+      "npm:react@0.13.3/lib/emptyObject.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "npm:react@0.13.3/lib/shouldUpdateReactComponent.js",
+      "npm:react@0.13.3/lib/warning.js",
       "github:jspm/nodelibs-process@0.1.1.js"
     ],
-    "npm:react-router@0.13.3/lib/components/DefaultRoute.js": [
-      "npm:react-router@0.13.3/lib/PropTypes.js",
-      "npm:react-router@0.13.3/lib/components/RouteHandler.js",
-      "npm:react-router@0.13.3/lib/components/Route.js"
+    "npm:react@0.13.3/lib/isTextNode.js": [
+      "npm:react@0.13.3/lib/isNode.js"
     ],
-    "npm:react@0.13.3/react.js": [
-      "npm:react@0.13.3/lib/React.js"
+    "npm:react@0.13.3/lib/ReactOwner.js": [
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/ReactMultiChildUpdateTypes.js": [
+      "npm:react@0.13.3/lib/keyMirror.js"
+    ],
+    "npm:react@0.13.3/lib/ReactChildReconciler.js": [
+      "npm:react@0.13.3/lib/ReactReconciler.js",
+      "npm:react@0.13.3/lib/flattenChildren.js",
+      "npm:react@0.13.3/lib/instantiateReactComponent.js",
+      "npm:react@0.13.3/lib/shouldUpdateReactComponent.js"
+    ],
+    "npm:react@0.13.3/lib/camelizeStyleName.js": [
+      "npm:react@0.13.3/lib/camelize.js"
+    ],
+    "npm:react@0.13.3/lib/dangerousStyleValue.js": [
+      "npm:react@0.13.3/lib/CSSProperty.js"
+    ],
+    "npm:react@0.13.3/lib/hyphenateStyleName.js": [
+      "npm:react@0.13.3/lib/hyphenate.js"
+    ],
+    "npm:react@0.13.3/lib/accumulateInto.js": [
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/getTextContentAccessor.js": [
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js"
+    ],
+    "npm:react@0.13.3/lib/Danger.js": [
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
+      "npm:react@0.13.3/lib/createNodesFromMarkup.js",
+      "npm:react@0.13.3/lib/emptyFunction.js",
+      "npm:react@0.13.3/lib/getMarkupWrap.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/setTextContent.js": [
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
+      "npm:react@0.13.3/lib/escapeTextContentForBrowser.js",
+      "npm:react@0.13.3/lib/setInnerHTML.js"
+    ],
+    "npm:react@0.13.3/lib/ReactDOMSelection.js": [
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
+      "npm:react@0.13.3/lib/getNodeForCharacterOffset.js",
+      "npm:react@0.13.3/lib/getTextContentAccessor.js"
+    ],
+    "npm:react@0.13.3/lib/getEventKey.js": [
+      "npm:react@0.13.3/lib/getEventCharCode.js"
+    ],
+    "npm:react@0.13.3/lib/performance.js": [
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js"
+    ],
+    "npm:react@0.13.3/lib/flattenChildren.js": [
+      "npm:react@0.13.3/lib/traverseAllChildren.js",
+      "npm:react@0.13.3/lib/warning.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/createNodesFromMarkup.js": [
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
+      "npm:react@0.13.3/lib/createArrayFromMixed.js",
+      "npm:react@0.13.3/lib/getMarkupWrap.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/getMarkupWrap.js": [
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react@0.13.3/lib/createArrayFromMixed.js": [
+      "npm:react@0.13.3/lib/toArray.js"
+    ],
+    "npm:react@0.13.3/lib/toArray.js": [
+      "npm:react@0.13.3/lib/invariant.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react-router@0.13.3.js": [
+      "npm:react-router@0.13.3/lib.js"
+    ],
+    "npm:react-router@0.13.3/lib.js": [
+      "npm:react-router@0.13.3/lib/index.js"
     ],
     "npm:react-router@0.13.3/lib/index.js": [
       "npm:react-router@0.13.3/lib/components/DefaultRoute.js",
@@ -1062,23 +866,176 @@ System.config({
       "npm:react-router@0.13.3/lib/createRouter.js",
       "npm:react-router@0.13.3/lib/runRouter.js"
     ],
-    "npm:react@0.13.3.js": [
-      "npm:react@0.13.3/react.js"
-    ],
-    "npm:react-router@0.13.3/lib.js": [
-      "npm:react-router@0.13.3/lib/index.js"
-    ],
-    "npm:react-router@0.13.3.js": [
-      "npm:react-router@0.13.3/lib.js"
-    ],
-    "views/app.js": [
+    "npm:react-router@0.13.3/lib/components/Link.js": [
       "npm:react@0.13.3.js",
-      "npm:react-router@0.13.3.js",
-      "npm:react-google-analytics@0.2.0.js",
-      "views/home.js",
-      "views/share.js",
-      "views/head.js",
-      "views/error.js"
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react-router@0.13.3/lib/PropTypes.js"
+    ],
+    "npm:react-router@0.13.3/lib/components/DefaultRoute.js": [
+      "npm:react-router@0.13.3/lib/PropTypes.js",
+      "npm:react-router@0.13.3/lib/components/RouteHandler.js",
+      "npm:react-router@0.13.3/lib/components/Route.js"
+    ],
+    "npm:react-router@0.13.3/lib/components/NotFoundRoute.js": [
+      "npm:react-router@0.13.3/lib/PropTypes.js",
+      "npm:react-router@0.13.3/lib/components/RouteHandler.js",
+      "npm:react-router@0.13.3/lib/components/Route.js"
+    ],
+    "npm:react-router@0.13.3/lib/components/Redirect.js": [
+      "npm:react-router@0.13.3/lib/PropTypes.js",
+      "npm:react-router@0.13.3/lib/components/Route.js"
+    ],
+    "npm:react-router@0.13.3/lib/components/Route.js": [
+      "npm:react@0.13.3.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "npm:react-router@0.13.3/lib/PropTypes.js",
+      "npm:react-router@0.13.3/lib/components/RouteHandler.js"
+    ],
+    "npm:react-router@0.13.3/lib/components/RouteHandler.js": [
+      "npm:react@0.13.3.js",
+      "npm:react-router@0.13.3/lib/components/ContextWrapper.js",
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react-router@0.13.3/lib/PropTypes.js"
+    ],
+    "npm:react-router@0.13.3/lib/locations/HashLocation.js": [
+      "npm:react-router@0.13.3/lib/actions/LocationActions.js",
+      "npm:react-router@0.13.3/lib/History.js"
+    ],
+    "npm:react-router@0.13.3/lib/locations/HistoryLocation.js": [
+      "npm:react-router@0.13.3/lib/actions/LocationActions.js",
+      "npm:react-router@0.13.3/lib/History.js"
+    ],
+    "npm:react-router@0.13.3/lib/locations/RefreshLocation.js": [
+      "npm:react-router@0.13.3/lib/locations/HistoryLocation.js",
+      "npm:react-router@0.13.3/lib/History.js"
+    ],
+    "npm:react-router@0.13.3/lib/locations/StaticLocation.js": [
+      "npm:react@0.13.3/lib/invariant.js"
+    ],
+    "npm:react-router@0.13.3/lib/behaviors/ImitateBrowserBehavior.js": [
+      "npm:react-router@0.13.3/lib/actions/LocationActions.js"
+    ],
+    "npm:react-router@0.13.3/lib/locations/TestLocation.js": [
+      "npm:react@0.13.3/lib/invariant.js",
+      "npm:react-router@0.13.3/lib/actions/LocationActions.js",
+      "npm:react-router@0.13.3/lib/History.js"
+    ],
+    "npm:react-router@0.13.3/lib/History.js": [
+      "npm:react@0.13.3/lib/invariant.js",
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js"
+    ],
+    "npm:react-router@0.13.3/lib/Navigation.js": [
+      "npm:react-router@0.13.3/lib/PropTypes.js"
+    ],
+    "npm:react-router@0.13.3/lib/State.js": [
+      "npm:react-router@0.13.3/lib/PropTypes.js"
+    ],
+    "npm:react-router@0.13.3/lib/createRoutesFromReactChildren.js": [
+      "npm:react@0.13.3.js",
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/warning.js",
+      "npm:react-router@0.13.3/lib/components/DefaultRoute.js",
+      "npm:react-router@0.13.3/lib/components/NotFoundRoute.js",
+      "npm:react-router@0.13.3/lib/components/Redirect.js",
+      "npm:react-router@0.13.3/lib/Route.js"
+    ],
+    "npm:react-router@0.13.3/lib/Route.js": [
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "npm:react@0.13.3/lib/warning.js",
+      "npm:react-router@0.13.3/lib/PathUtils.js"
+    ],
+    "npm:react-router@0.13.3/lib/createRouter.js": [
+      "npm:react@0.13.3.js",
+      "npm:react@0.13.3/lib/warning.js",
+      "npm:react@0.13.3/lib/invariant.js",
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
+      "npm:react-router@0.13.3/lib/actions/LocationActions.js",
+      "npm:react-router@0.13.3/lib/behaviors/ImitateBrowserBehavior.js",
+      "npm:react-router@0.13.3/lib/locations/HashLocation.js",
+      "npm:react-router@0.13.3/lib/locations/HistoryLocation.js",
+      "npm:react-router@0.13.3/lib/locations/RefreshLocation.js",
+      "npm:react-router@0.13.3/lib/locations/StaticLocation.js",
+      "npm:react-router@0.13.3/lib/ScrollHistory.js",
+      "npm:react-router@0.13.3/lib/createRoutesFromReactChildren.js",
+      "npm:react-router@0.13.3/lib/isReactChildren.js",
+      "npm:react-router@0.13.3/lib/Transition.js",
+      "npm:react-router@0.13.3/lib/PropTypes.js",
+      "npm:react-router@0.13.3/lib/Redirect.js",
+      "npm:react-router@0.13.3/lib/History.js",
+      "npm:react-router@0.13.3/lib/Cancellation.js",
+      "npm:react-router@0.13.3/lib/Match.js",
+      "npm:react-router@0.13.3/lib/Route.js",
+      "npm:react-router@0.13.3/lib/supportsHistory.js",
+      "npm:react-router@0.13.3/lib/PathUtils.js",
+      "github:jspm/nodelibs-process@0.1.1.js"
+    ],
+    "npm:react-router@0.13.3/lib/runRouter.js": [
+      "npm:react-router@0.13.3/lib/createRouter.js"
+    ],
+    "npm:react-router@0.13.3/lib/PropTypes.js": [
+      "npm:react@0.13.3/lib/Object.assign.js",
+      "npm:react@0.13.3.js",
+      "npm:react-router@0.13.3/lib/Route.js"
+    ],
+    "npm:react-router@0.13.3/lib/components/ContextWrapper.js": [
+      "npm:react@0.13.3.js"
+    ],
+    "npm:react-router@0.13.3/lib/PathUtils.js": [
+      "npm:react@0.13.3/lib/invariant.js",
+      "npm:object-assign@2.1.1.js",
+      "npm:qs@2.4.1.js"
+    ],
+    "npm:react-router@0.13.3/lib/isReactChildren.js": [
+      "npm:react@0.13.3.js"
+    ],
+    "npm:react-router@0.13.3/lib/ScrollHistory.js": [
+      "npm:react@0.13.3/lib/invariant.js",
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js",
+      "npm:react-router@0.13.3/lib/getWindowScrollPosition.js"
+    ],
+    "npm:react-router@0.13.3/lib/Transition.js": [
+      "npm:react-router@0.13.3/lib/Cancellation.js",
+      "npm:react-router@0.13.3/lib/Redirect.js"
+    ],
+    "npm:react-router@0.13.3/lib/Match.js": [
+      "npm:react-router@0.13.3/lib/PathUtils.js"
+    ],
+    "npm:qs@2.4.1.js": [
+      "npm:qs@2.4.1/index.js"
+    ],
+    "npm:object-assign@2.1.1.js": [
+      "npm:object-assign@2.1.1/index.js"
+    ],
+    "npm:react-router@0.13.3/lib/getWindowScrollPosition.js": [
+      "npm:react@0.13.3/lib/invariant.js",
+      "npm:react@0.13.3/lib/ExecutionEnvironment.js"
+    ],
+    "npm:qs@2.4.1/index.js": [
+      "npm:qs@2.4.1/lib/index.js"
+    ],
+    "npm:qs@2.4.1/lib/index.js": [
+      "npm:qs@2.4.1/lib/stringify.js",
+      "npm:qs@2.4.1/lib/parse.js"
+    ],
+    "npm:qs@2.4.1/lib/stringify.js": [
+      "npm:qs@2.4.1/lib/utils.js"
+    ],
+    "npm:qs@2.4.1/lib/parse.js": [
+      "npm:qs@2.4.1/lib/utils.js"
+    ],
+    "npm:superagent@1.2.0.js": [
+      "npm:superagent@1.2.0/lib/client.js"
+    ],
+    "npm:superagent@1.2.0/lib/client.js": [
+      "npm:component-emitter@1.1.2.js",
+      "npm:reduce-component@1.0.1.js"
+    ],
+    "npm:component-emitter@1.1.2.js": [
+      "npm:component-emitter@1.1.2/index.js"
+    ],
+    "npm:reduce-component@1.0.1.js": [
+      "npm:reduce-component@1.0.1/index.js"
     ]
   },
 
