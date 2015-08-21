@@ -236,8 +236,18 @@ h3 {
   margin-bottom: 20px;
 }
 
+.error .col-md-12 {
+  margin-top: -1px;
+}
+
 .error a {
   color: #fff;
+}
+
+.error-logo {
+  position: absolute;
+  top: 50px;
+  left: 15px;
 }
 
 .vertical-center {
