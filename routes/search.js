@@ -3,6 +3,9 @@ import co from 'co';
 import lookup from '../lib/lookup';
 import services from '../lib/services';
 
+import debuglog from 'debug';
+const debug = debuglog('match.audio:search');
+
 module.exports = function* () {
   const url = parse(this.request.body.url);
   this.assert(url.host, 400, {error: {message: 'You need to submit a url.'}});
@@ -26,17 +29,21 @@ module.exports = function* () {
   yield this.db.matches.save({_id: item.service + '$$' + item.id, 'created_at': new Date(), services: matches});
   this.body = item;
 
-  process.nextTick(co.wrap(function* (){
+  process.nextTick(() => {
     for (let service of services) {
       if (service.id === item.service) {
         continue;
       }
       matches[service.id] = {service: service.id};
-      const match = yield service.search(item);
-      match.matched_at = new Date(); // eslint-disable-line camelcase
-      const update = {};
-      update['services.' + match.service] = match;
-      yield this.db.matches.updateOne({_id: item.service + '$$' + item.id}, {'$set': update});
+      co(function* (){
+        const match = yield service.search(item);
+        match.matched_at = new Date(); // eslint-disable-line camelcase
+        const update = {};
+        update['services.' + match.service] = match;
+        yield this.db.matches.updateOne({_id: item.service + '$$' + item.id}, {'$set': update});
+      }.bind(this)).catch((err) => {
+        debug(err);
+      });
     }
-  }.bind(this)));
+  });
 };

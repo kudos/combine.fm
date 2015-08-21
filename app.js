@@ -16,33 +16,14 @@ import share from './routes/share';
 import itunesProxy from './routes/itunes-proxy';
 import { routes } from './views/app';
 import createHandler from './lib/react-handler';
+import errorHandler from './lib/error-handler';
 
 import debuglog from 'debug';
 const debug = debuglog('match.audio');
 
 const app = koa();
 
-app.use(function* (next) {
-  this.set('Server', 'Nintendo 64');
-  try {
-    yield next;
-  } catch (err) {
-    if (!err.status) {
-      debug('Error: %o', err);
-      throw err;
-    } else if (err.status === 404) {
-      let Handler = yield createHandler(routes, this.request.url);
-
-      let App = React.createFactory(Handler);
-      let content = React.renderToString(new App());
-
-      this.body = '<!doctype html>\n' + content;
-    } else {
-      debug('Error: %o', err);
-      throw err;
-    }
-  }
-});
+app.use(errorHandler(routes));
 
 app.use(bodyparser());
 app.use(compress({flush: zlib.Z_SYNC_FLUSH }));

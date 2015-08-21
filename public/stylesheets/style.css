@@ -214,38 +214,36 @@ h3 {
   margin-bottom: 7px;
 }
 
-.js-video {
-  height: 0;
-  padding-top: 25px;
-  padding-bottom: 67.5%;
-  margin-bottom: 10px;
-  position: relative;
-  overflow: hidden;
-}
-
-.js-video.widescreen {
-  padding-bottom: 57.25%;
-}
-
-.js-video embed, .js-video iframe, .js-video object, .js-video video {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
+.error {
+  background: #FE4365;
+  color: #febdc9;
 }
 
 .error h1, .error h2 {
-  font-weight: 300;
-  text-align: center;
+  font-weight: 100;
 }
 
 .error .main h1 {
   font-size: 2em;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+  color: #fff;
 }
 
 .error h2 {
+  color: #ff7c94;
   font-size: 4em;
-  margin-top: 50px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.error a {
+  color: #fff;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
 }

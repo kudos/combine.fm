@@ -31,15 +31,13 @@ export default function* (serviceId, type, itemId, format, next) {
   const shares = formatAndSort(doc.services, serviceId);
 
   if (format === 'json') {
-    this.body = {shares: shares};
-  } else {
-    const Handler = yield createHandler(routes, this.request.url);
-
-    const App = React.createFactory(Handler);
-    let content = React.renderToString(new App({shares: shares}));
-
-    content = content.replace('</body></html>', '<script>var shares = ' + JSON.stringify(shares) + '</script></body></html>');
-
-    this.body = '<!doctype html>\n' + content;
+    return this.body = {shares: shares};
   }
+
+  const Handler = yield createHandler(routes, this.request.url);
+  const App = React.createFactory(Handler);
+  let content = React.renderToString(new App({shares: shares}));
+  content = content.replace('</body></html>', '<script>var shares = ' + JSON.stringify(shares) + '</script></body></html>');
+
+  this.body = '<!doctype html>\n' + content;
 };

@@ -5,6 +5,7 @@ import Home from './home';
 import Share from './share';
 import Head from './head';
 import ErrorView from './error';
+import NotFound from './notfound';
 
 const App = React.createClass({
   render: function () {
@@ -27,7 +28,7 @@ const routes = (
   <Route name='home' handler={App} path='/'>
     <DefaultRoute handler={Home} />
     <Route name='share' path=':service/:type/:id' handler={Share}/>
-    <NotFoundRoute handler={ErrorView}/>
+    <NotFoundRoute handler={NotFound}/>
   </Route>
 );
 
