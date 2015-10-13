@@ -7,9 +7,6 @@ export default React.createClass({
 
   render: function() {
     return (
-      <html>
-      <Head {...this.props} />
-      <body>
       <div className='error'>
         <div className='container main'>
           <div className='row'>
@@ -28,8 +25,6 @@ export default React.createClass({
           </div>
         </div>
       </div>
-      </body>
-      </html>
     );
   }
 });
