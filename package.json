@@ -13,7 +13,7 @@
     "watch-server": "nodemon -x \"babel-node\" -e js,jsx -i public/ app.js"
   },
   "engines": {
-    "iojs": "^3.1.0",
+    "node": "^4.2.0",
     "npm": "^3.3.0"
   },
   "dependencies": {
@@ -22,7 +22,7 @@
     "co": "~4.6.0",
     "debug": "~2.2.0",
     "jspm": "~0.16.0",
-    "koa": "~0.21.0",
+    "koa": "~1.0.0",
     "koa-bodyparser": "~2.0.0",
     "koa-compress": "~1.0.8",
     "koa-favicon": "~1.2.0",
@@ -32,24 +32,24 @@
     "moment": "~2.10.3",
     "mongodb-promisified": "~1.0.2",
     "node-uuid": "~1.4.2",
-    "playmusic": "~2.0.0",
+    "playmusic": "~2.0.3",
     "rdio": "^3.1.0",
     "react": "~0.13.3",
     "react-google-analytics": "~0.2.0",
     "react-router": "~0.13.3",
     "spotify": "~0.3.0",
     "superagent": "~1.3.0",
-    "superagent-bluebird-promise": "~2.0.2"
+    "superagent-bluebird-promise": "~2.1.0"
   },
   "devDependencies": {
     "co-mocha": "~1.1.0",
-    "eslint": "~1.2.0",
-    "eslint-plugin-react": "~3.2.3",
+    "eslint": "~1.3.0",
+    "eslint-plugin-react": "~3.3.0",
     "istanbul": "^0.3.17",
-    "mocha": "~2.2.5",
+    "mocha": "~2.3.0",
     "nodemon": "~1.4.1",
     "parallelshell": "~2.0.0",
-    "should": "~7.0.1"
+    "should": "~7.1.0"
   },
   "jspm": {
     "directories": {
