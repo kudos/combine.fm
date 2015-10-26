@@ -7,13 +7,14 @@ import favicon from 'koa-favicon';
 import compress from 'koa-compress';
 import staticHandler from 'koa-file-server';
 import bodyparser from 'koa-bodyparser';
-import React from 'react';
 import co from 'co';
 import db from './config/db';
 import index from './routes/index';
 import search from './routes/search';
 import share from './routes/share';
 import itunesProxy from './routes/itunes-proxy';
+
+import React from 'react';
 import { routes } from './views/app';
 import createHandler from './lib/react-handler';
 import errorHandler from './lib/error-handler';
