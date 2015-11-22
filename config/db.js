@@ -5,7 +5,7 @@ const debug = debuglog('match.audio');
 
 const uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/match-audio';
 
-export default function*() {
+export default function* () {
   const client = yield MongoClient.connect(uristring);
   debug('Successfully connected to Mongodb');
   client.matches = client.collection('matches');
