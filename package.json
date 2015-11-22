@@ -13,7 +13,7 @@
     "watch-server": "nodemon -x \"node -r babel-core/register\" -e js,jsx -i public/ app.js"
   },
   "engines": {
-    "node": "^5.1.0",
+    "node": "^5.0.0",
     "npm": "^3.3.0"
   },
   "dependencies": {
