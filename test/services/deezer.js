@@ -16,8 +16,8 @@ describe('Deezer', function(){
 
   describe('search', function(){
     it('should find album by search', function* (){
-      const result = yield deezer.search({type: 'album', artist: {name: 'David Guetta'}, name: 'Listen (Deluxe)'});
-      result.name.should.startWith('Listen');
+      const result = yield deezer.search({type: 'album', artist: {name: 'Jamie xx'}, name: 'In Colour'});
+      result.name.should.startWith('In Colour');
     });
 
     it('should find track by search', function* (){
