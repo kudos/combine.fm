@@ -1,6 +1,7 @@
 import path from 'path';
 import zlib from 'zlib';
 import koa from 'koa';
+import cors from 'kcors';
 import route from 'koa-route';
 import logger from 'koa-logger';
 import favicon from 'koa-favicon';
@@ -27,6 +28,7 @@ const app = koa();
 app.use(errorHandler(routes));
 
 app.use(bodyparser());
+app.use(cors());
 app.use(compress({flush: zlib.Z_SYNC_FLUSH }));
 app.use(favicon(path.join(__dirname, '/public/images/favicon.png')));
 app.use(logger());
