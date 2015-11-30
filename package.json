@@ -9,8 +9,8 @@
     "start": "node -r babel-core/register app.js",
     "test": "mocha --require co-mocha --compilers js:babel-core/register test/**/*.js --timeout=10000",
     "watch": "parallelshell \"npm run watch-js\" \"npm run watch-server\"",
-    "watch-js": "babel --modules system -wd public/views views",
-    "watch-server": "nodemon -x \"node -r babel-core/register\" -e js,jsx -i public/ app.js"
+    "watch-js": "babel -wd public/views views",
+    "watch-server": "nodemon -x \"node -r babel-core/register\" -e js,jsx -i public/ -i chrome/ app.js"
   },
   "engines": {
     "node": "^5.0.0",
