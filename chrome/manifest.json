@@ -1,19 +1,31 @@
 {
   "name" : "Match Audio",
-  "version" : "0.2.2",
+  "version" : "0.3.1",
   "description" : "Match Audio makes sharing from music services better.",
   "background" : {
     "persistent": false,
-    "scripts": [ "background.js" ]
+    "scripts": [
+      "src/background.js"
+    ]
   },
+  "content_scripts": [
+    {
+      "matches": ["https://play.google.com/music/*"],
+      "js": ["src/lib/selector-listener.js", "src/google.js"]
+    }
+  ],
   "page_action" : {
     "default_icon": {
       "16": "icon-16.png",
       "48": "icon-48.png",
       "128": "icon-128.png"
-    }
+    },
+    "default_title": "Find matches for this music on Match Audio"
   },
-  "permissions" : [ "declarativeContent", "https://match.audio/" ],
+  "permissions" : [
+    "declarativeContent",
+    "https://play.google.com/music"
+  ],
   "icons": {
     "16": "icon-16.png",
     "48": "icon-48.png",

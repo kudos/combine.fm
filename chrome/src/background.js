@@ -1,45 +1,36 @@
-"use strict";
+const apiUrl = 'https://match.audio';
 
-chrome.runtime.onInstalled.addListener(function() {
-  chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.declarativeContent.onPageChanged.removeRules(undefined, () => {
 	  chrome.declarativeContent.onPageChanged.addRules([
 	    {
 	      conditions: [
 	        new chrome.declarativeContent.PageStateMatcher({
-	          pageUrl: { hostSuffix: 'beatsmusic.com', pathPrefix: "/album" },
+	          pageUrl: { hostEquals: 'www.deezer.com', pathPrefix: '/album' },
 	        }),
 	        new chrome.declarativeContent.PageStateMatcher({
-	          pageUrl: { hostSuffix: 'beatsmusic.com', pathPrefix: "/track" },
+	          pageUrl: { hostEquals: 'www.deezer.com', pathPrefix: '/track' },
 	        }),
 	        new chrome.declarativeContent.PageStateMatcher({
-	          pageUrl: { hostSuffix: 'deezer.com', pathPrefix: "/album" },
-	        }),
-	        new chrome.declarativeContent.PageStateMatcher({
-	          pageUrl: { hostSuffix: 'deezer.com', pathPrefix: "/track" },
-	        }),
-	        new chrome.declarativeContent.PageStateMatcher({
-	          pageUrl: { hostEquals: 'play.google.com', pathPrefix: "/music" },
+	          pageUrl: { hostEquals: 'play.google.com', pathPrefix: '/music' },
 	        }),
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { hostEquals: 'itunes.apple.com', pathPrefix: "/music" },
+            pageUrl: { hostEquals: 'itunes.apple.com', pathPrefix: '/music' },
           }),
           new chrome.declarativeContent.PageStateMatcher({
             pageUrl: { hostSuffix: 'rdio.com' },
           }),
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { hostSuffix: 'rd.io' },
+            pageUrl: { hostSuffix: 'spotify.com', pathPrefix: '/album' },
           }),
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { hostSuffix: 'spotify.com', pathPrefix: "/album" },
+            pageUrl: { hostSuffix: 'spotify.com', pathPrefix: '/track' },
           }),
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { hostSuffix: 'spotify.com', pathPrefix: "/track" },
+            pageUrl: { hostEquals: 'music.microsoft.com', pathPrefix: '/track' },
           }),
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { hostSuffix: 'music.xbox.com', pathPrefix: "/track" },
-          }),
-          new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { hostSuffix: 'music.xbox.com', pathPrefix: "/album" },
+            pageUrl: { hostEquals: 'music.microsoft.com', pathPrefix: '/album' },
           }),
           new chrome.declarativeContent.PageStateMatcher({
             pageUrl: { hostSuffix: 'youtube.com' },
@@ -53,17 +44,18 @@ chrome.runtime.onInstalled.addListener(function() {
 });
 
 chrome.pageAction.onClicked.addListener(function(tab) {
-  var params = "url=" + encodeURI(tab.url);
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "https://match.audio/search", true);
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4) {
-      var match = JSON.parse(xhr.response);
-      if (match.id) {
-        chrome.tabs.create({ url: "https://match.audio/" + match.service + "/" + match.type + "/" + match.id});
-      }
-    }
-  }
-  xhr.send(params);
+  chrome.pageAction.setIcon({tabId: tab.id, path: 'icon-blue-128.png'}, () => {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    fetch(apiUrl + '/search', {method: 'POST', mode: 'cors', headers, body: 'url=' + encodeURI(tab.url)}).then((response) => {
+      response.json().then((match) => {
+        chrome.pageAction.setIcon({tabId: tab.id, path: 'icon-128.png'});
+        if (match.id) {
+          chrome.tabs.create({ url: apiUrl + '/' + match.service + '/' + match.type + '/' + match.id});
+        }
+      });
+    }).catch(() => {
+      chrome.pageAction.setIcon({tabId: tab.id, path: 'icon-128.png'});
+    });
+  });
 });
