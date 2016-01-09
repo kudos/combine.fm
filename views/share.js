@@ -39,7 +39,7 @@ const MusicItem = React.createClass({
       return (
         <div className='col-md-3 col-xs-6'>
           <div className={'service' + (this.props.inc === 0 ? ' source-service' : '')}>
-            <div className='matching-from hidden-xs'>{this.props.inc === 0 ? 'Found matches using this link' : ''}</div>
+            <div className='matching-from'>{this.props.inc === 0 ? 'Found matches using' : ''}</div>
             <a href={this.props.item.streamUrl || this.props.item.purchaseUrl}>
               <div className={this.props.item.service === 'youtube' ? 'artwork-youtube artwork' : 'artwork'} style={{backgroundImage: 'url(' + this.props.item.artwork.small + ')'}}>
               </div>
@@ -47,11 +47,11 @@ const MusicItem = React.createClass({
                 {this.props.item.service === 'youtube' && this.props.inc > 0 ? this.props.item.name : ''}
               </div>
             </a>
-            <div className='service-link'>
-              <a href={this.props.item.streamUrl || this.props.item.purchaseUrl}>
-                <img src={'/images/' + this.props.item.service + '.png'} className='img-rounded' />
-              </a>
-            </div>
+          </div>
+          <div className='service-link'>
+            <a href={this.props.item.streamUrl || this.props.item.purchaseUrl}>
+              <img src={'/images/' + this.props.item.service + '.png'} />
+            </a>
           </div>
         </div>
       );
