@@ -15,9 +15,9 @@ const MusicItem = React.createClass({
             <div className='loading-wrap'>
               <img src='/images/eq.svg' className='loading' />
             </div>
-            <div className='service-link'>
-              <img src={'/images/' + this.props.item.service + '.png'} className='img-rounded' />
-            </div>
+          </div>
+          <div className='service-link'>
+            <img src={'/images/' + this.props.item.service + '.png'} className='img-rounded' />
           </div>
         </div>
       );
@@ -29,9 +29,9 @@ const MusicItem = React.createClass({
             <div className='no-match'>
               No Match
             </div>
-            <div className='service-link not-found'>
-              <img src={'/images/' + this.props.item.service + '.png'} className='img-rounded' />
-            </div>
+          </div>
+          <div className='service-link not-found'>
+            <img src={'/images/' + this.props.item.service + '.png'} className='img-rounded' />
           </div>
         </div>
       );
