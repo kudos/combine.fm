@@ -17,7 +17,6 @@ import itunesProxy from './routes/itunes-proxy';
 
 import React from 'react';
 import { routes } from './views/app';
-import createHandler from './lib/react-handler';
 import errorHandler from './lib/error-handler';
 
 import debuglog from 'debug';

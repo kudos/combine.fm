@@ -44,6 +44,7 @@
     "bluebird": "~2.0.7",
     "co": "~4.6.0",
     "debug": "~2.2.0",
+    "history": "^1.12.3",
     "jspm": "~0.16.13",
     "kcors": "^1.0.1",
     "koa": "~1.1.2",
@@ -57,9 +58,10 @@
     "mongodb-promisified": "~1.0.2",
     "node-uuid": "~1.4.2",
     "playmusic": "~2.1.0",
-    "react": "~0.13.3",
+    "react": "~0.14.5",
+    "react-dom": "~0.14.5",
     "react-google-analytics": "~0.2.0",
-    "react-router": "~0.13.3",
+    "react-router": "~1.0.0",
     "spotify": "~0.3.0",
     "superagent": "~1.4.0",
     "superagent-bluebird-promise": "~2.1.0"
@@ -79,12 +81,18 @@
       "baseURL": "public"
     },
     "dependencies": {
-      "react": "npm:react@~0.13.3",
+      "history": "npm:history@^1.12.3",
+      "react": "npm:react@~0.14.5",
+      "react-dom": "npm:react-dom@~0.14.5",
       "react-google-analytics": "npm:react-google-analytics@~0.2.0",
-      "react-router": "npm:react-router@~0.13.3",
+      "react-router": "npm:react-router@~1.0.0",
       "superagent": "npm:superagent@~1.2.0"
     },
-    "devDependencies": {},
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    },
     "buildConfig": {
       "minify": true,
       "transpileES6": true

@@ -1,11 +1,10 @@
 import React from 'react';
 import request from 'superagent';
-import { Navigation, State, Link } from 'react-router';
+import { History, State, Link } from 'react-router';
 import Faq from './faq';
 import Foot from './foot';
 
 const Recent = React.createClass({
-
   render: function() {
     return (<div className='row'>
       <div className='col-md-6 col-md-offset-3'>
@@ -29,7 +28,7 @@ const RecentItem = React.createClass({
     }
     return (
       <div className='col-sm-4 col-xs-6'>
-        <Link to='share' params={this.props.item}>
+        <Link to={`/${this.props.item.service}/${this.props.item.type}/${this.props.item.id}`}>
           <div className={this.props.item.service === 'youtube' ? 'artwork-youtube artwork' : 'artwork'} style={{backgroundImage: 'url(' + this.props.item.artwork.small + ')'}}></div>
         </Link>
       </div>
@@ -40,7 +39,7 @@ const RecentItem = React.createClass({
 
 const SearchForm = React.createClass({
 
-  mixins: [ Navigation, State ],
+  mixins: [ History, State ],
 
   getInitialState: function () {
     return {
@@ -54,7 +53,7 @@ const SearchForm = React.createClass({
     this.setState({
       submitting: true
     });
-    const url = this.refs.url.getDOMNode().value.trim();
+    const url = this.refs.url.value.trim();
     if (!url) {
       this.setState({
         submitting: false
@@ -68,7 +67,8 @@ const SearchForm = React.createClass({
       if (res.body.error) {
         this.setState({error: res.body.error.message});
       }
-      this.transitionTo('share', res.body);
+      const item = res.body;
+      this.history.pushState(null, `/${item.service}/${item.type}/${item.id}`);
     });
   },
 
@@ -127,7 +127,7 @@ export default React.createClass({
       <div>
         <div className='page-wrap'>
           <header>
-            <h1><Link to='home'>match<span className='audio-lighten'>.audio</span></Link></h1>
+            <h1><Link to='/'>match<span className='audio-lighten'>.audio</span></Link></h1>
           </header>
           <div className='container'>
             <div className='row share-form'>

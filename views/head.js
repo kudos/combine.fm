@@ -4,13 +4,10 @@ import { State } from 'react-router';
 export default React.createClass({
 
   mixins: [ State ],
-  contextTypes: {
-    router: React.PropTypes.func.isRequired
-  },
   render: function() {
     const image = this.props.shares ? this.props.shares[0].artwork.large : 'https://match.audio/images/logo-512.png';
     const title = this.props.shares ? this.props.shares[0].name + ' by ' + this.props.shares[0].artist.name : 'Match Audio';
-    const shareUrl = 'https://match.audio/' + this.getParams().service + '/' + this.getParams().type + '/' + this.getParams().id;
+    const shareUrl = 'https://match.audio/' + this.props.params.service + '/' + this.props.params.type + '/' + this.props.params.id;
     return (
       <head>
         <script dangerouslySetInnerHTML={{__html: 'var timerStart = Date.now();'}}></script>

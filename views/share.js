@@ -1,6 +1,6 @@
 import React from 'react';
 import request from 'superagent';
-import { State, Link } from 'react-router';
+import { Link } from 'react-router';
 import Foot from './foot';
 
 const MusicItem = React.createClass({
@@ -62,10 +62,8 @@ const MusicItem = React.createClass({
 
 export default React.createClass({
 
-  mixins: [ State ],
-
   getInitialState: function () {
-    if (this.props.shares && this.props.shares[0].id === this.getParams().id) {
+    if (this.props.shares && this.props.shares[0].id === this.props.params.id) {
       return {
         name: this.props.shares[0].name,
         artist: this.props.shares[0].artist.name,
@@ -97,7 +95,7 @@ export default React.createClass({
     });
 
     const getShares = () => {
-      request.get(this.getPathname() + '.json').end((err, res) => {
+      request.get(this.props.location.pathname + '.json').end((err, res) => {
         const shares = res.body.shares;
         complete = true;
         shares.forEach(function(share) {
@@ -162,7 +160,7 @@ export default React.createClass({
             <div className='container'>
               <div className='row'>
                 <div className='col-md-12'>
-                  <h1><Link to='home'>match<span className='audio-lighten'>.audio</span></Link></h1>
+                  <h1><Link to='/'>match<span className='audio-lighten'>.audio</span></Link></h1>
                 </div>
               </div>
             </div>

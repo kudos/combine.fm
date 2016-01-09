@@ -1,5 +1,7 @@
 import React from 'react';
-import Router, { Route, DefaultRoute, NotFoundRoute, RouteHandler } from 'react-router';
+import ReactDOM from 'react-dom';
+import { Router, Route, IndexRoute } from 'react-router';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
 import ga, { Initializer as GAInitiailizer } from 'react-google-analytics';
 import Home from './home';
 import Share from './share';
@@ -13,11 +15,8 @@ const App = React.createClass({
       <html>
         <Head {...this.props} />
         <body className='home'>
-          <RouteHandler {...this.props} />
+          {this.props.children}
           <GAInitiailizer />
-          <script src='/jspm_packages/system.src.js'></script>
-          <script src='/config.js'></script>
-          <script dangerouslySetInnerHTML={{__html: 'System.import(\'views/app\');'}}></script>
         </body>
       </html>
     );
@@ -25,22 +24,16 @@ const App = React.createClass({
 });
 
 const routes = (
-  <Route name='home' handler={App} path='/'>
-    <DefaultRoute handler={Home} />
-    <Route name='share' path=':service/:type/:id' handler={Share}/>
-    <NotFoundRoute handler={NotFound}/>
+  <Route path='/' component={App}>
+    <IndexRoute component={Home} />
+    <Route path=':service/:type/:id' component={Share}/>
+    <Route path='*' component={NotFound}/>
   </Route>
 );
 
 if (typeof window !== 'undefined') {
   console.info('Time since page started rendering: ' + (Date.now() - timerStart) + 'ms'); // eslint-disable-line no-undef
-  Router.run(routes, Router.HistoryLocation, function (Handler) {
-    if (typeof window.recents !== 'undefined') {
-      React.render(<Handler recents={window.recents} />, document);
-    } else if (typeof shares !== 'undefined') {
-      React.render(<Handler shares={window.shares} />, document);
-    }
-  });
+  ReactDOM.render(<Router history={createBrowserHistory()}>{routes}</Router>, document);
   ga('create', 'UA-66209-8', 'auto');
   ga('send', 'pageview');
 }

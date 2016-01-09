@@ -1,5 +1,5 @@
 import React from 'react';
-import createHandler from '../lib/react-handler';
+import { renderPage } from '../lib/react-handler';
 import { routes } from '../views/app';
 import services from '../lib/services';
 import co from 'co';
@@ -68,10 +68,5 @@ export default function* (serviceId, type, itemId, format, next) {
     return this.body = {shares: shares};
   }
 
-  const Handler = yield createHandler(routes, this.request.url);
-  const App = React.createFactory(Handler);
-  let content = React.renderToString(new App({shares: shares}));
-  content = content.replace('</body></html>', '<script>var shares = ' + JSON.stringify(shares) + '</script></body></html>');
-
-  this.body = '<!doctype html>\n' + content;
+  this.body = yield renderPage(routes, this.request.url, {shares: shares});
 };
