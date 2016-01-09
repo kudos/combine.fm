@@ -5,7 +5,7 @@ describe('Google Play Music', function(){
   describe('lookupId', function(){
     it('should find album by ID', function* (){
       const result = yield google.lookupId('Byp6lvzimyf74wxi5634ul4tgam', 'album');
-      result.name.should.equal('Listen (Deluxe)');
+      result.name.should.equal('Listen');
     });
 
     it('should find track by ID', function* (){
