@@ -56,7 +56,6 @@
     "mongodb-promisified": "~1.0.2",
     "node-uuid": "~1.4.2",
     "playmusic": "~2.1.0",
-    "rdio": "^3.1.0",
     "react": "~0.13.3",
     "react-google-analytics": "~0.2.0",
     "react-router": "~0.13.3",
