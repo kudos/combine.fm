@@ -1,0 +1,19 @@
+image: node:6-slim
+services:
+  - mongo
+
+before_script:
+  - npm install
+
+test:
+  stage: test
+  script:
+    - npm test
+  tags:
+    - docker
+
+cache:
+  key: "$CI_BUILD_REF_NAME"
+  untracked: true
+  paths:
+  - node_modules
