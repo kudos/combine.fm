@@ -13,7 +13,7 @@ export default React.createClass({
         <script dangerouslySetInnerHTML={{__html: 'var timerStart = Date.now();'}}></script>
         <meta charSet='utf-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-        <title>{this.props.shares ? 'Listen to ' + this.props.shares[0].name + ' by ' + this.props.shares[0].artist.name + ' on Match Audio' : 'Match Audio'}</title>
+        <title>{this.props.params.shares ? 'Listen to ' + this.props.params.shares[0].name + ' by ' + this.props.params.shares[0].artist.name + ' on Match Audio' : 'Match Audio'}</title>
         <meta name='description' content='Match Audio matches album and track links from Youtube, Rdio, Spotify, Deezer, Google Music, Xbox Music, Beats Music, and iTunes and give you back one link with matches we find on all of them.' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta name='theme-color' content='#FE4365' />
