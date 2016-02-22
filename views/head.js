@@ -5,8 +5,8 @@ export default React.createClass({
 
   mixins: [ State ],
   render: function() {
-    const image = this.props.shares ? this.props.shares[0].artwork.large : 'https://match.audio/images/logo-512.png';
-    const title = this.props.shares ? this.props.shares[0].name + ' by ' + this.props.shares[0].artist.name : 'Match Audio';
+    const image = this.props.params.shares ? this.props.params.shares[0].artwork.large : 'https://match.audio/images/logo-512.png';
+    const title = this.props.params.shares ? this.props.params.shares[0].name + ' by ' + this.props.params.shares[0].artist.name : 'Match Audio';
     const shareUrl = 'https://match.audio/' + this.props.params.service + '/' + this.props.params.type + '/' + this.props.params.id;
     return (
       <head>
