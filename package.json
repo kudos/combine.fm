@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel -d public/views views",
     "cover": "istanbul cover _mocha -- --require babel-core/register --require co-mocha test/**/*.js",
-    "start": "node -r babel-core/register app.js",
+    "start": "npm run build && node -r babel-core/register app.js",
     "test": "mocha --require co-mocha --compilers js:babel-core/register test/**/*.js --timeout=10000",
     "watch": "parallelshell \"npm run watch-js\" \"npm run watch-server\"",
     "watch-js": "babel -wd public/views views",
