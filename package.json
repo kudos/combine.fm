@@ -6,11 +6,12 @@
   "scripts": {
     "build": "babel -d public/views views",
     "cover": "istanbul cover _mocha -- --require babel-core/register --require co-mocha test/**/*.js",
-    "start": "npm run build && node -r babel-core/register app.js",
+    "start": "node -r babel-core/register app.js",
     "test": "mocha --require co-mocha --compilers js:babel-core/register test/**/*.js --timeout=10000",
     "watch": "parallelshell \"npm run watch-js\" \"npm run watch-server\"",
     "watch-js": "babel -wd public/views views",
-    "watch-server": "nodemon -x \"node -r babel-core/register\" -e js,jsx -i public/ -i chrome/ app.js"
+    "watch-server": "nodemon -x \"node -r babel-core/register\" -e js,jsx -i public/ -i chrome/ app.js",
+    "heroku-postbuild": "jspm install && npm run build"
   },
   "engines": {
     "node": "^5.0.0",
@@ -61,6 +62,7 @@
     "react": "~0.14.5",
     "react-dom": "~0.14.5",
     "react-google-analytics": "~0.2.0",
+    "react-helmet": "^3.0.1",
     "react-router": "~1.0.0",
     "spotify": "~0.3.0",
     "superagent": "~1.6.1",
@@ -85,6 +87,7 @@
       "react": "npm:react@~0.14.5",
       "react-dom": "npm:react-dom@~0.14.5",
       "react-google-analytics": "npm:react-google-analytics@~0.2.0",
+      "react-helmet": "npm:react-helmet@^3.0.1",
       "react-router": "npm:react-router@~1.0.0",
       "superagent": "npm:superagent@~1.2.0"
     },
