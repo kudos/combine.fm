@@ -16,8 +16,8 @@ describe('iTunes Music', function(){
 
   describe('search', function(){
     it('should find album by search', function* (){
-      const result = yield itunes.search({type: 'album', artist: {name: 'Deftones'}, name: 'Deftones'});
-      result.name.should.equal('Deftones');
+      const result = yield itunes.search({type: 'album', artist: {name: 'Deftones'}, name: 'White Pony'});
+      result.name.should.equal('White Pony');
     });
 
     it('should find track by search', function* (){
