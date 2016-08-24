@@ -5,15 +5,15 @@ export default React.createClass({
 
   mixins: [ State ],
   render: function() {
-    const image = this.props.shares ? this.props.shares[0].artwork.large : 'https://match.audio/images/logo-512.png';
-    const title = this.props.shares ? this.props.shares[0].name + ' by ' + this.props.shares[0].artist.name : 'Match Audio';
+    const image = this.props.params.shares ? this.props.params.shares[0].artwork.large : 'https://match.audio/images/logo-512.png';
+    const title = this.props.params.shares ? this.props.params.shares[0].name + ' by ' + this.props.params.shares[0].artist.name : 'Match Audio';
     const shareUrl = 'https://match.audio/' + this.props.params.service + '/' + this.props.params.type + '/' + this.props.params.id;
     return (
       <head>
         <script dangerouslySetInnerHTML={{__html: 'var timerStart = Date.now();'}}></script>
         <meta charSet='utf-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-        <title>{this.props.shares ? 'Listen to ' + this.props.shares[0].name + ' by ' + this.props.shares[0].artist.name + ' on Match Audio' : 'Match Audio'}</title>
+        <title>{this.props.params.shares ? 'Listen to ' + this.props.params.shares[0].name + ' by ' + this.props.params.shares[0].artist.name + ' on Match Audio' : 'Match Audio'}</title>
         <meta name='description' content='Match Audio matches album and track links from Youtube, Rdio, Spotify, Deezer, Google Music, Xbox Music, Beats Music, and iTunes and give you back one link with matches we find on all of them.' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta name='theme-color' content='#FE4365' />
