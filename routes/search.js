@@ -1,49 +1,39 @@
 import { parse } from 'url';
-import co from 'co';
+
 import lookup from '../lib/lookup';
 import services from '../lib/services';
+import { find, create, findMatchesAsync } from '../lib/share';
 
-import debuglog from 'debug';
-const debug = debuglog('match.audio:search');
 
-module.exports = function* () {
+export default function* () {
   const url = parse(this.request.body.url);
-  this.assert(url.host, 400, {error: {message: 'You need to submit a url.'}});
 
-  const item = yield lookup(this.request.body.url);
+  this.assert(url.host, 400, { error: { message: 'You need to submit a url.' } });
 
-  this.assert(item, 400, {error: {message: 'No supported music found at that link :('}});
+  const music = yield lookup(this.request.body.url);
 
-  item.matched_at = new Date(); // eslint-disable-line camelcase
-  const matches = {};
-  matches[item.service] = item;
+  this.assert(music, 400, { error: { message: 'No supported music found at that link :(' } });
 
+  let share = yield find(music);
 
-  for (let service of services) {
-    if (service.id === item.service) {
-      continue;
-    }
-    matches[service.id] = {service: service.id};
+  if (!share) {
+    share = yield create(music);
+    findMatchesAsync(share);
   }
 
-  yield this.db.matches.save({_id: item.service + '$$' + item.id, 'created_at': new Date(), services: matches});
-  this.body = item;
+  share = share.toJSON();
 
-  process.nextTick(() => {
-    for (let service of services) {
-      if (service.id === item.service) {
-        continue;
-      }
-      matches[service.id] = {service: service.id};
-      co(function* (){
-        const match = yield service.search(item);
-        match.matched_at = new Date(); // eslint-disable-line camelcase
-        const update = {};
-        update['services.' + match.service] = match;
-        yield this.db.matches.updateOne({_id: item.service + '$$' + item.id}, {'$set': update});
-      }.bind(this)).catch((err) => {
-        debug(err);
-      });
-    }
-  });
-};
+  const unmatched = services.filter(service =>
+    !share.matches.find(match => match.service === service.id));
+
+  share.matches = share.matches.concat(unmatched.map((service) => {
+    return {
+      service: service.id,
+      matching: true,
+    };
+  }));
+
+  share.matches = share.matches.sort(a => !!a.externalId);
+
+  this.body = share;
+}

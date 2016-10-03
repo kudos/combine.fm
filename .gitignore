@@ -1,7 +1,8 @@
 chrome/build
-public/jspm_packages
+public/dist
 public/views
 node_modules
 public/**/*.gz
 .DS_Store
 .env
+npm-debug.log

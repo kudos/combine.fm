@@ -1,19 +1,46 @@
-import React from 'react';
-import { renderPage } from '../lib/react-handler';
-import { routes } from '../views/app';
+import debuglog from 'debug';
+
+import services from '../lib/services';
+import render from '../lib/render';
+import models from '../models';
+
+const debug = debuglog('match.audio:share');
+
+const recentQuery = {
+  include: [
+    { model: models.artist },
+    { model: models.match },
+  ],
+  limit: 6,
+  order: [
+    ['updatedAt', 'DESC'],
+  ],
+};
 
 export default function* () {
-  const recents = [];
-  const docs = yield this.db.matches.find().sort({'created_at': -1}).limit(6).toArray();
-  docs.forEach(function(doc) {
-    let shares = Object.keys(doc.services).map(function (key) {return doc.services[key]; });
-    shares.some(function(item) {
-      if (item.service === doc._id.split('$$')[0]) { // eslint-disable-line no-underscore-dangle
-        recents.push(item);
-        return false;
-      }
-    });
-  });
+  const recentAlbums = yield models.album.findAll(recentQuery);
+  const recentTracks = yield models.track.findAll(recentQuery);
 
-  yield renderPage(routes, this.request.url, {recents: recents});
-};
+  const initialState = {
+    recents: recentAlbums.map(album => album.toJSON())
+      .concat(recentTracks.map(track => track.toJSON()))
+      .sort((a, b) => a.createdAt < b.createdAt).slice(0, 6),
+    services: services.map(service => service.id),
+  };
+
+  const url = '/';
+
+  const html = yield render(url, initialState);
+
+  const head = {
+    title: `Share Music`,
+    shareUrl: `${this.request.origin}${url}`,
+    image: `${this.request.origin}/assets/images/logo-512.png`,
+  }
+
+  yield this.render('index', {
+    initialState,
+    head,
+    html,
+  });
+}

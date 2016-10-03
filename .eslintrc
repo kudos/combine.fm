@@ -1,9 +1,11 @@
 {
-  "ecmaFeatures": {
-    "modules": true
-  },
-  "rules": {
-    "quotes": [2, "single", "avoid-escape"]
+  "extends": "airbnb/base",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    },
   },
   "env": {
     "node": true,

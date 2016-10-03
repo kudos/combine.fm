@@ -1,0 +1,149 @@
+/* app.vue */
+body {
+  color: #445470;
+  background: #fff;
+}
+h1 {
+  background: #FE4365;
+  padding: 25px 0;
+}
+h1 a {
+  color: #fff;
+}
+h1 a:hover {
+  color: #ffacc5;
+}
+.title a:hover {
+  border-bottom: none;
+}
+h1 .lighter {
+  color: #ffacc5;
+}
+.footer {
+  margin-top: 50px;
+  padding-bottom: 40px;
+}
+
+/* index.vue */
+
+.blurb {
+  margin-bottom: 50px;
+}
+.recently-shared {
+  margin-bottom: 50px;
+}
+.faq {
+  margin-bottom: 50px;
+}
+.faq p {
+  margin-bottom: 30px;
+}
+.home {
+  width: 600px;
+  margin-top: 40px;
+}
+p {
+  margin-bottom: 10px;
+}
+.recent .artwork {
+    margin-bottom: 30px;
+}
+.artwork {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+}
+
+/* search.vue */
+
+.button.is-primary {
+  background-color: #FE4365;
+}
+.button.is-primary:hover {
+  background-color: #E52A4C;
+}
+.button.is-primary:focus {
+  background-color: #E52A4C;
+}
+.input:active {
+  border-color: #FE4365;
+}
+.input:focus {
+  border-color: #FE4365;
+}
+form {
+  margin-bottom: 50px;
+  margin-top: 200px;
+}
+
+/* share.vue */
+
+.share-heading {
+  margin-bottom: 50px
+}
+.share-heading .title {
+  color: #8396b0;
+}
+.share-heading .title strong {
+  color: #445470;
+  font-weight: 700;
+}
+.artwork {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 5px;
+}
+.artwork-youtube {
+  background-position: 50% 0%;
+}
+.service {
+  position: relative;
+  margin-bottom: 10px;
+}
+.service-link img {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 40px;
+}
+img {
+  vertical-align: middle;
+}
+.not-found {
+  opacity: 0.2;
+}
+.match {
+  position: relative;
+}
+.no-match {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #fff;
+  color: #FE4365;
+  padding: 3px 6px;
+  border-radius: 3px;
+  opacity: 0.7;
+  font-weight: bold;
+}
+.loading-wrap {
+  position: absolute;
+  top: 0;left: 0;
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  opacity: 0.8;
+}
+.loading {
+  position: absolute;
+  top: 35%;
+  left: 40%;
+  width: 20%;
+}

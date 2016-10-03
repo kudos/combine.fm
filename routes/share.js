@@ -1,72 +1,73 @@
-import React from 'react';
-import { renderPage } from '../lib/react-handler';
-import { routes } from '../views/app';
 import services from '../lib/services';
-import co from 'co';
+import render from '../lib/render';
+import models from '../models';
+import { find, create, findMatchesAsync } from '../lib/share';
 
-function formatAndSort(matches, serviceId) {
-  matches = Object.keys(matches).map(function (key) {return matches[key]; });
-  matches.sort(function(a, b) {
-    return a.id && !b.id;
-  }).sort(function(a) {
-    return a.service !== serviceId;
-  });
-  return matches;
-};
+export default function* (serviceId, type, itemId, format) {
+  this.assert(type === 'album' || type === 'track', 400, { error: 'Invalid type' });
 
-export default function* (serviceId, type, itemId, format, next) {
-  let matchedService;
-  services.some(function(service) {
-    matchedService = serviceId === service.id ? service : null;
-    return matchedService;
+  let share = yield models[type].findOne({
+    where: {
+      externalId: itemId,
+    },
+    include: [
+      { model: models.match },
+      { model: models.artist },
+    ],
   });
 
-  if (!matchedService || (type !== 'album' && type !== 'track')) {
-    return yield next;
-  }
+  if (!share) {
+    const matchedService = services.find(service => serviceId === service.id);
+    const music = yield matchedService.lookupId(itemId, type);
 
-  let doc = yield this.db.matches.findOne({_id: serviceId + '$$' + itemId});
-  if (!doc) {
-    const item = yield matchedService.lookupId(itemId, type);
-    this.assert(item.id, 404);
-    item.matched_at = new Date(); // eslint-disable-line camelcase
-    const matches = {};
-    matches[item.service] = item;
+    this.assert(music, 400, { error: { message: 'No supported music found at that link :(' } });
 
-    for (let service of services) {
-      if (service.id === item.service) {
-        continue;
-      }
-      matches[service.id] = {service: service.id};
+    share = yield find(music);
+
+    if (!share) {
+      share = yield create(music);
+      findMatchesAsync(share);
     }
-    doc = {_id: item.service + '$$' + item.id, 'created_at': new Date(), services: matches};
-    yield this.db.matches.save(doc);
-    process.nextTick(() => {
-      for (let service of services) {
-        console.log(service.id);
-        if (service.id === item.service) {
-          continue;
-        }
-        matches[service.id] = {service: service.id};
-        co(function* (){
-          const match = yield service.search(item);
-          console.log(match.id);
-          match.matched_at = new Date(); // eslint-disable-line camelcase
-          const update = {};
-          update['services.' + match.service] = match;
-          yield this.db.matches.updateOne({_id: item.service + '$$' + item.id}, {'$set': update});
-        }.bind(this)).catch((err) => {
-          debug(err);
-        });
-      }
-    });
   }
 
-  const shares = formatAndSort(doc.services, serviceId);
+  this.assert(share, 404);
+
+  const unmatched = services.filter(service =>
+    !share.matches.find(match => match.service === service.id));
+
+  share = share.toJSON();
+  share.matches = share.matches.concat(unmatched.map((service) => {
+    return {
+      service: service.id,
+      matching: true,
+    };
+  }));
+  share.matches = share.matches.sort(a => !a.externalId);
 
   if (format === 'json') {
-    return this.body = {shares: shares};
-  }
+    this.body = share;
+  } else {
+    const initialState = {
+      item: share,
+      services: services.map(service => service.id),
+    };
 
-  this.body = yield renderPage(routes, this.request.url, {shares: shares});
-};
+    const url = `/${serviceId}/${type}/${itemId}`;
+
+    const html = yield render(url, initialState);
+
+    const head = {
+      share,
+      title: `${share.name} by ${share.artist.name}`,
+      shareUrl: `${this.request.origin}${url}`,
+      image: share.matches.find(el => el.service === share.service).artworkLarge,
+    };
+
+    yield this.render('index', {
+      initialState,
+      share,
+      head,
+      html,
+    });
+  }
+}
