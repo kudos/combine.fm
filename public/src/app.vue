@@ -8,7 +8,7 @@
     </div>
     <footer class="footer">
       <div class="container has-text-right">
-        <a href='https://twitter.com/MatchAudio'>Tweet</a> or <a href='https://github.com/kudos/match.audio'>Fork</a>. A work in progress by <a href='http://crem.in'>this guy</a>.
+        <a href='https://twitter.com/MatchAudio'>Tweet</a> or <a href='https://gitlab.com/kudos/match.audio'>Fork</a>. A work in progress by <a href='http://crem.in'>this guy</a>.
       </div>
     </footer>
   </div>

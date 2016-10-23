@@ -147,3 +147,17 @@ img {
   left: 40%;
   width: 20%;
 }
+
+/* social.vue */
+
+.social {
+  text-align: center;
+  font-weight: 300;
+  float: right;
+}
+.social li {
+  display: inline;
+  list-style-type: none;
+  padding-right: 10px;
+  float: left;
+}
