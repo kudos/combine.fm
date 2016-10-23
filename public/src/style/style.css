@@ -3,8 +3,10 @@ body {
   color: #445470;
   background: #fff;
 }
-h1 {
+.header {
   background: #FE4365;
+}
+h1 {
   padding: 25px 0;
 }
 h1 a {
@@ -12,6 +14,15 @@ h1 a {
 }
 h1 a:hover {
   color: #ffacc5;
+}
+.share {
+  margin-bottom: 40px;
+}
+.share h1 {
+  text-align: left;
+  font-size: 1.5em;
+  line-height: 36px;
+  padding: 5px 0;
 }
 .title a:hover {
   border-bottom: none;
@@ -74,6 +85,9 @@ p {
 }
 .input:focus {
   border-color: #FE4365;
+}
+.search {
+  margin-bottom: 25vh;
 }
 form {
   margin-top: 25vh;

@@ -36,6 +36,7 @@ export default function* () {
     title: 'Share Music',
     shareUrl: `${this.request.origin}${url}`,
     image: `${this.request.origin}/assets/images/logo-512.png`,
+    share: false,
   };
 
   yield this.render('index', {

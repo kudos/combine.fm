@@ -58,6 +58,7 @@ export default {
     this.interval = setInterval(() => {
       this.fetch();
     }, 1000);
+    this.$store.state.share = true;
   },
   watch: {
     // call again the method if the route changes
@@ -69,7 +70,7 @@ export default {
       const id = this.$route.params.id;
       if (item && item.externalId === id && (typeof window === 'undefined' || !item.matches.some(match => match.matching))) {
         this.item = this.$store.state.item;
-      } else {
+      } else if (id) {
         fetchItem(this.$route.params.service, this.$route.params.type, id).then((res) => {
           if(!res.body.matches.some(match => match.matching)) {
             clearInterval(this.interval);

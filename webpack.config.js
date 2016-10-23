@@ -31,11 +31,6 @@ module.exports = {
   },
   devtool: '#source-map',
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"',
-      },
-    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new CopyWebpackPlugin([{
       from: path.resolve(__dirname, './node_modules/bulma/css'),

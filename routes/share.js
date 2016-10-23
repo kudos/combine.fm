@@ -50,6 +50,7 @@ export default function* (serviceId, type, itemId, format) {
     const initialState = {
       item: share,
       services: services.map(service => service.id),
+      share: true,
     };
 
     const url = `/${serviceId}/${type}/${itemId}`;

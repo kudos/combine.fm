@@ -1,8 +1,14 @@
 <template>
   <div id="app">
-    <h1 class="title has-text-centered header"><router-link to="/" exact>
-      match<span class="lighter">.audio</span>
-    </router-link></h1>
+    <div class="header" v-bind:class="{ 'share': $store.state.share }">
+      <div class="container">
+        <h1 class="title has-text-centered">
+          <router-link to="/" exact>
+            match<span class="lighter">.audio</span>
+          </router-link>
+        </h1>
+      </div>
+    </div>
     <div>
       <router-view></router-view>
     </div>
@@ -19,8 +25,10 @@ body {
   color: #445470;
   background: #fff;
 }
-h1 {
+.header {
   background: #FE4365;
+}
+h1 {
   padding: 25px 0;
 }
 h1 a {
@@ -28,6 +36,15 @@ h1 a {
 }
 h1 a:hover {
   color: #ffacc5;
+}
+.share {
+  margin-bottom: 40px;
+}
+.share h1 {
+  text-align: left;
+  font-size: 1.5em;
+  line-height: 36px;
+  padding: 5px 0;
 }
 .title a:hover {
   border-bottom: none;

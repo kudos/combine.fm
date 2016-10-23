@@ -10,6 +10,7 @@ const store = new Vuex.Store({
     recents: [],
     item: {},
     services: [],
+    share: true,
   },
 
   actions: {
