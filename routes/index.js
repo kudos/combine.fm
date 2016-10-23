@@ -33,10 +33,10 @@ export default function* () {
   const html = yield render(url, initialState);
 
   const head = {
-    title: `Share Music`,
+    title: 'Share Music',
     shareUrl: `${this.request.origin}${url}`,
     image: `${this.request.origin}/assets/images/logo-512.png`,
-  }
+  };
 
   yield this.render('index', {
     initialState,

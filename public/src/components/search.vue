@@ -1,12 +1,18 @@
 <template>
-  <form role="form" method="post" action="/search" v-on:submit="submit">
-    <p class="control has-addons">
-      <input class="input is-expanded is-large" type="text" placeholder="Paste your link here" v-model="url">
-      <button type="submit" class="button is-primary is-large">
-        Share Music
-      </button>
-    </p>
-  </form>
+  <div class="search">
+    <form role="form" method="post" action="/search" v-on:submit="submit">
+      <p class="control has-addons">
+        <input class="input is-expanded is-large" type="text" placeholder="Paste your link here" v-model="url">
+        <button type="submit" class="button is-primary is-large" v-bind:class="{ 'is-loading': submitting }">
+          Share Music
+        </button>
+      </p>
+    </form>
+    <div class="notification is-warning" v-if="error">
+      <button class="delete" v-on:click="error = false"></button>
+      {{ error }}
+    </div>
+  </div>
 </template>
 
 <script>
@@ -16,15 +22,23 @@ export default {
   name: 'search-view',
   data() {
     return {
+      error: null,
+      submitting: false,
       url: '',
     };
   },
   methods: {
     submit (event) {
+      this.submitting = true;
       event.preventDefault();
       musicSearch(this.url).end((req, res) => {
-        const item = res.body;
-        this.$router.push(`/${item.service}/${item.albumName ? 'track' : 'album'}/${item.externalId}`);
+        this.submitting = false;
+        if (res.status == 200) {
+          const item = res.body;
+          this.$router.push(`/${item.service}/${item.albumName ? 'track' : 'album'}/${item.externalId}`);
+        } else {
+          this.error = res.body.message;
+        }
       });
     },
   },
@@ -47,8 +61,11 @@ export default {
 .input:focus {
   border-color: #FE4365;
 }
+.search {
+  margin-bottom: 25vh;
+}
 form {
-  margin-bottom: 50px;
-  margin-top: 200px;
+  margin-top: 25vh;
+  margin-bottom: 20px;
 }
 </style>

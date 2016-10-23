@@ -103,7 +103,7 @@ export default {
   margin-bottom: 30px;
 }
 .home {
-  width: 600px;
+  max-width: 600px;
   margin-top: 40px;
 }
 p {

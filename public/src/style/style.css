@@ -39,7 +39,7 @@ h1 .lighter {
   margin-bottom: 30px;
 }
 .home {
-  width: 600px;
+  max-width: 600px;
   margin-top: 40px;
 }
 p {
@@ -76,8 +76,8 @@ p {
   border-color: #FE4365;
 }
 form {
-  margin-bottom: 50px;
-  margin-top: 200px;
+  margin-top: 25vh;
+  margin-bottom: 20px;
 }
 
 /* share.vue */

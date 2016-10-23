@@ -15,12 +15,15 @@ import recent from './routes/recent';
 import search from './routes/search';
 import share from './routes/share';
 import itunesProxy from './routes/itunes-proxy';
+import errorHandler from './lib/error-handler';
 
 const debug = debuglog('match.audio');
 
 process.env.VUE_ENV = 'server';
 
 const app = koa();
+
+app.use(errorHandler());
 
 app.use(bodyparser());
 app.use(cors());
