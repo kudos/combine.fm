@@ -27,7 +27,7 @@ export default function (sequelize, DataTypes) {
     ],
     getterMethods: {
       type() {
-        return this.getDataValue('trackId') ? 'track' : 'album';
+        return 'album';
       },
     },
   });
