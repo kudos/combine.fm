@@ -1,13 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
 
 module.exports = {
   entry: './public/src/entry-client.js',
   output: {
     path: path.resolve(__dirname, './public/dist'),
     publicPath: '/dist/',
-    filename: 'js/build-client.js',
+    filename: 'js/[name].[hash:10].js',
   },
   resolve: {
     modules: [
@@ -21,20 +22,37 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
+        options: {
+          extractCSS: true
+        },
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({ fallback: "style-loader", use: "css-loader" }),
+      },
     ],
   },
   devtool: '#source-map',
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, './node_modules/bulma/css'),
-      to: path.resolve(__dirname, './public/dist/css/'),
-    }]),
+    new ExtractTextPlugin("style/[name].[hash:10].css"),
+    new StatsWriterPlugin({
+      fields: ['assets'],
+      filename: 'manifest.json',
+      transform(stats) {
+        const manifest = {};
+        stats.assets.map(asset => asset.name)
+          .sort()
+          .forEach((file) => {
+            manifest[file.replace(/\.[a-f0-9]{10}\./, '.')] = file;
+        });
+        return JSON.stringify(manifest, null, 2) + '\n';
+      }
+    }),
   ],
 };

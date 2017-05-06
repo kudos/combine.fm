@@ -1,3 +1,4 @@
+import fs from 'fs';
 import path from 'path';
 import zlib from 'zlib';
 import koa from 'koa';
@@ -31,6 +32,13 @@ app.use(compress({ flush: zlib.Z_SYNC_FLUSH }));
 app.use(favicon(path.join(__dirname, '/public/images/favicon.png')));
 app.use(logger());
 app.use(serve('public', { maxage: 31536000000 }));
+
+const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, '/public/dist/manifest.json')));
+
+app.use(function *(next) {
+	this.state = { manifest };
+	yield next;
+});
 
 app.use(views(path.resolve(__dirname, './views'), {
   map: {

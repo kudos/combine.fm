@@ -51,10 +51,10 @@
     "bluebird": "^3.4.1",
     "bulma": "^0.4.1",
     "co": "~4.6.0",
-    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.1",
     "debug": "^2.6.6",
     "ejs": "^2.5.2",
+    "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "json-loader": "^0.5.4",
     "kcors": "^1.0.1",
@@ -84,7 +84,8 @@
     "vue-template-compiler": "^2.3.2",
     "vuex": "^2.3.1",
     "vuex-router-sync": "^4.1.2",
-    "webpack": "^2.5.0"
+    "webpack": "^2.5.0",
+    "webpack-stats-plugin": "^0.1.5"
   },
   "devDependencies": {
     "babel-plugin-transform-runtime": "^6.15.0",

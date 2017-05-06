@@ -2,8 +2,7 @@
 <html>
 <head>
   <title>Match Audio &bull; <%=head.title%></title>
-  <link rel="stylesheet" href="/dist/css/bulma.css" />
-  <link rel="stylesheet" href="/src/style/style.css" />
+  <link rel="stylesheet" href="/dist/<%=manifest['style/main.css']%>" />
 
   <meta name='description' content='Match Audio matches album and track links from Youtube, Rdio, Spotify, Deezer, Google Music, Xbox Music, Beats Music, and iTunes and give you back one link with matches we find on all of them.' />
   <meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -28,6 +27,6 @@
     ga('create', 'UA-66209-8', 'auto');
     ga('send', 'pageview');
   </script>
-  <script src="/dist/js/build-client.js"></script>
+  <script src="/dist/<%=manifest['js/main.js']%>"></script>
 </body>
 </html>
