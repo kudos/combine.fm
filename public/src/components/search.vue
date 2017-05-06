@@ -1,12 +1,15 @@
 <template>
   <div class="search">
     <form role="form" method="post" action="/search" v-on:submit="submit">
-      <p class="control has-addons">
-        <input class="input is-expanded is-large" type="text" placeholder="Paste your link here" v-model="url">
-        <button type="submit" class="button is-primary is-large" v-bind:class="{ 'is-loading': submitting }">
-          Share Music
-        </button>
-      </p>
+      <div class="field has-addons">
+        <p class="control is-expanded">
+          <input class="input is-large" type="text" placeholder="Paste your link here" v-model="url">
+        </p><p class="control">
+          <button type="submit" class="button is-primary is-large" v-bind:class="{ 'is-loading': submitting }">
+            Share Music
+          </button>
+        </p>
+      </div>
     </form>
     <div class="notification is-warning" v-if="error">
       <button class="delete" v-on:click="error = false"></button>
