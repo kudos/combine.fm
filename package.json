@@ -71,7 +71,7 @@
     "moment": "^2.14.1",
     "node-uuid": "~1.4.2",
     "pg": "^6.1.0",
-    "playmusic": "~2.2.0",
+    "playmusic": "~2.2.1",
     "sequelize": "^3.24.3",
     "spotify": "~0.3.0",
     "style-loader": "^0.13.1",
