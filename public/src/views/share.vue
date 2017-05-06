@@ -102,10 +102,13 @@ export default {
   padding-bottom: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-x: center;
   border-radius: 5px;
 }
+.artwork-youtube {
+  background-position: 50% 0%;
+}
 .service {
+  position: relative;
   margin-bottom: 10px;
 }
 .service-link img {
