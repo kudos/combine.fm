@@ -19,6 +19,11 @@ describe('Spotify', function(){
       const result = yield spotify.search({type: 'album', artist: {name: 'David Guetta'}, name: 'Listen (Deluxe)'});
       result.name.should.equal('Listen (Deluxe)');
     });
+
+    it('should find album with colon in name by search', function* (){
+      const result = yield spotify.search({type: 'album', artist: {name: 'Various Artists'}, name: 'The Get Down Part II: Original Soundtrack From The Netflix Original Series'});
+      result.name.should.equal('The Get Down Part II: Original Soundtrack From The Netflix Original Series');
+    });
   });
 
   describe('parseUrl', function(){
