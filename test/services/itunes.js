@@ -21,7 +21,7 @@ describe('iTunes Music', function(){
     });
 
     it('should find track by search', function* (){
-      const result = yield itunes.search({type: 'track', artist: {name: 'Deftones'}, album: {name: 'Deftones'}, name: 'Hexagram'});
+      const result = yield itunes.search({type: 'track', artist: {name: 'Deftones'}, albumName: 'Deftones', name: 'Hexagram'});
       result.name.should.equal('Hexagram');
     });
   });

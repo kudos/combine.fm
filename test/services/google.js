@@ -19,6 +19,16 @@ describe('Google Play Music', function(){
       const result = yield google.search({type: 'album', artist: {name: 'Jamie xx'}, name: 'In Colour'});
       result.name.should.equal('In Colour');
     });
+
+    it('should find track by search', function* (){
+      const result = yield google.search({type: 'track', artist: {name: 'Jamie xx'}, albumName: 'In Colour', name: 'Loud Places'});
+      result.name.should.equal('Loud Places');
+    });
+
+    it('should find awkward track by search', function* (){
+      const result = yield google.search({type: 'track', artist: {name: 'Jamie xx'}, albumName: 'In Colour (Remixes)', name: 'Loud Places [Tessela Remix]'});
+      result.name.should.equal('Loud Places [Tessela Remix]');
+    });
   });
 
   describe('lookupUrl', function(){

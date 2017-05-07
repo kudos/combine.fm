@@ -21,7 +21,7 @@ describe('Deezer', function(){
     });
 
     it('should find track by search', function* (){
-      const result = yield deezer.search({type: 'track', artist: {name: 'Deftones'}, album: {name: 'Deftones'}, name: 'Hexagram'});
+      const result = yield deezer.search({type: 'track', artist: {name: 'Deftones'}, albumName: 'Deftones', name: 'Hexagram'});
       result.name.should.equal('Hexagram');
     });
   });
