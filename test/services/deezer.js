@@ -20,6 +20,11 @@ describe('Deezer', function(){
       result.name.should.startWith('In Colour');
     });
 
+    it('should find album with various artists by search', function* (){
+      const result = yield deezer.search({type: 'album', artist: {name: 'Various Artists'}, name: 'The Trevor Nelson Collection'});
+      result.name.should.equal('The Trevor Nelson Collection');
+    });
+
     it('should find track by search', function* (){
       const result = yield deezer.search({type: 'track', artist: {name: 'Deftones'}, albumName: 'Deftones', name: 'Hexagram'});
       result.name.should.equal('Hexagram');
