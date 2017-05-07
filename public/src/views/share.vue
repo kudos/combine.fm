@@ -8,7 +8,7 @@
     <ul class="columns is-multiline">
       <li v-for="match in item.matches" class="column is-2">
         <div v-if="match.externalId && match.id != 152">
-          <a v-bind:href="match.streamUrl"><div v-bind:style="{ backgroundImage: `url(${match.artworkLarge})` }" class="artwork">
+          <a v-bind:href="match.streamUrl"><div v-bind:style="{ backgroundImage: `url(${match.artworkLarge})` }" class="artwork" v-bind:class="{ 'artwork-youtube': match.service === 'youtube' }">
           </div></a>
           <div class='service-link has-text-centered'>
             <a v-bind:href="match.streamUrl"><img v-bind:src="`/assets/images/${match.service}.png`" /></a>
