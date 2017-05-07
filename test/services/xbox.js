@@ -19,6 +19,12 @@ describe('Xbox Music', function(){
       const result = yield xbox.search({type: 'album', artist: {name: 'Kyuss'}, name: 'Muchas Gracias: The Best Of Kyuss'});
       result.name.should.equal('Muchas Gracias: The Best Of Kyuss');
     });
+
+    it('should find awkward album by search', function* (){
+      const result = yield xbox.search({type: 'album', artist: {name: 'Anavitória'}, name: 'Fica'});
+      result.name.should.equal('Fica');
+      result.artist.name.should.equal('Anavitória');
+    });
   });
 
   describe('lookupUrl', function(){
