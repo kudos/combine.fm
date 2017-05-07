@@ -23,6 +23,8 @@ export default function* () {
 
   share = share.toJSON();
 
+  share.id = share.externalId;
+
   const unmatched = services.filter(service =>
     !share.matches.find(match => match.service === service.id));
 
