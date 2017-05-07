@@ -20,6 +20,11 @@ describe('iTunes Music', function(){
       result.name.should.equal('White Pony');
     });
 
+    it('should find awkward album by search', function* (){
+      const result = yield itunes.search({type: 'album', artist: {name: 'Anavitória'}, name: 'Fica'});
+      result.name.should.equal('Fica (feat. Matheus & Kauan) - Single');
+    });
+
     it('should find track by search', function* (){
       const result = yield itunes.search({type: 'track', artist: {name: 'Deftones'}, albumName: 'Deftones', name: 'Hexagram'});
       result.name.should.equal('Hexagram');

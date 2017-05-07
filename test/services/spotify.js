@@ -20,6 +20,11 @@ describe('Spotify', function(){
       result.name.should.equal('Listen (Deluxe)');
     });
 
+    it('should find br album by search', function* (){
+      const result = yield spotify.search({type: 'album', artist: {name: 'Anavitória'}, name: 'Fica'});
+      result.name.should.equal('Fica');
+    });
+
     it('should find album by various artists by search', function* (){
       const result = yield spotify.search({type: 'album', artist: {name: 'Various Artists'}, name: 'The Get Down Part II: Original Soundtrack From The Netflix Original Series'});
       result.name.should.equal('The Get Down Part II: Original Soundtrack From The Netflix Original Series');
