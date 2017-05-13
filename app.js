@@ -35,9 +35,9 @@ app.use(serve('public', { maxage: 31536000000 }));
 
 const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, '/public/dist/manifest.json')));
 
-app.use(function *(next) {
-	this.state = { manifest };
-	yield next;
+app.use(function * (next) {
+  this.state = { manifest };
+  yield next;
 });
 
 app.use(views(path.resolve(__dirname, './views'), {
