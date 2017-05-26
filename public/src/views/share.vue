@@ -57,7 +57,7 @@ export default {
     this.fetch();
     this.interval = setInterval(() => {
       this.fetch();
-    }, 1000);
+    }, 3000);
     this.$store.state.share = true;
   },
   watch: {
