@@ -31,7 +31,7 @@ app.on('error', (err) => {
   raven.captureException(err);
 });
 
-app.use(errorHandler());
+app.use(errorHandler(raven));
 
 app.use(bodyparser());
 app.use(cors());

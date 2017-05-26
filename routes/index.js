@@ -39,6 +39,8 @@ export default function* () {
     share: false,
   };
 
+  this.set('Cache-Control', 'no-cache');
+
   yield this.render('index', {
     initialState,
     head,

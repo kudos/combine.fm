@@ -9,6 +9,7 @@ const debug = debugname('match.audio:models');
 const config = {
   dialect: 'postgres',
   protocol: 'postgres',
+  quoteIdentifiers: true,
   logging: debug,
 };
 
