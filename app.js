@@ -10,6 +10,7 @@ import compress from 'koa-compress';
 import serve from 'koa-static';
 import views from 'koa-views';
 import bodyparser from 'koa-bodyparser';
+import raven from 'raven';
 import debuglog from 'debug';
 import index from './routes/index';
 import recent from './routes/recent';
@@ -22,7 +23,13 @@ const debug = debuglog('match.audio');
 
 process.env.VUE_ENV = 'server';
 
+raven.config(process.env.SENTRY_DSN).install();
+
 const app = koa();
+
+app.on('error', (err) => {
+  raven.captureException(err);
+});
 
 app.use(errorHandler());
 
@@ -35,7 +42,7 @@ app.use(serve('public', { maxage: 31536000000 }));
 
 const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, '/public/dist/manifest.json')));
 
-app.use(function * (next) {
+app.use(function* state(next) {
   this.state = { manifest };
   yield next;
 });

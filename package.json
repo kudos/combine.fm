@@ -13,8 +13,8 @@
     "heroku-postbuild": "npm run build"
   },
   "engines": {
-    "node": "^6.7.0",
-    "npm": "^3.10.0"
+    "node": "^7.10.0",
+    "npm": "^4.2.0"
   },
   "dependencies": {
     "babel": "^6.1.18",
@@ -72,6 +72,7 @@
     "node-uuid": "~1.4.2",
     "pg": "^6.1.0",
     "playmusic": "~2.2.1",
+    "raven": "^2.0.2",
     "sequelize": "^3.24.3",
     "spotify": "~0.3.0",
     "style-loader": "^0.17.0",
