@@ -1,0 +1,30 @@
+version: "2"
+
+services:
+  app:
+    build: ./
+    environment:
+      DEBUG: "match.audio*"
+      VUE_ENV: server
+      DATABASE_URL:
+      GOOGLE_EMAIL:
+      GOOGLE_PASSWORD:
+      XBOX_CLIENT_ID:
+      XBOX_CLIENT_SECRET:
+      YOUTUBE_KEY:
+      SPOTIFY_CLIENT_ID:
+      SPOTIFY_CLIENT_SECRET:
+    volumes:
+      - ./:/app:cached
+    ports:
+      - "3000:3000"
+    command: yarn run watch-server
+  database:
+    image: "postgres:9.6"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_USER: "matchaudio"
+      POSTGRES_DB: "matchaudio"
+

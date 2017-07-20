@@ -29,7 +29,7 @@ describe('Xbox Music', function(){
 
   describe('lookupUrl', function(){
     it('should parse regular url into album ID', function* (){
-      const result = yield xbox.parseUrl('https://music.xbox.com/album/kyuss/muchas-gracias-the-best-of-kyuss/8b558d00-0100-11db-89ca-0019b92a3933');
+      const result = yield xbox.parseUrl('https://music.microsoft.com/album/kyuss/muchas-gracias-the-best-of-kyuss/bz.8b558d00-0100-11db-89ca-0019b92a3933');
       result.id.should.equal('music.8D6KGX5BZ8WB');
     });
   });

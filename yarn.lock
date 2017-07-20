@@ -3317,6 +3317,10 @@ node-uuid@~1.4.1, node-uuid@~1.4.2:
   version "1.4.8"
   resolved "https://registry.yarnpkg.com/node-uuid/-/node-uuid-1.4.8.tgz#b040eb0923968afabf8d32fb1f17f1167fdab907"
 
+nodebrainz@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/nodebrainz/-/nodebrainz-2.1.1.tgz#debf0cbf69ffeaec7439a36409ed9c10404b112f"
+
 nodemon@^1.10.2:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-1.11.0.tgz#226c562bd2a7b13d3d7518b49ad4828a3623d06c"
@@ -3669,12 +3673,13 @@ pkg-up@^1.0.0:
   dependencies:
     find-up "^1.0.0"
 
-playmusic@~2.2.1:
+"playmusic@https://github.com/jamon/playmusic.git#37e98f39c33fc5359a8a30b8c8e422161a4be9a8":
   version "2.2.1"
-  resolved "https://registry.yarnpkg.com/playmusic/-/playmusic-2.2.1.tgz#32c5a4f3dee6e350e61ca879d4ce779f8e801a07"
+  resolved "https://github.com/jamon/playmusic.git#37e98f39c33fc5359a8a30b8c8e422161a4be9a8"
   dependencies:
     crypto-js ">= 3.1"
     node-uuid "~1.4.1"
+    rsa-pem-from-mod-exp "^0.8.4"
 
 pluralize@^1.2.1:
   version "1.2.1"
@@ -4333,6 +4338,10 @@ ripemd160@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-1.0.1.tgz#93a4bbd4942bc574b69a8fa57c71de10ecca7d6e"
 
+rsa-pem-from-mod-exp@^0.8.4:
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/rsa-pem-from-mod-exp/-/rsa-pem-from-mod-exp-0.8.4.tgz#362a42c6d304056d493b3f12bceabb2c6576a6d4"
+
 run-async@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-0.1.0.tgz#c8ad4a5e110661e402a7d21b530e009f25f8e389"
@@ -4587,9 +4596,11 @@ split@^1.0.0:
   dependencies:
     through "2"
 
-spotify@~0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/spotify/-/spotify-0.3.0.tgz#42b85105cfc30f174c050f2227c21a9d7edb1be4"
+spotify-web-api-node@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/spotify-web-api-node/-/spotify-web-api-node-2.4.0.tgz#948f5bcfe098e5027367361dd2b003c7e3ce4cd5"
+  dependencies:
+    superagent "^2.0.0"
 
 sprintf-js@~1.0.2:
   version "1.0.3"
@@ -4714,7 +4725,7 @@ superagent-bluebird-promise@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/superagent-bluebird-promise/-/superagent-bluebird-promise-3.0.2.tgz#3562fc7f26fe07306119ca8ab9943e1571b1deec"
 
-superagent@^2.1.0:
+superagent@^2.0.0, superagent@^2.1.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/superagent/-/superagent-2.3.0.tgz#703529a0714e57e123959ddefbce193b2e50d115"
   dependencies:
@@ -4984,17 +4995,13 @@ util@0.10.3, util@^0.10.3:
   dependencies:
     inherits "2.0.1"
 
-uuid@3.0.0:
+uuid@3.0.0, uuid@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.0.tgz#6728fc0459c450d796a99c31837569bdf672d728"
 
 uuid@^2.0.1:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
-
-uuid@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
 
 v8flags@^2.0.10:
   version "2.1.1"
