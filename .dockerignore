@@ -1,0 +1,4 @@
+.envrc
+.git
+node_modules
+Dockerfile
