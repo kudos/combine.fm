@@ -1,7 +1,13 @@
+import kue from 'kue';
+
 import services from '../lib/services';
 import render from '../lib/render';
 import models from '../models';
-import { find, create, findMatchesAsync } from '../lib/share';
+import { find, create } from '../lib/share';
+
+const queue = kue.createQueue({
+  redis: process.env.REDIS_URL,
+});
 
 export default function* (serviceId, type, itemId, format) {
   this.assert(type === 'album' || type === 'track', 400, { error: 'Invalid type' });
@@ -26,7 +32,15 @@ export default function* (serviceId, type, itemId, format) {
 
     if (!share) {
       share = yield create(music);
-      findMatchesAsync(share);
+
+      for (const service of services) {
+        if (service.id === share.service) {
+          continue; // eslint-disable-line no-continue
+        }
+        const job = queue.create('search', {share: share, service: service}).save((err) => {
+          if (!err) console.log(job.id);
+        });
+      }
     }
   }
 

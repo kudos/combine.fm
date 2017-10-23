@@ -23,9 +23,14 @@ export default function* () {
   if (!share) {
     share = yield create(music);
 
-    const job = queue.create('search', share).save((err) => {
-      if (!err) console.log(job.id);
-    });
+    for (const service of services) {
+      if (service.id === share.service) {
+        continue; // eslint-disable-line no-continue
+      }
+      const job = queue.create('search', {share: share, service: service}).save((err) => {
+        if (!err) console.log(job.id);
+      });
+    }
   }
 
   share = share.toJSON();

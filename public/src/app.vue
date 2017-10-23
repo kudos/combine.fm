@@ -41,7 +41,7 @@ body {
   height: 64px;
 }
 h1 {
-  text-align: left;
+  text-align: center;
   padding: 10px 0;
 }
 h1 a {
