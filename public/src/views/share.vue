@@ -85,6 +85,9 @@ export default {
 </script>
 
 <style>
+.content ul {
+  margin-left: 0;
+}
 .share-heading {
   margin-bottom: 50px
 }

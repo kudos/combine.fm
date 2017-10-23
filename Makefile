@@ -11,6 +11,9 @@ help:
 .PHONY: start
 start: docker-compose-up watch-frontend ## Start containers and watch frontend
 
+.PHONY: logs
+logs: ## Tail the app and worker logs
+	docker-compose logs -f app worker
 
 .PHONY: migrate
 migrate: ## Migrate database schema

@@ -2,15 +2,17 @@
   <div id="app">
     <div class="header" v-bind:class="{ 'share': $store.state.share }">
       <div class="container">
-        <h1 class="title has-text-centered">
+        <h1 class="title">
           <router-link to="/" exact>
             <img src="/assets/images/logo-128.png"> <b>combine</b><span class="lighter">.fm</span>
           </router-link>
         </h1>
       </div>
     </div>
-    <div class="content">
+    <div>
       <router-view></router-view>
+    </div>
+    <div class="footer-break">
     </div>
     <footer class="footer">
       <div class="container has-text-right">
@@ -29,7 +31,7 @@ html {
 body {
   color: #445470;
   background: #fff;
-  margin: 0 0 140px;
+  margin: 0 0 160px;
 }
 .header {
   font-family: 'Comfortaa', cursive;
@@ -39,6 +41,7 @@ body {
   height: 64px;
 }
 h1 {
+  text-align: left;
   padding: 10px 0;
 }
 h1 a {
@@ -56,11 +59,17 @@ h1 a:hover {
   line-height: 36px;
   padding: 5px 0;
 }
+.share h1 img {
+  height: 40px;
+}
 .title a:hover {
   border-bottom: none;
 }
 h1 .lighter {
   color: #ffacc5;
+}
+.footer-break {
+  height: 1px;
 }
 .footer {
   position: absolute;
