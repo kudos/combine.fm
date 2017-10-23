@@ -3,12 +3,10 @@ import kue from 'kue';
 
 import lookup from '../lib/lookup';
 import services from '../lib/services';
-import { find, create, findMatchesAsync } from '../lib/share';
+import { find, create } from '../lib/share';
 
 const queue = kue.createQueue({
-  redis: {
-    host: 'redis',
-  },
+  redis: process.env.REDIS_URL,
 });
 
 export default function* () {

@@ -9,9 +9,7 @@ import { find, create, findMatchesAsync } from './lib/share';
 raven.config(process.env.SENTRY_DSN).install();
 
 const queue = kue.createQueue({
-  redis: {
-    host: 'redis',
-  },
+  redis: process.env.REDIS_URL,
 });
 
 function search(share, done) {
