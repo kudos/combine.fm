@@ -75,7 +75,7 @@
     "node-uuid": "~1.4.2",
     "nodebrainz": "^2.1.1",
     "pg": "^6.1.0",
-    "playmusic": "https://github.com/jamon/playmusic.git#37e98f39c33fc5359a8a30b8c8e422161a4be9a8",
+    "playmusic": "^2.3.0",
     "raven": "^2.1.2",
     "sequelize": "^3.24.3",
     "spotify-web-api-node": "^2.4.0",

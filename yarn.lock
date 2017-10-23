@@ -4322,9 +4322,9 @@ pkginfo@0.x.x:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
 
-"playmusic@https://github.com/jamon/playmusic.git#37e98f39c33fc5359a8a30b8c8e422161a4be9a8":
-  version "2.2.1"
-  resolved "https://github.com/jamon/playmusic.git#37e98f39c33fc5359a8a30b8c8e422161a4be9a8"
+playmusic@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/playmusic/-/playmusic-2.3.0.tgz#15ef53093f0b409b29d0acd0835f7b5088366ca6"
   dependencies:
     crypto-js ">= 3.1"
     node-uuid "~1.4.1"
