@@ -1,9 +1,12 @@
 import { parse } from 'url';
 import kue from 'kue';
+import debuglog from 'debug';
 
 import lookup from '../lib/lookup';
 import services from '../lib/services';
 import { find, create } from '../lib/share';
+
+const debug = debuglog('combine.fm:search');
 
 const queue = kue.createQueue({
   redis: process.env.REDIS_URL,
@@ -11,7 +14,7 @@ const queue = kue.createQueue({
 
 export default function* () {
   const url = parse(this.request.body.url);
-
+  debug(`URL ${url}`);
   this.assert(url.host, 400, { error: { message: 'You need to submit a url.' } });
 
   const music = yield lookup(this.request.body.url);

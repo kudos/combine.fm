@@ -21,8 +21,21 @@ services:
       - "3000:3000"
     command: yarn run watch-server
   worker:
-    extends: app
     build: ./
+    environment:
+      DEBUG: "combine.fm*"
+      VUE_ENV: server
+      DATABASE_URL:
+      REDIS_URL:
+      GOOGLE_EMAIL:
+      GOOGLE_PASSWORD:
+      XBOX_CLIENT_ID:
+      XBOX_CLIENT_SECRET:
+      YOUTUBE_KEY:
+      SPOTIFY_CLIENT_ID:
+      SPOTIFY_CLIENT_SECRET:
+    volumes:
+      - ./:/app:cached
     command: yarn run worker
     ports:
       - "3001:3000"
