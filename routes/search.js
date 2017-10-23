@@ -1,9 +1,15 @@
 import { parse } from 'url';
+import kue from 'kue';
 
 import lookup from '../lib/lookup';
 import services from '../lib/services';
 import { find, create, findMatchesAsync } from '../lib/share';
 
+const queue = kue.createQueue({
+  redis: {
+    host: 'redis',
+  },
+});
 
 export default function* () {
   const url = parse(this.request.body.url);
@@ -18,7 +24,10 @@ export default function* () {
 
   if (!share) {
     share = yield create(music);
-    findMatchesAsync(share);
+
+    const job = queue.create('search', share).save((err) => {
+      if (!err) console.log(job.id);
+    });
   }
 
   share = share.toJSON();

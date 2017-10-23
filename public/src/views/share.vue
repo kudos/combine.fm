@@ -76,7 +76,7 @@ export default {
             clearInterval(this.interval);
           }
           this.item = res.body;
-          document.title = `Match Audio • ${this.item.name} by ${this.item.artist.name}`;
+          document.title = `Combine.fm • ${this.item.name} by ${this.item.artist.name}`;
         });
       }
     }

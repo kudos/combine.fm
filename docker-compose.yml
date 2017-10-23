@@ -4,7 +4,7 @@ services:
   app:
     build: ./
     environment:
-      DEBUG: "match.audio*"
+      DEBUG: "combine.fm*"
       VUE_ENV: server
       DATABASE_URL:
       GOOGLE_EMAIL:
@@ -19,12 +19,33 @@ services:
     ports:
       - "3000:3000"
     command: yarn run watch-server
+  worker:
+    build: ./
+    environment:
+      DEBUG: "combine.fm*"
+      VUE_ENV: server
+      DATABASE_URL:
+      GOOGLE_EMAIL:
+      GOOGLE_PASSWORD:
+      XBOX_CLIENT_ID:
+      XBOX_CLIENT_SECRET:
+      YOUTUBE_KEY:
+      SPOTIFY_CLIENT_ID:
+      SPOTIFY_CLIENT_SECRET:
+    volumes:
+      - ./:/app:cached
+    command: yarn run worker
+    ports:
+      - "3001:3000"
   database:
-    image: "postgres:9.6"
+    image: "postgres:10-alpine"
     ports:
       - "5432:5432"
     environment:
       POSTGRES_PASSWORD: "password"
-      POSTGRES_USER: "matchaudio"
-      POSTGRES_DB: "matchaudio"
-
+      POSTGRES_USER: "combinefm"
+      POSTGRES_DB: "combinefm"
+  redis:
+    image: "redis:4.0.2-alpine"
+    ports:
+      - "6379:6379"

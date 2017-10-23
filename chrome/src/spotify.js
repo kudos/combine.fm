@@ -1,4 +1,4 @@
-const apiUrl = 'https://match.audio';
+const apiUrl = 'https://combine.fm';
 
 function contextClick(e) {
   console.log(e);
@@ -29,7 +29,7 @@ window.addEventListener('click', contextClick);
 //     const li = document.createElement('li');
 //     ul.appendChild(li);
 //     const a = document.createElement('a');
-//     a.innerText = 'Open in Match Audio'
+//     a.innerText = 'Open in Combine.fm'
 //     a.href = apiUrl;
 //     a.target = '_blank';
 //     a.addEventListener('click', (e) => {

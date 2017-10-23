@@ -1,4 +1,4 @@
-const apiUrl = 'https://match.audio';
+const apiUrl = 'https://combine.fm';
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.declarativeContent.onPageChanged.removeRules(undefined, () => {

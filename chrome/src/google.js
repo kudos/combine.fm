@@ -1,8 +1,8 @@
-const apiUrl = 'https://match.audio';
+const apiUrl = 'https://combine.fm';
 
 var button = document.createElement('button');
 button.className = 'share-button';
-button.setAttribute('aria-label', 'Share to Match Audio');
+button.setAttribute('aria-label', 'Share to Combine.fm');
 
 var buttonContent = document.createElement('div');
 buttonContent.className = 'button-content';
@@ -23,14 +23,14 @@ waves.className = 'style-scope paper-ripple';
 paperRipple.appendChild(waves);
 
 var img = document.createElement('img');
-img.src = 'https://match.audio/images/logo-128.png';
+img.src = 'https://combine.fm/images/logo-128.png';
 img.height = 48;
 buttonContent.appendChild(img)
 
 var buttonLabel = document.createElement('div');
 buttonLabel.className = 'button-label';
 buttonLabel.setAttribute('aria-hidden', true);
-buttonLabel.innerText = 'Match Audio';
+buttonLabel.innerText = 'Combine.fm';
 buttonContent.appendChild(buttonLabel);
 
 // select the target node

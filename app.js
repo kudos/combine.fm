@@ -16,10 +16,9 @@ import index from './routes/index';
 import recent from './routes/recent';
 import search from './routes/search';
 import share from './routes/share';
-import itunesProxy from './routes/itunes-proxy';
 import errorHandler from './lib/error-handler';
 
-const debug = debuglog('match.audio');
+const debug = debuglog('combine.fm');
 
 process.env.VUE_ENV = 'server';
 
@@ -57,7 +56,6 @@ app.use(route.get('/', index));
 app.use(route.get('/recent', recent));
 app.use(route.post('/search', search));
 app.use(route.get('/:service/:type/:id.:format?', share));
-app.use(route.get('/itunes/(.*)', itunesProxy));
 
 if (!module.parent) {
   app.listen(process.env.PORT || 3000, () => {

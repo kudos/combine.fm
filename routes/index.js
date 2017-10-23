@@ -4,7 +4,7 @@ import services from '../lib/services';
 import render from '../lib/render';
 import models from '../models';
 
-const debug = debuglog('match.audio:share');
+const debug = debuglog('combinefm:share');
 
 const recentQuery = {
   include: [

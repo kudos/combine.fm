@@ -4,12 +4,12 @@
       <div class="container">
         <h1 class="title has-text-centered">
           <router-link to="/" exact>
-            match<span class="lighter">.audio</span>
+            <img src="/assets/images/logo-128.png"> <b>combine</b><span class="lighter">.fm</span>
           </router-link>
         </h1>
       </div>
     </div>
-    <div>
+    <div class="content">
       <router-view></router-view>
     </div>
     <footer class="footer">
@@ -21,15 +21,25 @@
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+html {
+  position: relative;
+  min-height: 100%;
+}
 body {
   color: #445470;
   background: #fff;
+  margin: 0 0 140px;
 }
 .header {
+  font-family: 'Comfortaa', cursive;
   background: #FE4365;
 }
+.header img {
+  height: 64px;
+}
 h1 {
-  padding: 25px 0;
+  padding: 10px 0;
 }
 h1 a {
   color: #fff;
@@ -53,7 +63,10 @@ h1 .lighter {
   color: #ffacc5;
 }
 .footer {
-  margin-top: 50px;
-  padding-bottom: 40px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 40px 24px 40px 24px;
 }
 </style>

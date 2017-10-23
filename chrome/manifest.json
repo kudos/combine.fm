@@ -1,7 +1,7 @@
 {
-  "name" : "Match Audio",
+  "name" : "Combine.fm",
   "version" : "0.3.1",
-  "description" : "Match Audio makes sharing from music services better.",
+  "description" : "Combine.fm makes sharing from music services better.",
   "background" : {
     "persistent": false,
     "scripts": [
@@ -20,7 +20,7 @@
       "48": "icon-48.png",
       "128": "icon-128.png"
     },
-    "default_title": "Find matches for this music on Match Audio"
+    "default_title": "Find matches for this music on Combine.fm"
   },
   "permissions" : [
     "declarativeContent",

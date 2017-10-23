@@ -4,7 +4,7 @@ import Sequelize from 'sequelize';
 
 import debugname from 'debug';
 
-const debug = debugname('match.audio:models');
+const debug = debugname('combine.fm:models');
 
 const config = {
   dialect: 'postgres',
