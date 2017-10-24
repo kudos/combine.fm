@@ -1,6 +1,6 @@
 <template>
   <div class="container" v-if="item.name">
-    <social v-bind:name="item.name" v-bind:artist="item.artist.name" v-bind:url="`https://match.audio/${item.service}/${item.type}/${item.externalId}`"></social>
+    <social v-bind:name="item.name" v-bind:artist="item.artist.name" v-bind:url="`https://combine.fm/${item.service}/${item.type}/${item.externalId}`"></social>
     <div class="share-heading">
       <h3 class="title is-3">Matched {{ item.albumName ? 'tracks' : 'albums' }} for</h3>
       <h2 class="title is-2"><strong>{{ item.name }}</strong> - {{ item.artist.name }}</h2>
