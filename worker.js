@@ -16,34 +16,38 @@ function search(data, done) {
   const service = services.find(item => data.service.id === item.id);
   console.log(service);
   co(function* gen() { // eslint-disable-line no-loop-func
-    const match = yield service.search(share);
+    try {
+      const match = yield service.search(share);
 
-    if (match.id) {
-      models.match.create({
-        trackId: share.type === 'track' ? share.id : null,
-        albumId: share.type === 'album' ? share.id : null,
-        externalId: match.id.toString(),
-        service: match.service,
-        name: match.name,
-        streamUrl: match.streamUrl,
-        purchaseUrl: match.purchaseUrl,
-        artworkSmall: match.artwork.small,
-        artworkLarge: match.artwork.large,
-      });
-    } else {
-      models.match.create({
-        trackId: share.type === 'track' ? share.id : null,
-        albumId: share.type === 'album' ? share.id : null,
-        externalId: null,
-        service: match.service,
-        name: null,
-        streamUrl: null,
-        purchaseUrl: null,
-        artworkSmall: null,
-        artworkLarge: null,
-      });
+      if (match.id) {
+        models.match.create({
+          trackId: share.type === 'track' ? share.id : null,
+          albumId: share.type === 'album' ? share.id : null,
+          externalId: match.id.toString(),
+          service: match.service,
+          name: match.name,
+          streamUrl: match.streamUrl,
+          purchaseUrl: match.purchaseUrl,
+          artworkSmall: match.artwork.small,
+          artworkLarge: match.artwork.large,
+        });
+      } else {
+        models.match.create({
+          trackId: share.type === 'track' ? share.id : null,
+          albumId: share.type === 'album' ? share.id : null,
+          externalId: null,
+          service: match.service,
+          name: null,
+          streamUrl: null,
+          purchaseUrl: null,
+          artworkSmall: null,
+          artworkLarge: null,
+        });
+      }
+      return done();
+    } catch (err) {
+      return done(err);
     }
-    return done();
   }).catch((err) => {
     console.log(err);
     raven.captureException(err);

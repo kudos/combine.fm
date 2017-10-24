@@ -6,7 +6,7 @@
         Combine.fm makes sharing from music services better. What happens when you share your favourite song on Spotify with a friend, but they don't use Spotify?
       </p>
       <p>
-        We match album and track links from Youtube, Spotify, Deezer, Google Music, Xbox Music, and iTunes and give you back one link with matches we find on all of them.
+        We match album and track links from Youtube, Spotify, Google Music, Apple Musicm, Groove Music and Deezer and give you back one link with matches we find on all of them.
       </p>
     </div>
     <div class="recently-shared">

@@ -30,7 +30,7 @@ export default function* () {
       if (service.id === share.service) {
         continue; // eslint-disable-line no-continue
       }
-      const job = queue.create('search', {share: share, service: service}).save((err) => {
+      const job = queue.create('search', { share: share, service: service }).save((err) => {
         if (!err) console.log(job.id);
       });
     }
