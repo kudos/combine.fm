@@ -5,7 +5,7 @@ describe('Spotify', function(){
   describe('lookupId', function(){
     it('should find album by ID', function* (){
       const result = yield spotify.lookupId('77UW17CZFyCaRLHdHeofZu', 'album');
-      result.name.should.equal('Listen');
+      result.name.should.equal('Listen (Deluxe)');
     });
 
     it('should find track by ID', function* (){
