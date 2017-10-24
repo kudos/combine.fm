@@ -2,7 +2,7 @@
   <ul class='social'>
     <li>Share this</li>
     <li>
-      <a v-bind:href="`http://twitter.com/intent/tweet/?text=${encodeURIComponent(name)} by ${ encodeURIComponent(artist)}&via=MatchAudio&url=${url}`" class='share-dialog'>
+      <a v-bind:href="`http://twitter.com/intent/tweet/?text=${encodeURIComponent(name)} by ${ encodeURIComponent(artist)}&via=Combinefm&url=${url}`" class='share-dialog'>
         <img src='/assets/images/twitter.png' alt='Twitter' height="20" width="20" />
       </a>
     </li>
