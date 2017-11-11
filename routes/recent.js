@@ -5,7 +5,7 @@ const recentQuery = {
     { model: models.artist },
     { model: models.match },
   ],
-  limit: 6,
+  limit: 9,
   order: [
     ['updatedAt', 'DESC'],
   ],
@@ -18,6 +18,6 @@ export default function* () {
   this.body = {
     recents: recentAlbums.map(album => album.toJSON())
       .concat(recentTracks.map(track => track.toJSON()))
-      .sort((a, b) => a.createdAt < b.createdAt).slice(0, 6),
+      .sort((a, b) => a.createdAt < b.createdAt).slice(0, 9),
   };
 }
