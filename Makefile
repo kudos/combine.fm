@@ -11,6 +11,10 @@ help:
 .PHONY: start
 start: docker-compose-up watch-frontend ## Start containers and watch frontend
 
+.PHONY: test
+test: ## Run tests
+	docker-compose run --rm app yarn test
+
 .PHONY: logs
 logs: ## Tail the app and worker logs
 	docker-compose logs -f app worker
@@ -22,7 +26,6 @@ migrate: ## Migrate database schema
 .PHONY: watch-frontend
 watch-frontend: ## Build and watch frontend for changes
 	docker-compose run --rm app yarn watch-js
-
 
 .PHONY: docker-compose-up
 docker-compose-up: ## Start (and create) docker containers
