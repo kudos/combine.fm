@@ -1,9 +1,12 @@
 import co from 'co';
 import kue from 'kue';
 import raven from 'raven';
+import debuglog from 'debug';
 
 import models from './models';
 import services from './lib/services';
+
+const debug = debuglog('combine.fm:worker');
 
 raven.config(process.env.SENTRY_DSN).install();
 
@@ -14,7 +17,7 @@ const queue = kue.createQueue({
 function search(data, done) {
   const share = data.share;
   const service = services.find(item => data.service.id === item.id);
-  console.log(service);
+  debug(`Searching on: ${service}`);
   co(function* gen() { // eslint-disable-line no-loop-func
     try {
       const match = yield service.search(share);
@@ -49,7 +52,9 @@ function search(data, done) {
       return done(err);
     }
   }).catch((err) => {
-    console.log(err);
+    debug(`Error searching on: ${service}`);
+    debug(share);
+    debug(err);
     raven.captureException(err);
     return done();
   });

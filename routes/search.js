@@ -54,7 +54,8 @@ export default function* () {
 
     this.body = share;
   } catch (e) {
-    this.throw(400, { error: { message: 'Unexpected error looking up music. Please try again later.' } });
+    debug(e);
+    this.throw(500, { error: { message: 'Unexpected error looking up music. Please try again later.' } });
     throw e;
   }
 }
