@@ -1,9 +1,12 @@
 import kue from 'kue';
+import debuglog from 'debug';
 
 import services from '../lib/services';
 import render from '../lib/render';
 import models from '../models';
 import { find, create } from '../lib/share';
+
+const debug = debuglog('combine.fm:share');
 
 const queue = kue.createQueue({
   redis: process.env.REDIS_URL,
@@ -33,14 +36,16 @@ export default function* (serviceId, type, itemId, format) {
     if (!share) {
       share = yield create(music);
 
-      for (const service of services) {
-        if (service.id === share.service) {
-          continue; // eslint-disable-line no-continue
+      services.forEach((service) => {
+        if (service.id !== share.service) {
+          const job = queue.create('search', { share, service })
+            .attempts(3)
+            .backoff({ type: 'exponential' })
+            .save((err) => {
+              debug(err || `JobID: ${job.id}`);
+            });
         }
-        const job = queue.create('search', {share: share, service: service}).save((err) => {
-          if (!err) console.log(job.id);
-        });
-      }
+      });
     }
   }
 

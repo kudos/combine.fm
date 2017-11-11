@@ -17,7 +17,7 @@ const queue = kue.createQueue({
 function search(data, done) {
   const share = data.share;
   const service = services.find(item => data.service.id === item.id);
-  debug(`Searching on: ${service}`);
+  debug(`Searching on: ${service.id}`);
   co(function* gen() { // eslint-disable-line no-loop-func
     try {
       const match = yield service.search(share);
@@ -49,10 +49,14 @@ function search(data, done) {
       }
       return done();
     } catch (err) {
+      debug(`Error searching on: ${service.id}`);
+      debug(share);
+      debug(err);
+      raven.captureException(err);
       return done(err);
     }
   }).catch((err) => {
-    debug(`Error searching on: ${service}`);
+    debug(`Error searching on: ${service.id}`);
     debug(share);
     debug(err);
     raven.captureException(err);

@@ -29,9 +29,12 @@ export default function* () {
 
       services.forEach((service) => {
         if (service.id !== share.service) {
-          const job = queue.create('search', { share, service }).save((err) => {
-            debug(err || job.id);
-          });
+          const job = queue.create('search', { share, service })
+            .attempts(3)
+            .backoff({ type: 'exponential' })
+            .save((err) => {
+              debug(err || `JobID: ${job.id}`);
+            });
         }
       });
     }
