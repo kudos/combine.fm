@@ -38,7 +38,7 @@ export default {
         this.submitting = false;
         if (res.status == 200) {
           const item = res.body;
-          this.$router.push(`/${item.service}/${item.albumName ? 'track' : 'album'}/${item.externalId}`);
+          this.$router.push(`/${item.service}/${item.type}/${item.externalId}`);
         } else {
           this.error = res.body.message;
         }

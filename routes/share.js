@@ -38,7 +38,7 @@ export default function* (serviceId, type, itemId, format) {
 
       services.forEach((service) => {
         if (service.id !== share.service) {
-          const job = queue.create('search', { share, service })
+          const job = queue.create('search', { title: `Matching ${share.name} on ${service.id}`, share, service })
             .attempts(3)
             .backoff({ type: 'exponential' })
             .save((err) => {

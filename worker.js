@@ -64,7 +64,7 @@ function search(data, done) {
   });
 }
 
-queue.process('search', (job, done) => {
+queue.process('search', 5, (job, done) => {
   search(job.data, done);
 });
 

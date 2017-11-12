@@ -13,11 +13,11 @@ const queue = kue.createQueue({
 });
 
 export default function* () {
-  const url = parse(this.request.body.url);
-  debug(`URL ${url.href}`);
-  this.assert(url.host, 400, { error: { message: 'You need to submit a url.' } });
-
   try {
+    const url = parse(this.request.body.url);
+    debug(`URL ${url.href}`);
+    this.assert(url.host, 400, { error: { message: 'You need to submit a url.' } });
+
     const music = yield lookup(this.request.body.url);
 
     this.assert(music, 400, { error: { message: 'No supported music found at that link :(' } });
@@ -29,7 +29,7 @@ export default function* () {
 
       services.forEach((service) => {
         if (service.id !== share.service) {
-          const job = queue.create('search', { share, service })
+          const job = queue.create('search', { title: `Matching ${share.name} on ${service.id}`, share, service })
             .attempts(3)
             .backoff({ type: 'exponential' })
             .save((err) => {
@@ -58,7 +58,7 @@ export default function* () {
     this.body = share;
   } catch (e) {
     debug(e);
-    this.throw(500, { error: { message: 'Unexpected error looking up music. Please try again later.' } });
+    this.throw(400, { error: { message: 'Unexpected error looking up music. Please try again later.' } });
     throw e;
   }
 }
