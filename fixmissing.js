@@ -24,11 +24,11 @@ const query = {
   ],
 };
 
-function* search(data, done) {
+function* search(data) {
   const share = data.share;
   const service = services.find(item => data.service.id === item.id);
 
-  debug(`Matching ${share.name} on ${data.service.id}`)
+  debug(`Matching ${share.name} on ${data.service.id}`);
 
   const match = yield service.search(share);
 
@@ -61,10 +61,10 @@ function* search(data, done) {
   }
 }
 
-co(function* () {
-  const albums = yield models.album.findAll(query);
-  for (const item of albums) {
-    const unmatched = serviceIds;
+function* find(model) {
+  const items = yield models[model].findAll(query);
+  for (const item of items) {
+    let unmatched = serviceIds;
     for (const match of item.matches) {
       unmatched = unmatched.filter(id => match.service !== id);
     }
@@ -74,14 +74,14 @@ co(function* () {
         yield search({ share: item, service: { id: toMatch } });
       }
     } else {
-      debug(`No broken matches for ${item.name}`)
+      debug(`No broken matches for ${item.name}`);
     }
   }
-}).catch(function (err) {
+}
+
+co(function* main() {
+  yield find('album');
+  yield find('track');
+}).catch((err) => {
   debug(err.stack);
 });
-
-
-
-
-
