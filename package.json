@@ -77,7 +77,7 @@
     "pg": "^6.1.0",
     "playmusic": "^2.3.0",
     "raven": "^2.1.2",
-    "sequelize": "^3.24.3",
+    "sequelize": "^4.17.2",
     "spotify-web-api-node": "^2.4.0",
     "style-loader": "^0.17.0",
     "superagent": "^2.1.0",
