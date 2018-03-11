@@ -30,3 +30,7 @@ watch-frontend: ## Build and watch frontend for changes
 .PHONY: docker-compose-up
 docker-compose-up: ## Start (and create) docker containers
 	docker-compose up -d
+
+.PHONY: yarn
+yarn: ## Migrate database schema
+	docker-compose run --rm app yarn

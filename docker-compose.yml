@@ -8,8 +8,8 @@ services:
       VUE_ENV: server
       DATABASE_URL:
       REDIS_URL:
-      GOOGLE_EMAIL:
-      GOOGLE_PASSWORD:
+      GOOGLE_ANDROID_ID:
+      GOOGLE_MASTER_TOKEN:
       XBOX_CLIENT_ID:
       XBOX_CLIENT_SECRET:
       YOUTUBE_KEY:
@@ -27,8 +27,8 @@ services:
       VUE_ENV: server
       DATABASE_URL:
       REDIS_URL:
-      GOOGLE_EMAIL:
-      GOOGLE_PASSWORD:
+      GOOGLE_ANDROID_ID:
+      GOOGLE_MASTER_TOKEN:
       XBOX_CLIENT_ID:
       XBOX_CLIENT_SECRET:
       YOUTUBE_KEY:

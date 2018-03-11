@@ -4,7 +4,7 @@
       <div class="container">
         <h1 class="title">
           <router-link to="/" exact>
-            <img src="/assets/images/logo-128.png"> <b>combine</b><span class="lighter">.fm</span>
+            <img src="/assets/images/logo-128.png"><b>combine</b><span class="lighter">.fm</span>
           </router-link>
         </h1>
       </div>
@@ -35,6 +35,7 @@ body {
 }
 .header {
   font-family: 'Comfortaa', cursive;
+  letter-spacing: -2px;
   background: #FE4365;
 }
 .header img {
