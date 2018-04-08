@@ -18,6 +18,7 @@
     "node": "^8.6.0"
   },
   "dependencies": {
+    "amazon-product-api": "^0.4.4",
     "apple-music-jwt": "^0.1.2",
     "babel": "^6.1.18",
     "babel-cli": "^6.26.0",

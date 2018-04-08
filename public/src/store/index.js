@@ -16,12 +16,10 @@ const store = new Vuex.Store({
   actions: {
     // ensure data for rendering given list type
     FETCH_RECENTS: ({ commit }) => fetchRecents()
-        .then(res => commit('SET_RECENTS', { recents: res.body.recents })),
+      .then(res => commit('SET_RECENTS', { recents: res.body.recents })),
 
-    FETCH_ITEM: ({ commit, state }, { service, type, id }) => fetchItem(service, type, id)
-        .then(item => {
-          return commit('SET_ITEM', { item })
-        }),
+    FETCH_ITEM: ({ commit }, { service, type, id }) => fetchItem(service, type, id)
+      .then(item => commit('SET_ITEM', { item })),
   },
 
   mutations: {
@@ -30,7 +28,7 @@ const store = new Vuex.Store({
     },
 
     SET_ITEM: (state, { item }) => {
-      state.item = item.body;
+      state.item = item.body; // eslint-disable-line
     },
   },
 });

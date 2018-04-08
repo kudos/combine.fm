@@ -5,7 +5,7 @@ describe('Youtube', function(){
 	describe('lookup', function(){
     it('should find album by lookup', function* (){
       const result = yield youtube.lookupId('6JnGBs88sL0');
-      result.name.should.equal('Nelly Furtado - Say It Right');
+      result.name.should.equal('Say It Right');
     });
   });
 

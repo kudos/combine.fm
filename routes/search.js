@@ -1,6 +1,7 @@
 import { parse } from 'url';
 import kue from 'kue';
 import debuglog from 'debug';
+import { inspect } from 'util';
 
 import lookup from '../lib/lookup';
 import services from '../lib/services';
@@ -57,7 +58,7 @@ export default function* () {
 
     this.body = share;
   } catch (e) {
-    debug(e);
+    debug(inspect(e, {showHidden: false, depth: null}));
     this.throw(400, { error: { message: 'Unexpected error looking up music. Please try again later.' } });
     throw e;
   }

@@ -26,7 +26,7 @@ describe('Google Play Music', function(){
     });
 
     it('should find awkward track by search', function* (){
-      const result = yield google.search({type: 'track', artist: {name: 'Jamie xx'}, albumName: 'In Colour (Remixes)', name: 'Loud Places [Tessela Remix]'});
+      const result = yield google.search({type: 'track', artist: {name: 'Jamie xx'}, albumName: 'Loud Places (Remixes)', name: 'Loud Places [Tessela Remix]'});
       result.name.should.equal('Loud Places [Tessela Remix]');
     });
   });

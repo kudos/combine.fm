@@ -32,5 +32,5 @@ docker-compose-up: ## Start (and create) docker containers
 	docker-compose up -d
 
 .PHONY: yarn
-yarn: ## Migrate database schema
+yarn: ## Update yarn dependencies
 	docker-compose run --rm app yarn

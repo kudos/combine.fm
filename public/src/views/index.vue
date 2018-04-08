@@ -56,7 +56,7 @@ import search from '../components/search.vue';
 export default {
   name: 'index-view',
   components: { search },
-  created () {
+  created() {
     // fetch the data when the view is created and the data is
     // already being observed
     this.fetch();
@@ -68,16 +68,15 @@ export default {
     };
   },
   watch: {
-    '$route': 'fetch',
-    recents: function () {
+    $route: 'fetch',
+    recents() {
       if (typeof document !== 'undefined') {
-        const recents = this.$store.state.recents;
-        document.title = `Combine.fm • Share Music`;
+        document.title = 'Combine.fm • Share Music';
       }
     },
   },
   methods: {
-    fetch () {
+    fetch() {
       if (!this.$store.state.recents) {
         fetchRecents().then((res) => {
           this.recents = res.body.recents;
@@ -87,7 +86,7 @@ export default {
       }
     },
   },
-}
+};
 
 </script>
 <style>

@@ -15,6 +15,9 @@ services:
       YOUTUBE_KEY:
       SPOTIFY_CLIENT_ID:
       SPOTIFY_CLIENT_SECRET:
+      AWS_ACCESS_KEY_ID:
+      AWS_SECRET_ACCESS_KEY:
+      AWS_TAG:
     volumes:
       - ./:/app:cached
     ports:
@@ -34,6 +37,9 @@ services:
       YOUTUBE_KEY:
       SPOTIFY_CLIENT_ID:
       SPOTIFY_CLIENT_SECRET:
+      AWS_ACCESS_KEY_ID:
+      AWS_SECRET_ACCESS_KEY:
+      AWS_TAG:
     volumes:
       - ./:/app:cached
     command: yarn run worker
