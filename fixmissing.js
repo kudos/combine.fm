@@ -20,7 +20,7 @@ const query = {
     { model: models.match },
   ],
   order: [
-    ['updatedAt', 'DESC'],
+    ['createdAt', 'DESC'],
   ],
 };
 

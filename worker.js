@@ -2,6 +2,7 @@ import co from 'co';
 import kue from 'kue';
 import raven from 'raven';
 import debuglog from 'debug';
+import { inspect } from 'util';
 
 import models from './models';
 import services from './lib/services';
@@ -51,16 +52,16 @@ function search(data, done) {
     } catch (err) {
       debug(`Error searching on: ${service.id}`);
       debug(share);
-      debug(err);
+      debug(inspect(err, { depth: 5 }));
       raven.captureException(err);
       return done(err);
     }
   }).catch((err) => {
     debug(`Error searching on: ${service.id}`);
     debug(share);
-    debug(err);
+    debug(inspect(err, { depth: 5 }));
     raven.captureException(err);
-    return done();
+    return done(err);
   });
 }
 
