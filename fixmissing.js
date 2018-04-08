@@ -1,10 +1,15 @@
 import co from 'co';
+import kue from 'kue';
 import debuglog from 'debug';
 
 import models from './models';
 import services from './lib/services';
 
 const debug = debuglog('combine.fm:fixmissing');
+
+const queue = kue.createQueue({
+  redis: process.env.REDIS_URL,
+});
 
 debug('Fixing missing');
 
@@ -24,41 +29,18 @@ const query = {
   ],
 };
 
-function* search(data) {
+function search(data) {
   const share = data.share;
   const service = services.find(item => data.service.id === item.id);
 
   debug(`Matching ${share.name} on ${data.service.id}`);
 
-  const match = yield service.search(share);
-
-  debug(`Match found for ${share.name} on ${data.service.id}`);
-
-  if (match.id) {
-    models.match.create({
-      trackId: share.type === 'track' ? share.id : null,
-      albumId: share.type === 'album' ? share.id : null,
-      externalId: match.id.toString(),
-      service: match.service,
-      name: match.name,
-      streamUrl: match.streamUrl,
-      purchaseUrl: match.purchaseUrl,
-      artworkSmall: match.artwork.small,
-      artworkLarge: match.artwork.large,
+  const job = queue.create('search-backlog', { title: `Matching ${share.name} on ${service.id}`, share, service })
+    .attempts(3)
+    .backoff({ type: 'exponential' })
+    .save((err) => {
+      debug(err || `JobID: ${job.id}`);
     });
-  } else {
-    models.match.create({
-      trackId: share.type === 'track' ? share.id : null,
-      albumId: share.type === 'album' ? share.id : null,
-      externalId: null,
-      service: match.service,
-      name: null,
-      streamUrl: null,
-      purchaseUrl: null,
-      artworkSmall: null,
-      artworkLarge: null,
-    });
-  }
 }
 
 function* find(model) {
@@ -71,17 +53,21 @@ function* find(model) {
     if (unmatched.length > 0) {
       debug(`Matching ${unmatched.join(', ')}`);
       for (const toMatch of unmatched) {
-        yield search({ share: item, service: { id: toMatch } });
+        search({ share: item, service: { id: toMatch } });
       }
     } else {
       debug(`No broken matches for ${item.name}`);
     }
   }
+  return Promise.resolve();
 }
 
 co(function* main() {
   yield find('album');
   yield find('track');
+  setTimeout(() => {
+    process.exit(0);
+  }, 1000);
 }).catch((err) => {
   debug(err.stack);
 });

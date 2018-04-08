@@ -69,5 +69,12 @@ queue.process('search', 5, (job, done) => {
   search(job.data, done);
 });
 
+queue.process('search-backlog', 1, (job, ctx, done) => {
+  search(job.data, done);
+  ctx.pause(7000, () => {
+    console.log('Worker is paused... ');
+    setTimeout(() => { ctx.resume(); }, 10000);
+  });
+});
 
 kue.app.listen(3000);
