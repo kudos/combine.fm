@@ -29,7 +29,7 @@ export default function (sequelize, DataTypes) {
     },
   });
 
-  Track.associate = function (models) {
+  Track.associate = function associate(models) {
     Track.hasMany(models.match);
     Track.belongsTo(models.artist);
   };

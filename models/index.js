@@ -10,7 +10,7 @@ const config = {
   dialect: 'postgres',
   protocol: 'postgres',
   quoteIdentifiers: true,
-  logging: debug,
+  logging: false,
 };
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, config);

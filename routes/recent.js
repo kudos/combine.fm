@@ -11,11 +11,11 @@ const recentQuery = {
   ],
 };
 
-export default function* () {
-  const recentAlbums = yield models.album.findAll(recentQuery);
-  const recentTracks = yield models.track.findAll(recentQuery);
+export default async function (ctx) {
+  const recentAlbums = await models.album.findAll(recentQuery);
+  const recentTracks = await models.track.findAll(recentQuery);
 
-  this.body = {
+  ctx.body = {
     recents: recentAlbums.map(album => album.toJSON())
       .concat(recentTracks.map(track => track.toJSON()))
       .sort((a, b) => a.createdAt < b.createdAt).slice(0, 9),

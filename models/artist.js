@@ -15,7 +15,7 @@ export default function (sequelize, DataTypes) {
     ],
   });
 
-  Artist.associate = function (models) {
+  Artist.associate = function associate(models) {
     Artist.hasMany(models.track);
     Artist.hasMany(models.album);
   };

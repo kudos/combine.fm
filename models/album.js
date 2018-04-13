@@ -27,7 +27,7 @@ export default function (sequelize, DataTypes) {
     },
   });
 
-  Album.associate = function (models) {
+  Album.associate = function associate(models) {
     Album.hasMany(models.match);
     Album.belongsTo(models.artist);
   };

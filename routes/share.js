@@ -12,10 +12,10 @@ const queue = kue.createQueue({
   redis: process.env.REDIS_URL,
 });
 
-export default function* (serviceId, type, itemId, format) {
-  this.assert(type === 'album' || type === 'track', 400, { error: 'Invalid type' });
+export default async function (ctx, serviceId, type, itemId, format) {
+  ctx.assert(type === 'album' || type === 'track', 400, { error: 'Invalid type' });
 
-  let share = yield models[type].findOne({
+  let share = await models[type].findOne({
     where: {
       externalId: itemId,
     },
@@ -27,14 +27,14 @@ export default function* (serviceId, type, itemId, format) {
 
   if (!share) {
     const matchedService = services.find(service => serviceId === service.id);
-    const music = yield matchedService.lookupId(itemId, type);
+    const music = await matchedService.lookupId(itemId, type);
 
-    this.assert(music, 400, { error: { message: 'No supported music found at that link :(' } });
+    ctx.assert(music, 400, { error: { message: 'No supported music found at that link :(' } });
 
-    share = yield find(music);
+    share = await find(music);
 
     if (!share) {
-      share = yield create(music);
+      share = await create(music);
 
       services.forEach((service) => {
         if (service.id !== share.service) {
@@ -49,7 +49,7 @@ export default function* (serviceId, type, itemId, format) {
     }
   }
 
-  this.assert(share, 404);
+  ctx.assert(share, 404);
 
   const unmatched = services.filter(service =>
     !share.matches.find(match => match.service === service.id));
@@ -64,7 +64,7 @@ export default function* (serviceId, type, itemId, format) {
   share.matches = share.matches.sort(a => !a.externalId);
 
   if (format === 'json') {
-    this.body = share;
+    ctx.body = share;
   } else {
     const initialState = {
       item: share,
@@ -74,16 +74,16 @@ export default function* (serviceId, type, itemId, format) {
 
     const url = `/${serviceId}/${type}/${itemId}`;
 
-    const html = yield render(url, initialState);
+    const html = await render(url, initialState);
 
     const head = {
       share,
       title: `${share.name} by ${share.artist.name}`,
-      shareUrl: `${this.request.origin}${url}`,
+      shareUrl: `${ctx.request.origin}${url}`,
       image: share.matches.find(el => el.service === share.service).artworkLarge,
     };
 
-    yield this.render('index', {
+    await ctx.render('index', {
       initialState,
       share,
       head,

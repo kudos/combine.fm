@@ -24,7 +24,7 @@ process.env.VUE_ENV = 'server';
 
 raven.config(process.env.SENTRY_DSN).install();
 
-const app = koa();
+const app = new koa();
 
 app.on('error', (err) => {
   raven.captureException(err);
@@ -41,9 +41,9 @@ app.use(serve('public', { maxage: 31536000000 }));
 
 const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, '/public/dist/manifest.json')));
 
-app.use(function* state(next) {
-  this.state = { manifest };
-  yield next;
+app.use(async function(ctx, next) {
+  ctx.state.manifest = manifest;
+  await next();
 });
 
 app.use(views(path.resolve(__dirname, './views'), {

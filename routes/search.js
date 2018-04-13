@@ -13,20 +13,20 @@ const queue = kue.createQueue({
   redis: process.env.REDIS_URL,
 });
 
-export default function* () {
+export default async function (ctx) {
   try {
-    const url = parse(this.request.body.url);
-    debug(`URL ${url.href}`);
-    this.assert(url.host, 400, { error: { message: 'You need to submit a url.' } });
+    const url = parse(ctx.request.body.url);
 
-    const music = yield lookup(this.request.body.url);
+    ctx.assert(url.host, 400, { error: { message: 'You need to submit a url.' } });
 
-    this.assert(music, 400, { error: { message: 'No supported music found at that link :(' } });
+    const music = await lookup(ctx.request.body.url);
 
-    let share = yield find(music);
+    ctx.assert(music, 400, { error: { message: 'No supported music found at that link :(' } });
+
+    let share = await find(music);
 
     if (!share) {
-      share = yield create(music);
+      share = await create(music);
 
       services.forEach((service) => {
         if (service.id !== share.service) {
@@ -56,10 +56,12 @@ export default function* () {
 
     share.matches = share.matches.sort(a => !!a.externalId);
 
-    this.body = share;
-  } catch (e) {
-    debug(inspect(e, {showHidden: false, depth: null}));
-    this.throw(400, { error: { message: 'Unexpected error looking up music. Please try again later.' } });
-    throw e;
+    ctx.body = share;
+  } catch (err) {
+    if (err.name === 'BadRequestError') {
+      throw err;
+    }
+    debug(inspect(err, {showHidden: false, depth: null}));
+    ctx.throw(400, { error: { message: 'Unexpected error looking up music. Please try again later.' } });
   }
 }
