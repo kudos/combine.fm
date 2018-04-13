@@ -8,18 +8,17 @@ export default function (sequelize, DataTypes) {
     artworkLarge: DataTypes.TEXT,
   }, {
     paranoid: true,
-    classMethods: {
-      associate: (models) => {
-        Artist.hasMany(models.track);
-        Artist.hasMany(models.album);
-      },
-    },
     indexes: [
       {
         fields: ['name'],
       },
     ],
   });
+
+  Artist.associate = function (models) {
+    Artist.hasMany(models.track);
+    Artist.hasMany(models.album);
+  };
 
   return Artist;
 }

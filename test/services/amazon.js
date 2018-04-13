@@ -4,12 +4,12 @@ import * as amazon from '../../lib/services/amazon';
 describe('Amazon', function () {
   describe('lookupId', function () {
     it('should find album by ID', function* () {
-      const result = yield amazon.lookupId('B00WMW3HFY', 'album');
+      const result = yield amazon.lookupId('B00V8I134A', 'album');
       result.name.should.equal('In Colour [Explicit]');
     });
 
     it('should find track by ID', function* (){
-      const result = yield amazon.lookupId('B00WMW3TUM', 'track');
+      const result = yield amazon.lookupId('B00V8I1CKU', 'track');
       result.name.should.equal('Sleep Sound');
     });
   });

@@ -15,12 +15,6 @@ export default function (sequelize, DataTypes) {
     artistId: DataTypes.INTEGER,
   }, {
     paranoid: true,
-    classMethods: {
-      associate: (models) => {
-        Album.hasMany(models.match);
-        Album.belongsTo(models.artist);
-      },
-    },
     indexes: [
       {
         fields: ['externalId', 'service'],
@@ -32,6 +26,11 @@ export default function (sequelize, DataTypes) {
       },
     },
   });
+
+  Album.associate = function (models) {
+    Album.hasMany(models.match);
+    Album.belongsTo(models.artist);
+  };
 
   return Album;
 }

@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
 
@@ -18,29 +17,52 @@ module.exports = {
     extensions: ['.js', '.json', '.vue', '.css'],
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          extractCSS: true
+        use: {
+          loader: 'vue-loader',
+          options: {
+            extractCSS: true,
+            loaders: {
+              js: [
+                {
+                  loader: 'babel-loader',
+                  options: {
+                    babelrc: false,
+                    presets: ['@babel/preset-env'],
+                    plugins: [
+                      require('@babel/plugin-proposal-object-rest-spread'),
+                    ],
+                  },
+                },
+              ]
+            }
+          },
         },
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            babelrc: false,
+            presets: ['@babel/preset-env'],
+            plugins: [
+              require('@babel/plugin-proposal-object-rest-spread'),
+            ],
+          },
+        },
         exclude: /node_modules/,
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract({ fallback: "style-loader", use: "css-loader" }),
+        loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' }),
       },
     ],
   },
-  devtool: '#source-map',
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new ExtractTextPlugin("style/[name].[hash:10].css"),
+    new ExtractTextPlugin('style/[name].[hash:10].css'),
     new StatsWriterPlugin({
       fields: ['assets'],
       filename: 'manifest.json',
@@ -50,9 +72,9 @@ module.exports = {
           .sort()
           .forEach((file) => {
             manifest[file.replace(/\.[a-f0-9]{10}\./, '.')] = file;
-        });
-        return JSON.stringify(manifest, null, 2) + '\n';
-      }
+          });
+        return `${JSON.stringify(manifest, null, 2)}\n`;
+      },
     }),
   ],
 };

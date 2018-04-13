@@ -2,7 +2,9 @@ version: "2"
 
 services:
   app:
-    build: ./
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
     environment:
       DEBUG: "combine.fm*"
       VUE_ENV: server
@@ -20,11 +22,14 @@ services:
       AWS_TAG:
     volumes:
       - ./:/app:cached
+      - node_modules:/app/node_modules
     ports:
       - "3000:3000"
     command: yarn run watch-server
   worker:
-    build: ./
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
     environment:
       DEBUG: "combine.fm*"
       VUE_ENV: server
@@ -42,6 +47,7 @@ services:
       AWS_TAG:
     volumes:
       - ./:/app:cached
+      - node_modules:/app/node_modules
     command: yarn run worker
     ports:
       - "3001:3000"
@@ -57,3 +63,6 @@ services:
     image: "redis:4.0.2-alpine"
     ports:
       - "6379:6379"
+
+volumes:
+  node_modules:

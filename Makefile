@@ -11,6 +11,10 @@ help:
 .PHONY: start
 start: docker-compose-up watch-frontend ## Start containers and watch frontend
 
+.PHONY: build
+build: ## Run `yarn run build`
+	docker-compose run --rm app yarn run build
+
 .PHONY: test
 test: ## Run tests
 	docker-compose run --rm app yarn test
@@ -34,3 +38,7 @@ docker-compose-up: ## Start (and create) docker containers
 .PHONY: yarn
 yarn: ## Update yarn dependencies
 	docker-compose run --rm app yarn
+
+.PHONY: shell
+shell: ## Run shell
+	docker-compose run --rm app sh

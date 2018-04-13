@@ -11,7 +11,7 @@ export default function (sequelize, DataTypes) {
       'itunes',
       'spotify',
       'xbox',
-      'youtube'
+      'youtube',
     ),
     name: DataTypes.TEXT,
     streamUrl: DataTypes.TEXT,

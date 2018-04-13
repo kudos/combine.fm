@@ -21,24 +21,22 @@ module.exports = {
     new webpack.DefinePlugin({
       'global.GENTLY': false,
     }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
+        use: {
+          loader: 'vue-loader',
+        },
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+        },
         exclude: /node_modules/,
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
       },
     ],
   },
-  devtool: '#source-map',
 };
