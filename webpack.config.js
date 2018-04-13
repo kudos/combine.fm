@@ -75,6 +75,6 @@ module.exports = {
           });
         return `${JSON.stringify(manifest, null, 2)}\n`;
       },
-    }),
+    })
   ],
 };

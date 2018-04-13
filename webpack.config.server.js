@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+  mode: "none",
   target: 'node',
   entry: './public/src/entry-server.js',
   output: {
