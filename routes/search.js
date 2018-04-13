@@ -20,7 +20,7 @@ export default async function (ctx) {
     ctx.assert(url.host, 400, { error: { message: 'You need to submit a url.' } });
 
     const music = await lookup(ctx.request.body.url);
-
+    debug(music);
     ctx.assert(music, 400, { error: { message: 'No supported music found at that link :(' } });
 
     let share = await find(music);

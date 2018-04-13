@@ -5,4 +5,5 @@ public/**/*.gz
 .DS_Store
 .env
 npm-debug.log
+yarn-error.log
 stats.json
