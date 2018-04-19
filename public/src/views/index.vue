@@ -38,14 +38,19 @@
     </div>
     <div>
       <h2 class="title is-2">Tools</h2>
-      <div class="columns">
-        <p class="column is-half">
-          Download the Chrome Extension and get Combine.fm links right from your address bar.
-        </p>
-        <p class="column is-half">
-          <a href="https://chrome.google.com/webstore/detail/kjfpkmfgcflggjaldcfnoppjlpnidolk"><img src="/assets/images/chrome-web-store.png" alt="Download the Chrome Extension" /></a>
-        </p>
-      </div>
+      <p>
+        <a href="https://slack.com/oauth/authorize?client_id=349358389361.349904899522&scope=links:read,chat:write:bot"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+      </p>
+      <p>
+        Add to Slack and get links matched inline.
+      </p>
+      <hr />
+      <p>
+        <a href="https://chrome.google.com/webstore/detail/kjfpkmfgcflggjaldcfnoppjlpnidolk"><img src="/assets/images/chrome-web-store.png" alt="Download the Chrome Extension" height="75" width="248" /></a>
+      </p>
+      <p>
+        Download the Chrome Extension and get Combine.fm links right from your address bar.
+      </p>
     </div>
   </div>
 </template>
