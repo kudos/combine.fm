@@ -1,5 +1,9 @@
 <template>
   <div class="home container">
+    <div class="notification is-success" v-if="slack">
+      <button class="delete" v-on:click="slack = false;closeNotification()"></button>
+      Combine.fm has been added to your Slack workspace!
+    </div>
     <search></search>
     <div class="blurb">
       <p>
@@ -70,6 +74,7 @@ export default {
   data() {
     return {
       recents: {},
+      slack: this.$route.query.slack,
     };
   },
   watch: {
@@ -89,6 +94,9 @@ export default {
       } else {
         this.recents = this.$store.state.recents;
       }
+    },
+    closeNotification() {
+      this.$router.replace('/');
     },
   },
 };
