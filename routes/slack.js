@@ -16,6 +16,10 @@ const queue = kue.createQueue({
 const slackToken = process.env.SLACK_TOKEN;
 
 export default async function (ctx) {
+  if (ctx.request.method === 'GET') {
+    ctx.redirect('https://slack.com/oauth/authorize?client_id=349358389361.349904899522&team=TA9AJBFAM&install_redirect=general&scope=links:read,chat:write:bot');
+    return;
+  }
   if (ctx.request.body.challenge) {
     ctx.body = ctx.request.body.challenge;
     return;

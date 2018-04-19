@@ -59,6 +59,7 @@ app.use(route.post('/search', search));
 app.use(route.get('/:service/:type/:id.:format?', share));
 
 app.use(route.post('/slack', slack));
+app.use(route.get('/slack', slack));
 
 if (!module.parent) {
   app.listen(process.env.PORT || 3000, () => {
