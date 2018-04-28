@@ -48,7 +48,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .social {
   text-align: center;
   font-weight: 300;

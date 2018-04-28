@@ -1,6 +1,6 @@
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader')
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
 
 module.exports = {
@@ -57,13 +57,19 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' }),
+        test: /\.(sass|scss)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+        ]
       },
     ],
   },
   plugins: [
-    new ExtractTextPlugin('style/[name].[hash:10].css'),
+    new MiniCssExtractPlugin({
+      filename: 'style/[name].[hash:10].css',
+    }),
     new VueLoaderPlugin(),
     new StatsWriterPlugin({
       fields: ['assets'],

@@ -22,61 +22,105 @@
   </div>
 </template>
 
-<style>
+<style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+@import "bulma/sass/utilities/initial-variables.sass";
+@import "bulma/sass/utilities/functions.sass";
+@import "scss/_variables";
+@import "bulma/sass/utilities/derived-variables.sass";
+@import "bulma/sass/utilities/mixins.sass";
+@import "bulma/sass/utilities/controls.sass";
+@import "bulma/sass/base/_all.sass";
+@import "bulma/sass/elements/title.sass";
+@import "bulma/sass/elements/button.sass";
+@import "bulma/sass/elements/form.sass";
+@import "bulma/sass/elements/container.sass";
+@import "bulma/sass/elements/notification.sass";
+@import "bulma/sass/elements/other.sass";
+@import "bulma/sass/grid/_all.sass";
+
+
 html {
   position: relative;
   min-height: 100%;
 }
+
 body {
-  color: #445470;
+  color: $grey;
   background: #fff;
   margin: 0 0 160px;
 }
+
 .header {
-  font-family: 'Comfortaa', cursive;
+  font-family: $family-title;
   letter-spacing: -2px;
-  background: #FE4365;
+  background: $primary;
 }
+
 .header img {
   height: 64px;
 }
+
 h1 {
   text-align: center;
   padding: 10px 0;
 }
+
 h1 a {
   color: #fff;
 }
+
 h1 a:hover {
   color: #ffacc5;
 }
+
 .share {
   margin-bottom: 40px;
 }
+
 .share h1 {
   text-align: left;
   font-size: 1.5em;
   line-height: 36px;
   padding: 5px 0;
 }
+
 .share h1 img {
   height: 40px;
 }
+
 .title a:hover {
   border-bottom: none;
 }
+
 h1 .lighter {
   color: #ffacc5;
 }
+
 .footer-break {
   height: 1px;
 }
+
 .footer {
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   padding: 40px 24px 40px 24px;
+}
+
+.artwork {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 5px;
+}
+
+.artwork-youtube {
+  background-position: 50% 0%;
 }
 </style>

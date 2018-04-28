@@ -102,7 +102,7 @@ export default {
 };
 
 </script>
-<style>
+<style lang="scss">
 .blurb {
   margin-bottom: 50px;
 }
@@ -124,14 +124,5 @@ p {
 }
 .recent .artwork {
     margin-bottom: 30px;
-}
-.artwork {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 5px;
 }
 </style>

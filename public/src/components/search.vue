@@ -48,22 +48,7 @@ export default {
 }
 </script>
 
-<style>
-.button.is-primary {
-  background-color: #FE4365;
-}
-.button.is-primary:hover {
-  background-color: #E52A4C;
-}
-.button.is-primary:focus {
-  background-color: #E52A4C;
-}
-.input:active {
-  border-color: #FE4365;
-}
-.input:focus {
-  border-color: #FE4365;
-}
+<style lang="scss">
 .search {
   margin-bottom: 25vh;
 }

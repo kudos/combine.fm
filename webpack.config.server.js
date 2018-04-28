@@ -40,7 +40,15 @@ module.exports = {
         test: /\.css$/,
         use: [
           'vue-style-loader',
-          'css-loader'
+          'css-loader',
+        ]
+      },
+      {
+        test: /\.(sass|scss)$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'sass-loader',
         ]
       }
     ],

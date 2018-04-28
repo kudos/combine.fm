@@ -1,4 +1,4 @@
-import { style } from 'bulma/css/bulma.css';
+// import { style } from 'bulma/css/bulma.css';
 import { sync } from 'vuex-router-sync';
 import { app, store, router } from './app';
 

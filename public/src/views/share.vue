@@ -84,7 +84,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .content ul {
   margin-left: 0;
 }
@@ -97,18 +97,6 @@ export default {
 .share-heading .title strong {
   color: #445470;
   font-weight: 700;
-}
-.artwork {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 5px;
-}
-.artwork-youtube {
-  background-position: 50% 0%;
 }
 .service {
   position: relative;
