@@ -22,7 +22,7 @@ describe('Deezer', function(){
 
     it('should find album with various artists by search', function* (){
       const result = yield deezer.search({type: 'album', artist: {name: 'Various Artists'}, name: 'The Trevor Nelson Collection'});
-      result.name.should.equal('The Trevor Nelson Collection');
+      result.name.should.equal('The Trevor Nelson Collection 3');
     });
 
     it('should find track by search', function* (){

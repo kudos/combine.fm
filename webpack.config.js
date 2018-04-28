@@ -1,4 +1,5 @@
 const path = require('path');
+const { VueLoaderPlugin } = require('vue-loader')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
 
@@ -63,6 +64,7 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('style/[name].[hash:10].css'),
+    new VueLoaderPlugin(),
     new StatsWriterPlugin({
       fields: ['assets'],
       filename: 'manifest.json',

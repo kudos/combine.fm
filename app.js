@@ -16,7 +16,7 @@ import index from './routes/index';
 import recent from './routes/recent';
 import search from './routes/search';
 import share from './routes/share';
-import slack from './routes/slack';
+import { slack, oauth } from './routes/slack';
 import errorHandler from './lib/error-handler';
 
 const debug = debuglog('combine.fm');
@@ -60,6 +60,7 @@ app.use(route.get('/:service/:type/:id.:format?', share));
 
 app.use(route.post('/slack', slack));
 app.use(route.get('/slack', slack));
+app.use(route.get('/oauth', oauth));
 
 if (!module.parent) {
   app.listen(process.env.PORT || 3000, () => {

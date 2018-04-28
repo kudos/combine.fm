@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="header" v-bind:class="{ 'share': $store.state.share }">
+    <div class="header" v-bind:class="{ 'share': this.$router.currentRoute.path !== '/' }">
       <div class="container">
         <h1 class="title">
           <router-link to="/" exact>

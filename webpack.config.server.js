@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
   mode: "none",
@@ -22,22 +23,26 @@ module.exports = {
     new webpack.DefinePlugin({
       'global.GENTLY': false,
     }),
+    new VueLoaderPlugin(),
   ],
   module: {
     rules: [
       {
         test: /\.vue$/,
-        use: {
-          loader: 'vue-loader',
-        },
+        loader: 'vue-loader',
       },
       {
         test: /\.js$/,
-        use: {
-          loader: 'babel-loader',
-        },
+        loader: 'babel-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
+      }
     ],
   },
 };
