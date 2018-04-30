@@ -2,7 +2,7 @@
   "presets": [
     ["@babel/preset-env", {
       "targets": {
-        "node": "9.11.1"
+        "node": "10.0.0"
       },
       "modules": "commonjs"
     }]

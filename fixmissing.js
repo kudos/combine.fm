@@ -15,9 +15,9 @@ debug('Fixing missing');
 
 const serviceIds = [];
 
-for (const service of services) {
+services.forEach((service) => {
   serviceIds.push(service.id);
-}
+});
 
 const query = {
   include: [
@@ -30,7 +30,7 @@ const query = {
 };
 
 function search(data) {
-  const share = data.share;
+  const { share } = data;
   const service = services.find(item => data.service.id === item.id);
 
   debug(`Matching ${share.name} on ${data.service.id}`);
@@ -45,20 +45,20 @@ function search(data) {
 
 function* find(model) {
   const items = yield models[model].findAll(query);
-  for (const item of items) {
+  items.forEach((item) => {
     let unmatched = serviceIds;
-    for (const match of item.matches) {
+    item.matches.forEach((match) => {
       unmatched = unmatched.filter(id => match.service !== id);
-    }
+    });
     if (unmatched.length > 0) {
       debug(`Matching ${unmatched.join(', ')}`);
-      for (const toMatch of unmatched) {
+      unmatched.forEach((toMatch) => {
         search({ share: item, service: { id: toMatch } });
-      }
+      });
     } else {
       debug(`No broken matches for ${item.name}`);
     }
-  }
+  });
   return Promise.resolve();
 }
 

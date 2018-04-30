@@ -5,7 +5,7 @@ help:
 	@echo "Commands:"
 	@grep -E -h '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 	@echo
-	@echo "See README.md or https://github.com/udemy/website-django/blob/master/README.md"
+	@echo "See README.md"
 	@echo
 
 .PHONY: start
