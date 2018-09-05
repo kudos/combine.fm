@@ -13,7 +13,9 @@
     "watch-server": "nodemon -x \"node -r @babel/register\" -e js,vue -i node_modules -i chrome/ app.js",
     "watch-worker": "nodemon -x \"node -r @babel/register\" -e js,vue -i node_modules -i chrome/ worker.js",
     "heroku-postbuild": "npm run build",
-    "initdb": "node -r @babel/register test/initdb.js"
+    "initdb": "node -r @babel/register test/initdb.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "engines": {
     "node": "^10.0.0"
@@ -64,7 +66,8 @@
     "vuex-router-sync": "^5.0.0",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.0.15",
-    "webpack-stats-plugin": "^0.2.1"
+    "webpack-stats-plugin": "^0.2.1",
+    "snyk": "^1.85.0"
   },
   "devDependencies": {
     "concurrently": "^3.5.1",
@@ -75,5 +78,6 @@
     "mocha": "^5.1.1",
     "nodemon": "^1.17.3",
     "should": "^13.2.1"
-  }
+  },
+  "snyk": true
 }
