@@ -10,7 +10,7 @@ describe('Google Play Music', () => {
 
     it('should find track by ID', async function (){
       const result = await google.lookupId('Tjosptub24g2dft37lforqnudpe', 'track');
-      result.name.should.equal('Cherub Rock');
+      result.name.should.equal('Cherub Rock (Remastered 2011)');
     });
   });
 

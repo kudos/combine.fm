@@ -22,7 +22,7 @@ describe('Deezer', () => {
 
     it('should find album with various artists by search', async function (){
       const result = await deezer.search({type: 'album', artist: {name: 'Various Artists'}, name: 'The Trevor Nelson Collection'});
-      result.name.should.equal('The Trevor Nelson Collection 3');
+      result.name.should.equal('The Trevor Nelson Collection');
     });
 
     it('should find track by search', async function (){
