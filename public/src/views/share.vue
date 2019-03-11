@@ -8,10 +8,10 @@
     <ul class="columns is-multiline">
       <li v-for="match in item.matches" class="column is-2">
         <div v-if="match.externalId && match.id != 152">
-          <a v-bind:href="match.streamUrl.replace('www.youtube.com', 'music.youtube.com')"><div v-bind:style="{ backgroundImage: `url(${match.artworkLarge})` }" class="artwork" v-bind:class="{ 'artwork-youtube': match.service === 'youtube' }">
+          <a v-bind:href="(match.streamUrl || match.purchaseUrl).replace('www.youtube.com', 'music.youtube.com')"><div v-bind:style="{ backgroundImage: `url(${match.artworkLarge})` }" class="artwork" v-bind:class="{ 'artwork-youtube': match.service === 'youtube' }">
           </div></a>
           <div class='service-link has-text-centered'>
-            <a v-bind:href="match.streamUrl.replace('www.youtube.com', 'music.youtube.com')"><img v-bind:src="`/assets/images/${match.service}.png`" /></a>
+            <a v-bind:href="(match.streamUrl || match.purchaseUrl).replace('www.youtube.com', 'music.youtube.com')"><img v-bind:src="`/assets/images/${match.service}.png`" /></a>
           </div>
         </div>
         <div v-if="match.matching || match.id === 152" class="service">

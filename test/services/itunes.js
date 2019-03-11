@@ -4,12 +4,13 @@ import * as itunes from '../../lib/services/itunes';
 describe('iTunes Music', function(){
   describe('lookupId', function(){
     it('should find album by ID', async function (){
-      const result = await itunes.lookupId('id215206912', 'album');
+      const result = await itunes.lookupId('1445991287', 'album');
+      console.log(result.name)
       result.name.should.equal('Peace Orchestra');
     });
 
     it('should find track by ID', async function (){
-      const result = await itunes.lookupId('id215206958', 'track');
+      const result = await itunes.lookupId('1445927701', 'track');
       result.name.should.equal('Double Drums');
     });
   });
@@ -34,13 +35,13 @@ describe('iTunes Music', function(){
   describe('lookupUrl', function(){
     describe('parseUrl', function(){
       it('should parse album url into ID', async function (){
-        const result = await itunes.parseUrl('https://itunes.apple.com/us/album/double-drums/id215206912');
-        result.id.should.equal('us215206912');
+        const result = await itunes.parseUrl('https://itunes.apple.com/us/album/peace-orchestra/1445991287');
+        result.id.should.equal('us1445991287');
       });
 
       it('should parse track url into ID', async function (){
-        const result = await itunes.parseUrl('https://itunes.apple.com/us/album/double-drums/id215206912?i=215206958&uo=4');
-        result.id.should.equal('us215206958');
+        const result = await itunes.parseUrl('https://itunes.apple.com/us/album/double-drums-dj-dsl-mix/1445927689?i=1445927701');
+        result.id.should.equal('us1445927689');
       });
     });
   });
