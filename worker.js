@@ -1,6 +1,6 @@
 import co from 'co';
 import kue from 'kue';
-import raven from 'raven';
+import * as Sentry from '@sentry/node';
 import debuglog from 'debug';
 import { inspect } from 'util';
 
@@ -9,7 +9,9 @@ import services from './lib/services';
 
 const debug = debuglog('combine.fm:worker');
 
-raven.config(process.env.SENTRY_DSN).install();
+Sentry.init({
+  dsn: process.env.SENTRY_DSN,
+});
 
 const queue = kue.createQueue({
   redis: process.env.REDIS_URL,
@@ -53,14 +55,14 @@ function search(data, done) {
       debug(`Error searching on: ${service.id}`);
       debug(share);
       debug(inspect(err, { depth: 5 }));
-      raven.captureException(err);
+      Sentry.captureException(err);
       return done(err);
     }
   }).catch((err) => {
     debug(`Error searching on: ${service.id}`);
     debug(share);
     debug(inspect(err, { depth: 5 }));
-    raven.captureException(err);
+    Sentry.captureException(err);
     return done(err);
   });
 }

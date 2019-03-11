@@ -10,7 +10,7 @@ import compress from 'koa-compress';
 import serve from 'koa-static';
 import views from 'koa-views';
 import bodyparser from 'koa-bodyparser';
-import raven from 'raven';
+import * as Sentry from '@sentry/node';
 import debuglog from 'debug';
 import index from './routes/index';
 import recent from './routes/recent';
@@ -23,15 +23,17 @@ const debug = debuglog('combine.fm');
 
 process.env.VUE_ENV = 'server';
 
-raven.config(process.env.SENTRY_DSN).install();
+Sentry.init({
+  dsn: process.env.SENTRY_DSN,
+});
 
 const app = new koa();
 
 app.on('error', (err) => {
-  raven.captureException(err);
+  Sentry.captureException(err);
 });
 
-app.use(errorHandler(raven));
+app.use(errorHandler(Sentry));
 
 app.use(bodyparser());
 app.use(cors());
