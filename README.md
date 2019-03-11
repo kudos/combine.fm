@@ -23,7 +23,7 @@ Install `node` and `postgres` if you don't already have them. Then `npm install`
 
 Bug reports and feature requests welcome. If you want to contribute code, that is awesome but please issue pull requests early for discussion.
 
-So there's no surprises for contributors later, I plan on using referral tags wherever it makes sense. Right now that would apply to outgoing links for Amazon, iTunes, Rdio and Spotify. The referral tags themselves will not be baked into the code, just support for using them.
+So there's no surprises for contributors later, I plan on using referral tags wherever it makes sense. Right now that would apply to outgoing links for iTunes and Spotify. The referral tags themselves will not be baked into the code, just support for using them.
 
 ## Licence
 

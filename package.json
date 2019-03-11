@@ -24,7 +24,6 @@
     "@babel/polyfill": "^7.0.0-beta.46",
     "@babel/preset-env": "^7.0.0-beta.46",
     "@babel/register": "^7.0.0-beta.46",
-    "amazon-product-api": "^0.4.4",
     "apple-music-jwt": "^0.2.0",
     "babel-loader": "^8.0.0-beta.2",
     "bluebird": "^3.5.1",

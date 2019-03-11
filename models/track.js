@@ -3,7 +3,6 @@ export default function (sequelize, DataTypes) {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     externalId: { type: DataTypes.STRING(50), index: true }, // eslint-disable-line new-cap
     service: DataTypes.ENUM( // eslint-disable-line new-cap
-      'amazon',
       'deezer',
       'google',
       'itunes',
