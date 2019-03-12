@@ -29,7 +29,11 @@ Sentry.init({
 
 const app = new koa();
 
-app.on('error', (err) => {
+if (process.env.NODE_ENV === 'production') {
+  app.proxy = true;
+}
+
+app.on('error', (err, ctx) => {
   Sentry.captureException(err);
 });
 
@@ -45,6 +49,13 @@ app.use(serve('public', { maxage: 31536000000 }));
 const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, '/public/dist/manifest.json')));
 
 app.use(async function(ctx, next) {
+  Sentry.configureScope(scope => {
+    scope.setExtra('Request', {
+      'url': ctx.request.url,
+      'method': ctx.request.method,
+      'user-agent': ctx.request.header['user-agent'],
+    });
+  });
   ctx.state.manifest = manifest;
   await next();
 });

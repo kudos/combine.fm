@@ -21,6 +21,7 @@ services:
       AWS_SECRET_ACCESS_KEY:
       AWS_TAG:
       SLACK_TOKEN:
+      SENTRY_DSN:
     volumes:
       - ./:/app:cached
       - node_modules:/app/node_modules
