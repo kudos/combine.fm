@@ -33,8 +33,10 @@ if (process.env.NODE_ENV === 'production') {
   app.proxy = true;
 }
 
-app.on('error', (err, ctx) => {
-  Sentry.captureException(err);
+app.on('error', (err) => {
+  if (!err.status || err.status >= 500) {
+    Sentry.captureException(err);
+  }
 });
 
 app.use(errorHandler(Sentry));
