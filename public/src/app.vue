@@ -39,6 +39,7 @@
 @import "bulma/sass/elements/notification.sass";
 @import "bulma/sass/elements/other.sass";
 @import "bulma/sass/grid/_all.sass";
+@import "bulma/sass/form/_all.sass";
 
 
 html {
