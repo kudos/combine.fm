@@ -33,7 +33,7 @@
     "css-loader": "^2.1.1",
     "debug": "^4.1.1",
     "ejs": "^2.5.9",
-    "file-loader": "^4.0.0",
+    "file-loader": "^5.0.2",
     "iso8601-duration": "^1.1.1",
     "kcors": "^2.2.1",
     "koa": "^2.5.1",
