@@ -71,7 +71,7 @@
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.11.0",
     "istanbul": "^0.4.0",
-    "mocha": "^6.0.2",
+    "mocha": "^7.0.0",
     "nodemon": "^1.17.3",
     "should": "^13.2.1"
   }
