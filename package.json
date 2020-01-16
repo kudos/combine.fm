@@ -30,7 +30,7 @@
     "bluebird": "^3.7.2",
     "bulma": "^0.7.1",
     "co": "~4.6.0",
-    "css-loader": "^2.1.1",
+    "css-loader": "^3.4.2",
     "debug": "^4.1.1",
     "ejs": "^3.0.1",
     "file-loader": "^5.0.2",
