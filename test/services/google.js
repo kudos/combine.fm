@@ -22,7 +22,7 @@ describe('Google Play Music', () => {
 
     it('should find track by search', async function (){
       const result = await google.search({type: 'track', artist: {name: 'Jamie xx'}, albumName: 'In Colour', name: 'Loud Places'});
-      result.name.should.equal('Loud Places');
+      result.name.should.equal('Loud Places (feat. Romy)');
     });
 
     it('should find awkward track by search', async function (){

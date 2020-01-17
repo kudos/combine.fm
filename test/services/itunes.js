@@ -23,7 +23,7 @@ describe('iTunes Music', function(){
 
     it('should find awkward album by search', async function (){
       const result = await itunes.search({type: 'album', artist: {name: 'Anavitória'}, name: 'Fica'});
-      result.name.should.equal('Fica AnaVitoria - Single');
+      result.name.should.equal('Fica (feat. Matheus & Kauan) - Single');
     });
 
     it('should find track by search', async function (){
