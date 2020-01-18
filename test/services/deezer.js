@@ -1,5 +1,5 @@
 import 'should';
-import * as deezer from '../../lib/services/deezer';
+import * as deezer from '../../lib/services/deezer/index.js';
 
 describe('Deezer', () => {
   describe('lookupId', () => {

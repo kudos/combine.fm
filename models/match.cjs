@@ -1,4 +1,4 @@
-export default function (sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   const Match = sequelize.define('match', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     trackId: DataTypes.INTEGER,

@@ -1,4 +1,4 @@
-export default function (sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   const Artist = sequelize.define('artist', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     name: DataTypes.TEXT,

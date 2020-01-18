@@ -1,8 +1,8 @@
 import debuglog from 'debug';
 
-import services from '../lib/services';
-import render from '../lib/render';
-import models from '../models';
+import services from '../lib/services.js';
+import render from '../lib/render.js';
+import models from '../models/index.cjs';
 
 const debug = debuglog('combine.fm:share');
 

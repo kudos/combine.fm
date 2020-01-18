@@ -1,11 +1,11 @@
 import co from 'co';
 import kue from 'kue';
-import * as Sentry from '@sentry/node';
+import Sentry from '@sentry/node';
 import debuglog from 'debug';
 import { inspect } from 'util';
 
-import models from './models';
-import services from './lib/services';
+import models from './models/index.cjs';
+import services from './lib/services.js';
 
 const debug = debuglog('combine.fm:worker');
 

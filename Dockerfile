@@ -1,8 +1,8 @@
-FROM node:12.14.1-alpine3.11
+FROM node:13.6.0-alpine3.11
 
 WORKDIR /app
 
-RUN apk add --update git
+RUN apk add --update git python make g++
 
 COPY package.json package.json
 COPY yarn.lock yarn.lock

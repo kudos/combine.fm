@@ -1,11 +1,10 @@
 import 'should';
-import * as itunes from '../../lib/services/itunes';
+import * as itunes from '../../lib/services/itunes/index.js';
 
 describe('iTunes Music', function(){
   describe('lookupId', function(){
     it('should find album by ID', async function (){
       const result = await itunes.lookupId('1445991287', 'album');
-      console.log(result.name)
       result.name.should.equal('Peace Orchestra');
     });
 

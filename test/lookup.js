@@ -1,5 +1,5 @@
 import 'should';
-import lookup from '../lib/lookup';
+import lookup from '../lib/lookup.js';
 
 describe('Search with url', function(){
   it('should find album by url', async function (){

@@ -23,8 +23,7 @@ services:
       SLACK_TOKEN:
       SENTRY_DSN:
     volumes:
-      - ./:/app:cached
-      - node_modules:/app/node_modules
+      - ./:/app
     ports:
       - "3000:3000"
     command: yarn run watch-server
@@ -48,13 +47,12 @@ services:
       AWS_SECRET_ACCESS_KEY:
       AWS_TAG:
     volumes:
-      - ./:/app:cached
-      - node_modules:/app/node_modules
+      - ./:/app
     command: yarn run watch-worker
     ports:
       - "3001:3000"
   database:
-    image: "postgres:10-alpine"
+    image: "postgres:12.1-alpine"
     ports:
       - "5432:5432"
     environment:
@@ -62,7 +60,4 @@ services:
       POSTGRES_USER: "combinefm"
       POSTGRES_DB: "combinefm"
   redis:
-    image: "redis:4.0.2-alpine"
-
-volumes:
-  node_modules:
+    image: "redis:5.0.7-alpine"

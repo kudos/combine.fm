@@ -1,5 +1,5 @@
 import 'should';
-import * as google from '../../lib/services/google';
+import * as google from '../../lib/services/google/index.js';
 
 describe('Google Play Music', () => {
   describe('lookupId', () => {

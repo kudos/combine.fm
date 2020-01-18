@@ -8,7 +8,6 @@ Make sharing from music services better. We match links from Rdio, Spotify, Deez
 * iTunes
 * Deezer
 * Google Play Music (requires `GOOGLE_EMAIL` and `GOOGLE_PASSWORD`)
-* Xbox Music (requires `XBOX_CLIENT_ID` and `XBOX_CLIENT_SECRET`)
 * Youtube (requires `YOUTUBE_KEY`)
 
 Google doesn't provide a public API for Play Music, hence this `GOOGLE_PASSWORD` awfulness. The account also needs to be a Google Play Music All Access subscriber and to have played at least one track on a mobile device. Yeah.

@@ -3,9 +3,9 @@ import kue from 'kue';
 import debuglog from 'debug';
 import { inspect } from 'util';
 
-import lookup from '../lib/lookup';
-import services from '../lib/services';
-import { find, create } from '../lib/share';
+import lookup from '../lib/lookup.js';
+import services from '../lib/services.js';
+import { find, create } from '../lib/share.js';
 
 const debug = debuglog('combine.fm:search');
 

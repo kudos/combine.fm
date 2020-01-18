@@ -1,5 +1,5 @@
-export default function (sequelize, DataTypes) {
-  const Track = sequelize.define('track', {
+module.exports = function (sequelize, DataTypes) {
+  const Album = sequelize.define('album', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     externalId: { type: DataTypes.STRING(50), index: true }, // eslint-disable-line new-cap
     service: DataTypes.ENUM( // eslint-disable-line new-cap
@@ -12,8 +12,6 @@ export default function (sequelize, DataTypes) {
     ),
     name: DataTypes.TEXT,
     artistId: DataTypes.INTEGER,
-    albumId: DataTypes.INTEGER,
-    albumName: DataTypes.TEXT,
   }, {
     paranoid: true,
     indexes: [
@@ -23,15 +21,15 @@ export default function (sequelize, DataTypes) {
     ],
     getterMethods: {
       type() {
-        return 'track';
+        return 'album';
       },
     },
   });
 
-  Track.associate = function associate(models) {
-    Track.hasMany(models.match);
-    Track.belongsTo(models.artist);
+  Album.associate = function associate(models) {
+    Album.hasMany(models.match);
+    Album.belongsTo(models.artist);
   };
 
-  return Track;
+  return Album;
 }

@@ -10,16 +10,21 @@ import compress from 'koa-compress';
 import serve from 'koa-static';
 import views from 'koa-views';
 import bodyparser from 'koa-bodyparser';
-import * as Sentry from '@sentry/node';
+import Sentry from '@sentry/node';
 import debuglog from 'debug';
-import index from './routes/index';
-import recent from './routes/recent';
-import search from './routes/search';
-import share from './routes/share';
-import { slack, oauth } from './routes/slack';
-import errorHandler from './lib/error-handler';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import index from './routes/index.js';
+import recent from './routes/recent.js';
+import search from './routes/search.js';
+import share from './routes/share.js';
+import { slack, oauth } from './routes/slack.js';
+import errorHandler from './lib/error-handler.js';
 
 const debug = debuglog('combine.fm');
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 process.env.VUE_ENV = 'server';
 
@@ -77,7 +82,7 @@ app.use(route.post('/slack', slack));
 app.use(route.get('/slack', slack));
 app.use(route.get('/oauth', oauth));
 
-if (!module.parent) {
+if (process.argv[1] === __filename) {
   app.listen(process.env.PORT || 3000, () => {
     debug(`Koa HTTP server listening on port ${(process.env.PORT || 3000)}`);
   });

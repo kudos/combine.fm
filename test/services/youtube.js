@@ -1,5 +1,5 @@
 import 'should';
-import * as youtube from '../../lib/services/youtube';
+import * as youtube from '../../lib/services/youtube/index.js';
 
 describe('Youtube', function(){
 	describe('lookup', function(){

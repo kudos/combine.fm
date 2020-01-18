@@ -1,5 +1,5 @@
 import 'should';
-import * as spotify from '../../lib/services/spotify';
+import * as spotify from '../../lib/services/spotify/index.js';
 
 describe('Spotify', function(){
   describe('lookupId', function(){

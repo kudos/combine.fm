@@ -1,10 +1,10 @@
 import kue from 'kue';
 import debuglog from 'debug';
 
-import services from '../lib/services';
-import render from '../lib/render';
-import models from '../models';
-import { find, create } from '../lib/share';
+import services from '../lib/services.js';
+import render from '../lib/render.js';
+import models from '../models/index.cjs';
+import { find, create } from '../lib/share.js';
 
 const debug = debuglog('combine.fm:share');
 

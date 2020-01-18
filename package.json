@@ -4,19 +4,19 @@
   "repository": "https://github.com/kudos/match.audio",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --mode=production --config webpack.config.js && webpack --config webpack.config.server.js",
-    "start": "node -r @babel/register app.js",
-    "worker": "node -r @babel/register worker.js",
-    "test": "mocha -r '@babel/register' test/**/*.js test/lookup.js --timeout=15000",
+    "build": "webpack --mode=production --config webpack.config.cjs && webpack --config webpack.config.server.cjs",
+    "start": "node app.js",
+    "worker": "node worker.js",
+    "test": "mocha-esm test/**/*.js test/lookup.js --timeout=15000",
     "watch": "concurrently -k \"npm:watch-js\" \"npm:watch-server\"",
-    "watch-js": "concurrently -k -n webpack-frontend,webpack-server \"webpack -w -d --config webpack.config.js\" \"webpack -w --config webpack.config.server.js\"",
-    "watch-server": "nodemon -x \"node -r @babel/register\" -e js,vue -i node_modules -i chrome/ app.js",
-    "watch-worker": "nodemon -x \"node -r @babel/register\" -e js,vue -i node_modules -i chrome/ worker.js",
-    "heroku-postbuild": "npm run build",
-    "initdb": "node -r @babel/register test/initdb.js"
+    "watch-js": "concurrently -k -n webpack-frontend,webpack-server \"webpack -w -d --config webpack.config.cjs\" \"webpack -w --config webpack.config.server.cjs\"",
+    "watch-server": "nodemon -e js,vue -i node_modules -i chrome/ app.js",
+    "watch-worker": "nodemon -e js,vue -i node_modules -i chrome/ worker.js",
+    "initdb": "node test/initdb.js"
   },
+  "type": "module",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=13.0.0"
   },
   "dependencies": {
     "@babel/cli": "^7.8.3",
@@ -46,12 +46,14 @@
     "koa-views": "^6.1.4",
     "kue": "^0.11.6",
     "mini-css-extract-plugin": "^0.9.0",
+    "mocha-esm": "^1.1.1",
     "node-sass": "^4.13.0",
     "nodebrainz": "^2.1.1",
     "pg": "^7.17.1",
     "playmusic": "^2.3.0",
     "sass-loader": "^8.0.2",
     "sequelize": "^5.21.3",
+    "sequelize-cli-esm": "^5.0.6",
     "spotify-web-api-node": "^4.0.0",
     "superagent": "^5.2.1",
     "vue": "^2.6.11",
