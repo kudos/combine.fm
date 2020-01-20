@@ -47,7 +47,7 @@
     "kue": "^0.11.6",
     "mini-css-extract-plugin": "^0.9.0",
     "mocha-esm": "^1.1.1",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "nodebrainz": "^2.1.1",
     "pg": "^7.17.1",
     "playmusic": "^2.3.0",
