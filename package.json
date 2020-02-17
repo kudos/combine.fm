@@ -57,7 +57,7 @@
     "spotify-web-api-node": "^4.0.0",
     "superagent": "^5.2.1",
     "vue": "^2.6.11",
-    "vue-loader": "^15.8.3",
+    "vue-loader": "^15.9.0",
     "vue-router": "^3.1.5",
     "vue-server-renderer": "^2.6.11",
     "vue-template-compiler": "^2.6.11",
