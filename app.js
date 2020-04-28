@@ -38,9 +38,14 @@ if (process.env.NODE_ENV === 'production') {
   app.proxy = true;
 }
 
-app.on('error', (err) => {
+app.on('error', (err, ctx) => {
   if (!err.status || err.status >= 500) {
-    Sentry.captureException(err);
+    Sentry.withScope(function(scope) {
+      scope.addEventProcessor(function(event) {
+        return Sentry.Handlers.parseRequest(event, ctx.request); 
+      });
+      Sentry.captureException(err);
+    });
   }
 });
 
