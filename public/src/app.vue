@@ -31,7 +31,7 @@
 @import "bulma/sass/utilities/derived-variables.sass";
 @import "bulma/sass/utilities/mixins.sass";
 @import "bulma/sass/utilities/controls.sass";
-@import "bulma/sass/base/_all.sass";
+@import "bulma/sass/helpers/_all.sass";
 @import "bulma/sass/elements/title.sass";
 @import "bulma/sass/elements/button.sass";
 @import "bulma/sass/elements/form.sass";

@@ -45,6 +45,7 @@ app.on('error', (err, ctx) => {
         return Sentry.Handlers.parseRequest(event, ctx.request); 
       });
       Sentry.captureException(err);
+      debug(err);
     });
   }
 });
@@ -54,7 +55,7 @@ app.use(errorHandler(Sentry));
 app.use(bodyparser());
 app.use(cors());
 app.use(compress({ flush: zlib.Z_SYNC_FLUSH }));
-app.use(favicon(path.join(__dirname, '/public/images/favicon.png')));
+app.use(favicon(path.join(__dirname, '/public/assets/images/favicon.png')));
 app.use(logger());
 app.use(serve('public', { maxage: 31536000000 }));
 
