@@ -36,7 +36,7 @@
     "file-loader": "^6.0.0",
     "iso8601-duration": "^1.1.1",
     "kcors": "^2.2.1",
-    "koa": "^2.12.1",
+    "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-compress": "~4.0.1",
     "koa-favicon": "~2.1.0",
