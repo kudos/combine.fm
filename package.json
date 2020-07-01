@@ -23,7 +23,7 @@
     "@babel/core": "^7.10.2",
     "@babel/polyfill": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
-    "@babel/register": "^7.10.1",
+    "@babel/register": "^7.10.4",
     "@sentry/node": "^5.17.0",
     "apple-music-jwt": "^0.2.0",
     "babel-loader": "^8.1.0",
