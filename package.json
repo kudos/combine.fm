@@ -49,7 +49,7 @@
     "mocha-esm": "^1.1.1",
     "node-sass": "^4.14.1",
     "nodebrainz": "^2.1.1",
-    "pg": "^8.2.1",
+    "pg": "^8.3.0",
     "playmusic": "^2.3.0",
     "sass-loader": "^8.0.2",
     "sequelize": "^5.21.13",
