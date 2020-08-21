@@ -12,6 +12,7 @@ jobs:
     - name: Build image
       run: |
         docker-compose build
-        make build
     - name: Test image
       run: make test
+      env: 
+        COMPOSE_FILE: docker-compose.test.yml

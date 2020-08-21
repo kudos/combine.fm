@@ -1,0 +1,59 @@
+version: "2"
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      DEBUG: "combine.fm*"
+      VUE_ENV: server
+      DATABASE_URL:
+      REDIS_URL:
+      GOOGLE_ANDROID_ID:
+      GOOGLE_MASTER_TOKEN:
+      XBOX_CLIENT_ID:
+      XBOX_CLIENT_SECRET:
+      YOUTUBE_KEY:
+      SPOTIFY_CLIENT_ID:
+      SPOTIFY_CLIENT_SECRET:
+      AWS_ACCESS_KEY_ID:
+      AWS_SECRET_ACCESS_KEY:
+      AWS_TAG:
+      SLACK_TOKEN:
+      SENTRY_DSN:
+    ports:
+      - "3000:3000"
+    command: yarn run watch-server
+  worker:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      DEBUG: "combine.fm*"
+      VUE_ENV: server
+      DATABASE_URL:
+      REDIS_URL:
+      GOOGLE_ANDROID_ID:
+      GOOGLE_MASTER_TOKEN:
+      XBOX_CLIENT_ID:
+      XBOX_CLIENT_SECRET:
+      YOUTUBE_KEY:
+      SPOTIFY_CLIENT_ID:
+      SPOTIFY_CLIENT_SECRET:
+      AWS_ACCESS_KEY_ID:
+      AWS_SECRET_ACCESS_KEY:
+      AWS_TAG:
+    command: yarn run watch-worker
+    ports:
+      - "3001:3001"
+  database:
+    image: "postgres:12.1-alpine"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_USER: "combinefm"
+      POSTGRES_DB: "combinefm"
+  redis:
+    image: "redis:5.0.7-alpine"
