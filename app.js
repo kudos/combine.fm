@@ -20,6 +20,7 @@ import search from './routes/search.js';
 import share from './routes/share.js';
 import { slack, oauth } from './routes/slack.js';
 import errorHandler from './lib/error-handler.js';
+import newrelic from 'newrelic';
 
 const debug = debuglog('combine.fm');
 

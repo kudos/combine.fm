@@ -50,7 +50,7 @@ services:
       - ./:/app
     command: yarn run watch-worker
     ports:
-      - "3001:3000"
+      - "3001:3001"
   database:
     image: "postgres:12.1-alpine"
     ports:

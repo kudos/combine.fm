@@ -11,11 +11,6 @@
         <img src='/assets/images/facebook.png' alt='Facebook' height="20" width="20" />
       </a>
     </li>
-    <li>
-      <a v-bind:href="`https://plus.google.com/share?url=${url}`" class='share-dialog'>
-        <img src='/assets/images/googleplus.png' alt='Google+' height="20" width="20" />
-      </a>
-    </li>
   </ul>
 </template>
 
@@ -24,7 +19,7 @@ export default {
   name: 'social-view',
   props: ['name', 'artist', 'url'],
   mounted() {
-    // Some hacks to pop open the Twitter/Facebook/Google Plus sharing dialogs without using their code.
+    // Some hacks to pop open the Twitter/Facebook sharing dialogs without using their code.
     Array.prototype.forEach.call(document.querySelectorAll('.share-dialog'), function(dialog){
       dialog.addEventListener('click', function(e) {
         e.preventDefault();

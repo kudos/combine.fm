@@ -25,12 +25,9 @@
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Comfortaa');
 
-@import "bulma/sass/utilities/initial-variables.sass";
-@import "bulma/sass/utilities/functions.sass";
-@import "scss/_variables";
-@import "bulma/sass/utilities/derived-variables.sass";
-@import "bulma/sass/utilities/mixins.sass";
-@import "bulma/sass/utilities/controls.sass";
+@import "scss/_variables.scss";
+@import "bulma/sass/utilities/_all.sass";
+@import "bulma/sass/base/_all.sass";
 @import "bulma/sass/helpers/_all.sass";
 @import "bulma/sass/elements/title.sass";
 @import "bulma/sass/elements/button.sass";

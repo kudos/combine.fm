@@ -42,3 +42,7 @@ yarn: ## Update yarn dependencies
 .PHONY: shell
 shell: ## Run shell
 	docker-compose run --rm app sh
+
+.PHONY: open
+open: ## Open app in browser
+	xdg-open http://localhost:3000
