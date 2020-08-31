@@ -56,7 +56,7 @@
     "sequelize": "^6.3.4",
     "sequelize-cli-esm": "^5.0.6",
     "spotify-web-api-node": "^4.0.0",
-    "superagent": "^6.0.0",
+    "superagent": "^6.1.0",
     "vue": "^2.6.11",
     "vue-loader": "^15.9.3",
     "vue-router": "^3.3.4",
