@@ -50,7 +50,7 @@
     "newrelic": "^6.12.0",
     "node-sass": "^4.14.1",
     "nodebrainz": "^2.1.1",
-    "pg": "^8.3.0",
+    "pg": "^8.5.0",
     "playmusic": "^2.3.0",
     "sass-loader": "^9.0.2",
     "sequelize": "^6.3.4",
