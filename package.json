@@ -47,7 +47,7 @@
     "kue": "^0.11.6",
     "mini-css-extract-plugin": "^0.10.0",
     "mocha-esm": "^1.1.1",
-    "newrelic": "^6.12.0",
+    "newrelic": "^7.0.2",
     "node-sass": "^4.14.1",
     "nodebrainz": "^2.1.1",
     "pg": "^8.5.1",
