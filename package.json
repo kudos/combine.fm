@@ -24,7 +24,7 @@
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.12.11",
     "@babel/register": "^7.10.5",
-    "@sentry/node": "^5.29.0",
+    "@sentry/node": "^5.29.1",
     "apple-music-jwt": "^0.2.0",
     "babel-loader": "^8.1.0",
     "bluebird": "^3.7.2",
