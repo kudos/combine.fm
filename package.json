@@ -53,7 +53,7 @@
     "pg": "^8.5.1",
     "playmusic": "^2.3.0",
     "sass-loader": "^10.1.0",
-    "sequelize": "^6.3.4",
+    "sequelize": "^6.3.5",
     "sequelize-cli-esm": "^5.0.6",
     "spotify-web-api-node": "^4.0.0",
     "superagent": "^6.1.0",
