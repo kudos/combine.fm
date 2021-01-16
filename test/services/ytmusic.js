@@ -2,6 +2,17 @@ import 'should';
 import * as ytmusic from '../../lib/services/ytmusic/index.js';
 
 describe('ytmusic', function(){
+  describe('lookupId', () => {
+    it('should find album by ID', async function testV() {
+      const result = await ytmusic.lookupId('MPREb_nlOKEssnatr', 'album');
+      result.name.should.equal('Carne de Pescoço');
+    });
+
+    it('should find track by ID', async function (){
+      const result = await ytmusic.lookupId('9zrYXvUXiQk', 'track');
+      result.name.should.equal('One Vision (Remastered 2011)');
+    });
+  });
   describe('lookupUrl', () => {
     describe('parseUrl', () => {
       it('should parse track url into ID', async function (){
