@@ -8,7 +8,8 @@ module.exports = function (sequelize, DataTypes) {
       'itunes',
       'spotify',
       'xbox',
-      'youtube'
+      'youtube',
+      'ytmusic'
     ),
     name: DataTypes.TEXT,
     artistId: DataTypes.INTEGER,
