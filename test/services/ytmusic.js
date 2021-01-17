@@ -27,6 +27,12 @@ describe('ytmusic', function(){
       result.id.should.equal('MPREb_iZt1VjORlv7');
     });
 
+    it('should find album and make sure it makes sense by search', async function(){
+      const result = await ytmusic.search({type: 'album', artist: {name: 'The Beatles'}, name: 'The Beatles'});
+      result.name.should.equal('The Beatles');
+      result.id.should.equal('MPREb_S5TiUIYvI78');
+    });
+
     it('should find track by search', async function (){
       const result = await ytmusic.search({type: 'track', artist: {name: 'Oasis'}, albumName: 'Stop The Clocks', name: 'Wonderwall'});
       result.name.should.equal('Wonderwall');
