@@ -11,6 +11,7 @@ describe('ytmusic', function(){
     it('should find track by ID', async function (){
       const result = await ytmusic.lookupId('9zrYXvUXiQk', 'track');
       result.name.should.equal('One Vision (Remastered 2011)');
+      result.artist.name.should.equal('Queen');
     });
   });
   describe('search', () => {
