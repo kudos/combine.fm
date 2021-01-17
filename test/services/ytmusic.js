@@ -13,6 +13,25 @@ describe('ytmusic', function(){
       result.name.should.equal('One Vision (Remastered 2011)');
     });
   });
+  describe('search', () => {
+    it('should find album by search', async function (){
+      const result = await ytmusic.search({type: 'album', artist: {name: 'Jamie xx'}, name: 'In Colour'});
+      result.name.should.startWith('In Colour');
+      result.id.should.equal("MPREb_IbDz5pAZFvJ");
+    });
+
+    it('should find album with various artists by search', async function (){
+      const result = await ytmusic.search({type: 'album', artist: {name: 'Various Artists'}, name: 'Sambabook João Nogueira'});
+      result.name.should.equal('Sambabook João Nogueira');
+      result.id.should.equal('MPREb_iZt1VjORlv7');
+    });
+
+    it('should find track by search', async function (){
+      const result = await ytmusic.search({type: 'track', artist: {name: 'Oasis'}, albumName: 'Stop The Clocks', name: 'Wonderwall'});
+      result.name.should.equal('Wonderwall');
+      result.id.should.equal('Gvfgut8nAgw');
+    });
+  });
   describe('lookupUrl', () => {
     describe('parseUrl', () => {
       it('should parse track url into ID', async function (){
