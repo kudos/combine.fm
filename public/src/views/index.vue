@@ -1,5 +1,5 @@
 <template>
-  <div class="home container">
+  <div id="home" class="container">
     <div class="notification is-success" v-if="slack">
       <button class="delete" v-on:click="slack = false;closeNotification()"></button>
       Combine.fm has been added to your Slack workspace!
@@ -115,7 +115,7 @@ export default {
 .faq p {
   margin-bottom: 30px;
 }
-.home {
+#home {
   max-width: 600px;
   margin-top: 40px;
 }
