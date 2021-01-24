@@ -10,7 +10,7 @@
         Combine.fm makes sharing from music services better. What happens when you share your favourite song on Spotify with a friend, but they don't use Spotify?
       </p>
       <p>
-        We match album and track links from Youtube, Spotify, Google Music, Apple Music, Deezer and Youtube Music and give you back one link with matches we find on all of them.
+        We match album and track links from Spotify, Apple Music, Deezer, Youtube, and Youtube Music and give you back one link with matches we find on all of them.
       </p>
     </div>
     <div class="recently-shared">
@@ -29,7 +29,7 @@
       <p>Sometimes when people want to share music they don't know what service their friends are using. Combine.fm let's you take a link from one service and expand it into a link that supports all services.</p>
 
       <h3 class="title is-3">I still don't get it.</h3>
-      <p>That's not actually a question, but that's ok. Here's an example: I'm listening to a cool new album I found on Google Play Music. So I go to the address bar (the box that sometimes says https://www.google.com in it) and copy the link to share with my friend. But my friend uses Spotify. So first I go to Combine.fm and paste the link there, then grab the Combine.fm link from the address bar and send them that link instead.</p>
+      <p>That's not actually a question, but that's ok. Here's an example: I'm listening to a cool new album I found on Spotify. So I go to the address bar (the box that sometimes says https://www.google.com in it) and copy the link to share with my friend. But my friend uses Apple Music. So first I go to Combine.fm and paste the link there, then grab the Combine.fm link from the address bar and send them that link instead.</p>
 
       <h3 class="title is-3">Where do I find a link to paste in the box?</h3>
       <p>Most music services have a 'share' dialog for albums and tracks in their interface. If you have them open in a web browser instead of an app, you can simply copy and paste the address bar and we'll work out the rest.</p>
