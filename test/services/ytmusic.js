@@ -10,8 +10,25 @@ describe('ytmusic', function(){
 
     it('should find track by ID', async function (){
       const result = await ytmusic.lookupId('9zrYXvUXiQk', 'track');
-      result.name.should.equal('One Vision (Remastered 2011)');
+      result.name.should.equal('One Vision');
       result.artist.name.should.equal('Queen');
+      result.album.name.should.equal('A Kind Of Magic')
+    });
+    it('should find track by ID', async function (){
+      const result = await ytmusic.lookupId('rAzfNuU1f8E', 'track');
+      result.name.should.equal('Erre (Live)');
+      result.artist.name.should.equal('Boogarins');
+      // The copyright notice is too long and is the only place where the album name is.
+      result.album.name.should.equal('')
+    });
+    it('should find track by ID', async function (){
+      const result = await ytmusic.lookupId('Wst0la_TgTY', 'track');
+      result.name.should.equal('Às Vezes Bate Uma Saudade');
+      // XXX: This is very odd. Sometimes, google will return the first artist "Rodrigo Alarcon", sometimes "Rodrigo Alarcon, Ana Muller & Mariana Froes" and sometimes
+      // "Rodrigo Alarcon, Ana Muller, Mariana Froes". Same API call, same everything. Go figure.
+      // result.artist.name.should.equal('Rodrigo Alarcon, Ana Muller, Mariana Froes');
+      result.artist.name.should.startWith('Rodrigo Alarcon');
+      result.album.name.should.equal('Taquetá Vol.1')
     });
   });
   describe('search', () => {
