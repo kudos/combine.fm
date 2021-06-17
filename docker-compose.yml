@@ -23,7 +23,7 @@ services:
       SLACK_TOKEN:
       SENTRY_DSN:
     volumes:
-      - ./:/app
+      - ./:/app:z
     ports:
       - "3000:3000"
     command: yarn run watch-server
@@ -47,7 +47,7 @@ services:
       AWS_SECRET_ACCESS_KEY:
       AWS_TAG:
     volumes:
-      - ./:/app
+      - ./:/app:z
     command: yarn run watch-worker
     ports:
       - "3001:3001"
