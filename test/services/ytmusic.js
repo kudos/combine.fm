@@ -4,8 +4,8 @@ import * as ytmusic from '../../lib/services/ytmusic/index.js';
 describe('ytmusic', function(){
   describe('lookupId', () => {
     it('should find album by ID', async function testV() {
-      const result = await ytmusic.lookupId('MPREb_nlOKEssnatr', 'album');
-      result.name.should.equal('Carne de Pescoço');
+      const result = await ytmusic.lookupId('MPREb_ZtxqNmZMzup', 'album');
+      result.name.should.equal('Carne De Pescoço');
     });
 
     it('should find track by ID', async function (){
@@ -51,9 +51,9 @@ describe('ytmusic', function(){
     });
 
     it('should find track by search', async function (){
-      const result = await ytmusic.search({type: 'track', artist: {name: 'Oasis'}, albumName: 'Stop The Clocks', name: 'Wonderwall'});
-      result.name.should.equal('Wonderwall');
-      result.id.should.equal('Gvfgut8nAgw');
+      const result = await ytmusic.search({type: 'track', artist: {name: 'Led Zeppelin'}, albumName: 'Mothership', name: 'Stairway to Heaven'});
+      result.name.should.equal('Stairway to Heaven (Remaster)');
+      result.id.should.equal('X791IzOwt3Q');
     });
   });
   describe('lookupUrl', () => {
