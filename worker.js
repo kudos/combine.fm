@@ -20,6 +20,9 @@ const queue = kue.createQueue({
 function search(data, done) {
   const share = data.share;
   const service = services.find(item => data.service.id === item.id);
+  if (!service) {
+    return;
+  }
   debug(`Searching on: ${service.id}`);
   co(function* gen() {
     // eslint-disable-line no-loop-func
