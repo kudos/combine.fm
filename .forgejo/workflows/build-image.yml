@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  push:
+    branches: main
+
+jobs:
+  build-image:
+    runs-on: self-hosted
+    steps:
+      - name: Set current date as env variable
+        run: echo "NOW=$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_ENV
+      - name: Fix for bad os check
+        run: echo "RUNNER_OS=Linux" >> $GITHUB_ENV
+      - name: Login to Forgejo Registry
+        uses: https://cremin.dev/actions/podman-login@v1
+        with:
+          registry: cremin.dev
+          username: ${{ github.actor }}
+          password: ${{ secrets.FORGEJO_REGISTRY_TOKEN }}
+      - name: Check out repository
+        uses: https://cremin.dev/actions/checkout@v4
+      - name: Build image
+        uses: https://cremin.dev/actions/buildah-build@v2
+        with:
+          containerfiles: ./Containerfile
+          context: ./
+          oci: true
+          layers: true
+          image: combinefm
+          tags: latest ${{ github.sha }}
+      - name: Push image
+        uses: https://cremin.dev/actions/push-to-registry@v2
+        with:
+          registry: cremin.dev/jonathan
+          username: ${{ github.actor }}
+          password: ${{ secrets.FORGEJO_REGISTRY_TOKEN }}
+          image: combinefm
+          tags: latest ${{ github.sha }}
