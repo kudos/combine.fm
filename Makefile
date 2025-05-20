@@ -9,39 +9,39 @@ help:
 	@echo
 
 .PHONY: start
-start: docker-compose-up watch-frontend ## Start containers and watch frontend
+start: podman-compose-up watch-frontend ## Start containers and watch frontend
 
 .PHONY: build
 build: ## Run `yarn run build`
-	docker-compose run --rm app yarn run build
+	podman compose run --rm app yarn run build
 
 .PHONY: test
 test: ## Run tests
-	docker-compose run --rm app yarn test
+	podman compose run --rm app yarn test
 
 .PHONY: logs
 logs: ## Tail the app and worker logs
-	docker-compose logs -f app worker
+	podman compose logs -f app worker
 
 .PHONY: migrate
 migrate: ## Migrate database schema
-	docker-compose run --rm app yarn initdb
+	podman compose run --rm app yarn initdb
 
 .PHONY: watch-frontend
 watch-frontend: ## Build and watch frontend for changes
-	docker-compose run --rm app yarn watch-js
+	podman compose run --rm app yarn watch-js
 
-.PHONY: docker-compose-up
-docker-compose-up: ## Start (and create) docker containers
-	docker-compose up -d
+.PHONY: podman-compose-up
+podman-compose-up: ## Start (and create) docker containers
+	podman compose up -d
 
 .PHONY: yarn
 yarn: ## Update yarn dependencies
-	docker-compose run --rm app yarn
+	podman compose run --rm app yarn
 
 .PHONY: shell
 shell: ## Run shell
-	docker-compose run --rm app sh
+	podman compose run --rm app sh
 
 .PHONY: open
 open: ## Open app in browser
