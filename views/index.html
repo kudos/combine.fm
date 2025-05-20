@@ -1,33 +1,59 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Combine.fm &bull; <%=head.title%></title>
-  <link rel="stylesheet" href="/dist/<%=manifest['style/main.css']%>" />
+  <head>
+    <title>Combine.fm &bull; <%=head.title%></title>
+    <link rel="stylesheet" href="/dist/<%=manifest['style/main.css']%>" />
 
-  <meta name='description' content='Combine.fm matches album and track links from Youtube, Spotify, Google Music, Apple Music and Deezer and gives you back one link with matches we find on all of them.' />
-  <meta name='viewport' content='width=device-width, initial-scale=1' />
-  <meta name='theme-color' content='#FE4365' />
-  <meta name='twitter:card' content='<%=typeof share == 'undefined' ? 'summary': 'summary_large_image'%>' />
-  <meta name='twitter:site' content='@Combinefm' />
-  <meta name='twitter:title' property='og:title' content='Combine.fm &bull; <%=head.title%>' />
-  <meta name='twitter:description' property='og:description' content='Combine.fm matches album and track links from Youtube, Spotify, Google Music, Apple Music and Deezer and gives you back one link with matches we find on all of them.' />
-  <meta name='twitter:image:src' property='og:image' content='<%=head.image%>' />
-  <meta name="slack-app-id" content="AA9SLSFFC">
-  <meta property='og:url' content='<%=head.shareUrl%>' />
-  <link rel='shortcut icon' href='/assets/images/favicon.png' />
-  <link rel='icon' sizes='512x512' href='/assets/images/logo-512.png' />
-</head>
-<body>
-  <%-html%>
-  <script>
-    window.__INITIAL_STATE__=<%-JSON.stringify(initialState)%>
-  </script>
-  <script async src='https://www.google-analytics.com/analytics.js'></script>
-  <script>
-    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'UA-66209-8', 'auto');
-    ga('send', 'pageview');
-  </script>
-  <script src="/dist/<%=manifest['js/main.js']%>"></script>
-</body>
+    <meta
+      name="description"
+      content="Combine.fm matches album and track links from Youtube, Spotify, Google Music, Apple Music and Deezer and gives you back one link with matches we find on all of them."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#FE4365" />
+    <meta name='twitter:card' content='<%=typeof share == 'undefined' ?
+    'summary': 'summary_large_image'%>' />
+    <meta name="twitter:site" content="@Combinefm" />
+    <meta
+      name="twitter:title"
+      property="og:title"
+      content="Combine.fm &bull; <%=head.title%>"
+    />
+    <meta
+      name="twitter:description"
+      property="og:description"
+      content="Combine.fm matches album and track links from Youtube, Spotify, Google Music, Apple Music and Deezer and gives you back one link with matches we find on all of them."
+    />
+    <meta
+      name="twitter:image:src"
+      property="og:image"
+      content="<%=head.image%>"
+    />
+    <meta name="slack-app-id" content="AA9SLSFFC" />
+    <meta property="og:url" content="<%=head.shareUrl%>" />
+    <link rel="shortcut icon" href="/assets/images/favicon.png" />
+    <link rel="icon" sizes="512x512" href="/assets/images/logo-512.png" />
+    <script
+      defer
+      data-domain="combine.fm"
+      src="https://plausible.io/js/script.js"
+    ></script>
+  </head>
+  <body>
+    <%-html%>
+    <script>
+      window.__INITIAL_STATE__=<%-JSON.stringify(initialState)%>
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <script>
+      window.ga =
+        window.ga ||
+        function() {
+          (ga.q = ga.q || []).push(arguments);
+        };
+      ga.l = +new Date();
+      ga("create", "UA-66209-8", "auto");
+      ga("send", "pageview");
+    </script>
+    <script src="/dist/<%=manifest['js/main.js']%>"></script>
+  </body>
 </html>
