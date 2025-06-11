@@ -60,4 +60,4 @@ services:
       POSTGRES_USER: "combinefm"
       POSTGRES_DB: "combinefm"
   redis:
-    image: "redis:5.0.7-alpine"
+    image: "redis:5.0.14-alpine"
