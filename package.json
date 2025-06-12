@@ -7,7 +7,7 @@
     "build": "NODE_OPTIONS=--openssl-legacy-provider webpack --mode=production --config webpack.config.cjs && NODE_OPTIONS=--openssl-legacy-provider webpack --config webpack.config.server.cjs",
     "start": "node app.js",
     "worker": "node worker.js",
-    "test": "mocha-esm test/**/*.js test/lookup.js --timeout=15000",
+    "test": "mocha-esm test/services/deezer.js test/services/itunes.js test/services/spotify.js test/services/youtube.js test/lookup.js --timeout=15000",
     "watch": "concurrently -k \"npm:watch-js\" \"npm:watch-server\"",
     "watch-js": "NODE_OPTIONS=--openssl-legacy-provider concurrently -k -n webpack-frontend,webpack-server \"webpack -w -d --config webpack.config.cjs\" \"webpack -w --config webpack.config.server.cjs\"",
     "watch-server": "nodemon -e js,vue -i node_modules -i chrome/ app.js",

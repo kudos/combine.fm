@@ -39,3 +39,15 @@ jobs:
           password: ${{ secrets.FORGEJO_REGISTRY_TOKEN }}
           image: combinefm
           tags: latest ${{ github.sha }}
+  test-image:
+    runs-on: self-hosted
+    steps:
+      - name: Check out repository
+        uses: https://cremin.dev/actions/checkout@v4
+      - name: Test image
+        env:
+          YOUTUBE_KEY: ${{ secrets.YOUTUBE_KEY }}
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+        run: |
+          podman run --rm --env-host -it cremin.dev/jonathan/combinefm:${{ github.sha }} yarn test
