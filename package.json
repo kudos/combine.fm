@@ -4,19 +4,19 @@
   "repository": "https://github.com/kudos/match.audio",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --mode=production --config webpack.config.cjs && webpack --config webpack.config.server.cjs",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider webpack --mode=production --config webpack.config.cjs && NODE_OPTIONS=--openssl-legacy-provider webpack --config webpack.config.server.cjs",
     "start": "node app.js",
     "worker": "node worker.js",
     "test": "mocha-esm test/**/*.js test/lookup.js --timeout=15000",
     "watch": "concurrently -k \"npm:watch-js\" \"npm:watch-server\"",
-    "watch-js": "concurrently -k -n webpack-frontend,webpack-server \"webpack -w -d --config webpack.config.cjs\" \"webpack -w --config webpack.config.server.cjs\"",
+    "watch-js": "NODE_OPTIONS=--openssl-legacy-provider concurrently -k -n webpack-frontend,webpack-server \"webpack -w -d --config webpack.config.cjs\" \"webpack -w --config webpack.config.server.cjs\"",
     "watch-server": "nodemon -e js,vue -i node_modules -i chrome/ app.js",
     "watch-worker": "nodemon -e js,vue -i node_modules -i chrome/ worker.js",
     "initdb": "node test/initdb.js"
   },
   "type": "module",
   "engines": {
-    "node": ">=13.0.0"
+    "node": ">=22.0.0"
   },
   "dependencies": {
     "@babel/cli": "^7.12.10",
@@ -45,10 +45,10 @@
     "koa-static": "^5.0.0",
     "koa-views": "^6.3.0",
     "kue": "^0.11.6",
-    "mini-css-extract-plugin": "^0.10.0",
+    "mini-css-extract-plugin": "^1.6.2",
     "mocha-esm": "^1.1.1",
     "newrelic": "^7.0.2",
-    "node-sass": "^4.14.1",
+    "sass": "^1.89.2",
     "nodebrainz": "^2.1.1",
     "pg": "^8.5.1",
     "playmusic": "^2.3.0",
@@ -77,5 +77,8 @@
     "mocha": "^8.2.1",
     "nodemon": "^2.0.6",
     "should": "^13.2.1"
+  },
+  "resolutions": {
+    "postcss": "8.3.11"
   }
 }
