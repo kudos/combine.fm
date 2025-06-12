@@ -41,6 +41,7 @@ jobs:
           tags: latest ${{ github.sha }}
   test-image:
     runs-on: self-hosted
+    needs: build-image
     steps:
       - name: Check out repository
         uses: https://cremin.dev/actions/checkout@v4
