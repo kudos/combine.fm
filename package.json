@@ -79,6 +79,6 @@
     "should": "^13.2.1"
   },
   "resolutions": {
-    "postcss": "8.3.11"
+    "postcss": "8.5.5"
   }
 }
