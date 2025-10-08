@@ -1,6 +1,5 @@
 import co from "co";
 import kue from "kue";
-import Sentry from "@sentry/node";
 import debuglog from "debug";
 import { inspect } from "util";
 
@@ -8,10 +7,6 @@ import models from "./models/index.cjs";
 import services from "./lib/services.js";
 
 const debug = debuglog("combine.fm:worker");
-
-Sentry.init({
-  dsn: process.env.SENTRY_DSN
-});
 
 const queue = kue.createQueue({
   redis: process.env.REDIS_URL
@@ -59,14 +54,12 @@ function search(data, done) {
       debug(`Error searching on: ${service.id}`);
       debug(share);
       debug(inspect(err, { depth: 5 }));
-      Sentry.captureException(err);
       return done(err);
     }
   }).catch(err => {
     debug(`Error searching on: ${service.id}`);
     debug(share);
     debug(inspect(err, { depth: 5 }));
-    Sentry.captureException(err);
     return done(err);
   });
 }
