@@ -18,7 +18,6 @@ import recent from "./routes/recent.js";
 import search from "./routes/search.js";
 import share from "./routes/share.js";
 import { slack, oauth } from "./routes/slack.js";
-import errorHandler from "./lib/error-handler.js";
 import { constants } from "zlib";
 
 const debug = debuglog("combine.fm");
@@ -33,8 +32,6 @@ const app = new koa();
 if (process.env.NODE_ENV === "production") {
   app.proxy = true;
 }
-
-app.use(errorHandler());
 
 app.use(bodyparser());
 app.use(cors());
