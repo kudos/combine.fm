@@ -46,3 +46,10 @@ shell: ## Run shell
 .PHONY: open
 open: ## Open app in browser
 	xdg-open http://localhost:3000
+
+.PHONY: generate-static
+generate-static: ## Generate static archive pages from the database into ./static/
+	podman compose up -d database
+	@echo "Waiting for database to be ready…"
+	@until podman compose exec database pg_isready -q; do sleep 1; done
+	podman compose run --rm app yarn generate-static

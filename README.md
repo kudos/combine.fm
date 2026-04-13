@@ -1,5 +1,9 @@
 # combine.fm
 
+## Shutdown Notice
+
+Thanks to everyone who used the service over the years, the site is now a static archive to preserve the links you've shared indefinitely.
+
 Make sharing from music services better. We match links from Rdio, Spotify, Deezer, Google Music and iTunes and give you back a link with all of them.
 
 ## Supported Services

@@ -12,7 +12,8 @@
     "watch-js": "NODE_OPTIONS=--openssl-legacy-provider concurrently -k -n webpack-frontend,webpack-server \"webpack -w -d --config webpack.config.cjs\" \"webpack -w --config webpack.config.server.cjs\"",
     "watch-server": "nodemon -e js,vue -i node_modules -i chrome/ app.js",
     "watch-worker": "nodemon -e js,vue -i node_modules -i chrome/ worker.js",
-    "initdb": "node test/initdb.js"
+    "initdb": "node test/initdb.js",
+    "generate-static": "node scripts/generate-static.js"
   },
   "type": "module",
   "engines": {
