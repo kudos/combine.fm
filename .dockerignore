@@ -1,7 +1,0 @@
-.envrc
-.git
-node_modules
-Dockerfile
-.forgejo
-README.md
-renovate.json
